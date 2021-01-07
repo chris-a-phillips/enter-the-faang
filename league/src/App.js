@@ -1,14 +1,23 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import { AppH1, AppWrapper, TestBox } from './SCApp'
+import { Unit, blueUnit, redUnit } from './Objects/Unit'
 import './App.css';
 
 function App() {
   // const primaryColor = 'red'
+  console.log(Unit)
+  
+  const handleClick = () => {
+    blueUnit.attack(redUnit)
+    console.log(redUnit)
+  }
+
 
   return (
     <div className="App">
-      Wassup Planet
-      
+      {/* Wassup Planet
+      <button onClick={handleClick}>attack</button> */}
+
       {/* <AppWrapper>
         content
       </AppWrapper>
