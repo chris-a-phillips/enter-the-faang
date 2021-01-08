@@ -43,4 +43,4 @@ export class Player{
     }
 }
 
-export const yaboi = new Player('yaboiii', ([yellowUnit, redUnit, blueUnit]))
+export const yaboi = new Player('yaboiii', ([blueUnit, redUnit, yellowUnit]))

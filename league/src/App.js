@@ -15,11 +15,14 @@ function App() {
     console.log(rounds)
   }
   
+  console.log(yaboi)
+
 
 	return (
 		<div className='App'>
 			Wassup Planet
 			<button onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>blue attack red</button>
+			<button onClick={() => attack(yaboi.team[1].attackUnit(yaboi.team[0]), yaboi.team[0])}>red attack blue</button>
       <button onClick={addNumber}>add turn</button>
       <p>{JSON.stringify(yaboi.team)}</p>
 
