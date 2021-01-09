@@ -49,19 +49,42 @@ function App() {
     eliteUnits: []
   };
 
-	generateRandomUnit(basicUnits, 'basic');
-	generateRandomUnit(advancedUnits, 'advanced');
-	generateRandomUnit(eliteUnits, 'elite');
+  let easy = [70, 95]
+  let normal = [60, 90]
+  let difficult = [40, 70]
+  let insane = [20, 50]
 
+let difficulty = easy
+let armySize = 5
+
+  for (let i = 0; i < armySize; i++) {
+    let percentChance = Math.floor(Math.random() * 100)
+    if (percentChance < difficulty[0]) {
+      generateRandomUnit(basicUnits, 'basic')
+    } else if(percentChance < difficulty[1]) {
+      generateRandomUnit(advancedUnits, 'advanced')
+    } else {
+      generateRandomUnit(eliteUnits, 'elite')
+    }
+  }
+
+  
+	// generateRandomUnit(basicUnits, 'basic');
+	// generateRandomUnit(advancedUnits, 'advanced');
+	// generateRandomUnit(eliteUnits, 'elite');
+  
   console.log(unitPool);
   
   // console.log(BasicFaang)
-
-  const me = new BasicFaang(unitPool.basicUnits[0].type,)
   
-  const activeUnits = [me]
+  const me = new BasicFaang(unitPool.basicUnits[0].type,)
+  const me2 = new BasicFaang(unitPool.basicUnits[1].type,)
+  
+  const activeUnits = [me,me2]
   console.log(activeUnits)
 
+  // console.log(Math.floor(Math.random() * 10))
+  
 	return (
 		<div className='App'>
 			Wassup Planet

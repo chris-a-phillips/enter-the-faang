@@ -6,6 +6,7 @@ export const specialRanks = ['Master Sergeant', 'First Lieutenant', 'Staff capta
 export const faang = {
 	basic: {
 		dra: {
+			rank: 'basic',
 			type: 'dra',
 			health: 41,
 			attack: 89,
@@ -15,6 +16,7 @@ export const faang = {
 			total: 246,
 		},
 		tyr: {
+			rank: 'basic',
 			type: 'tyr',
 			health: 50,
 			attack: 54.5,
@@ -24,6 +26,7 @@ export const faang = {
 			total: null,
 		},
 		sal: {
+			rank: 'basic',
 			type: 'sal',
 			health: 45,
 			attack: 57.5,
@@ -33,6 +36,7 @@ export const faang = {
 			total: null,
 		},
 		met: {
+			rank: 'basic',
 			type: 'met',
 			health: 40,
 			attack: 40,
@@ -42,6 +46,7 @@ export const faang = {
 			total: null,
 		},
 		gar: {
+			rank: 'basic',
 			type: 'gar',
 			health: 58,
 			attack: 55,
@@ -51,6 +56,7 @@ export const faang = {
 			total: null,
 		},
 		hyd: {
+			rank: 'basic',
 			type: 'hyd',
 			health: 52,
 			attack: 55,
@@ -60,6 +66,7 @@ export const faang = {
 			total: null,
 		},
 		goo: {
+			rank: 'basic',
 			type: 'goo',
 			health: 45,
 			attack: 52.5,
@@ -69,6 +76,7 @@ export const faang = {
 			total: null,
 		},
 		kom: {
+			rank: 'basic',
 			type: 'kom',
 			health: 45,
 			attack: 50,
@@ -78,6 +86,7 @@ export const faang = {
 			total: null,
 		},
 		pul: {
+			rank: 'basic',
 			type: 'pul',
 			health: 28,
 			attack: 50,
@@ -89,6 +98,7 @@ export const faang = {
 	},
 	advanced: {
 		dra: {
+			rank: 'advanced',
 			type: 'dra',
 			health: 61,
 			attack: 77,
@@ -98,6 +108,7 @@ export const faang = {
 			total: null,
 		},
 		tyr: {
+			rank: 'advanced',
 			type: 'tyr',
 			health: 70,
 			attack: 74.5,
@@ -107,6 +118,7 @@ export const faang = {
 			total: null,
 		},
 		sal: {
+			rank: 'advanced',
 			type: 'sal',
 			health: 65,
 			attack: 77.5,
@@ -116,6 +128,7 @@ export const faang = {
 			total: null,
 		},
 		met: {
+			rank: 'advanced',
 			type: 'met',
 			health: 60,
 			attack: 65,
@@ -125,6 +138,7 @@ export const faang = {
 			total: null,
 		},
 		gar: {
+			rank: 'advanced',
 			type: 'gar',
 			health: 68,
 			attack: 70,
@@ -134,6 +148,7 @@ export const faang = {
 			total: null,
 		},
 		hyd: {
+			rank: 'advanced',
 			type: 'hyd',
 			health: 72,
 			attack: 75,
@@ -143,6 +158,7 @@ export const faang = {
 			total: null,
 		},
 		goo: {
+			rank: 'advanced',
 			type: 'goo',
 			health: 68,
 			attack: 79,
@@ -152,6 +168,7 @@ export const faang = {
 			total: null,
 		},
 		kom: {
+			rank: 'advanced',
 			type: 'kom',
 			health: 55,
 			attack: 70,
@@ -161,6 +178,7 @@ export const faang = {
 			total: null,
 		},
 		pul: {
+			rank: 'advanced',
 			type: 'pul',
 			health: 68,
 			attack: 70,
@@ -172,6 +190,7 @@ export const faang = {
 	},
 	elite: {
 		dra: {
+			rank: 'elite',
 			type: 'dra',
 			health: 91,
 			attack: 117,
@@ -181,6 +200,7 @@ export const faang = {
 			total: null,
 		},
 		tyr: {
+			rank: 'elite',
 			type: 'tyr',
 			health: 100,
 			attack: 129.5,
@@ -190,6 +210,7 @@ export const faang = {
 			total: null,
 		},
 		sal: {
+			rank: 'elite',
 			type: 'sal',
 			health: 95,
 			attack: 122.5,
@@ -199,6 +220,7 @@ export const faang = {
 			total: null,
 		},
 		met: {
+			rank: 'elite',
 			type: 'met',
 			health: 80,
 			attack: 115,
@@ -208,6 +230,7 @@ export const faang = {
 			total: null,
 		},
 		gar: {
+			rank: 'elite',
 			type: 'gar',
 			health: 108,
 			attack: 105,
@@ -217,6 +240,7 @@ export const faang = {
 			total: null,
 		},
 		hyd: {
+			rank: 'elite',
 			type: 'hyd',
 			health: 92,
 			attack: 115,
@@ -226,6 +250,7 @@ export const faang = {
 			total: null,
 		},
 		goo: {
+			rank: 'elite',
 			type: 'goo',
 			health: 90,
 			attack: 105,
@@ -235,6 +260,7 @@ export const faang = {
 			total: null,
 		},
 		kom: {
+			rank: 'elite',
 			type: 'kom',
 			health: 75,
 			attack: 105,
@@ -244,6 +270,7 @@ export const faang = {
 			total: null,
 		},
 		pul: {
+			rank: 'elite',
 			type: 'pul',
 			health: 88,
 			attack: 110,
