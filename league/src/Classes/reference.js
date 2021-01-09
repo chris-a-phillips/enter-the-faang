@@ -4,202 +4,255 @@
 
 // master sergeant, first lieutenant, staff captain, field major, strike commander, force colonel, brigadier general, 5-Star general
 
-// regen = all damage taken
+// regen = all damage taken from weaknesses
+
+function average(numOne, numTwo) {
+	let array = [numOne, numTwo];
+	return array.reduce((a, b) => (a + b) / array.length);
+}
+
+function addAll(array) {
+	return array.reduce((a, b) => a + b);
+}
+
+let weakArray = [1,1,1,1,8,4,.25];
+
+console.log(average(135,110));
+console.log(addAll(weakArray));
 
 const faang = {
-	basic: {
-		dra: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
+	dra: {
+		crew: {
+			health: 41,
+			attack: 89,
+			defense: 47.5,
+			regeneration: 18.5,
+			speed: 50,
+			total: 246,
 		},
-		tyr: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
+		advanced: {
+			health: 61,
+			attack: 77,
+			defense: 67.5,
+			regeneration: 18.5,
+			speed: 70,
+			total: null,
 		},
-		sal: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		met: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		gar: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		hyd: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		goo: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		kom: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		pul: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
+		elite: {
+			health: 91,
+			attack: 117,
+			defense: 97.5,
+			regeneration: 20.25,
+			speed: 80,
+			total: null,
 		},
 	},
-	mid: {
-		dra: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
+	tyr: {
+		crew: {
+			health: 50,
+			attack: 54.5,
+			defense: 50,
+			regeneration: 24.25,
+			speed: 41,
+			total: null,
 		},
-		tyr: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
+		advanced: {
+			health: 70,
+			attack: 74.5,
+			defense: 70,
+			regeneration: 24.25,
+			speed: 51,
+			total: null,
 		},
-		sal: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		met: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		gar: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		hyd: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		goo: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		kom: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
-		},
-		pul: {
-			health: null,
-			attack: null,
-			defense: null,
-			regeneration: null,
-			speed: null,
+		elite: {
+			health: 100,
+			attack: 129.5,
+			defense: 135,
+			regeneration: 23,
+			speed: 71,
+			total: null,
 		},
 	},
-	elite: {
-		dra: {
+	sal: {
+		crew: {
+			health: 45,
+			attack: 57.5,
+			defense: 45,
+			regeneration: 18.5,
+			speed: 50,
+			total: null,
+		},
+		advanced: {
+			health: 65,
+			attack: 77.5,
+			defense: 75,
+			regeneration: 18.5,
+			speed: 50,
+			total: null,
+		},
+		elite: {
+			health: 95,
+			attack: 122.5,
+			defense: 80,
+			regeneration: 20.25,
+			speed: 100,
+			total: null,
+		},
+	},
+	met: {
+		crew: {
+			health: 40,
+			attack: 40,
+			defense: 70,
+			regeneration: 16.25,
+			speed: 30,
+			total: null,
+		},
+		advanced: {
+			health: 60,
+			attack: 65,
+			defense: 90,
+			regeneration: 16.25,
+			speed: 50,
+			total: null,
+		},
+		elite: {
+			health: 80,
+			attack: 115,
+			defense: 110,
+			regeneration: 16.25,
+			speed: 70,
+			total: null,
+		},
+	},
+	gar: {
+		crew: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		tyr: {
+		advanced: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		sal: {
+		elite: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		met: {
+	},
+	hyd: {
+		crew: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		gar: {
+		advanced: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		hyd: {
+		elite: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		goo: {
+	},
+	goo: {
+		crew: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		kom: {
+		advanced: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-		pul: {
+		elite: {
 			health: null,
 			attack: null,
 			defense: null,
 			regeneration: null,
 			speed: null,
+			total: null,
 		},
-	}
-}
+	},
+	kom: {
+		crew: {
+			health: null,
+			attack: null,
+			defense: null,
+			regeneration: null,
+			speed: null,
+			total: null,
+		},
+		advanced: {
+			health: null,
+			attack: null,
+			defense: null,
+			regeneration: null,
+			speed: null,
+			total: null,
+		},
+		elite: {
+			health: null,
+			attack: null,
+			defense: null,
+			regeneration: null,
+			speed: null,
+			total: null,
+		},
+	},
+	pul: {
+		crew: {
+			health: null,
+			attack: null,
+			defense: null,
+			regeneration: null,
+			speed: null,
+			total: null,
+		},
+		advanced: {
+			health: null,
+			attack: null,
+			defense: null,
+			regeneration: null,
+			speed: null,
+			total: null,
+		},
+		elite: {
+			health: null,
+			attack: null,
+			defense: null,
+			regeneration: null,
+			speed: null,
+			total: null,
+		},
+	},
+};
