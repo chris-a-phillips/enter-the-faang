@@ -1,9 +1,11 @@
 export class BaseUnit {
-	constructor(name, health, attack, defense) {
+	constructor(name, health, attack, defense, regeneration, speed) {
 		this.name = name;
 		this.health = health;
 		this.attack = attack;
 		this.defense = defense;
+		this.regeneration = regeneration;
+		this.speed = speed;
 	}
 	attackUnit(unit) {
 		console.log(
@@ -14,8 +16,8 @@ export class BaseUnit {
 }
 
 export class Admin extends BaseUnit {
-	constructor(name, health, attack, defense) {
-		super(name, health, attack, defense);
+	constructor(name, health, attack, defense, regeneration, speed) {
+		super(name, health, attack, defense, regeneration, speed);
 		this.isAdmin = true;
 	}
 	static TYPE_ADMIN = 'admin';
@@ -24,24 +26,25 @@ export class Admin extends BaseUnit {
 	}
 }
 
-
-class CrewFaang {
-	constructor(name) {
-		this.name = name
-		this.class = 'Crew'
-		this.isAlive = true
-		this.health = null
-		this.attack = null
-		this.defense = null
-		this.regeneration = null
-		this.speed = null
+export class BasicFaang {
+	constructor(name, health, attack, defense, regeneration, speed, rank) {
+		// specs
+		this.isAlive = true;
+		this.rank = rank
+		// stats
+		this.name = name;
+		this.health = health;
+		this.attack = attack;
+		this.defense = defense;
+		this.regeneration = regeneration;
+		this.speed = speed;
 	}
 	speak() {
-		console.log(this.name)
+		console.log(this.name);
 	}
 }
 
-class AdvancedFaang extends CrewFaang {
+class AdvancedFaang extends BasicFaang {
 	constructor(name) {
 		super(name);
 		this.attack = 'infinite'
@@ -58,6 +61,6 @@ class EliteFaang extends AdvancedFaang {
 	}
 }
 
-export const crew = new CrewFaang('Crew')
+export const crew = new BasicFaang('Crew')
 export const advanced = new AdvancedFaang('Advanced')
 export const elite = new EliteFaang('Elite')
