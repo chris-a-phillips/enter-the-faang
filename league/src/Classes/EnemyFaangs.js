@@ -27,10 +27,11 @@ export class Admin extends BaseUnit {
 }
 
 export class BasicFaang {
-	constructor(name, health, attack, defense, regeneration, speed, rank) {
+	constructor(name, health, attack, defense, regeneration, speed, rank, pedigree) {
 		// specs
 		this.isAlive = true;
-		this.rank = rank
+		this.rank = rank;
+		this.pedigree = pedigree;
 		// stats
 		this.name = name;
 		this.health = health;
@@ -42,9 +43,15 @@ export class BasicFaang {
 	speak() {
 		console.log(this.name);
 	}
+	attackUnit(unit) {
+		console.log(
+			`${this.name} attacked ${unit.name} and now it has ${unit.health}`
+		);
+		unit.health -= this.attack;
+	}
 }
 
-class AdvancedFaang extends BasicFaang {
+export class AdvancedFaang extends BasicFaang {
 	constructor(name) {
 		super(name);
 		this.attack = 'infinite'
@@ -53,7 +60,7 @@ class AdvancedFaang extends BasicFaang {
 	}
 }
 
-class EliteFaang extends AdvancedFaang {
+export class EliteFaang extends AdvancedFaang {
 	constructor(name) {
 		super(name)
 		this.defense = 'alla dat'
@@ -64,3 +71,6 @@ class EliteFaang extends AdvancedFaang {
 export const crew = new BasicFaang('Crew')
 export const advanced = new AdvancedFaang('Advanced')
 export const elite = new EliteFaang('Elite')
+
+
+// FAANG GENERATOR

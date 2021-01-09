@@ -1,13 +1,40 @@
-// basic 6, advanced 3, elite 1
+// Basic 6, Advanced 3, Elite 1
 
-export const ranks = ['Recruit', 'Apprentice', 'Private', 'Corporal', 'Sergeant', 'Gunnery Sergeant', 'Lieutenant', 'Captain', 'Major', 'Commander', 'Colonel', 'Brigadier', 'General',];
-export const specialRanks = ['Master Sergeant', 'First Lieutenant', 'Staff captain', 'Field major', 'Strike commander', 'Force colonel', 'Brigadier General', '5-Star General'];
+// special are top 5%
+
+export const pedigree = {
+	// Basic
+	commonLevelOne: [
+		'Recruit',
+		'Apprentice',
+		'Private',
+		'Corporal',
+		'Sergeant',
+		'Gunnery Sergeant',
+		'Lieutenant',
+		'Captain',
+	],
+	specialLevelOne: ['Master Sergeant', 'First Lieutenant', 'Staff Captain'],
+	// Advanced
+	commonLevelTwo: ['Major', 'Commander', 'Colonel', 'Brigadier'],
+	specialLevelTwo: [
+		'Field Major',
+		'Strike Commander',
+		'Force Colonel',
+		'Brigadier General'
+	],
+	//Elite
+	commonLevelThree: ['General'],
+	specialLevelThree: [
+		'5-Star General'
+	],
+};
 
 export const faang = {
 	basic: {
 		dra: {
-			rank: 'basic',
-			type: 'dra',
+			rank: 'Basic',
+			type: 'Dra',
 			health: 41,
 			attack: 89,
 			defense: 47.5,
@@ -16,8 +43,8 @@ export const faang = {
 			total: 246,
 		},
 		tyr: {
-			rank: 'basic',
-			type: 'tyr',
+			rank: 'Basic',
+			type: 'Tyr',
 			health: 50,
 			attack: 54.5,
 			defense: 50,
@@ -26,8 +53,8 @@ export const faang = {
 			total: null,
 		},
 		sal: {
-			rank: 'basic',
-			type: 'sal',
+			rank: 'Basic',
+			type: 'Sal',
 			health: 45,
 			attack: 57.5,
 			defense: 45,
@@ -36,8 +63,8 @@ export const faang = {
 			total: null,
 		},
 		met: {
-			rank: 'basic',
-			type: 'met',
+			rank: 'Basic',
+			type: 'Met',
 			health: 40,
 			attack: 40,
 			defense: 70,
@@ -46,8 +73,8 @@ export const faang = {
 			total: null,
 		},
 		gar: {
-			rank: 'basic',
-			type: 'gar',
+			rank: 'Basic',
+			type: 'Gar',
 			health: 58,
 			attack: 55,
 			defense: 45,
@@ -56,8 +83,8 @@ export const faang = {
 			total: null,
 		},
 		hyd: {
-			rank: 'basic',
-			type: 'hyd',
+			rank: 'Basic',
+			type: 'Hyd',
 			health: 52,
 			attack: 55,
 			defense: 50,
@@ -66,8 +93,8 @@ export const faang = {
 			total: null,
 		},
 		goo: {
-			rank: 'basic',
-			type: 'goo',
+			rank: 'Basic',
+			type: 'Goo',
 			health: 45,
 			attack: 52.5,
 			defense: 55,
@@ -76,8 +103,8 @@ export const faang = {
 			total: null,
 		},
 		kom: {
-			rank: 'basic',
-			type: 'kom',
+			rank: 'Basic',
+			type: 'Kom',
 			health: 45,
 			attack: 50,
 			defense: 55,
@@ -86,8 +113,8 @@ export const faang = {
 			total: null,
 		},
 		pul: {
-			rank: 'basic',
-			type: 'pul',
+			rank: 'Basic',
+			type: 'Pul',
 			health: 28,
 			attack: 50,
 			defense: 30,
@@ -98,8 +125,8 @@ export const faang = {
 	},
 	advanced: {
 		dra: {
-			rank: 'advanced',
-			type: 'dra',
+			rank: 'Advanced',
+			type: 'Dra',
 			health: 61,
 			attack: 77,
 			defense: 67.5,
@@ -108,8 +135,8 @@ export const faang = {
 			total: null,
 		},
 		tyr: {
-			rank: 'advanced',
-			type: 'tyr',
+			rank: 'Advanced',
+			type: 'Tyr',
 			health: 70,
 			attack: 74.5,
 			defense: 70,
@@ -118,8 +145,8 @@ export const faang = {
 			total: null,
 		},
 		sal: {
-			rank: 'advanced',
-			type: 'sal',
+			rank: 'Advanced',
+			type: 'Sal',
 			health: 65,
 			attack: 77.5,
 			defense: 75,
@@ -128,8 +155,8 @@ export const faang = {
 			total: null,
 		},
 		met: {
-			rank: 'advanced',
-			type: 'met',
+			rank: 'Advanced',
+			type: 'Met',
 			health: 60,
 			attack: 65,
 			defense: 90,
@@ -138,8 +165,8 @@ export const faang = {
 			total: null,
 		},
 		gar: {
-			rank: 'advanced',
-			type: 'gar',
+			rank: 'Advanced',
+			type: 'Gar',
 			health: 68,
 			attack: 70,
 			defense: 60,
@@ -148,8 +175,8 @@ export const faang = {
 			total: null,
 		},
 		hyd: {
-			rank: 'advanced',
-			type: 'hyd',
+			rank: 'Advanced',
+			type: 'Hyd',
 			health: 72,
 			attack: 75,
 			defense: 70,
@@ -158,8 +185,8 @@ export const faang = {
 			total: null,
 		},
 		goo: {
-			rank: 'advanced',
-			type: 'goo',
+			rank: 'Advanced',
+			type: 'Goo',
 			health: 68,
 			attack: 79,
 			defense: 83,
@@ -168,8 +195,8 @@ export const faang = {
 			total: null,
 		},
 		kom: {
-			rank: 'advanced',
-			type: 'kom',
+			rank: 'Advanced',
+			type: 'Kom',
 			health: 55,
 			attack: 70,
 			defense: 80,
@@ -178,8 +205,8 @@ export const faang = {
 			total: null,
 		},
 		pul: {
-			rank: 'advanced',
-			type: 'pul',
+			rank: 'Advanced',
+			type: 'Pul',
 			health: 68,
 			attack: 70,
 			defense: 50,
@@ -190,8 +217,8 @@ export const faang = {
 	},
 	elite: {
 		dra: {
-			rank: 'elite',
-			type: 'dra',
+			rank: 'Elite',
+			type: 'Dra',
 			health: 91,
 			attack: 117,
 			defense: 97.5,
@@ -200,8 +227,8 @@ export const faang = {
 			total: null,
 		},
 		tyr: {
-			rank: 'elite',
-			type: 'tyr',
+			rank: 'Elite',
+			type: 'Tyr',
 			health: 100,
 			attack: 129.5,
 			defense: 135,
@@ -210,8 +237,8 @@ export const faang = {
 			total: null,
 		},
 		sal: {
-			rank: 'elite',
-			type: 'sal',
+			rank: 'Elite',
+			type: 'Sal',
 			health: 95,
 			attack: 122.5,
 			defense: 80,
@@ -220,8 +247,8 @@ export const faang = {
 			total: null,
 		},
 		met: {
-			rank: 'elite',
-			type: 'met',
+			rank: 'Elite',
+			type: 'Met',
 			health: 80,
 			attack: 115,
 			defense: 110,
@@ -230,8 +257,8 @@ export const faang = {
 			total: null,
 		},
 		gar: {
-			rank: 'elite',
-			type: 'gar',
+			rank: 'Elite',
+			type: 'Gar',
 			health: 108,
 			attack: 105,
 			defense: 90,
@@ -240,8 +267,8 @@ export const faang = {
 			total: null,
 		},
 		hyd: {
-			rank: 'elite',
-			type: 'hyd',
+			rank: 'Elite',
+			type: 'Hyd',
 			health: 92,
 			attack: 115,
 			defense: 90,
@@ -250,8 +277,8 @@ export const faang = {
 			total: null,
 		},
 		goo: {
-			rank: 'elite',
-			type: 'goo',
+			rank: 'Elite',
+			type: 'Goo',
 			health: 90,
 			attack: 105,
 			defense: 110,
@@ -260,8 +287,8 @@ export const faang = {
 			total: null,
 		},
 		kom: {
-			rank: 'elite',
-			type: 'kom',
+			rank: 'Elite',
+			type: 'Kom',
 			health: 75,
 			attack: 105,
 			defense: 115,
@@ -270,8 +297,8 @@ export const faang = {
 			total: null,
 		},
 		pul: {
-			rank: 'elite',
-			type: 'pul',
+			rank: 'Elite',
+			type: 'Pul',
 			health: 88,
 			attack: 110,
 			defense: 75,
