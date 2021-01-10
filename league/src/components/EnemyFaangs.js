@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from '../Data/FaangStats';
 
-const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits, enemyUnits, gameStarted, setGameStarted  }) => {
+const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
     const unitPool = []
 	class BaseUnit {
 		constructor(name, health, attack, defense, regeneration, speed) {
@@ -253,17 +253,9 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits, enemyUnits, gameStar
 		}
     }
 
-    let test = [true]
-    
-    if ((difficulty && armySize) && test) {
-        test = false
+    useEffect(() => {
         setEnemyUnits(unitPool)
-    }
-
-
-    console.log(test)
-
-
+    }, [])
     
 	return <div></div>;
 };
