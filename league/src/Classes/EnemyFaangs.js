@@ -27,11 +27,22 @@ export class Admin extends BaseUnit {
 }
 
 export class BasicFaang {
-	constructor(name, health, attack, defense, regeneration, speed, rank, pedigree) {
+	constructor(
+		name,
+		health,
+		attack,
+		defense,
+		regeneration,
+		speed,
+		rank,
+		pedigree,
+		species
+	) {
 		// specs
 		this.isAlive = true;
 		this.rank = rank;
 		this.pedigree = pedigree;
+		this.species = species;
 		// stats
 		this.name = name;
 		this.health = health;
@@ -52,25 +63,63 @@ export class BasicFaang {
 }
 
 export class AdvancedFaang extends BasicFaang {
-	constructor(name) {
-		super(name);
-		this.attack = 'infinite'
+	constructor(
+		name,
+		health,
+		attack,
+		defense,
+		regeneration,
+		speed,
+		rank,
+		pedigree,
+		species
+	) {
+		super(
+			name,
+			health,
+			attack,
+			defense,
+			regeneration,
+			speed,
+			rank,
+			pedigree,
+			species
+		);
+		this.attack = 'infinite';
 		this.isAdmin = true;
-		this.class = 'Advanced'
+		this.class = 'Advanced';
 	}
 }
 
 export class EliteFaang extends AdvancedFaang {
-	constructor(name) {
-		super(name)
-		this.defense = 'alla dat'
-		this.class = 'Elite'
+	constructor(
+		name,
+		health,
+		attack,
+		defense,
+		regeneration,
+		speed,
+		rank,
+		pedigree,
+		species
+	) {
+		super(
+			name,
+			health,
+			attack,
+			defense,
+			regeneration,
+			speed,
+			rank,
+			pedigree,
+			species
+		);
+		this.class = 'Elite';
 	}
 }
 
-export const crew = new BasicFaang('Crew')
-export const advanced = new AdvancedFaang('Advanced')
-export const elite = new EliteFaang('Elite')
-
+export const crew = new BasicFaang('Crew');
+export const advanced = new AdvancedFaang('Advanced');
+export const elite = new EliteFaang('Elite');
 
 // FAANG GENERATOR

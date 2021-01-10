@@ -3,7 +3,7 @@ import './App.css';
 import { blueUnit, redUnit, yaboi } from './Classes/Unit';
 import { rounds } from './Classes/Turn';
 import { basic, advanced, elite, BasicFaang, AdvancedFaang, EliteFaang } from './Classes/EnemyFaangs';
-import { pedigree, faang } from './Classes/FaangStats';
+import { pedigree, faang, randomNames } from './Classes/FaangStats';
 
 function App() {
 	const attack = (attacker, defender) => {
@@ -26,60 +26,100 @@ function App() {
 	// console.log(advancedUnits);
 	// console.log(eliteUnits);
 
-	// RANDOM UNIT GENERATOR THAT PUSHES THE UNITS INTO THE UNIT POOL
+  // RANDOM UNIT GENERATOR THAT PUSHES THE UNITS INTO THE UNIT POOL
 	function generateRandomUnit(rank) {
 		let length = Object.keys(rank).length;
-		let randomNumber = Math.floor(Math.random() * length);
+    let randomNumber = Math.floor(Math.random() * length);
 		let randomUnit = rank[Object.keys(rank)[randomNumber]];
-		let percentChance = Math.floor(Math.random() * 100);
+    let percentChance = Math.floor(Math.random() * 100);
+    randomUnit.name = randomNames[Math.floor(Math.random() * randomNames.length)]
 
 		if (rank.dra.rank === 'Basic') {
 			if (percentChance <= 95) {
 				randomUnit.pedigree =
-					pedigree.commonLevelOne[Math.floor(Math.random() * length)];
-			} else {
-				randomUnit.pedigree =
-					pedigree.specialLevelOne[
-						Math.floor(Math.random() * length)
-					];
+          pedigree.commonLevelOne[Math.floor(Math.random() * pedigree.commonLevelOne.length)];
+        } else {
+          randomUnit.pedigree =
+				pedigree.specialLevelOne[
+					Math.floor(Math.random() * pedigree.specialLevelOne.length)
+				];
 			}
-			unitPool.basicUnits.push(randomUnit);
+			unitPool.push(
+				new BasicFaang(
+					randomUnit.name,
+					randomUnit.health,
+					randomUnit.attack,
+					randomUnit.defense,
+					randomUnit.regeneration,
+					randomUnit.speed,
+					randomUnit.rank,
+          randomUnit.pedigree,
+          randomUnit.species
+				)
+			);
 		} else if (rank.dra.rank === 'Advanced') {
 			if (percentChance <= 95) {
 				randomUnit.pedigree =
-					pedigree.commonLevelTwo[Math.floor(Math.random() * length)];
+					pedigree.commonLevelTwo[
+						Math.floor(
+							Math.random() * pedigree.commonLevelTwo.length
+						)
+					];
 			} else {
 				randomUnit.pedigree =
 					pedigree.specialLevelTwo[
-						Math.floor(Math.random() * length)
+						Math.floor(
+							Math.random() * pedigree.specialLevelTwo.length
+						)
 					];
 			}
-			unitPool.advancedUnits.push(randomUnit);
+			unitPool.push(
+				new AdvancedFaang(
+					randomUnit.name,
+					randomUnit.health,
+					randomUnit.attack,
+					randomUnit.defense,
+					randomUnit.regeneration,
+					randomUnit.speed,
+					randomUnit.rank,
+          randomUnit.pedigree,
+          randomUnit.species
+				)
+			);
 		} else {
 			if (percentChance <= 95) {
 				randomUnit.pedigree =
 					pedigree.commonLevelThree[
-						Math.floor(Math.random() * length)
+						Math.floor(
+							Math.random() * pedigree.commonLevelThree.length
+						)
 					];
 			} else {
 				randomUnit.pedigree =
 					pedigree.specialLevelThree[
-						Math.floor(Math.random() * length)
+						Math.floor(
+							Math.random() * pedigree.specialLevelThree.length
+						)
 					];
 			}
-			unitPool.eliteUnits.push(randomUnit);
+			unitPool.push(
+				new EliteFaang(
+					randomUnit.name,
+					randomUnit.health,
+					randomUnit.attack,
+					randomUnit.defense,
+					randomUnit.regeneration,
+					randomUnit.speed,
+					randomUnit.rank,
+          randomUnit.pedigree,
+          randomUnit.species
+				)
+			);
+		}
 		}
 
-
-		console.log(new BasicFaang(randomUnit));
-	}
-
-	// UNIT POOL THAT GETS ADDED TO THE ACTIVE UNITS
-	let unitPool = {
-		basicUnits: [],
-		advancedUnits: [],
-		eliteUnits: [],
-	};
+  // UNIT POOL FOR ALL OF THE UNITS TO GET PUSHED INTO FROM THE RANDOM UNIT GENERATOR
+	let unitPool = [];
 
 	// PLAYER GAME SETTINGS
 	let easy = [70, 95];
@@ -87,40 +127,21 @@ function App() {
 	let difficult = [40, 70];
 	let insane = [20, 50];
 
-	let difficulty = normal;
-	let armySize = 10;
-
+	let difficulty = easy;
+	let armySize = 50;
+  
 	for (let i = 0; i < armySize; i++) {
-		let percentChance = Math.floor(Math.random() * 100);
+    let percentChance = Math.floor(Math.random() * 100);
 		if (percentChance < difficulty[0]) {
-			generateRandomUnit(basicUnits);
+      generateRandomUnit(basicUnits);
 		} else if (percentChance < difficulty[1]) {
-			generateRandomUnit(advancedUnits);
+      generateRandomUnit(advancedUnits);
 		} else {
-			generateRandomUnit(eliteUnits);
+      generateRandomUnit(eliteUnits);
 		}
-	}
-
-  // step one: create random unit
-  // step two: put random unit into unit pool
-  // step three: declare units and have declarations in declared unit array
-
-	// console.log(unitPool);
-
-	// FAANGS THAT ARE DECLARED HERE AND MAY OR MAY NOT BE USED DEPENDING ON THE ARMY SIZE
-	const basicOne = new BasicFaang(unitPool.basicUnits[0].type);
-	const basicTwo = new BasicFaang(unitPool.basicUnits[1].type);
-	// const eliteOne = new EliteFaang(unitPool.eliteUnits[0].type);
-  // const eliteTwo = new EliteFaang(unitPool.eliteUnits[1].type);
-  // const eliteThree = new EliteFaang(unitPool.eliteUnits[2].type)
-
-	// ARRAY OF ACTIVE UNITS
-	// HAS TO BE SEPARATE SO THAT THERE CAN BE A VARIABLE ATTACHED TO THEM
-	const declaredUnits = [basicOne, basicTwo];
-	console.log(declaredUnits)
-	basicOne.attackUnit(basicTwo);
-
-	console.log(pedigree);
+  }
+  
+  console.log(unitPool);
 
 	return (
 		<div className='App'>
