@@ -34,11 +34,11 @@ export const faang = {
 			rank: 'Basic',
 			species: 'Dra',
 			health: 41,
-			attack: 89,
+			attack: 57,
 			defense: 47.5,
 			regeneration: 18.5,
 			speed: 50,
-			total: 246,
+			total: 214,
 		},
 		tyr: {
 			rank: 'Basic',
@@ -48,7 +48,7 @@ export const faang = {
 			defense: 50,
 			regeneration: 24.25,
 			speed: 41,
-			total: null,
+			total: 209.75,
 		},
 		sal: {
 			rank: 'Basic',
@@ -58,7 +58,7 @@ export const faang = {
 			defense: 45,
 			regeneration: 18.5,
 			speed: 50,
-			total: null,
+			total: 216,
 		},
 		met: {
 			rank: 'Basic',
@@ -68,7 +68,7 @@ export const faang = {
 			defense: 70,
 			regeneration: 16.25,
 			speed: 30,
-			total: null,
+			total: 196.25,
 		},
 		gar: {
 			rank: 'Basic',
@@ -78,7 +78,7 @@ export const faang = {
 			defense: 45,
 			regeneration: 21.5,
 			speed: 42,
-			total: null,
+			total: 221.5,
 		},
 		hyd: {
 			rank: 'Basic',
@@ -88,7 +88,7 @@ export const faang = {
 			defense: 50,
 			regeneration: 21,
 			speed: 38,
-			total: null,
+			total: 216,
 		},
 		goo: {
 			rank: 'Basic',
@@ -98,7 +98,7 @@ export const faang = {
 			defense: 55,
 			regeneration: 18.5,
 			speed: 40,
-			total: null,
+			total: 211,
 		},
 		kom: {
 			rank: 'Basic',
@@ -108,7 +108,7 @@ export const faang = {
 			defense: 55,
 			regeneration: 18.5,
 			speed: 45,
-			total: null,
+			total: 213.5,
 		},
 		pul: {
 			rank: 'Basic',
@@ -118,7 +118,7 @@ export const faang = {
 			defense: 30,
 			regeneration: 18,
 			speed: 82,
-			total: null,
+			total: 208,
 		},
 	},
 	advanced: {
@@ -130,7 +130,7 @@ export const faang = {
 			defense: 67.5,
 			regeneration: 18.5,
 			speed: 70,
-			total: null,
+			total: 294,
 		},
 		tyr: {
 			rank: 'Advanced',
@@ -140,7 +140,7 @@ export const faang = {
 			defense: 70,
 			regeneration: 24.25,
 			speed: 51,
-			total: null,
+			total: 289.75,
 		},
 		sal: {
 			rank: 'Advanced',
@@ -150,7 +150,7 @@ export const faang = {
 			defense: 75,
 			regeneration: 18.5,
 			speed: 50,
-			total: null,
+			total: 286,
 		},
 		met: {
 			rank: 'Advanced',
@@ -160,7 +160,7 @@ export const faang = {
 			defense: 90,
 			regeneration: 16.25,
 			speed: 50,
-			total: null,
+			total: 281.25,
 		},
 		gar: {
 			rank: 'Advanced',
@@ -170,7 +170,7 @@ export const faang = {
 			defense: 60,
 			regeneration: 21.5,
 			speed: 82,
-			total: null,
+			total: 301.5,
 		},
 		hyd: {
 			rank: 'Advanced',
@@ -180,7 +180,7 @@ export const faang = {
 			defense: 70,
 			regeneration: 21,
 			speed: 58,
-			total: null,
+			total: 293,
 		},
 		goo: {
 			rank: 'Advanced',
@@ -190,7 +190,7 @@ export const faang = {
 			defense: 83,
 			regeneration: 18.5,
 			speed: 60,
-			total: null,
+			total: 308.5,
 		},
 		kom: {
 			rank: 'Advanced',
@@ -200,7 +200,7 @@ export const faang = {
 			defense: 80,
 			regeneration: 22,
 			speed: 65,
-			total: null,
+			total: 292,
 		},
 		pul: {
 			rank: 'Advanced',
@@ -210,7 +210,7 @@ export const faang = {
 			defense: 50,
 			regeneration: 18,
 			speed: 102,
-			total: null,
+			total: 308,
 		},
 	},
 	elite: {
@@ -222,17 +222,17 @@ export const faang = {
 			defense: 97.5,
 			regeneration: 20.25,
 			speed: 80,
-			total: null,
+			total: 405.75,
 		},
 		tyr: {
 			rank: 'Elite',
 			species: 'Tyr',
 			health: 100,
-			attack: 129.5,
-			defense: 135,
+			attack: 114.5,
+			defense: 105,
 			regeneration: 23,
 			speed: 71,
-			total: null,
+			total: 413.5,
 		},
 		sal: {
 			rank: 'Elite',
@@ -242,7 +242,7 @@ export const faang = {
 			defense: 80,
 			regeneration: 20.25,
 			speed: 100,
-			total: null,
+			total: 417.75,
 		},
 		met: {
 			rank: 'Elite',
@@ -252,7 +252,7 @@ export const faang = {
 			defense: 110,
 			regeneration: 16.25,
 			speed: 70,
-			total: null,
+			total: 391.25,
 		},
 		gar: {
 			rank: 'Elite',
@@ -262,7 +262,7 @@ export const faang = {
 			defense: 90,
 			regeneration: 21.5,
 			speed: 102,
-			total: null,
+			total: 426.5,
 		},
 		hyd: {
 			rank: 'Elite',
@@ -272,7 +272,7 @@ export const faang = {
 			defense: 90,
 			regeneration: 21,
 			speed: 98,
-			total: null,
+			total: 416,
 		},
 		goo: {
 			rank: 'Elite',
@@ -282,7 +282,7 @@ export const faang = {
 			defense: 110,
 			regeneration: 18.5,
 			speed: 80,
-			total: null,
+			total: 403.5,
 		},
 		kom: {
 			rank: 'Elite',
@@ -292,7 +292,7 @@ export const faang = {
 			defense: 115,
 			regeneration: 22,
 			speed: 85,
-			total: null,
+			total: 402,
 		},
 		pul: {
 			rank: 'Elite',
@@ -302,7 +302,7 @@ export const faang = {
 			defense: 75,
 			regeneration: 18,
 			speed: 142,
-			total: null,
+			total: 433,
 		},
 	},
 };

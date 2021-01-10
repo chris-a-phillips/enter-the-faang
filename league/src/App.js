@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 import { blueUnit, redUnit, yaboi } from './Data/Unit';
 import { rounds } from './Data/Turn';
-import EnemyFaangs from './components/EnemyFaangs';
+import EnemyFaangs from './Data/EnemyFaangs';
+import { Link, Route, Switch } from 'react-router-dom';
+import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
+import { titanOne } from './Data/TitanStats'
+import PlayerUnits from './Data/PlayerUnits';
 
 
 function App() {
@@ -21,29 +25,26 @@ function App() {
 		console.log(rounds);
   };
 
+  // console.log(enemyUnits)
+
 	return (
 		<div className='App'>
-			Wassup Planet
-      <br />
-
-      <div>Choose Difficulty
-        <button onClick={() => setDifficulty('easy')}>Easy</button>
-        <button onClick={() => setDifficulty('normal')}>Normal</button>
-        <button onClick={() => setDifficulty('veteran')}>Veteran</button>
-        <button onClick={() => setDifficulty('insane')}>Insane</button>
-      </div>
-      <div>Choose Army Size
-        <button onClick={() => setArmySize(10)}>10</button>
-        <button onClick={() => setArmySize(20)}>20</button>
-        <button onClick={() => setArmySize(50)}>50</button>
-        <button onClick={() => setArmySize(100)}>100</button>
-      </div>
-<br />
-
-{ enemyUnits ? (
-<button onClick={() => setGameStarted(true)}>Start Game</button>
-) : null}
-
+      <Link to='/'>Home</Link>
+			<br />
+			<Switch>
+				<Route
+					path='/'
+					exact
+					render={() => (
+						<WelcomeScreen
+							setDifficulty={setDifficulty}
+							setArmySize={setArmySize}
+							setGameStarted={setGameStarted}
+							enemyUnits={enemyUnits}
+						/>
+					)}
+				/>
+			</Switch>
 			<button
 				onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>
 				blue attack red
@@ -70,11 +71,15 @@ function App() {
 					</div>
 				);
 			})}
-			<code>{JSON.stringify(enemyUnits)}</code>
-
-      { difficulty && armySize ? (
-        <EnemyFaangs difficulty={difficulty} armySize={armySize} setEnemyUnits={setEnemyUnits}/>
-        ) : null}
+			{/* <code>{JSON.stringify(enemyUnits)}</code> */}
+			{difficulty && armySize ? (
+				<EnemyFaangs
+					difficulty={difficulty}
+					armySize={armySize}
+					setEnemyUnits={setEnemyUnits}
+				/>
+			) : null}
+			{/* <PlayerUnits /> */}
 		</div>
 	);
 }
