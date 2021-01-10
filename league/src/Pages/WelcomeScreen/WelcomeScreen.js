@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits}) => {
+const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill }) => {
     return (
 		<div>
 			<div>
@@ -19,6 +19,14 @@ const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits}
 				<button onClick={() => setArmySize(20)}>20</button>
 				<button onClick={() => setArmySize(50)}>50</button>
 				<button onClick={() => setArmySize(100)}>100</button>
+			</div>
+			<br />
+
+			<div>
+				Choose True Skill
+				<button onClick={() => setTrueSkill('normal')}>normal</button>
+				<button onClick={() => setTrueSkill('heroic')}>heroic</button>
+				<button onClick={() => setTrueSkill('unfar')}>unfair</button>
 			</div>
 			<br />
 
