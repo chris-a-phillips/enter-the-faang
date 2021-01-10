@@ -9,6 +9,12 @@ function App() {
   const [difficulty, setDifficulty] = useState()
   const [armySize, setArmySize] = useState()
   const [enemyUnits, setEnemyUnits] = useState([])
+  const [gameStarted, setGameStarted] = useState(false)
+
+  const startGame = () => {
+    setGameStarted(true)
+    // setEnemyUnits(unitPool)
+  }
 
 	const attack = (attacker, defender) => {
 		console.log(attacker);
@@ -42,6 +48,7 @@ function App() {
         <button onClick={() => setArmySize(100)}>100</button>
       </div>
 <br />
+<button onClick={startGame}>Start Game</button>
 
 			<button
 				onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>
@@ -70,7 +77,7 @@ function App() {
 				);
 			})}
 			<code>{JSON.stringify(enemyUnits)}</code>
-      <EnemyFaangs difficulty={difficulty} armySize={armySize} setEnemyUnits={setEnemyUnits}/>
+      <EnemyFaangs difficulty={difficulty} armySize={armySize} setEnemyUnits={setEnemyUnits} gameStarted={gameStarted} setGameStarted={setGameStarted} enemyUnits={enemyUnits}/>
 		</div>
 	);
 }
