@@ -27,7 +27,9 @@ function App() {
 		console.log(rounds);
 	};
 
+	console.log(enemyUnits)
 	console.log(playerTeam)
+	console.log(playerKingdoms)
 
 	return (
 		<div className='App'>
@@ -75,7 +77,7 @@ function App() {
 				);
 			})}
 			{/* <code>{JSON.stringify(enemyUnits)}</code> */}
-			{difficulty && armySize 
+			{ difficulty && armySize && playerTeam
 			// && trueSkill 
 			? (
 				<>
@@ -85,9 +87,11 @@ function App() {
 					setEnemyUnits={setEnemyUnits}
 				/>
 				</>
-				) : null}
+				) : null }
 				<PlayerUnits trueSkill={trueSkill} setPlayerTeam={setPlayerTeam}/>
+				{ playerTeam ? (
 				<PlayerKingdoms setPlayerKingdoms={setPlayerKingdoms} playerTeam={playerTeam}/>
+				) : null }
 				
 		</div>
 	);
