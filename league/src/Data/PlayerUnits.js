@@ -164,7 +164,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 	};
     
     const fireTitan = new Titan(
-        'Fire',
+        'Ajna',
         averageStats(eliteStats).health * (titans.fire.health * .1),
         averageStats(eliteStats).attack * (titans.fire.attack * .1),
         averageStats(eliteStats).defense * (titans.fire.defense * .1),
@@ -176,7 +176,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     const waterTitan = new Titan(
-        'Water',
+        'Mulad',
         averageStats(eliteStats).health * (titans.water.health * .1),
         averageStats(eliteStats).attack * (titans.water.attack * .1),
         averageStats(eliteStats).defense * (titans.water.defense * .1),
@@ -188,7 +188,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     const stoneTitan = new Titan(
-        'Stone',
+        'Vishu',
         averageStats(eliteStats).health * (titans.stone.health * .1),
         averageStats(eliteStats).attack * (titans.stone.attack * .1),
         averageStats(eliteStats).defense * (titans.stone.defense * .1),
@@ -200,7 +200,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     const airTitan = new Titan(
-        'Air',
+        'Nabhi',
         averageStats(eliteStats).health * (titans.air.health * .1),
         averageStats(eliteStats).attack * (titans.air.attack * .1),
         averageStats(eliteStats).defense * (titans.air.defense * .1),
@@ -212,7 +212,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     const lightningTitan = new Titan(
-        'Lightning',
+        'Svadhi',
         averageStats(eliteStats).health * (titans.lightning.health * .1),
         averageStats(eliteStats).attack * (titans.lightning.attack * .1),
         averageStats(eliteStats).defense * (titans.lightning.defense * .1),
@@ -224,7 +224,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     const terraTitan = new Titan(
-        'Terra',
+        'Sahas',
         averageStats(eliteStats).health * (titans.terra.health * .1),
         averageStats(eliteStats).attack * (titans.terra.attack * .1),
         averageStats(eliteStats).defense * (titans.terra.defense * .1),
@@ -236,7 +236,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     const metalTitan = new Titan(
-        'Metal',
+        'Anaht',
         averageStats(eliteStats).health * (titans.metal.health * .1),
         averageStats(eliteStats).attack * (titans.metal.attack * .1),
         averageStats(eliteStats).defense * (titans.metal.defense * .1),
