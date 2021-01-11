@@ -36,22 +36,17 @@ function App() {
 		<div className='App'>
 			<Link to='/'>Home</Link>
 			<br />
-			<Switch>
-				<Route
-					path='/'
-					exact
-					render={() => (
-						<WelcomeScreen
-							setDifficulty={setDifficulty}
-							setArmySize={setArmySize}
-							setTrueSkill={setTrueSkill}
-							setGameStarted={setGameStarted}
-							enemyUnits={enemyUnits}
-						/>
-					)}
+			{ !gameStarted ? (
+				<WelcomeScreen
+					setDifficulty={setDifficulty}
+					setArmySize={setArmySize}
+					setTrueSkill={setTrueSkill}
+					setGameStarted={setGameStarted}
+					enemyUnits={enemyUnits}
 				/>
-			</Switch>
-			<GameBoard enemyUnits={enemyUnits} playerTeam={playerTeam} playerKingdoms={playerKingdoms}/>
+			) : (	
+				<GameBoard enemyUnits={enemyUnits} playerTeam={playerTeam} playerKingdoms={playerKingdoms}/>
+				) }
 			<button
 				onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>
 				blue attack red
