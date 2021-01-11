@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import './App.css';
 import { blueUnit, redUnit, yaboi } from './Data/Unit';
 import { rounds } from './Data/Turn';
-import EnemyFaangs from './Data/EnemyFaangs';
+import EnemyFaangs from './Data/EnemyUnits';
 import { Link, Route, Switch } from 'react-router-dom';
 import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
 import PlayerUnits from './Data/PlayerUnits';
+import PlayerKingdoms from './Data/PlayerKingdoms';
 
 function App() {
 	const [difficulty, setDifficulty] = useState();
@@ -13,7 +14,8 @@ function App() {
 	const [enemyUnits, setEnemyUnits] = useState();
 	const [gameStarted, setGameStarted] = useState();
 	const [trueSkill, setTrueSkill] = useState()
-
+	const [playerTeam, setPlayerTeam] = useState()
+	const [playerKingdoms, setPlayerKingdoms] = useState()
 
 	const attack = (attacker, defender) => {
 		console.log(attacker);
@@ -25,7 +27,7 @@ function App() {
 		console.log(rounds);
 	};
 
-	// console.log(enemyUnits)
+	console.log(playerTeam)
 
 	return (
 		<div className='App'>
@@ -74,7 +76,7 @@ function App() {
 			})}
 			{/* <code>{JSON.stringify(enemyUnits)}</code> */}
 			{difficulty && armySize 
-			&& trueSkill 
+			// && trueSkill 
 			? (
 				<>
 				<EnemyFaangs
@@ -82,9 +84,11 @@ function App() {
 					armySize={armySize}
 					setEnemyUnits={setEnemyUnits}
 				/>
-				<PlayerUnits trueSkill={trueSkill} enemyUnits={enemyUnits}/>
 				</>
 				) : null}
+				<PlayerUnits trueSkill={trueSkill} setPlayerTeam={setPlayerTeam}/>
+				<PlayerKingdoms setPlayerKingdoms={setPlayerKingdoms} playerTeam={playerTeam}/>
+				
 		</div>
 	);
 }

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 
-const PlayerUnits = ({ trueSkill, enemyUnits }) => {
+const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 	const eliteStats = faang.elite;
 
 	function averageStats(object) {
@@ -70,7 +70,8 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
 			regeneration,
 			speed,
             energy,
-            zen
+            zen,
+            showcase
 		) {
 			// specs
 			this.isAlive = true;
@@ -82,7 +83,8 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
 			this.regeneration = regeneration;
 			this.speed = speed;
 			this.energy = energy;
-			this.zen = zen;
+            this.zen = zen;
+            this.showcase = showcase
 		}
 		speak() {
 			console.log(this.name);
@@ -169,8 +171,10 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.fire.regeneration * .1),
         averageStats(eliteStats).speed * (titans.fire.speed * .1),
         titans.fire.energy,
-        titans.fire.zen
+        titans.fire.zen,
+        titans.fire
     );
+
     const waterTitan = new Titan(
         'Water',
         averageStats(eliteStats).health * (titans.water.health * .1),
@@ -179,8 +183,10 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.water.regeneration * .1),
         averageStats(eliteStats).speed * (titans.water.speed * .1),
         titans.water.energy,
-        titans.water.zen
+        titans.water.zen,
+        titans.water
     );
+
     const stoneTitan = new Titan(
         'Stone',
         averageStats(eliteStats).health * (titans.stone.health * .1),
@@ -189,8 +195,10 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.stone.regeneration * .1),
         averageStats(eliteStats).speed * (titans.stone.speed * .1),
         titans.stone.energy,
-        titans.stone.zen
+        titans.stone.zen,
+        titans.stone
     );
+
     const airTitan = new Titan(
         'Air',
         averageStats(eliteStats).health * (titans.air.health * .1),
@@ -199,8 +207,10 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.air.regeneration * .1),
         averageStats(eliteStats).speed * (titans.air.speed * .1),
         titans.air.energy,
-        titans.air.zen
+        titans.air.zen,
+        titans.air
     );
+
     const lightningTitan = new Titan(
         'Lightning',
         averageStats(eliteStats).health * (titans.lightning.health * .1),
@@ -209,8 +219,10 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.lightning.regeneration * .1),
         averageStats(eliteStats).speed * (titans.lightning.speed * .1),
         titans.lightning.energy,
-        titans.lightning.zen
+        titans.lightning.zen,
+        titans.lightning
     );
+
     const terraTitan = new Titan(
         'Terra',
         averageStats(eliteStats).health * (titans.terra.health * .1),
@@ -219,8 +231,10 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.terra.regeneration * .1),
         averageStats(eliteStats).speed * (titans.terra.speed * .1),
         titans.terra.energy,
-        titans.terra.zen
+        titans.terra.zen,
+        titans.terra
     );
+
     const metalTitan = new Titan(
         'Metal',
         averageStats(eliteStats).health * (titans.metal.health * .1),
@@ -229,13 +243,17 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
         averageStats(eliteStats).regeneration * (titans.metal.regeneration * .1),
         averageStats(eliteStats).speed * (titans.metal.speed * .1),
         titans.metal.energy,
-        titans.metal.zen
+        titans.metal.zen,
+        titans.metal
     );
 
-    const team = [fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]
+    useEffect(() => {
+        setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan])
+    },[])
 
-    console.log(enemyUnits)
-    console.log(team)
+
+        
+
 
 	return <div></div>;
 };
