@@ -7,6 +7,7 @@ import { Link, Route, Switch } from 'react-router-dom';
 import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
 import PlayerUnits from './Data/PlayerUnits';
 import PlayerKingdoms from './Data/PlayerKingdoms';
+import GameBoard from './Pages/GameBoard/GameBoard';
 
 function App() {
 	const [difficulty, setDifficulty] = useState();
@@ -50,6 +51,7 @@ function App() {
 					)}
 				/>
 			</Switch>
+			<GameBoard enemyUnits={enemyUnits} playerTeam={playerTeam} playerKingdoms={playerKingdoms}/>
 			<button
 				onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>
 				blue attack red
