@@ -13,9 +13,13 @@ const GameBoard = ({ enemyUnits, playerTeam, playerKingdoms }) => {
 
 	return (
         <div>
+            { enemyUnits && playerTeam && playerKingdoms ? (
+                <>
             <EnemyField enemyUnits={enemyUnits}/>
             <PlayerField playerTeam={playerTeam}/>
             <KingdomField playerKingdoms={playerKingdoms}/>
+                </>
+            ) : null }
         </div>
     );
 };
