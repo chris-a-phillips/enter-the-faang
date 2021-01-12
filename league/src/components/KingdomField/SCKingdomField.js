@@ -21,4 +21,6 @@ export const KingdomName = styled.h3``;
 
 export const KingdomHealth = styled.div``;
 
-export const KingdomStats = styled.div``;
+export const KingdomStats = styled.div`
+    display: ${({ hidden }) => (hidden ? 'none' : 'inline-block')}
+`;
