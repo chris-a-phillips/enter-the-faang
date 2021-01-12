@@ -13,7 +13,7 @@ const EnemyField = ({ enemyUnits }) => {
             <h1>Enemy Units</h1>
             {enemyUnits.slice(0, 5).map((unit) => {
                 return (
-                    <div key={unit.name}>
+                    <div key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}>
                         {unit.name}
                     </div>
                 )
