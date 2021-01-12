@@ -11,6 +11,7 @@ const KingdomField = ({ playerKingdoms }) => {
                 return (
                     <div key={kingdom.name}>
                         {kingdom.name}
+                        {kingdom.health}
                     </div>
                 )
             })}
