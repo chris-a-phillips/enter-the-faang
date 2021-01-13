@@ -4,20 +4,32 @@ import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContain
 const PlayerField = ({ playerTeam, target, setTarget }) => {
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2))
 
-	// console.log(playerTeam)
-
-	let counter = 0
+	const [attacker, setAttacker] = useState(null)
 
 	function swap(list, activeOne, activeTwo) {
-		// console.log('original:', list[0])
-		console.log(activeTitans)
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0]
-		// console.log('swapped:', list[0])
 		setActiveTitans([playerTeam[0], playerTeam[1]])
-		// counter ++
-		console.log(activeTitans)
-		setTarget(counter)
 		return list;
+	}
+
+	function attack(attacker, target) {
+		if (attacker !== target) {
+			attacker.attackUnit(target)
+		}
+	}
+
+	function test(attacker) {
+		setTarget('open')
+		console.log(attacker)
+		setAttacker(attacker)
+	}
+
+	function performTest(clicked) {
+		if (target === 'open') {
+			console.log(clicked)
+			setTarget(clicked)
+			attack(attacker, clicked )
+		}
 	}
 
 	useEffect(() => {
@@ -29,16 +41,22 @@ const PlayerField = ({ playerTeam, target, setTarget }) => {
 			<PlayerFlexContainer>
 				{activeTitans.map((unit) => {
 					return (
-						<TitanContainer key={unit.name}>
+						<TitanContainer
+							key={unit.name}
+							onClick={() => performTest(unit)}>
 							<TitanName>{unit.name}</TitanName>
 							<TitanHealth>{unit.health}</TitanHealth>
 							<TitanStats>
 								<p>{unit.kingdom}</p>
 							</TitanStats>
+							<button onClick={() => test(unit)}>
+								attack
+							</button>
 						</TitanContainer>
-					)
+					);
 				})}
 				<button onClick={() => swap(playerTeam, 0, 4)}>swap</button>
+				{/* <button onClick={test}>console log next click</button> */}
 			</PlayerFlexContainer>
 			{playerTeam.slice(2).map((unit) => unit.name)}
 		</PlayerFieldWrapper>
