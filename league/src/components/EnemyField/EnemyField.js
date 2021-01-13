@@ -4,7 +4,7 @@ import { EnemyFieldWrapper, EnemyFieldLabel, EnemyFlexContainer, FaangContainer,
 
 const EnemyField = ({ enemyUnits, target, setTarget }) => {
 
-    console.log(enemyUnits)
+    // console.log(enemyUnits)
 
     return (
 		<EnemyFieldWrapper>

@@ -32,9 +32,9 @@ function App() {
 		console.log(rounds);
 	};
 
-	console.log(enemyUnits)
-	console.log(playerTeam)
-	console.log(playerKingdoms)
+	// console.log(enemyUnits)
+	// console.log(playerTeam)
+	// console.log(playerKingdoms)
 
 	return (
 		<div className='App'>
@@ -55,6 +55,8 @@ function App() {
 				enemyUnits={enemyUnits} 
 				playerTeam={playerTeam} 
 				playerKingdoms={playerKingdoms}
+				target={target}
+				setTarget={setTarget}
 				/>
 				) }
 			<button

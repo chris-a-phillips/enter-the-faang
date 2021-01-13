@@ -5,9 +5,10 @@ import PlayerField from '../../components/PlayerField/PlayerField';
 
 const GameBoard = ({ enemyUnits, playerTeam, playerKingdoms, target, setTarget }) => {
 
-    console.log(enemyUnits)
-    console.log(playerTeam)
-    console.log(playerKingdoms)
+    // console.log(enemyUnits)
+    // console.log(playerTeam)
+    // console.log(playerKingdoms)
+    // console.log(setTarget)
 
 	return (
         <div>
