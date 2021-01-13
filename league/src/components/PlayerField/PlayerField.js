@@ -3,8 +3,8 @@ import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContain
 
 const PlayerField = ({ playerTeam, target, setTarget }) => {
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2))
-
-	const [attacker, setAttacker] = useState(null)
+	const [offender, setOffender] = useState(null)
+	const [action, setAction] = useState(false)
 
 	function swap(list, activeOne, activeTwo) {
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0]
@@ -16,19 +16,25 @@ const PlayerField = ({ playerTeam, target, setTarget }) => {
 		if (attacker !== target) {
 			attacker.attackUnit(target)
 		}
+		setAction(false)
 	}
 
-	function test(attacker) {
+	// select this action with the click
+	function select(attacker) {
 		setTarget('open')
 		console.log(attacker)
-		setAttacker(attacker)
+		setOffender(attacker)
+		setAction('attack')
 	}
 
-	function performTest(clicked) {
+	// choose this action once select is opened
+	function choose(clicked) {
 		if (target === 'open') {
 			console.log(clicked)
 			setTarget(clicked)
-			attack(attacker, clicked )
+			if (action === 'attack') {
+				attack(offender, clicked)
+			}
 		}
 	}
 
@@ -43,13 +49,13 @@ const PlayerField = ({ playerTeam, target, setTarget }) => {
 					return (
 						<TitanContainer
 							key={unit.name}
-							onClick={() => performTest(unit)}>
+							onClick={() => choose(unit)}>
 							<TitanName>{unit.name}</TitanName>
 							<TitanHealth>{unit.health}</TitanHealth>
 							<TitanStats>
 								<p>{unit.kingdom}</p>
 							</TitanStats>
-							<button onClick={() => test(unit)}>
+							<button onClick={() => select(unit)}>
 								attack
 							</button>
 						</TitanContainer>
