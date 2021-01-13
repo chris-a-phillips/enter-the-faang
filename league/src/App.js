@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './App.css';
 import { blueUnit, redUnit, yaboi } from './Data/Unit';
 import { rounds } from './Data/Turn';
@@ -8,6 +8,7 @@ import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
 import PlayerUnits from './Data/PlayerUnits';
 import PlayerKingdoms from './Data/PlayerKingdoms';
 import GameBoard from './Pages/GameBoard/GameBoard';
+import { GameContext } from './components/GameContext'
 
 
 function App() {
@@ -21,6 +22,12 @@ function App() {
 	const [playerTeam, setPlayerTeam] = useState()
 	const [playerKingdoms, setPlayerKingdoms] = useState()
 	const [target, setTarget] = useState(null)
+	const [involved, setInvolved] = useState({
+		initiator: '',
+		possibleTargets: '',
+		selectedTarget: '',
+	});
+	const value = useMemo(() => ({involved, setInvolved}), [involved, setInvolved])
 
 	const attack = (attacker, defender) => {
 		console.log(attacker);
@@ -38,69 +45,78 @@ function App() {
 
 	return (
 		<div className='App'>
-			{/* <Link to='/'>Home</Link> */}
-			<br />
-			{ !gameStarted ? (
-				<WelcomeScreen
-					setDifficulty={setDifficulty}
-					setArmySize={setArmySize}
-					setTrueSkill={setTrueSkill}
-					setGameStarted={setGameStarted}
-					enemyUnits={enemyUnits}
-					target={target}
-					setTarget={setTarget}
+			<GameContext.Provider value={value}>
+				{/* <Link to='/'>Home</Link> */}
+				<br />
+				{!gameStarted ? (
+					<WelcomeScreen
+						setDifficulty={setDifficulty}
+						setArmySize={setArmySize}
+						setTrueSkill={setTrueSkill}
+						setGameStarted={setGameStarted}
+						enemyUnits={enemyUnits}
+						target={target}
+						setTarget={setTarget}
+					/>
+				) : (
+					<GameBoard
+						enemyUnits={enemyUnits}
+						playerTeam={playerTeam}
+						playerKingdoms={playerKingdoms}
+						target={target}
+						setTarget={setTarget}
+					/>
+				)}
+				<button
+					onClick={() =>
+						attack(blueUnit.attackUnit(redUnit), redUnit)
+					}>
+					blue attack red
+				</button>
+				<button
+					onClick={() =>
+						attack(
+							yaboi.team[1].attackUnit(yaboi.team[0]),
+							yaboi.team[0]
+						)
+					}>
+					red attack blue
+				</button>
+				<button>
+					{yaboi.team[1].name} attack {yaboi.team[0].name}
+				</button>
+				<button onClick={addNumber}>add turn</button>
+				<p>{JSON.stringify(yaboi.team)}</p>
+				{yaboi.team.map((piece) => {
+					return (
+						<div key={piece.name}>
+							<p>{piece.name}</p>
+							<p>{piece.health}</p>
+						</div>
+					);
+				})}
+				{/* <code>{JSON.stringify(enemyUnits)}</code> */}
+				{difficulty && armySize && playerTeam ? (
+					// && trueSkill
+					<>
+						<EnemyFaangs
+							difficulty={difficulty}
+							armySize={armySize}
+							setEnemyUnits={setEnemyUnits}
+						/>
+					</>
+				) : null}
+				<PlayerUnits
+					trueSkill={trueSkill}
+					setPlayerTeam={setPlayerTeam}
 				/>
-			) : (	
-				<GameBoard 
-				enemyUnits={enemyUnits} 
-				playerTeam={playerTeam} 
-				playerKingdoms={playerKingdoms}
-				target={target}
-				setTarget={setTarget}
-				/>
-				) }
-			<button
-				onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>
-				blue attack red
-			</button>
-			<button
-				onClick={() =>
-					attack(
-						yaboi.team[1].attackUnit(yaboi.team[0]),
-						yaboi.team[0]
-					)
-				}>
-				red attack blue
-			</button>
-			<button>
-				{yaboi.team[1].name} attack {yaboi.team[0].name}
-			</button>
-			<button onClick={addNumber}>add turn</button>
-			<p>{JSON.stringify(yaboi.team)}</p>
-			{yaboi.team.map((piece) => {
-				return (
-					<div key={piece.name}>
-						<p>{piece.name}</p>
-						<p>{piece.health}</p>
-					</div>
-				);
-			})}
-			{/* <code>{JSON.stringify(enemyUnits)}</code> */}
-			{ difficulty && armySize && playerTeam
-			// && trueSkill 
-			? (
-				<>
-				<EnemyFaangs
-					difficulty={difficulty}
-					armySize={armySize}
-					setEnemyUnits={setEnemyUnits}
-				/>
-				</>
-				) : null }
-				<PlayerUnits trueSkill={trueSkill} setPlayerTeam={setPlayerTeam}/>
-				{ playerTeam ? (
-				<PlayerKingdoms setPlayerKingdoms={setPlayerKingdoms} playerTeam={playerTeam}/>
-				) : null }
+				{playerTeam ? (
+					<PlayerKingdoms
+						setPlayerKingdoms={setPlayerKingdoms}
+						playerTeam={playerTeam}
+					/>
+				) : null}
+			</GameContext.Provider>
 		</div>
 	);
 }
