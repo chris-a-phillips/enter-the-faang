@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, FlexContainer, KingdomHealth } from './SCKingdomField';
+import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomFlexContainer, KingdomHealth } from './SCKingdomField';
 
-const KingdomField = ({ playerKingdoms }) => {
+const KingdomField = ({ playerKingdoms, target, setTarget }) => {
     const [hidden, setHidden] = useState(true)
 
 
     return (
         <KingdomFieldWrapper>
             <KingdomFieldLabel>Player Kingdoms</KingdomFieldLabel>
-            <FlexContainer>
+            <KingdomFlexContainer>
             {playerKingdoms.map((kingdom) => {
                 return (
 					<KingdomContainer
@@ -31,7 +31,7 @@ const KingdomField = ({ playerKingdoms }) => {
 					</KingdomContainer>
 				);
             })}
-            </FlexContainer>
+            </KingdomFlexContainer>
         </KingdomFieldWrapper>
     );
 };

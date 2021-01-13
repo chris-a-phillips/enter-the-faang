@@ -1,33 +1,22 @@
 import React from 'react';
 
-import { EnemyFieldWrapper, EnemyFieldLabel, FlexContainer, FaangContainer, FaangName, FaangHealth, FaangStats } from './SCEnemyField'
+import { EnemyFieldWrapper, EnemyFieldLabel, EnemyFlexContainer, FaangContainer, FaangName, FaangHealth, FaangStats } from './SCEnemyField'
 
-const EnemyField = ({ enemyUnits }) => {
+const EnemyField = ({ enemyUnits, target, setTarget }) => {
 
     console.log(enemyUnits)
 
-// attack: 40;
-// defense: 70;
-// health: 40;
-// isAlive: true;
-// name: 'Grosnur';
-// pedigree: 'Corporal';
-// rank: 'Basic';
-// regeneration: 16.25;
-// species: 'Met';
-// speed: 30;
-
     return (
 		<EnemyFieldWrapper>
-			<EnemyFieldLabel>Titans</EnemyFieldLabel>
-			<FlexContainer>
+			<EnemyFieldLabel>Enemies</EnemyFieldLabel>
+			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {
 					return (
-						<FaangContainer key={unit.name}>
+						<FaangContainer key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}>
 							<FaangName>{unit.name}</FaangName>
 								<p>rank: {unit.rank}</p>
 								<p>species: {unit.species}</p>
-							<FaangHealth>{unit.health}</FaangHealth>
+							<FaangHealth>health: {unit.health}</FaangHealth>
 							<FaangStats>
 								<p>attack: {unit.attack}</p>
 								<p>defense: {unit.defense}</p>
@@ -37,7 +26,7 @@ const EnemyField = ({ enemyUnits }) => {
 						</FaangContainer>
 					);
 				})}
-			</FlexContainer>
+			</EnemyFlexContainer>
 		</EnemyFieldWrapper>
 	);
 };

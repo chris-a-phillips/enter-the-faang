@@ -4,8 +4,9 @@ export const EnemyFieldWrapper = styled.div`
 	text-align: center;
 `;
 
-export const FlexContainer = styled.div`
+export const EnemyFlexContainer = styled.div`
 	display: flex;
+    justify-content: space-evenly;
 `;
 
 export const FaangContainer = styled.div``;

@@ -4,9 +4,10 @@ export const KingdomFieldWrapper = styled.div`
     text-align: center;
     `;
 
-export const FlexContainer = styled.div`
-    display: flex;
-`
+export const KingdomFlexContainer = styled.div`
+	display: flex;
+	justify-content: space-evenly;
+`;
 
 export const KingdomContainer = styled.div`
 

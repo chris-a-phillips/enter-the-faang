@@ -9,14 +9,18 @@ import PlayerUnits from './Data/PlayerUnits';
 import PlayerKingdoms from './Data/PlayerKingdoms';
 import GameBoard from './Pages/GameBoard/GameBoard';
 
+
 function App() {
-	const [difficulty, setDifficulty] = useState();
-	const [armySize, setArmySize] = useState();
+	// DEFAULTS ARE FOR TESTING PURPOSES
+	// ALL STATE HOOKS SHOULD BE EMPTY
+	const [difficulty, setDifficulty] = useState('normal');
+	const [armySize, setArmySize] = useState(20);
 	const [enemyUnits, setEnemyUnits] = useState();
-	const [gameStarted, setGameStarted] = useState();
+	const [gameStarted, setGameStarted] = useState(true);
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
 	const [playerKingdoms, setPlayerKingdoms] = useState()
+	const [target, setTarget] = useState(null)
 
 	const attack = (attacker, defender) => {
 		console.log(attacker);
@@ -34,7 +38,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Link to='/'>Home</Link>
+			{/* <Link to='/'>Home</Link> */}
 			<br />
 			{ !gameStarted ? (
 				<WelcomeScreen
@@ -43,9 +47,15 @@ function App() {
 					setTrueSkill={setTrueSkill}
 					setGameStarted={setGameStarted}
 					enemyUnits={enemyUnits}
+					target={target}
+					setTarget={setTarget}
 				/>
 			) : (	
-				<GameBoard enemyUnits={enemyUnits} playerTeam={playerTeam} playerKingdoms={playerKingdoms}/>
+				<GameBoard 
+				enemyUnits={enemyUnits} 
+				playerTeam={playerTeam} 
+				playerKingdoms={playerKingdoms}
+				/>
 				) }
 			<button
 				onClick={() => attack(blueUnit.attackUnit(redUnit), redUnit)}>
@@ -89,7 +99,6 @@ function App() {
 				{ playerTeam ? (
 				<PlayerKingdoms setPlayerKingdoms={setPlayerKingdoms} playerTeam={playerTeam}/>
 				) : null }
-				
 		</div>
 	);
 }

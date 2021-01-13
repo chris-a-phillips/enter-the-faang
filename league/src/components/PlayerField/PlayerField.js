@@ -1,14 +1,24 @@
 import React from 'react';
-import { FlexContainer } from '../KingdomField/SCKingdomField';
-import { PlayerFieldLabel, PlayerFieldWrapper, TitanContainer, TitanHealth, TitanName, TitanStats } from './SCPlayerField';
+import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContainer, TitanHealth, TitanName, TitanStats } from './SCPlayerField';
 
-const PlayerField = ({ playerTeam }) => {
+const PlayerField = ({ playerTeam, target, setTarget }) => {
+
+	console.log(playerTeam)
+
+	let activeTitans = playerTeam.slice(0, 2)
+
+	const swap = () => {
+		let swapped = activeTitans.splice(1, 1, playerTeam[4])
+
+		console.log(swapped)
+		// console.log(activeTitans)
+	}
 
     return (
 		<PlayerFieldWrapper>
 			<PlayerFieldLabel>Titans</PlayerFieldLabel>
-			<FlexContainer>
-				{playerTeam.slice(0,2).map((unit) => {
+			<PlayerFlexContainer>
+				{activeTitans.map((unit) => {
 					return (
 						<TitanContainer key={unit.name}>
 							<TitanName>{unit.name}</TitanName>
@@ -19,7 +29,9 @@ const PlayerField = ({ playerTeam }) => {
 						</TitanContainer>
 					)
 				})}
-			</FlexContainer>
+				<button onClick={swap}>swap</button>
+			</PlayerFlexContainer>
+				{playerTeam.slice(2).map((unit) => unit.name)}
 		</PlayerFieldWrapper>
 	);
 };
