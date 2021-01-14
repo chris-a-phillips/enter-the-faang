@@ -45,7 +45,7 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 					);
 				})}
 			</PlayerFlexContainer>
-			<PlayerFlexContainer>
+				<PlayerFlexContainer>
 				{cardHand.map((card) => {
 					return (
 						<div key={card.name}>
