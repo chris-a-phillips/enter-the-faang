@@ -93,7 +93,11 @@ const GameBoard = ({
 				}
 			}
 		},
-	};
+    };
+
+    if (playerKingdoms) {
+        console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
+    }
 
 	return (
 		<div>
