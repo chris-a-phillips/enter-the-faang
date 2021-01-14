@@ -5,21 +5,21 @@ import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContain
 const PlayerField = ({ playerTeam, functions }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
+
 	function swap(list, activeOne, activeTwo) {
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
-		setActiveTitans([playerTeam[0], playerTeam[1]]);
-		return list;
+		setActiveTitans(playerTeam.slice(0, 2));
 	}
 
 	useEffect(() => {
-		console.log()
-	}, [activeTitans, functions, playerTeam])
+		console.log(involved)
+	}, [ activeTitans, functions, playerTeam])
 
 	return (
 		<PlayerFieldWrapper>
 			<PlayerFieldLabel>Titans</PlayerFieldLabel>
 			<PlayerFlexContainer>
-				{activeTitans.map((unit) => {
+				{playerTeam.slice(0, 2).map((unit) => {
 					return (
 						<TitanContainer
 							key={unit.name}
