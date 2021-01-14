@@ -50,13 +50,27 @@ const GameBoard = ({
 		attack: function attack(attacker, target) {
 			// 3 ACTION
 			if (attacker !== target) {
-				attacker.attackUnit(target);
+                attacker.attackUnit(target);
+                this.check(playerTeam)
+                this.check(playerKingdoms)
+                this.check(enemyUnits)
 			} else {
 				console.log('CHOOSE NEW TARGET');
-			}
+            }
 			// set action in involved to false so only this click is registered
-			setInvolved({ ...involved, action: false });
-		},
+            setInvolved({ ...involved, action: false });
+            console.log(involved)
+        },
+        
+        check: function check(array) {
+            for (let i = 0; i < array.length; i++) {
+                if (array[i].isAlive === false) {
+                    array.splice(i, 1)
+                    console.log(`${array[i].name} was spliced at:`, i)
+                }
+            }
+            console.log(array)
+        }
 	};
 
 	return (

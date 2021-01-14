@@ -1,8 +1,52 @@
 import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 
-const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
+const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 	const eliteStats = faang.elite;
+
+		class Titan {
+			constructor(
+				name,
+				element,
+				kingdom,
+				health,
+				attack,
+				defense,
+				regeneration,
+				speed,
+				energy,
+				zen,
+				showcase
+			) {
+				// specs
+				this.isAlive = true;
+				// stats
+				this.name = name;
+				this.element = element;
+				this.kingdom = kingdom;
+				this.health = health;
+				this.attack = attack;
+				this.defense = defense;
+				this.regeneration = regeneration;
+				this.speed = speed;
+				this.energy = energy;
+				this.zen = zen;
+				this.showcase = showcase;
+			}
+			speak() {
+				console.log(this.name);
+			}
+			attackUnit(unit) {
+				console.log(
+					`${this.name} attacked ${unit.name} and now it has ${unit.health} health remaining`
+				);
+				unit.health -= this.attack;
+				if (unit.health <= 0) {
+					unit.isAlive = false;
+					console.log(`${unit.name} died from the attack`);
+				}
+			}
+		}
 
 	function averageStats(object) {
 		// TURN THE OBJECT INTO AN ARRAY OF OBJECTS
@@ -59,46 +103,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
             statsObject.total.length;
         return statsObject
 		// setTitanConversion(statsObject);
-	}
-
-	class Titan {
-		constructor(
-			name,
-			element,
-			kingdom,
-			health,
-			attack,
-			defense,
-			regeneration,
-			speed,
-            energy,
-            zen,
-            showcase
-		) {
-			// specs
-			this.isAlive = true;
-			// stats
-			this.name = name;
-			this.element = element;
-			this.kingdom = kingdom;
-			this.health = health;
-			this.attack = attack;
-			this.defense = defense;
-			this.regeneration = regeneration;
-			this.speed = speed;
-			this.energy = energy;
-            this.zen = zen;
-            this.showcase = showcase
-		}
-		speak() {
-			console.log(this.name);
-		}
-		attackUnit(unit) {
-			console.log(
-				`${this.name} attacked ${unit.name} and now it has ${unit.health}`
-			);
-			unit.health -= this.attack;
-		}
 	}
 
     const titans = {
@@ -266,7 +270,8 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     );
 
     useEffect(() => {
-        setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan])
+		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
+		setKingdomTemplate([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
     },[])
 
 

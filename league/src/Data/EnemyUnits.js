@@ -63,7 +63,6 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				pedigree,
 				species
 			);
-			this.attack = 'infinite';
 			this.isAdmin = true;
 			this.class = 'Advanced';
 		}

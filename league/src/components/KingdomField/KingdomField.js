@@ -14,7 +14,8 @@ const KingdomField = ({ playerKingdoms, functions }) => {
 					<KingdomContainer
 						onMouseEnter={() => setHidden(false)}
 						onMouseLeave={() => setHidden(true)}
-						key={kingdom.name}>
+						key={kingdom.name}
+						onClick={() => functions.choose(kingdom)}>
 						<KingdomName>{kingdom.name}</KingdomName>
 						<KingdomHealth>{kingdom.health}</KingdomHealth>
 						<KingdomStats hidden={hidden}>

@@ -3,7 +3,7 @@ import './App.css';
 import { blueUnit, redUnit, yaboi } from './Data/Unit';
 import { rounds } from './Data/Turn';
 import EnemyFaangs from './Data/EnemyUnits';
-import { Link, Route, Switch } from 'react-router-dom';
+// import { Link, Route, Switch } from 'react-router-dom';
 import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
 import PlayerUnits from './Data/PlayerUnits';
 import PlayerKingdoms from './Data/PlayerKingdoms';
@@ -20,6 +20,7 @@ function App() {
 	const [gameStarted, setGameStarted] = useState(true);
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
+	const [kingdomTemplate, setKingdomTemplate] = useState()
 	const [playerKingdoms, setPlayerKingdoms] = useState()
 	const [involved, setInvolved] = useState({
 		initiator: '',
@@ -104,11 +105,13 @@ function App() {
 				<PlayerUnits
 					trueSkill={trueSkill}
 					setPlayerTeam={setPlayerTeam}
+					setKingdomTemplate={setKingdomTemplate}
 				/>
 				{playerTeam ? (
 					<PlayerKingdoms
 						setPlayerKingdoms={setPlayerKingdoms}
-						playerTeam={playerTeam}
+						kingdomTemplate={kingdomTemplate}
+						
 					/>
 				) : null}
 			</GameContext.Provider>

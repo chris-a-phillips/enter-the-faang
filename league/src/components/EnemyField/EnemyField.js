@@ -12,10 +12,12 @@ const EnemyField = ({ enemyUnits, functions }) => {
 			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {
 					return (
-						<FaangContainer key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}>
+						<FaangContainer
+							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
+							onClick={() => functions.choose(unit)}>
 							<FaangName>{unit.name}</FaangName>
-								<p>rank: {unit.rank}</p>
-								<p>species: {unit.species}</p>
+							<p>rank: {unit.rank}</p>
+							<p>species: {unit.species}</p>
 							<FaangHealth>health: {unit.health}</FaangHealth>
 							<FaangStats>
 								<p>attack: {unit.attack}</p>
