@@ -4,8 +4,8 @@ class Card {
         this.type = type
     }
 
-    effect() {
-        console.log(this.name, 'will do something')
+    effect(initiator, target) {
+        console.log('NOOOOOOOOO', initiator, target)
     }
 }
 

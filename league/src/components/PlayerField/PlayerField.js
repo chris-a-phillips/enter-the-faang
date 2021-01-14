@@ -26,7 +26,7 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 						<TitanContainer
 							key={unit.name}
 							onClick={() => {
-								functions.select(unit);
+								functions.initiate(unit);
 								functions.choose(unit);
 							}
 							}

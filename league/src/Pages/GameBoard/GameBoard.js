@@ -23,37 +23,40 @@ const GameBoard = ({
 		// select this action with the click
 		useCard: function useCard(a) {
 			// 1 SELECT
-			console.log(a, 'was selected');
+			console.log(a, 'was card used 1');
 			// set initiator to where the button was clicked
 			// set action to what was clicked
             setInvolved({ ...involved, card: a, action: a.type });
 		},
 
-		// choose this action once select is opened
-		select: function select(b) {
-			// 2 CHOOSE
+		// initiate this action once select is opened
+		initiate: function initiate(b) {
+			// 2 initiate
 			// do stuff only if button was clicked
-			if (involved.action) {
+			if (involved.action && !involved.initiator) {
 				// set selected target to the next click
 				setInvolved({ ...involved, initiator: b });
 				// depending on the action do something
             }
-            console.log('select')
+            console.log(b, 'was object that initiated 2')
         },
         
         choose: function choose(c) {
-            if (involved.initiator && involved.card.type === 'attack') {
-                // perform this action using the selected target
-                this.attack(involved.initiator, c);
-                console.log('choose')
+            // setInvolved({ ...involved, selectedTarget: c})
+            // perform this action using the selected target
+            if (involved.initiator && involved.card) {
+                if (involved.card.type === 'attack') {
+                    this.attack(involved.initiator, c);
+                }
+                console.log('card effect', involved.card.effect(involved.initiator, c))
             }
         },
-
+        
 		// actions to take
 		// attacker is where the first button was clicked (involved.initiator)
 		// target is the second click (involved.selectedTarget)
 		attack: function attack(attacker, target) {
-			// 3 ACTION
+            // 3 ACTION
 			if (attacker !== target) {
                 if (attacker.isFaang === true) {
                     // do something else
@@ -67,8 +70,8 @@ const GameBoard = ({
 			} else {
 				console.log('CHOOSE NEW TARGET');
             }
-			// set action in involved to false so only this click is registered
-            setInvolved({ ...involved, action: false });
+            // set action in involved to false so only this click is registered
+            setInvolved();
         },
         
         check: function check(array) {
