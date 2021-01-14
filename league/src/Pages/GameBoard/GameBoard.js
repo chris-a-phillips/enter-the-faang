@@ -7,9 +7,7 @@ import { GameContext } from '../../components/GameContext';
 const GameBoard = ({
 	enemyUnits,
 	playerTeam,
-	playerKingdoms,
-	target,
-	setTarget,
+	playerKingdoms
 }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 
@@ -67,19 +65,15 @@ const GameBoard = ({
 				<>
 					<EnemyField
 						enemyUnits={enemyUnits}
-						target={target}
-						setTarget={setTarget}
+                        functions={functions}
 					/>
 					<PlayerField
 						playerTeam={playerTeam}
-						target={target}
-						setTarget={setTarget}
-						functions={functions}
+                        functions={functions}
 					/>
 					<KingdomField
 						playerKingdoms={playerKingdoms}
-						target={target}
-						setTarget={setTarget}
+                        functions={functions}
 					/>
 				</>
 			) : null}

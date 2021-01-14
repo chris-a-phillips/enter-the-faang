@@ -2,7 +2,7 @@ import React from 'react';
 
 import { EnemyFieldWrapper, EnemyFieldLabel, EnemyFlexContainer, FaangContainer, FaangName, FaangHealth, FaangStats } from './SCEnemyField'
 
-const EnemyField = ({ enemyUnits, target, setTarget }) => {
+const EnemyField = ({ enemyUnits, functions }) => {
 
     // console.log(enemyUnits)
 

@@ -21,7 +21,6 @@ function App() {
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
 	const [playerKingdoms, setPlayerKingdoms] = useState()
-	const [target, setTarget] = useState(null)
 	const [involved, setInvolved] = useState({
 		initiator: '',
 		possibleTargets: '',
@@ -55,16 +54,12 @@ function App() {
 						setTrueSkill={setTrueSkill}
 						setGameStarted={setGameStarted}
 						enemyUnits={enemyUnits}
-						target={target}
-						setTarget={setTarget}
 					/>
 				) : (
 					<GameBoard
 						enemyUnits={enemyUnits}
 						playerTeam={playerTeam}
 						playerKingdoms={playerKingdoms}
-						target={target}
-						setTarget={setTarget}
 					/>
 				)}
 				<button

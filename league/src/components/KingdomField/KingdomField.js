@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomFlexContainer, KingdomHealth } from './SCKingdomField';
 
-const KingdomField = ({ playerKingdoms, target, setTarget }) => {
+const KingdomField = ({ playerKingdoms, functions }) => {
     const [hidden, setHidden] = useState(true)
 
 
