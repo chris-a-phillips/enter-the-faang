@@ -1,8 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 
-const PlayerUnits = ({ trueSkill, enemyUnits }) => {
+const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 	const eliteStats = faang.elite;
+
+		class Titan {
+			constructor(
+				name,
+				element,
+				kingdom,
+				health,
+				attack,
+				defense,
+				regeneration,
+				speed,
+				energy,
+				zen,
+				showcase
+			) {
+				// specs
+				this.isAlive = true;
+				// stats
+				this.name = name;
+				this.element = element;
+				this.kingdom = kingdom;
+				this.health = health;
+				this.attack = attack;
+				this.defense = defense;
+				this.regeneration = regeneration;
+				this.speed = speed;
+				this.energy = energy;
+				this.zen = zen;
+				this.showcase = showcase;
+			}
+			speak() {
+				console.log(this.name);
+			}
+			attackUnit(unit) {
+				console.log(
+					`${this.name} attacked ${unit.name} and now it has ${unit.health} health remaining`
+				);
+				unit.health -= this.attack;
+				if (unit.health <= 0) {
+					unit.isAlive = false;
+					console.log(`${unit.name} died from the attack`);
+				}
+			}
+		}
 
 	function averageStats(object) {
 		// TURN THE OBJECT INTO AN ARRAY OF OBJECTS
@@ -19,7 +63,7 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
 			total: [],
 		};
 		// PUSH SEPARATE DATA SO IT CAN BE MUTATED
-		data.map((e) => {
+		data.forEach((e) => {
             dataArray.push(e[1]);
 		});
 		// PUSH ALL STATS INTO STATS OBJECT
@@ -61,165 +105,178 @@ const PlayerUnits = ({ trueSkill, enemyUnits }) => {
 		// setTitanConversion(statsObject);
 	}
 
-	class Titan {
-		constructor(
-			name,
-			health,
-			attack,
-			defense,
-			regeneration,
-			speed,
-			energy
-		) {
-			// specs
-			this.isAlive = true;
-			// stats
-			this.name = name;
-			this.health = health;
-			this.attack = attack;
-			this.defense = defense;
-			this.regeneration = regeneration;
-			this.speed = speed;
-			this.energy = energy;
-		}
-		speak() {
-			console.log(this.name);
-		}
-		attackUnit(unit) {
-			console.log(
-				`${this.name} attacked ${unit.name} and now it has ${unit.health}`
-			);
-			unit.health -= this.attack;
-		}
-	}
-
     const titans = {
-        fire: {
-            health: 5,
-            attack: 9,
-            defense: 4,
-            energy: 7,
-            regeneration: 5,
-            speed: 8,
-        },
-        water: {
-            health: 9,
-            attack: 5,
-            defense: 4,
-            energy: 8,
-            regeneration: 5,
-            speed: 7,
-        },
-        stone: {
-            health: 7,
-            attack: 5,
-            defense: 8,
-            energy: 4,
-            regeneration: 5,
-            speed: 9,
-        },
-        air: {
-            health: 5,
-            attack: 5,
-            defense: 4,
-            energy: 9,
-            regeneration: 8,
-            speed: 7,
-        },
-        lightning: {
-            health: 5,
-            attack: 5,
-            defense: 4,
-            energy: 8,
-            regeneration: 9,
-            speed: 7,
-        },
-        terra: {
-            health: 8,
-            attack: 7,
-            defense: 9,
-            energy: 5,
-            regeneration: 4,
-            speed: 5,
-        },
-        metal: {
-            health: 4,
-            attack: 9,
-            defense: 5,
-            energy: 8,
-            regeneration: 7,
-            speed: 5,
-        },
-    }
+		fire: {
+			health: 6,
+			attack: 9,
+			defense: 5,
+			energy: 8,
+			regeneration: 4,
+			speed: 7,
+			zen: 5,
+		},
+		water: {
+			health: 9,
+			attack: 5,
+			defense: 7,
+			energy: 5,
+			regeneration: 8,
+			speed: 6,
+			zen: 4,
+		},
+		stone: {
+			health: 8,
+			attack: 5,
+			defense: 9,
+			energy: 4,
+			regeneration: 6,
+			speed: 5,
+			zen: 7,
+		},
+		air: {
+			health: 4,
+			attack: 6,
+			defense: 5,
+			energy: 9,
+			regeneration: 7,
+			speed: 8,
+			zen: 5,
+		},
+		lightning: {
+			health: 5,
+			attack: 8,
+			defense: 4,
+			energy: 7,
+			regeneration: 5,
+			speed: 9,
+			zen: 6,
+		},
+		terra: {
+			health: 7,
+			attack: 4,
+			defense: 6,
+			energy: 5,
+			regeneration: 9,
+			speed: 5,
+			zen: 8,
+		},
+		metal: {
+			health: 5,
+			attack: 7,
+			defense: 8,
+			energy: 6,
+			regeneration: 5,
+			speed: 4,
+			zen: 9,
+		},
+	};
     
     const fireTitan = new Titan(
-        'Fire',
+		'Ajna',
+		'Fire',
+		'Fire Kingdom',
         averageStats(eliteStats).health * (titans.fire.health * .1),
         averageStats(eliteStats).attack * (titans.fire.attack * .1),
         averageStats(eliteStats).defense * (titans.fire.defense * .1),
         averageStats(eliteStats).regeneration * (titans.fire.regeneration * .1),
         averageStats(eliteStats).speed * (titans.fire.speed * .1),
-        averageStats(eliteStats).energy * (titans.fire.energy * .1),
+        titans.fire.energy,
+        titans.fire.zen,
+        titans.fire
     );
+
     const waterTitan = new Titan(
-        'Water',
+		'Mulad',
+		'Water',
+		'Water Kingdom',
         averageStats(eliteStats).health * (titans.water.health * .1),
         averageStats(eliteStats).attack * (titans.water.attack * .1),
         averageStats(eliteStats).defense * (titans.water.defense * .1),
         averageStats(eliteStats).regeneration * (titans.water.regeneration * .1),
         averageStats(eliteStats).speed * (titans.water.speed * .1),
-        averageStats(eliteStats).energy * (titans.water.energy * .1),
+        titans.water.energy,
+        titans.water.zen,
+        titans.water
     );
+
     const stoneTitan = new Titan(
-        'Stone',
+		'Vishu',
+		'Rock',
+		'Stone Kingdom',
         averageStats(eliteStats).health * (titans.stone.health * .1),
         averageStats(eliteStats).attack * (titans.stone.attack * .1),
         averageStats(eliteStats).defense * (titans.stone.defense * .1),
         averageStats(eliteStats).regeneration * (titans.stone.regeneration * .1),
         averageStats(eliteStats).speed * (titans.stone.speed * .1),
-        averageStats(eliteStats).energy * (titans.stone.energy * .1),
+        titans.stone.energy,
+        titans.stone.zen,
+        titans.stone
     );
+
     const airTitan = new Titan(
-        'Air',
+		'Nabhi',
+		'Air',
+		'Air Kingdom',
         averageStats(eliteStats).health * (titans.air.health * .1),
         averageStats(eliteStats).attack * (titans.air.attack * .1),
         averageStats(eliteStats).defense * (titans.air.defense * .1),
         averageStats(eliteStats).regeneration * (titans.air.regeneration * .1),
         averageStats(eliteStats).speed * (titans.air.speed * .1),
-        averageStats(eliteStats).energy * (titans.air.energy * .1),
+        titans.air.energy,
+        titans.air.zen,
+        titans.air
     );
+
     const lightningTitan = new Titan(
-        'Lightning',
+		'Svadhi',
+		'Electricity',
+		'Lightning Kingdom',
         averageStats(eliteStats).health * (titans.lightning.health * .1),
         averageStats(eliteStats).attack * (titans.lightning.attack * .1),
         averageStats(eliteStats).defense * (titans.lightning.defense * .1),
         averageStats(eliteStats).regeneration * (titans.lightning.regeneration * .1),
         averageStats(eliteStats).speed * (titans.lightning.speed * .1),
-        averageStats(eliteStats).energy * (titans.lightning.energy * .1),
+        titans.lightning.energy,
+        titans.lightning.zen,
+        titans.lightning
     );
+
     const terraTitan = new Titan(
-        'Terra',
+		'Sahas',
+		'Plant',
+		'Terra Kingdom',
         averageStats(eliteStats).health * (titans.terra.health * .1),
         averageStats(eliteStats).attack * (titans.terra.attack * .1),
         averageStats(eliteStats).defense * (titans.terra.defense * .1),
         averageStats(eliteStats).regeneration * (titans.terra.regeneration * .1),
         averageStats(eliteStats).speed * (titans.terra.speed * .1),
-        averageStats(eliteStats).energy * (titans.terra.energy * .1),
+        titans.terra.energy,
+        titans.terra.zen,
+        titans.terra
     );
+
     const metalTitan = new Titan(
-        'Metal',
+		'Anaht',
+		'Metal',
+		'Metal Kingdom',
         averageStats(eliteStats).health * (titans.metal.health * .1),
         averageStats(eliteStats).attack * (titans.metal.attack * .1),
         averageStats(eliteStats).defense * (titans.metal.defense * .1),
         averageStats(eliteStats).regeneration * (titans.metal.regeneration * .1),
         averageStats(eliteStats).speed * (titans.metal.speed * .1),
-        averageStats(eliteStats).energy * (titans.metal.energy * .1),
+        titans.metal.energy,
+        titans.metal.zen,
+        titans.metal
     );
 
-    const team = [fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]
+    useEffect(() => {
+		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
+		setKingdomTemplate([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
+    },[])
 
-    console.log(enemyUnits)
-    console.log(fireTitan.attackUnit(enemyUnits[0]))
+
+        
+
 
 	return <div></div>;
 };

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from './FaangStats';
+import { session } from './SessionLogic'
 
 const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
-    const unitPool = []
-
+	const unitPool = []
 	class BasicFaang {
 		constructor(
 			name,
@@ -28,6 +28,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			this.defense = defense;
 			this.regeneration = regeneration;
 			this.speed = speed;
+			this.isFaang = true
 		}
 		speak() {
 			console.log(this.name);
@@ -63,7 +64,6 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				pedigree,
 				species
 			);
-			this.attack = 'infinite';
 			this.isAdmin = true;
 			this.class = 'Advanced';
 		}
@@ -227,7 +227,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
     }
 
     useEffect(() => {
-        setEnemyUnits(unitPool)
+		setEnemyUnits(unitPool)
+		console.log(unitPool)
     }, [])
     
 	return <div></div>;
