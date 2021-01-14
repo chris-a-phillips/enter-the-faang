@@ -48,10 +48,11 @@ const GameBoard = ({
 			if (involved.initiator && involved.card) {
 				if (involved.card.type === 'attack') {
 					involved.card.effect(involved.initiator, c)
-				}
+                }
 				this.check(playerTeam);
 				this.check(playerKingdoms);
 				this.check(enemyUnits);
+                this.check(allCards)
 				// set action to falsey so only this click is registered
 				setInvolved(false);
 			}
@@ -75,7 +76,7 @@ const GameBoard = ({
 
 		check: function check(array) {
 			for (let i = 0; i < array.length; i++) {
-				if (array[i].isAlive === false) {
+				if (array[i].isAlive === false || array[i].isUsed) {
 					array.splice(i, 1);
 					console.log(`${array[i].name} was spliced at:`, i);
 				}

@@ -5,6 +5,7 @@ import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContain
 const PlayerField = ({ playerTeam, functions, allCards }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
+	const [cardHand, setCardHand] = useState(allCards.slice(0, 5))
 
 	function swap(list, activeOne, activeTwo) {
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
@@ -15,7 +16,8 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 
 	useEffect(() => {
 		console.log(involved)
-	}, [ activeTitans, functions, playerTeam])
+		setCardHand(allCards.slice(0, 5))
+	}, [ activeTitans, functions, playerTeam, allCards])
 
 	return (
 		<PlayerFieldWrapper>
@@ -42,10 +44,9 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 						</TitanContainer>
 					);
 				})}
-				{/* <button onClick={test}>console log next click</button> */}
 			</PlayerFlexContainer>
-			<div>
-				{allCards.map((card) => {
+			<PlayerFlexContainer>
+				{cardHand.map((card) => {
 					return (
 						<div key={card.name}>
 							<p>{card.name}</p>
@@ -56,7 +57,7 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 						</div>
 					);
 				})}
-			</div>
+			</PlayerFlexContainer>
 			{playerTeam.slice(2).map((unit) => unit.name)}
 		</PlayerFieldWrapper>
 	);
