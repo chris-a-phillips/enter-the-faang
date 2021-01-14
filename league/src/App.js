@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import './App.css';
-import { blueUnit, redUnit, yaboi } from './Data/Unit';
-import { rounds } from './Data/Turn';
+import { session } from './Data/SessionLogic';
 import EnemyFaangs from './Data/EnemyUnits';
 // import { Link, Route, Switch } from 'react-router-dom';
 import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
@@ -29,25 +28,15 @@ function App() {
 	});
 	const value = useMemo(() => ({involved, setInvolved}), [involved, setInvolved])
 
-	const attack = (attacker, defender) => {
-		console.log(attacker);
-		console.log(defender);
-	};
-
 	const addNumber = () => {
-		rounds.takeTurn();
-		console.log(rounds);
+		session.takeTurn();
+		console.log(session);
 	};
-
-	// console.log(enemyUnits)
-	// console.log(playerTeam)
-	// console.log(playerKingdoms)
 
 	return (
 		<div className='App'>
 			<GameContext.Provider value={value}>
-				{/* <Link to='/'>Home</Link> */}
-				<br />
+				<button onClick={addNumber}>add turn</button>{' '}
 				{!gameStarted ? (
 					<WelcomeScreen
 						setDifficulty={setDifficulty}
@@ -61,37 +50,9 @@ function App() {
 						enemyUnits={enemyUnits}
 						playerTeam={playerTeam}
 						playerKingdoms={playerKingdoms}
+						session={session}
 					/>
 				)}
-				<button
-					onClick={() =>
-						attack(blueUnit.attackUnit(redUnit), redUnit)
-					}>
-					blue attack red
-				</button>
-				<button
-					onClick={() =>
-						attack(
-							yaboi.team[1].attackUnit(yaboi.team[0]),
-							yaboi.team[0]
-						)
-					}>
-					red attack blue
-				</button>
-				<button>
-					{yaboi.team[1].name} attack {yaboi.team[0].name}
-				</button>
-				<button onClick={addNumber}>add turn</button>
-				<p>{JSON.stringify(yaboi.team)}</p>
-				{yaboi.team.map((piece) => {
-					return (
-						<div key={piece.name}>
-							<p>{piece.name}</p>
-							<p>{piece.health}</p>
-						</div>
-					);
-				})}
-				{/* <code>{JSON.stringify(enemyUnits)}</code> */}
 				{difficulty && armySize && playerTeam ? (
 					// && trueSkill
 					<>
@@ -111,7 +72,6 @@ function App() {
 					<PlayerKingdoms
 						setPlayerKingdoms={setPlayerKingdoms}
 						kingdomTemplate={kingdomTemplate}
-						
 					/>
 				) : null}
 			</GameContext.Provider>

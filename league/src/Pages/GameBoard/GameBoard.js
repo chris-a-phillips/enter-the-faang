@@ -8,7 +8,8 @@ import { allCards } from '../../Data/Cards'
 const GameBoard = ({
 	enemyUnits,
 	playerTeam,
-	playerKingdoms
+    playerKingdoms,
+    session
 }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 

@@ -12,7 +12,6 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 		setActiveTitans(playerTeam.slice(0, 2));
 	}
 
-	console.log(allCards)
 
 	useEffect(() => {
 		console.log(involved)
