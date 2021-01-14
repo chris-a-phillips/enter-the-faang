@@ -95,8 +95,21 @@ const GameBoard = ({
 		},
     };
 
-    if (playerKingdoms) {
-        console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
+    // if (playerKingdoms) {
+    //     console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
+    // }
+
+    if (enemyUnits) {
+        // SORT ARRAY BY SPEED
+        let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
+
+        // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
+        enemySortBySpeed.forEach(e => {
+            // EACH ENEMY ATTACKS A RANDOM UNIT
+            e.attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)])
+        });
+        session.takeTurn()
+        console.log(session)
     }
 
 	return (
