@@ -5,7 +5,6 @@ class Card {
         this.isUsed = false;
     }
 
-
 }
 
 class AttackCard extends Card {
@@ -16,6 +15,7 @@ class AttackCard extends Card {
         this.energy = energy;
 	}
 	effect(initiator, target) {
+        this.speed = initiator.speed
         if (initiator !== target && initiator.energy >= this.energy) {
             target.health -= initiator.attack;
             this.isUsed = true

@@ -15,17 +15,20 @@ function App() {
 	// ALL STATE HOOKS SHOULD BE EMPTY
 	const [difficulty, setDifficulty] = useState('normal');
 	const [armySize, setArmySize] = useState(20);
-	const [enemyUnits, setEnemyUnits] = useState();
+	const [enemyUnits, setEnemyUnits] = useState([]);
 	const [gameStarted, setGameStarted] = useState(true);
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
-	const [kingdomTemplate, setKingdomTemplate] = useState()
-	const [playerKingdoms, setPlayerKingdoms] = useState()
+	const [kingdomTemplate, setKingdomTemplate] = useState({})
+	const [playerKingdoms, setPlayerKingdoms] = useState([])
 	const [involved, setInvolved] = useState({
 		initiator: '',
-		possibleTargets: '',
+		possibleTargets: [],
 		selectedTarget: '',
+		card: '',
+		action: false,
 	});
+	const [allUnitsOnField, setAllUnitsOnField] = useState([])
 	const value = useMemo(() => ({involved, setInvolved}), [involved, setInvolved])
 
 	const addNumber = () => {
@@ -36,8 +39,9 @@ function App() {
 	return (
 		<div className='App'>
 			<GameContext.Provider value={value}>
-				<button onClick={addNumber}>add turn</button>{' '}
-				{!gameStarted ? (
+				<button onClick={addNumber}>add turn</button>
+				{/* CHANGE THIS FOR THE WELCOME SCREEN TO WORK */}
+				{ !gameStarted ? (
 					<WelcomeScreen
 						setDifficulty={setDifficulty}
 						setArmySize={setArmySize}
@@ -51,6 +55,8 @@ function App() {
 						playerTeam={playerTeam}
 						playerKingdoms={playerKingdoms}
 						session={session}
+						allUnitsOnField={allUnitsOnField}
+						setAllUnitsOnField={setAllUnitsOnField}
 					/>
 				)}
 				{difficulty && armySize && playerTeam ? (

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import EnemyField from '../../components/EnemyField/EnemyField';
 import KingdomField from '../../components/KingdomField/KingdomField';
 import PlayerField from '../../components/PlayerField/PlayerField';
@@ -9,7 +9,9 @@ const GameBoard = ({
 	enemyUnits,
 	playerTeam,
     playerKingdoms,
-    session
+    session,
+    allUnitsOnField,
+    setAllUnitsOnField
 }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 
@@ -28,8 +30,8 @@ const GameBoard = ({
 			// set initiator to where the button was clicked
 			// set action to what was clicked
 			setInvolved({ ...involved, card: a, action: a.type });
-		},
-
+        },
+        
 		// initiate this action once select is opened
 		initiate: function initiate(b) {
 			// 2 initiate
@@ -42,8 +44,8 @@ const GameBoard = ({
                 console.log(b, 'was object that initiated 2');
         },
 
-		// 3 ACTION for cards
 		choose: function choose(c) {
+            // 3 ACTION for cards
 			// setInvolved({ ...involved, selectedTarget: c})
 			// perform this action using the selected target
 			if (involved.initiator && involved.card) {
@@ -99,18 +101,43 @@ const GameBoard = ({
     //     console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
     // }
 
-    if (enemyUnits) {
-        // SORT ARRAY BY SPEED
-        let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
+    // if (enemyUnits) {
+    //     // SORT ARRAY BY SPEED
+    //     let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
 
-        // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
-        enemySortBySpeed.forEach(e => {
-            // EACH ENEMY ATTACKS A RANDOM UNIT
-            e.attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)])
-        });
-        session.takeTurn()
-        console.log(session)
+    //     // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
+    //     enemySortBySpeed.forEach(e => {
+
+
+    //         // EACH ENEMY ATTACKS A RANDOM UNIT
+    //         if (e.isFaang) {
+    //             e.attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)])
+    //         }
+    //     });
+    //     session.takeTurn()
+    //     // console.log(session)
+    // }
+
+    function listUnits() {
+        let res = [];
+        for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
+            res.push(playerTeam[i]);
+        }
+        for (let i = 0; i < playerKingdoms.length; i++) {
+            res.push(playerKingdoms[i]);
+        }
+        for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
+            res.push(enemyUnits[i]);
+        }
+        return res;
     }
+
+    useEffect(() => {
+        if (playerTeam) {
+            setAllUnitsOnField(listUnits())
+            console.log(allUnitsOnField)
+        }
+    }, [])
 
 	return (
 		<div>
