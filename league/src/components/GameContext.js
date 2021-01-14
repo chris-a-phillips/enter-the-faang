@@ -4,5 +4,6 @@ export const GameContext = createContext({
     initiator: '',
     possibleTargets: '',
     selectedTarget: '',
+    card: '',
     action: false
 })

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 
 const PlayerKingdoms = ({ setPlayerKingdoms, kingdomTemplate }) => {
-
-	console.log(kingdomTemplate)
 	class Kingdom {
 		constructor(name, health, defense, regeneration, showcase) {
 			this.name = name;

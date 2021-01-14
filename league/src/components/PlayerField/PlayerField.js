@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { GameContext } from '../GameContext';
 import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContainer, TitanHealth, TitanName, TitanStats } from './SCPlayerField';
 
-const PlayerField = ({ playerTeam, functions }) => {
+const PlayerField = ({ playerTeam, functions, allCards }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 
@@ -10,6 +10,8 @@ const PlayerField = ({ playerTeam, functions }) => {
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
 		setActiveTitans(playerTeam.slice(0, 2));
 	}
+
+	console.log(allCards)
 
 	useEffect(() => {
 		console.log(involved)
@@ -23,20 +25,38 @@ const PlayerField = ({ playerTeam, functions }) => {
 					return (
 						<TitanContainer
 							key={unit.name}
-							onClick={() => functions.choose(unit)}
+							onClick={() => {
+								functions.select(unit);
+								functions.choose(unit);
+							}
+							}
 							>
 							<TitanName>{unit.name}</TitanName>
 							<TitanHealth>{unit.health}</TitanHealth>
 							<TitanStats>
 								<p>{unit.kingdom}</p>
 							</TitanStats>
-							<button onClick={() => functions.select(unit)}>attack</button>
+							<button onClick={() => swap(playerTeam, 0, 4)}>
+								swap
+							</button>
 						</TitanContainer>
 					);
 				})}
-				<button onClick={() => swap(playerTeam, 0, 4)}>swap</button>
 				{/* <button onClick={test}>console log next click</button> */}
 			</PlayerFlexContainer>
+			<div>
+				{allCards.map((card) => {
+					return (
+						<div key={card.name}>
+							<p>{card.name}</p>
+							<p>{card.type}</p>
+							<button onClick={() => functions.useCard(card)}>
+								attack
+							</button>
+						</div>
+					);
+				})}
+			</div>
 			{playerTeam.slice(2).map((unit) => unit.name)}
 		</PlayerFieldWrapper>
 	);
