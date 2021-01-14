@@ -12,11 +12,10 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 		setActiveTitans(playerTeam.slice(0, 2));
 	}
 
-
 	useEffect(() => {
 		console.log(involved)
 		setCardHand(allCards.slice(0, 5))
-	}, [ activeTitans, functions, playerTeam, allCards])
+	}, [activeTitans, functions, playerTeam, allCards])
 
 	return (
 		<PlayerFieldWrapper>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from './FaangStats';
+import { session } from './SessionLogic'
 
 const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	const unitPool = []

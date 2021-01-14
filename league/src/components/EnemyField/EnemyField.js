@@ -17,6 +17,7 @@ const EnemyField = ({ enemyUnits, functions }) => {
 							onClick={() => functions.choose(unit)}>
 							<FaangName>{unit.name}</FaangName>
 							<p>rank: {unit.rank}</p>
+							<p>pedigree: {unit.pedigree}</p>
 							<p>species: {unit.species}</p>
 							<FaangHealth>health: {unit.health}</FaangHealth>
 							<FaangStats>

@@ -63,7 +63,17 @@ const GameBoard = ({
 		// attacker is where the first button was clicked (involved.initiator)
 		// target is the second click (involved.selectedTarget)
 		attack: function attack(attacker, target) {
-			// 3 ACTION for enemies
+            // 3 ACTION for enemies
+            setInvolved({ ...involved, possibleTargets: [
+                playerTeam[0], playerTeam[1],
+                playerKingdoms[0],
+                playerKingdoms[1],
+                playerKingdoms[2],
+                playerKingdoms[3],
+                playerKingdoms[4],
+                playerKingdoms[5],
+                playerKingdoms[6]
+            ]})
 			if (attacker !== target) {
 				if (attacker.isFaang === true) {
 					// do something else
