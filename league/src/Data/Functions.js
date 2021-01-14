@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { GameContext } from '../components/GameContext';
 
-
 const Functions = () => {
     const { involved, setInvolved } = useContext(GameContext);
 	// select this action with the click
