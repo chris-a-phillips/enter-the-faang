@@ -19,7 +19,6 @@ function App() {
 	const [gameStarted, setGameStarted] = useState(true);
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
-	const [kingdomTemplate, setKingdomTemplate] = useState({})
 	const [playerKingdoms, setPlayerKingdoms] = useState([])
 	const [involved, setInvolved] = useState({
 		initiator: '',
@@ -72,12 +71,11 @@ function App() {
 				<PlayerUnits
 					trueSkill={trueSkill}
 					setPlayerTeam={setPlayerTeam}
-					setKingdomTemplate={setKingdomTemplate}
 				/>
 				{playerTeam ? (
 					<PlayerKingdoms
 						setPlayerKingdoms={setPlayerKingdoms}
-						kingdomTemplate={kingdomTemplate}
+						playerTeam={playerTeam}
 					/>
 				) : null}
 			</GameContext.Provider>

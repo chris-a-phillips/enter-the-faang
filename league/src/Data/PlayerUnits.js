@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 
-const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
+const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 	const eliteStats = faang.elite;
 
 		class Titan {
@@ -271,7 +271,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 
     useEffect(() => {
 		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
-		setKingdomTemplate([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
     },[])
 
 
