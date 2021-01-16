@@ -60,7 +60,7 @@ function App() {
 						setAllUnitsOnField={setAllUnitsOnField}
 					/>
 				)}
-				{difficulty && armySize && playerTeam ? (
+				{ difficulty && armySize && playerTeam ? (
 					// && trueSkill
 					<>
 						<EnemyFaangs

@@ -4,6 +4,10 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 
 	class Kingdom {
 		constructor(name, health, defense, regeneration, showcase) {
+			// specs
+			this.isAlive = true;
+			this.isKingdom = true
+			// stats
 			this.name = name;
 			this.health = health;
 			this.defense = defense;

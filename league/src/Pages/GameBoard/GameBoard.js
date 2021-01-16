@@ -103,21 +103,33 @@ const GameBoard = ({
     //     console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
     // }
 
-    if (enemyUnits) {
-        // SORT ARRAY BY SPEED
-        let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
+	// QUEUE OF ATTACKS TO EMPTY
+	function emptyQueue() {			
+		allUnitsOnField
+			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
+			.forEach((u) => {
 
-        // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
-        // enemySortBySpeed.forEach(e => {
-		// 	// EACH ENEMY ATTACKS A RANDOM UNIT
-		// 	if (e.isFaang) {
-		// 		let playerUnitsOnField = allUnitsOnField.filter(unit => !unit.isFaang)
-		// 	    e.attackUnit(playerUnitsOnField[Math.floor(Math.random() * playerUnitsOnField.length)])
-		// 	}
-		// });
-        session.takeTurn()
-        // console.log(session)
-    }
+				// EACH TITAN ATTACKS FROM THE QUEUE
+				if (u.isTitan) {
+					console.log('titan:', u.name)
+				}
+				// EACH ENEMY ATTACKS A RANDOM UNIT
+				if (u.isFaang) {
+					let playerUnitsOnField = allUnitsOnField.filter(
+						(unit) => !unit.isFaang
+					);
+					u.attackUnit(
+						playerUnitsOnField[
+							Math.floor(
+								Math.random() * playerUnitsOnField.length
+							)
+						]
+					);
+				}
+			});
+		session.takeTurn()
+		console.log(session)
+	}
 
     function listUnits() {
         let res = [];
@@ -141,8 +153,8 @@ const GameBoard = ({
 				'allUnitsSortedBySpeed',
 				allUnitsOnField.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			);
-        }
-    }, [count])
+		}
+	}, [enemyUnits, playerTeam, playerKingdoms, session, count])
 
 	return (
 		<div>

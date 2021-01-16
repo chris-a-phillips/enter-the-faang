@@ -20,6 +20,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			) {
 				// specs
 				this.isAlive = true;
+				this.isTitan = true;
 				// stats
 				this.name = name;
 				this.element = element;
