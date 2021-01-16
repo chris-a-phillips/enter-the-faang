@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import EnemyField from '../../components/EnemyField/EnemyField';
 import KingdomField from '../../components/KingdomField/KingdomField';
 import PlayerField from '../../components/PlayerField/PlayerField';
@@ -13,6 +13,8 @@ const GameBoard = ({
     allUnitsOnField,
     setAllUnitsOnField
 }) => {
+	const [count, setCount] = useState(0)
+
 	const { involved, setInvolved } = useContext(GameContext);
 
 	const functions = {
@@ -101,22 +103,22 @@ const GameBoard = ({
     //     console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
     // }
 
-    // if (enemyUnits) {
-    //     // SORT ARRAY BY SPEED
-    //     let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
+    if (enemyUnits) {
+        // SORT ARRAY BY SPEED
+        let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
 
-    //     // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
-    //     enemySortBySpeed.forEach(e => {
+        // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
+        enemySortBySpeed.forEach(e => {
 
 
-    //         // EACH ENEMY ATTACKS A RANDOM UNIT
-    //         if (e.isFaang) {
-    //             e.attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)])
-    //         }
-    //     });
-    //     session.takeTurn()
-    //     // console.log(session)
-    // }
+            // EACH ENEMY ATTACKS A RANDOM UNIT
+            // if (e.isFaang) {
+            //     e.attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)])
+            // }
+        });
+        session.takeTurn()
+        // console.log(session)
+    }
 
     function listUnits() {
         let res = [];
@@ -135,12 +137,17 @@ const GameBoard = ({
     useEffect(() => {
         if (playerTeam) {
             setAllUnitsOnField(listUnits())
-            console.log(allUnitsOnField)
+            console.log('allUnitsOnField:', allUnitsOnField)
+            console.log(
+				'allUnitsSortedBySpeed',
+				allUnitsOnField.sort((a, b) => (a.speed > b.speed ? 1 : -1))
+			);
         }
-    }, [])
+    }, [count])
 
 	return (
 		<div>
+			<button onClick={() => setCount(count + 1)}>count{count}</button>
 			{enemyUnits && playerTeam && playerKingdoms ? (
 				<>
 					<EnemyField

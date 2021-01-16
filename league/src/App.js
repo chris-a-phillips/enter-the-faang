@@ -16,7 +16,7 @@ function App() {
 	const [difficulty, setDifficulty] = useState('normal');
 	const [armySize, setArmySize] = useState(20);
 	const [enemyUnits, setEnemyUnits] = useState([]);
-	const [gameStarted, setGameStarted] = useState(true);
+	const [gameStarted, setGameStarted] = useState(false);
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
 	const [playerKingdoms, setPlayerKingdoms] = useState([])
@@ -35,12 +35,14 @@ function App() {
 		console.log(session);
 	};
 
+	console.log(gameStarted)
+
 	return (
 		<div className='App'>
 			<GameContext.Provider value={value}>
 				<button onClick={addNumber}>add turn</button>
 				{/* CHANGE THIS FOR THE WELCOME SCREEN TO WORK */}
-				{ !gameStarted ? (
+				{ gameStarted ? (
 					<WelcomeScreen
 						setDifficulty={setDifficulty}
 						setArmySize={setArmySize}

@@ -9,6 +9,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 			this.defense = defense;
 			this.regeneration = regeneration;
 			this.showcase = showcase;
+			this.speed = 0;
 		}
 	}
 
@@ -17,7 +18,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[0] }.health * 3,
 		{ ...playerTeam[0] }.defense,
 		{ ...playerTeam[0] }.regeneration,
-		{ ...playerTeam[0] }.showcase
+		{ ...playerTeam[0] }.showcase,
 	);
 
 	const waterKingdom = new Kingdom(
@@ -25,7 +26,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[1] }.health * 3,
 		{ ...playerTeam[1] }.defense,
 		{ ...playerTeam[1] }.regeneration,
-		{ ...playerTeam[1] }.showcase
+		{ ...playerTeam[1] }.showcase,
 	);
 
 	const stoneKingdom = new Kingdom(
@@ -33,7 +34,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[2] }.health * 3,
 		{ ...playerTeam[2] }.defense,
 		{ ...playerTeam[2] }.regeneration,
-		{ ...playerTeam[2] }.showcase
+		{ ...playerTeam[2] }.showcase,
 	);
 
 	const airKingdom = new Kingdom(
@@ -41,7 +42,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[3] }.health * 3,
 		{ ...playerTeam[3] }.defense,
 		{ ...playerTeam[3] }.regeneration,
-		{ ...playerTeam[3] }.showcase
+		{ ...playerTeam[3] }.showcase,
 	);
 
 	const lightningKingdom = new Kingdom(
@@ -49,7 +50,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[4] }.health * 3,
 		{ ...playerTeam[4] }.defense,
 		{ ...playerTeam[4] }.regeneration,
-		{ ...playerTeam[4] }.showcase
+		{ ...playerTeam[4] }.showcase,
 	);
 
 	const terraKingdom = new Kingdom(
@@ -57,7 +58,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[5] }.health * 3,
 		{ ...playerTeam[5] }.defense,
 		{ ...playerTeam[5] }.regeneration,
-		{ ...playerTeam[5] }.showcase
+		{ ...playerTeam[5] }.showcase,
 	);
 
 	const metalKingdom = new Kingdom(
@@ -65,7 +66,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		{ ...playerTeam[6] }.health * 3,
 		{ ...playerTeam[6] }.defense,
 		{ ...playerTeam[6] }.regeneration,
-		{ ...playerTeam[6] }.showcase
+		{ ...playerTeam[6] }.showcase,
 	);
 
 	useEffect(() => {
