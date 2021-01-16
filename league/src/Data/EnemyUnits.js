@@ -228,7 +228,6 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 
     useEffect(() => {
 		setEnemyUnits(unitPool)
-		console.log(unitPool)
     }, [])
     
 	return <div></div>;

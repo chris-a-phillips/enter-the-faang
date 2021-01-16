@@ -99,10 +99,6 @@ const GameBoard = ({
 		},
     };
 
-    // if (playerKingdoms) {
-    //     console.log(enemyUnits[0].attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)]))
-    // }
-
 	// QUEUE OF ATTACKS TO EMPTY
 	function emptyQueue() {			
 		allUnitsOnField
@@ -147,12 +143,8 @@ const GameBoard = ({
 
     useEffect(() => {
         if (playerTeam) {
-            setAllUnitsOnField(listUnits())
-            console.log('allUnitsOnField:', allUnitsOnField)
-            console.log(
-				'allUnitsSortedBySpeed',
-				allUnitsOnField.sort((a, b) => (a.speed < b.speed ? 1 : -1))
-			);
+		setAllUnitsOnField(listUnits())
+		console.log('allUnitsOnField:', allUnitsOnField)
 		}
 	}, [enemyUnits, playerTeam, playerKingdoms, session, count])
 
