@@ -108,13 +108,13 @@ const GameBoard = ({
         let enemySortBySpeed = enemyUnits.slice(0,5).sort((a, b) => (a.speed < b.speed) ? 1 : -1)
 
         // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
-        enemySortBySpeed.forEach(e => {
-			// EACH ENEMY ATTACKS A RANDOM UNIT
-			if (e.isFaang) {
-				let playerUnitsOnField = allUnitsOnField.filter(unit => !unit.isFaang)
-			    e.attackUnit(playerUnitsOnField[Math.floor(Math.random() * playerUnitsOnField.length)])
-			}
-		});
+        // enemySortBySpeed.forEach(e => {
+		// 	// EACH ENEMY ATTACKS A RANDOM UNIT
+		// 	if (e.isFaang) {
+		// 		let playerUnitsOnField = allUnitsOnField.filter(unit => !unit.isFaang)
+		// 	    e.attackUnit(playerUnitsOnField[Math.floor(Math.random() * playerUnitsOnField.length)])
+		// 	}
+		// });
         session.takeTurn()
         // console.log(session)
     }
@@ -139,7 +139,7 @@ const GameBoard = ({
             console.log('allUnitsOnField:', allUnitsOnField)
             console.log(
 				'allUnitsSortedBySpeed',
-				allUnitsOnField.sort((a, b) => (a.speed > b.speed ? 1 : -1))
+				allUnitsOnField.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			);
         }
     }, [count])
