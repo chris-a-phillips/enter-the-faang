@@ -109,13 +109,12 @@ const GameBoard = ({
 
         // FOR EACH ELEMENT IN ARRAY HAVE IT CARRY OUT ITS ATTACK
         enemySortBySpeed.forEach(e => {
-
-
-            // EACH ENEMY ATTACKS A RANDOM UNIT
-            // if (e.isFaang) {
-            //     e.attackUnit(playerKingdoms[Math.floor(Math.random() * playerKingdoms.length)])
-            // }
-        });
+			// EACH ENEMY ATTACKS A RANDOM UNIT
+			if (e.isFaang) {
+				let playerUnitsOnField = allUnitsOnField.filter(unit => !unit.isFaang)
+			    e.attackUnit(playerUnitsOnField[Math.floor(Math.random() * playerUnitsOnField.length)])
+			}
+		});
         session.takeTurn()
         // console.log(session)
     }
