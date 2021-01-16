@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import EnemyField from '../../components/EnemyField/EnemyField';
 import KingdomField from '../../components/KingdomField/KingdomField';
 import PlayerField from '../../components/PlayerField/PlayerField';
@@ -9,8 +9,12 @@ const GameBoard = ({
 	enemyUnits,
 	playerTeam,
     playerKingdoms,
-    session
+    session,
+    allUnitsOnField,
+    setAllUnitsOnField
 }) => {
+	const [count, setCount] = useState(0)
+
 	const { involved, setInvolved } = useContext(GameContext);
 
 	const functions = {
@@ -28,8 +32,8 @@ const GameBoard = ({
 			// set initiator to where the button was clicked
 			// set action to what was clicked
 			setInvolved({ ...involved, card: a, action: a.type });
-		},
-
+        },
+        
 		// initiate this action once select is opened
 		initiate: function initiate(b) {
 			// 2 initiate
@@ -42,8 +46,8 @@ const GameBoard = ({
                 console.log(b, 'was object that initiated 2');
         },
 
-		// 3 ACTION for cards
 		choose: function choose(c) {
+            // 3 ACTION for cards
 			// setInvolved({ ...involved, selectedTarget: c})
 			// perform this action using the selected target
 			if (involved.initiator && involved.card) {
@@ -93,10 +97,60 @@ const GameBoard = ({
 				}
 			}
 		},
-	};
+    };
+
+	// QUEUE OF ATTACKS TO EMPTY
+	function emptyQueue() {			
+		allUnitsOnField
+			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
+			.forEach((u) => {
+
+				// EACH TITAN ATTACKS FROM THE QUEUE
+				if (u.isTitan) {
+					console.log('titan:', u.name)
+				}
+				// EACH ENEMY ATTACKS A RANDOM UNIT
+				if (u.isFaang) {
+					let playerUnitsOnField = allUnitsOnField.filter(
+						(unit) => !unit.isFaang
+					);
+					u.attackUnit(
+						playerUnitsOnField[
+							Math.floor(
+								Math.random() * playerUnitsOnField.length
+							)
+						]
+					);
+				}
+			});
+		session.takeTurn()
+		console.log(session)
+	}
+
+    function listUnits() {
+        let res = [];
+        for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
+            res.push(playerTeam[i]);
+        }
+        for (let i = 0; i < playerKingdoms.length; i++) {
+            res.push(playerKingdoms[i]);
+        }
+        for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
+            res.push(enemyUnits[i]);
+        }
+        return res;
+    }
+
+    useEffect(() => {
+        if (playerTeam) {
+		setAllUnitsOnField(listUnits())
+		console.log('allUnitsOnField:', allUnitsOnField)
+		}
+	}, [enemyUnits, playerTeam, playerKingdoms, session, count])
 
 	return (
 		<div>
+			<button onClick={() => setCount(count + 1)}>count{count}</button>
 			{enemyUnits && playerTeam && playerKingdoms ? (
 				<>
 					<EnemyField

@@ -1,70 +1,76 @@
 import React, { useEffect } from 'react';
 
-const PlayerKingdoms = ({ setPlayerKingdoms, kingdomTemplate }) => {
+const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
+
 	class Kingdom {
 		constructor(name, health, defense, regeneration, showcase) {
+			// specs
+			this.isAlive = true;
+			this.isKingdom = true
+			// stats
 			this.name = name;
 			this.health = health;
 			this.defense = defense;
 			this.regeneration = regeneration;
 			this.showcase = showcase;
+			this.speed = 0;
 		}
 	}
 
 	const fireKingdom = new Kingdom(
 		'Fire Kingdom',
-		kingdomTemplate[0].health * 3,
-		kingdomTemplate[0].defense,
-		kingdomTemplate[0].regeneration,
-		kingdomTemplate[0].showcase
+		Math.floor({ ...playerTeam[0] }.health) * 3,
+		{ ...playerTeam[0] }.defense,
+		{ ...playerTeam[0] }.regeneration,
+		{ ...playerTeam[0] }.showcase,
 	);
 
 	const waterKingdom = new Kingdom(
 		'Water Kingdom',
-		kingdomTemplate[1].health * 3,
-		kingdomTemplate[1].defense,
-		kingdomTemplate[1].regeneration,
-		kingdomTemplate[1].showcase
+		Math.floor({ ...playerTeam[1] }.health) * 3,
+		{ ...playerTeam[1] }.defense,
+		{ ...playerTeam[1] }.regeneration,
+		{ ...playerTeam[1] }.showcase,
 	);
 
 	const stoneKingdom = new Kingdom(
 		'Stone Kingdom',
-		kingdomTemplate[2].health * 3,
-		kingdomTemplate[2].defense,
-		kingdomTemplate[2].regeneration,
-		kingdomTemplate[2].showcase
+		Math.floor({ ...playerTeam[2] }.health) * 3,
+		{ ...playerTeam[2] }.defense,
+		{ ...playerTeam[2] }.regeneration,
+		{ ...playerTeam[2] }.showcase,
 	);
 
 	const airKingdom = new Kingdom(
 		'Air Kingdom',
-		kingdomTemplate[3].health * 3,
-		kingdomTemplate[3].defense,
-		kingdomTemplate[3].regeneration,
-		kingdomTemplate[3].showcase
+		Math.floor({ ...playerTeam[3] }.health) * 3,
+		{ ...playerTeam[3] }.defense,
+		{ ...playerTeam[3] }.regeneration,
+		{ ...playerTeam[3] }.showcase,
 	);
 
 	const lightningKingdom = new Kingdom(
 		'Lightning Kingdom',
-		kingdomTemplate[4].health * 3,
-		kingdomTemplate[4].defense,
-		kingdomTemplate[4].regeneration,
-		kingdomTemplate[4].showcase
+		Math.floor({ ...playerTeam[4] }.health) * 3,
+		{ ...playerTeam[4] }.defense,
+		{ ...playerTeam[4] }.regeneration,
+		{ ...playerTeam[4] }.showcase,
 	);
 
 	const terraKingdom = new Kingdom(
 		'Terra Kingdom',
-		kingdomTemplate[5].health * 3,
-		kingdomTemplate[5].defense,
-		kingdomTemplate[5].regeneration,
-		kingdomTemplate[5].showcase
+		Math.floor({ ...playerTeam[5] }.health) * 3,
+		{ ...playerTeam[5] }.defense,
+		{ ...playerTeam[5] }.regeneration,
+		{ ...playerTeam[5] }.showcase,
 	);
 
 	const metalKingdom = new Kingdom(
 		'Metal Kingdom',
-		kingdomTemplate[6].health * 3,
-		kingdomTemplate[6].defense,
-		kingdomTemplate[6].regeneration,
-		kingdomTemplate[6].showcase
+		Math.floor({ ...playerTeam[6] }.health) * 3,
+		{ ...playerTeam[6] }.defense,
+		{ ...playerTeam[6] }.regeneration,
+		{ ...playerTeam[6] }.showcase,
 	);
 
 	useEffect(() => {

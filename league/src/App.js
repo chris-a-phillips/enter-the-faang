@@ -15,17 +15,19 @@ function App() {
 	// ALL STATE HOOKS SHOULD BE EMPTY
 	const [difficulty, setDifficulty] = useState('normal');
 	const [armySize, setArmySize] = useState(20);
-	const [enemyUnits, setEnemyUnits] = useState();
-	const [gameStarted, setGameStarted] = useState(true);
+	const [enemyUnits, setEnemyUnits] = useState([]);
+	const [gameStarted, setGameStarted] = useState(false);
 	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
-	const [kingdomTemplate, setKingdomTemplate] = useState()
-	const [playerKingdoms, setPlayerKingdoms] = useState()
+	const [playerKingdoms, setPlayerKingdoms] = useState([])
 	const [involved, setInvolved] = useState({
 		initiator: '',
-		possibleTargets: '',
+		possibleTargets: [],
 		selectedTarget: '',
+		card: '',
+		action: false,
 	});
+	const [allUnitsOnField, setAllUnitsOnField] = useState([])
 	const value = useMemo(() => ({involved, setInvolved}), [involved, setInvolved])
 
 	const addNumber = () => {
@@ -33,11 +35,14 @@ function App() {
 		console.log(session);
 	};
 
+	console.log(gameStarted)
+
 	return (
 		<div className='App'>
 			<GameContext.Provider value={value}>
-				<button onClick={addNumber}>add turn</button>{' '}
-				{!gameStarted ? (
+				<button onClick={addNumber}>add turn</button>
+				{/* CHANGE THIS FOR THE WELCOME SCREEN TO WORK */}
+				{ gameStarted ? (
 					<WelcomeScreen
 						setDifficulty={setDifficulty}
 						setArmySize={setArmySize}
@@ -51,9 +56,11 @@ function App() {
 						playerTeam={playerTeam}
 						playerKingdoms={playerKingdoms}
 						session={session}
+						allUnitsOnField={allUnitsOnField}
+						setAllUnitsOnField={setAllUnitsOnField}
 					/>
 				)}
-				{difficulty && armySize && playerTeam ? (
+				{ difficulty && armySize && playerTeam ? (
 					// && trueSkill
 					<>
 						<EnemyFaangs
@@ -66,12 +73,11 @@ function App() {
 				<PlayerUnits
 					trueSkill={trueSkill}
 					setPlayerTeam={setPlayerTeam}
-					setKingdomTemplate={setKingdomTemplate}
 				/>
 				{playerTeam ? (
 					<PlayerKingdoms
 						setPlayerKingdoms={setPlayerKingdoms}
-						kingdomTemplate={kingdomTemplate}
+						playerTeam={playerTeam}
 					/>
 				) : null}
 			</GameContext.Provider>

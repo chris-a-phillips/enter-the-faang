@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 
-const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
+const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 	const eliteStats = faang.elite;
 
 		class Titan {
@@ -20,6 +20,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 			) {
 				// specs
 				this.isAlive = true;
+				this.isTitan = true;
 				// stats
 				this.name = name;
 				this.element = element;
@@ -175,7 +176,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Ajna',
 		'Fire',
 		'Fire Kingdom',
-        averageStats(eliteStats).health * (titans.fire.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.fire.health * .1)),
         averageStats(eliteStats).attack * (titans.fire.attack * .1),
         averageStats(eliteStats).defense * (titans.fire.defense * .1),
         averageStats(eliteStats).regeneration * (titans.fire.regeneration * .1),
@@ -189,7 +190,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Mulad',
 		'Water',
 		'Water Kingdom',
-        averageStats(eliteStats).health * (titans.water.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.water.health * .1)),
         averageStats(eliteStats).attack * (titans.water.attack * .1),
         averageStats(eliteStats).defense * (titans.water.defense * .1),
         averageStats(eliteStats).regeneration * (titans.water.regeneration * .1),
@@ -203,7 +204,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Vishu',
 		'Rock',
 		'Stone Kingdom',
-        averageStats(eliteStats).health * (titans.stone.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.stone.health * .1)),
         averageStats(eliteStats).attack * (titans.stone.attack * .1),
         averageStats(eliteStats).defense * (titans.stone.defense * .1),
         averageStats(eliteStats).regeneration * (titans.stone.regeneration * .1),
@@ -217,7 +218,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Nabhi',
 		'Air',
 		'Air Kingdom',
-        averageStats(eliteStats).health * (titans.air.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.air.health * .1)),
         averageStats(eliteStats).attack * (titans.air.attack * .1),
         averageStats(eliteStats).defense * (titans.air.defense * .1),
         averageStats(eliteStats).regeneration * (titans.air.regeneration * .1),
@@ -231,7 +232,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Svadhi',
 		'Electricity',
 		'Lightning Kingdom',
-        averageStats(eliteStats).health * (titans.lightning.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.lightning.health * .1)),
         averageStats(eliteStats).attack * (titans.lightning.attack * .1),
         averageStats(eliteStats).defense * (titans.lightning.defense * .1),
         averageStats(eliteStats).regeneration * (titans.lightning.regeneration * .1),
@@ -245,7 +246,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Sahas',
 		'Plant',
 		'Terra Kingdom',
-        averageStats(eliteStats).health * (titans.terra.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.terra.health * .1)),
         averageStats(eliteStats).attack * (titans.terra.attack * .1),
         averageStats(eliteStats).defense * (titans.terra.defense * .1),
         averageStats(eliteStats).regeneration * (titans.terra.regeneration * .1),
@@ -259,7 +260,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 		'Anaht',
 		'Metal',
 		'Metal Kingdom',
-        averageStats(eliteStats).health * (titans.metal.health * .1),
+        Math.floor(averageStats(eliteStats).health * (titans.metal.health * .1)),
         averageStats(eliteStats).attack * (titans.metal.attack * .1),
         averageStats(eliteStats).defense * (titans.metal.defense * .1),
         averageStats(eliteStats).regeneration * (titans.metal.regeneration * .1),
@@ -271,7 +272,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam, setKingdomTemplate }) => {
 
     useEffect(() => {
 		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
-		setKingdomTemplate([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
     },[])
 
 

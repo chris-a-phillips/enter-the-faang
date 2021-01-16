@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 
 const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill }) => {
     return (
 		<div>
 			<div>
-				Choose Difficulty
+				Choose Difficulty(ratio of difficult and easy enemies)
 				<button onClick={() => setDifficulty('easy')}>Easy</button>
 				<button onClick={() => setDifficulty('normal')}>Normal</button>
 				<button onClick={() => setDifficulty('veteran')}>
@@ -23,7 +22,7 @@ const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits,
 			<br />
 
 			<div>
-				Choose True Skill
+				Choose True Skill (sliders for stats and how tough the combat is)
 				<button onClick={() => setTrueSkill('normal')}>normal</button>
 				<button onClick={() => setTrueSkill('heroic')}>heroic</button>
 				<button onClick={() => setTrueSkill('unfar')}>unfair</button>
@@ -31,7 +30,7 @@ const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits,
 			<br />
 
 			{enemyUnits ? (
-				<Link to='/battle' onClick={() => setGameStarted(true)}>Start Game</Link>
+				<button onClick={() => setGameStarted(true)}>Start Game</button>
 			) : null}
 		</div>
 	);

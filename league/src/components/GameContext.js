@@ -1,9 +1,3 @@
 import { createContext } from 'react';
 
-export const GameContext = createContext({
-    initiator: '',
-    possibleTargets: [],
-    selectedTarget: '',
-    card: '',
-    action: false
-})
+export const GameContext = createContext(null)
