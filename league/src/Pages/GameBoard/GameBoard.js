@@ -4,7 +4,7 @@ import KingdomField from '../../components/KingdomField/KingdomField';
 import PlayerField from '../../components/PlayerField/PlayerField';
 import { GameContext } from '../../components/GameContext';
 import { allCards } from '../../Data/Cards'
-import { GameBoardWrapper, GameRulesModal } from './SCGameBoard';
+import { BoardContainer, GameBoardWrapper, GameInfoContainer, GameRulesModal } from './SCGameBoard';
 
 const GameBoard = ({
 	enemyUnits,
@@ -152,11 +152,13 @@ const GameBoard = ({
 
 	return (
 		<GameBoardWrapper>
+			<GameInfoContainer>
 			<button onClick={() => setCount(count + 1)}>count{count}</button>
 			<button onClick={() => setShowRules(!showRules)}>Game Rules</button>
 			<GameRulesModal showRules={showRules}></GameRulesModal>
+			</GameInfoContainer>
 			{enemyUnits && playerTeam && playerKingdoms ? (
-				<>
+				<BoardContainer>
 					<EnemyField
 						enemyUnits={enemyUnits}
                         functions={functions}
@@ -170,7 +172,7 @@ const GameBoard = ({
 						playerKingdoms={playerKingdoms}
                         functions={functions}
 					/>
-				</>
+				</BoardContainer>
 			) : null}
 		</GameBoardWrapper>
 	);

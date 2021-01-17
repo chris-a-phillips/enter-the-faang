@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomFlexContainer, KingdomHealth } from './SCKingdomField';
+import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomsFlexContainer, KingdomHealth } from './SCKingdomField';
 
 const KingdomField = ({ playerKingdoms, functions }) => {
 	const [hidden, setHidden] = useState(true)
@@ -9,7 +9,7 @@ const KingdomField = ({ playerKingdoms, functions }) => {
     return (
         <KingdomFieldWrapper>
             <KingdomFieldLabel>Player Kingdoms</KingdomFieldLabel>
-            <KingdomFlexContainer>
+            <KingdomsFlexContainer>
             {playerKingdoms.map((kingdom) => {
                 return (
 					<KingdomContainer
@@ -18,7 +18,7 @@ const KingdomField = ({ playerKingdoms, functions }) => {
 						onMouseLeave={() => setHidden(true)}
 						key={kingdom.name}
 						onClick={() => functions.choose(kingdom)}>
-						<KingdomName>{kingdom.name}</KingdomName>
+						<KingdomName kingdom={kingdom}>{kingdom.name}</KingdomName>
 						<KingdomHealth>{kingdom.health}</KingdomHealth>
 						<KingdomStats hidden={hidden}>
 							<p>Health: {kingdom.showcase.health}/10</p>
@@ -34,7 +34,7 @@ const KingdomField = ({ playerKingdoms, functions }) => {
 					</KingdomContainer>
 				);
             })}
-            </KingdomFlexContainer>
+            </KingdomsFlexContainer>
         </KingdomFieldWrapper>
     );
 };

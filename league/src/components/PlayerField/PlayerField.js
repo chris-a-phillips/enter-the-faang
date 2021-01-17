@@ -22,20 +22,21 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 		<PlayerFieldWrapper>
 			<PlayerFieldLabel>Titans</PlayerFieldLabel>
 			<PlayerFlexContainer>
-				{playerTeam.slice(0, 2).map((unit) => {
+				{playerTeam.slice(0, 2).map((titan) => {
 					return (
 						<TitanContainer
-							key={unit.name}
+							titan={titan}
+							key={titan.name}
 							onClick={() => {
-								functions.initiate(unit);
-								functions.choose(unit);
+								functions.initiate(titan);
+								functions.choose(titan);
 							}
 							}
 							>
-							<TitanName>{unit.name}</TitanName>
-							<TitanHealth>{unit.health}</TitanHealth>
+							<TitanName titan={titan}>{titan.name}</TitanName>
+							<TitanHealth>{titan.health}</TitanHealth>
 							<TitanStats>
-								<p>{unit.kingdom}</p>
+								<p>{titan.kingdom}</p>
 							</TitanStats>
 							<button onClick={() => swap(playerTeam, 0, 4)}>
 								swap
@@ -59,7 +60,7 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 					);
 				})}
 			</CardFlexContainer>
-			{playerTeam.slice(2).map((unit) => unit.name)}
+			{playerTeam.slice(2).map((titan) => titan.name)}
 		</PlayerFieldWrapper>
 	);
 };

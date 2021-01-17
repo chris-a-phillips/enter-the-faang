@@ -1,10 +1,12 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const GameBoardWrapper = styled.div`
-    /* display: flex;
+	/* display: flex;
     justify-content: space-around; */
-    background-color: red;
-`
+	background-color: pink;
+	display: grid;
+	grid-template-columns: minmax(150px, 25%) 1fr;
+`;
 
 export const GameRulesModal = styled.div`
 	display: ${({ showRules }) => (showRules ? 'block' : 'none')};
@@ -18,3 +20,9 @@ export const GameRulesModal = styled.div`
 		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 `;
+
+export const BoardContainer = styled.div`
+	padding: 1rem;
+`;
+
+export const GameInfoContainer = styled.div``;
