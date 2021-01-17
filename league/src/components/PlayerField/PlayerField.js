@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { GameContext } from '../GameContext';
-import { PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContainer, TitanHealth, TitanName, TitanStats } from './SCPlayerField';
+import { CardContainer, PlayerFieldLabel, PlayerFieldWrapper, PlayerFlexContainer, TitanContainer, TitanHealth, TitanName, TitanStats } from './SCPlayerField';
 
 const PlayerField = ({ playerTeam, functions, allCards }) => {
 	const { involved, setInvolved } = useContext(GameContext);
@@ -47,13 +47,15 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 				<PlayerFlexContainer>
 				{cardHand.map((card) => {
 					return (
-						<div key={card.name}>
+						<CardContainer key={card.name}>
 							<p>{card.name}</p>
 							<p>{card.type}</p>
+							<p>{card.strength}</p>
+							<p>{card.description}</p>
 							<button onClick={() => functions.useCard(card)}>
 								attack
 							</button>
-						</div>
+						</CardContainer>
 					);
 				})}
 			</PlayerFlexContainer>

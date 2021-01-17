@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const EnemyFieldWrapper = styled.div`
 	text-align: center;
+	background-color: gray;
 `;
 
 export const EnemyFlexContainer = styled.div`

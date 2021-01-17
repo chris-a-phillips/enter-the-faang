@@ -13,6 +13,7 @@ class AttackCard extends Card {
         this.type = type;
         this.strength = strength;
         this.energy = energy;
+        this.description = `Deals damage to the enemy with ${this.strength} power.`;
 	}
 	effect(initiator, target) {
         this.speed = initiator.speed
