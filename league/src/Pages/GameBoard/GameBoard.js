@@ -146,7 +146,6 @@ const GameBoard = ({
     useEffect(() => {
         if (playerTeam) {
 		setAllUnitsOnField(listUnits())
-		console.log('allUnitsOnField:', allUnitsOnField)
 		}
 	}, [enemyUnits, playerTeam, playerKingdoms, session, count])
 

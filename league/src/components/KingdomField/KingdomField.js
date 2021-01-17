@@ -3,8 +3,6 @@ import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, King
 
 const KingdomField = ({ playerKingdoms, functions }) => {
 	const [hidden, setHidden] = useState(true)
-	console.log(playerKingdoms[0])
-
 
     return (
         <KingdomFieldWrapper>

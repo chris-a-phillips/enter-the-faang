@@ -100,7 +100,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	let basicUnits = faang.basic;
 	let advancedUnits = faang.advanced;
 	let eliteUnits = faang.elite;
-
+	
 	// RANDOM UNIT GENERATOR THAT PUSHES THE UNITS INTO THE UNIT POOL
 	function generateRandomUnit(rank) {
 		let length = Object.keys(rank).length;
@@ -200,6 +200,53 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		}
 	}
 
+
+	function addShowCase(array) {
+		let showcaseColors = {
+			rank: null,
+			pedigree: null,
+			species: null
+		}
+
+		
+		console.log(array)
+		for (let i = 0; i < array.length; i++) {
+			// SET COLOR FOR RANKING
+			// if (array[i].rank === 'Basic') {
+			// 	showcaseColors.rank = 'bronze'
+			// } else if (array[i].rank === 'Advanced') {
+			// 	showcaseColors.rank = 'silver'
+			// } else {
+			// 	showcaseColors.rank = 'gold'
+			// }
+			switch (array[i].rank) {
+				case 'Basic':
+					showcaseColors.rank = 'bronze'
+					break;
+				case 'Advanced':
+					showcaseColors.rank = 'silver'
+					break;
+				case 'Elite':
+					showcaseColors.rank = 'gold'
+					break;
+			
+				default:
+					break;
+			}
+			console.log(showcaseColors.rank)
+
+			// // SET COLOR FOR PEDIGREE
+			// if (pedigree.commonLevelOne.includes(array[i].pedigree)) {
+			// 	console.log('XOXOXOXO')
+			// } else if () {
+
+			// }
+			array[i].showcase = showcaseColors
+		}
+	}
+
+
+
 	// PLAYER GAME SETTINGS
 
 	for (let i = 0; i < armySize; i++) {
@@ -228,6 +275,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 
     useEffect(() => {
 		setEnemyUnits(unitPool)
+		addShowCase(unitPool);
+
     }, [])
     
 	return <div></div>;
