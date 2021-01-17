@@ -115,6 +115,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 4,
 			speed: 7,
 			zen: 5,
+			colors: {
+				primary: '#F7130A',
+				secondary: '#ED7609',
+				contrast: '#E02A02',
+			},
 		},
 		water: {
 			health: 9,
@@ -124,6 +129,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 8,
 			speed: 6,
 			zen: 4,
+			colors: {
+				primary: '#2F30E0',
+				secondary: '#268FED',
+				contrast: '#9326ED',
+			},
 		},
 		stone: {
 			health: 8,
@@ -133,6 +143,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 6,
 			speed: 5,
 			zen: 7,
+			colors: {
+				primary: '#706459',
+				secondary: '#877A64',
+				contrast: '#5F727D',
+			},
 		},
 		air: {
 			health: 4,
@@ -142,6 +157,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 7,
 			speed: 8,
 			zen: 5,
+			colors: {
+				primary: '#D0DAD8',
+				secondary: '#CFDEE6',
+				contrast: '#CFE6D4',
+			},
 		},
 		lightning: {
 			health: 5,
@@ -151,6 +171,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 5,
 			speed: 9,
 			zen: 6,
+			colors: {
+				primary: '#FAED3E',
+				secondary: '#E3D346',
+				contrast: '#23FAF5',
+			},
 		},
 		terra: {
 			health: 7,
@@ -160,6 +185,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 9,
 			speed: 5,
 			zen: 8,
+			colors: {
+				primary: '#3AC92A',
+				secondary: '#24E04A',
+				contrast: '#8B4513',
+			},
 		},
 		metal: {
 			health: 5,
@@ -169,6 +199,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 5,
 			speed: 4,
 			zen: 9,
+			colors: {
+				primary: '#DBDBDB',
+				secondary: '#C4C4C4',
+				contrast: '#B5B5B5',
+			},
 		},
 	};
     

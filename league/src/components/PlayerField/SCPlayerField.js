@@ -14,11 +14,11 @@ export const PlayerFlexContainer = styled.div`
 export const TitanContainer = styled.div`
 	background-color: orange;
 	padding: 15px;
+	margin: 10px;
 	border: solid black 2px;
 `;
 
-export const PlayerFieldLabel = styled.h2`
-`;
+export const PlayerFieldLabel = styled.h2``;
 
 export const TitanName = styled.h3``;
 
@@ -26,7 +26,13 @@ export const TitanHealth = styled.div``;
 
 export const TitanStats = styled.div``;
 
+export const CardFlexContainer = styled(PlayerFlexContainer)`
+
+	background-color: orchid;
+`;
+
 export const CardContainer = styled.div`
 	background-color: seagreen;
 	border: solid black 2px;
+	margin: 10px;
 `;

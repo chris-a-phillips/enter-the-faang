@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomFlexContainer, KingdomHealth } from './SCKingdomField';
 
 const KingdomField = ({ playerKingdoms, functions }) => {
-    const [hidden, setHidden] = useState(true)
+	const [hidden, setHidden] = useState(true)
+	console.log(playerKingdoms[0])
 
 
     return (
@@ -12,6 +13,7 @@ const KingdomField = ({ playerKingdoms, functions }) => {
             {playerKingdoms.map((kingdom) => {
                 return (
 					<KingdomContainer
+						kingdom={kingdom}
 						onMouseEnter={() => setHidden(false)}
 						onMouseLeave={() => setHidden(true)}
 						key={kingdom.name}

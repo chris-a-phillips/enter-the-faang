@@ -11,7 +11,8 @@ export const KingdomFlexContainer = styled.div`
 `;
 
 export const KingdomContainer = styled.div`
-
+    display: ${({ kingdom }) => (kingdom.isAlive ? 'inline-block' : 'none')};
+    background-color: ${({ kingdom }) => (kingdom.isAlive ? kingdom.showcase.colors.primary : 'black')};
 `;
 
 export const KingdomFieldLabel = styled.h2`
