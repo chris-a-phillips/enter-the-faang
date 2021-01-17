@@ -1,18 +1,25 @@
 class Card {
-    constructor(name, type, energy) {
+    constructor(name, type, strength, energy) {
         this.name = name;
         this.type = type;
+        this.strength = strength;
+        this.energy = energy;
         this.isUsed = false;
     }
 
 }
-
+// HEX COLORS
+// ATTACK = #FFA936, #806441
+// DEFENSE = #51A3A3, #387070
+// SUPPORT = #DD7373, #A35555
 class AttackCard extends Card {
 	constructor(name, type, strength, energy) {
-		super(name, type);
-        this.type = type;
-        this.strength = strength;
-        this.energy = energy;
+        super(name, type, strength, energy);
+        // SPECIFIC TO THIS CLASS
+        this.colors = {
+			primary: '#FFA936',
+			secondary: '#806441',
+		};
         this.description = `Deals damage to the enemy with ${this.strength} power.`;
 	}
 	effect(initiator, target) {
