@@ -14,13 +14,15 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speed,
 			rank,
 			pedigree,
-			species
+			species,
+			showcase
 		) {
 			// specs
 			this.isAlive = true;
 			this.rank = rank;
 			this.pedigree = pedigree;
 			this.species = species;
+			this.showcase = showcase;
 			// stats
 			this.name = name;
 			this.health = health;
@@ -51,7 +53,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speed,
 			rank,
 			pedigree,
-			species
+			species,
+			showcase
 		) {
 			super(
 				name,
@@ -62,7 +65,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				speed,
 				rank,
 				pedigree,
-				species
+				species,
+				showcase
 			);
 			this.isAdmin = true;
 			this.class = 'Advanced';
@@ -79,7 +83,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speed,
 			rank,
 			pedigree,
-			species
+			species,
+			showcase
 		) {
 			super(
 				name,
@@ -90,7 +95,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				speed,
 				rank,
 				pedigree,
-				species
+				species,
+				showcase
 			);
 			this.class = 'Elite';
 		}
@@ -109,7 +115,6 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		let percentChance = Math.floor(Math.random() * 100);
 		randomUnit.name =
 			randomNames[Math.floor(Math.random() * randomNames.length)];
-
 		if (rank.dra.rank === 'Basic') {
 			if (percentChance <= 95) {
 				randomUnit.pedigree =
@@ -136,7 +141,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					randomUnit.speed,
 					randomUnit.rank,
 					randomUnit.pedigree,
-					randomUnit.species
+					randomUnit.species,
+					createShowcase(randomUnit)
 				)
 			);
 		} else if (rank.dra.rank === 'Advanced') {
@@ -165,7 +171,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					randomUnit.speed,
 					randomUnit.rank,
 					randomUnit.pedigree,
-					randomUnit.species
+					randomUnit.species,
+					createShowcase(randomUnit)
 				)
 			);
 		} else {
@@ -194,14 +201,17 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					randomUnit.speed,
 					randomUnit.rank,
 					randomUnit.pedigree,
-					randomUnit.species
+					randomUnit.species,
+					createShowcase(randomUnit)
 				)
 			);
 		}
+		console.log(randomUnit);
+
 	}
 
 	// SHOWCASE SETTER
-	function addShowCase(array) {
+	function createShowcase(unit) {
 		let showcase = {
 			description: null,
 			rankColor: null,
@@ -209,70 +219,68 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speciesColor: null,
 		};
 
-		for (let i = 0; i < array.length; i++) {
-			// SET COLOR FOR RANKING
-			switch (array[i].rank) {
-				case 'Basic':
-					showcase.rankColor = '#A97EE1';
-					break;
-				case 'Advanced':
-					showcase.rankColor = '#803ADB';
-					break;
-				case 'Elite':
-					showcase.rankColor = '#622CA8';
-					break;
-				default:
-					break;
-			}
-			// SET COLOR FOR SPECIES
-			switch (array[i].species) {
-				case 'Dra':
-					showcase.speciesColor = '#5966FF';
-					break;
-				case 'Try':
-					showcase.speciesColor = '#FF7373';
-					break;
-				case 'Sal':
-					showcase.speciesColor = '#FFD640';
-					break;
-				case 'Met':
-					showcase.speciesColor = '#4DFF80';
-					break;
-				case 'Gar':
-					showcase.speciesColor = '#4BDDFF';
-					break;
-				case 'Hyd':
-					showcase.speciesColor = '#FF9230';
-					break;
-				case 'Goo':
-					showcase.speciesColor = '#DE63FF';
-					break;
-				case 'Kom':
-					showcase.speciesColor = '#B5FF3D';
-					break;
-				case 'Pul':
-					showcase.speciesColor = '#314511';
-					break;
-				default:
-					break;
-			}
-
-			// SET COLOR FOR PEDIGREE
-			if (pedigree.commonLevelOne.includes(array[i].pedigree)) {
-				showcase.pedigreeColor = '#9C5221';
-			} else if (pedigree.specialLevelOne.includes(array[i].pedigree)) {
-				showcase.pedigreeColor = '#9C5221';
-			} else if (pedigree.commonLevelTwo.includes(array[i].pedigree)) {
-				showcase.pedigreeColor = '#AAA9AD';
-			} else if (pedigree.specialLevelTwo.includes(array[i].pedigree)) {
-				showcase.pedigreeColor = '#AAA9AD';
-			} else if (pedigree.commonLevelThree.includes(array[i].pedigree)) {
-				showcase.pedigreeColor = '#F5D327';
-			} else if (pedigree.specialLevelThree.includes(array[i].pedigree)) {
-				showcase.pedigreeColor = '#F0CE26';
-			}
-			array[i].showcase = showcase;
+		// SET COLOR FOR RANKING
+		switch (unit.rank) {
+			case 'Basic':
+				showcase.rankColor = '#A97EE1';
+				break;
+			case 'Advanced':
+				showcase.rankColor = '#803ADB';
+				break;
+			case 'Elite':
+				showcase.rankColor = '#622CA8';
+				break;
+			default:
+				break;
 		}
+		// SET COLOR FOR SPECIES
+		switch (unit.species) {
+			case 'Dra':
+				showcase.speciesColor = '#5966FF';
+				break;
+			case 'Try':
+				showcase.speciesColor = '#FF7373';
+				break;
+			case 'Sal':
+				showcase.speciesColor = '#FFD640';
+				break;
+			case 'Met':
+				showcase.speciesColor = '#4DFF80';
+				break;
+			case 'Gar':
+				showcase.speciesColor = '#4BDDFF';
+				break;
+			case 'Hyd':
+				showcase.speciesColor = '#FF9230';
+				break;
+			case 'Goo':
+				showcase.speciesColor = '#DE63FF';
+				break;
+			case 'Kom':
+				showcase.speciesColor = '#B5FF3D';
+				break;
+			case 'Pul':
+				showcase.speciesColor = '#314511';
+				break;
+			default:
+				break;
+		}
+
+		// SET COLOR FOR PEDIGREE
+		if (pedigree.commonLevelOne.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#9C5221';
+		} else if (pedigree.specialLevelOne.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#9C5221';
+		} else if (pedigree.commonLevelTwo.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#AAA9AD';
+		} else if (pedigree.specialLevelTwo.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#AAA9AD';
+		} else if (pedigree.commonLevelThree.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#F5D327';
+		} else if (pedigree.specialLevelThree.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#F0CE26';
+		}
+		return showcase;
 	}
 
 	// PLAYER GAME SETTINGS
@@ -303,7 +311,6 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 
 	useEffect(() => {
 		setEnemyUnits(unitPool);
-		addShowCase(unitPool);
 	}, []);
 
 	return <div></div>;

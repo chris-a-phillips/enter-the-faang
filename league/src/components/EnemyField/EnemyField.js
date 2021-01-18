@@ -4,7 +4,7 @@ import { EnemyFieldWrapper, EnemyFieldLabel, EnemyFlexContainer, FaangContainer,
 
 const EnemyField = ({ enemyUnits, functions }) => {
 
-    // console.log(enemyUnits)
+    console.log(enemyUnits.slice(0, 5))
 
     return (
 		<EnemyFieldWrapper>
@@ -13,6 +13,7 @@ const EnemyField = ({ enemyUnits, functions }) => {
 				{enemyUnits.slice(0, 5).map((unit) => {
 					return (
 						<FaangContainer
+							unit={unit}
 							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
 							onClick={() => functions.choose(unit)}>
 							<FaangName>{unit.name}</FaangName>

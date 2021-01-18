@@ -11,7 +11,7 @@ export const EnemyFlexContainer = styled.div`
 `;
 
 export const FaangContainer = styled.div`
-	/* background-color: ${({  }) => ( ? .colors.secondary : 'black')}; */
+	background-color: ${({ unit }) => (unit ? unit.showcase.rankColor : 'black')};
 `;
 
 export const EnemyFieldLabel = styled.h2``;
