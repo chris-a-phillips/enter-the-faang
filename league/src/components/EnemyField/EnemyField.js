@@ -1,12 +1,21 @@
 import React from 'react';
 
-import { EnemyFieldWrapper, EnemyFieldLabel, EnemyFlexContainer, FaangContainer, FaangName, FaangHealth, FaangStats } from './SCEnemyField'
+import {
+	EnemyFieldWrapper,
+	EnemyFieldLabel,
+	EnemyFlexContainer,
+	FaangContainer,
+	FaangName,
+	FaangHealth,
+	FaangStats,
+	FaangTitle,
+	FaangHeader,
+} from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
+	console.log(enemyUnits.slice(0, 5));
 
-    console.log(enemyUnits.slice(0, 5))
-
-    return (
+	return (
 		<EnemyFieldWrapper>
 			<EnemyFieldLabel>Enemies</EnemyFieldLabel>
 			<EnemyFlexContainer>
@@ -16,17 +25,21 @@ const EnemyField = ({ enemyUnits, functions }) => {
 							unit={unit}
 							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
 							onClick={() => functions.choose(unit)}>
+							<FaangHeader unit={unit}>
+							<FaangTitle unit={unit}>
 							<FaangName>{unit.name}</FaangName>
 							<p>rank: {unit.rank}</p>
 							<p>pedigree: {unit.pedigree}</p>
+							</FaangTitle>
 							<p>species: {unit.species}</p>
 							<FaangHealth>health: {unit.health}</FaangHealth>
 							<FaangStats>
-								<p>attack: {unit.attack}</p>
+								{/* <p>attack: {unit.attack}</p>
 								<p>defense: {unit.defense}</p>
 								<p>regeneration: {unit.regeneration}</p>
-								<p>speed: {unit.speed}</p>
+								<p>speed: {unit.speed}</p> */}
 							</FaangStats>
+							</FaangHeader>
 						</FaangContainer>
 					);
 				})}
@@ -34,6 +47,5 @@ const EnemyField = ({ enemyUnits, functions }) => {
 		</EnemyFieldWrapper>
 	);
 };
-
 
 export default EnemyField;

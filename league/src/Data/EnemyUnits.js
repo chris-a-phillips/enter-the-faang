@@ -206,11 +206,9 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				)
 			);
 		}
-		console.log(randomUnit);
-
 	}
 
-	// SHOWCASE SETTER
+	// SHOWCASE CREATOR
 	function createShowcase(unit) {
 		let showcase = {
 			description: null,
@@ -238,7 +236,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			case 'Dra':
 				showcase.speciesColor = '#5966FF';
 				break;
-			case 'Try':
+			case 'Tyr':
 				showcase.speciesColor = '#FF7373';
 				break;
 			case 'Sal':
