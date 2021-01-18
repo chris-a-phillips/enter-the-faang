@@ -10,7 +10,9 @@ export const EnemyFlexContainer = styled.div`
     justify-content: space-evenly;
 `;
 
-export const FaangContainer = styled.div``;
+export const FaangContainer = styled.div`
+	/* background-color: ${({  }) => ( ? .colors.secondary : 'black')}; */
+`;
 
 export const EnemyFieldLabel = styled.h2``;
 

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from './FaangStats';
-import { session } from './SessionLogic'
+import { session } from './SessionLogic';
 
 const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
-	const unitPool = []
+	const unitPool = [];
 	class BasicFaang {
 		constructor(
 			name,
@@ -28,7 +28,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			this.defense = defense;
 			this.regeneration = regeneration;
 			this.speed = speed;
-			this.isFaang = true
+			this.isFaang = true;
 		}
 		speak() {
 			console.log(this.name);
@@ -100,7 +100,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	let basicUnits = faang.basic;
 	let advancedUnits = faang.advanced;
 	let eliteUnits = faang.elite;
-	
+
 	// RANDOM UNIT GENERATOR THAT PUSHES THE UNITS INTO THE UNIT POOL
 	function generateRandomUnit(rank) {
 		let length = Object.keys(rank).length;
@@ -200,52 +200,80 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		}
 	}
 
-
+	// SHOWCASE SETTER
 	function addShowCase(array) {
-		let showcaseColors = {
-			rank: null,
-			pedigree: null,
-			species: null
-		}
+		let showcase = {
+			description: null,
+			rankColor: null,
+			pedigreeColor: null,
+			speciesColor: null,
+		};
 
-		
-		console.log(array)
 		for (let i = 0; i < array.length; i++) {
 			// SET COLOR FOR RANKING
-			// if (array[i].rank === 'Basic') {
-			// 	showcaseColors.rank = 'bronze'
-			// } else if (array[i].rank === 'Advanced') {
-			// 	showcaseColors.rank = 'silver'
-			// } else {
-			// 	showcaseColors.rank = 'gold'
-			// }
 			switch (array[i].rank) {
 				case 'Basic':
-					showcaseColors.rank = 'bronze'
+					showcase.rankColor = '#A97EE1';
 					break;
 				case 'Advanced':
-					showcaseColors.rank = 'silver'
+					showcase.rankColor = '#803ADB';
 					break;
 				case 'Elite':
-					showcaseColors.rank = 'gold'
+					showcase.rankColor = '#622CA8';
 					break;
-			
 				default:
 					break;
 			}
-			console.log(showcaseColors.rank)
+			// SET COLOR FOR SPECIES
+			switch (array[i].species) {
+				case 'Dra':
+					showcase.speciesColor = '#5966FF';
+					break;
+				case 'Try':
+					showcase.speciesColor = '#FF7373';
+					break;
+				case 'Sal':
+					showcase.speciesColor = '#FFD640';
+					break;
+				case 'Met':
+					showcase.speciesColor = '#4DFF80';
+					break;
+				case 'Gar':
+					showcase.speciesColor = '#4BDDFF';
+					break;
+				case 'Hyd':
+					showcase.speciesColor = '#FF9230';
+					break;
+				case 'Goo':
+					showcase.speciesColor = '#DE63FF';
+					break;
+				case 'Kom':
+					showcase.speciesColor = '#B5FF3D';
+					break;
+				case 'Pul':
+					showcase.speciesColor = '#314511';
+					break;
+				default:
+					break;
+			}
 
-			// // SET COLOR FOR PEDIGREE
-			// if (pedigree.commonLevelOne.includes(array[i].pedigree)) {
-			// 	console.log('XOXOXOXO')
-			// } else if () {
-
-			// }
-			array[i].showcase = showcaseColors
+			// SET COLOR FOR PEDIGREE
+			if (pedigree.commonLevelOne.includes(array[i].pedigree)) {
+				showcase.pedigreeColor = '#9C5221';
+			} else if (pedigree.specialLevelOne.includes(array[i].pedigree)) {
+				showcase.pedigreeColor = '#9C5221';
+			} else if (pedigree.commonLevelTwo.includes(array[i].pedigree)) {
+				showcase.pedigreeColor = '#AAA9AD';
+			} else if (pedigree.specialLevelTwo.includes(array[i].pedigree)) {
+				showcase.pedigreeColor = '#AAA9AD';
+			} else if (pedigree.commonLevelThree.includes(array[i].pedigree)) {
+				showcase.pedigreeColor = '#F5D327';
+			} else if (pedigree.specialLevelThree.includes(array[i].pedigree)) {
+				showcase.pedigreeColor = '#F0CE26';
+			}
+			array[i].showcase = showcase;
 		}
 	}
-
-
 
 	// PLAYER GAME SETTINGS
 
@@ -271,14 +299,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		} else {
 			generateRandomUnit(eliteUnits);
 		}
-    }
+	}
 
-    useEffect(() => {
-		setEnemyUnits(unitPool)
+	useEffect(() => {
+		setEnemyUnits(unitPool);
 		addShowCase(unitPool);
+	}, []);
 
-    }, [])
-    
 	return <div></div>;
 };
 

@@ -17,7 +17,7 @@ import {
 const PlayerField = ({ playerTeam, functions, allCards }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
-	const [cardHand, setCardHand] = useState(shuffle(allCards).slice(0, 5));
+	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
 
 	function swap(list, activeOne, activeTwo) {
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];

@@ -35,8 +35,6 @@ function App() {
 		console.log(session);
 	};
 
-	console.log(gameStarted)
-
 	return (
 		<div className='App'>
 			<GameContext.Provider value={value}>
