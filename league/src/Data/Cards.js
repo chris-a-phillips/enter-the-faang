@@ -47,16 +47,71 @@ class AttackCard extends Card {
 	}
 }
 
-const test = new AttackCard('test', 'attack', 1, 1)
-const test2 = new AttackCard('test2', 'attack', 2, 2)
-const test3 = new AttackCard('test3', 'attack', 3, 3)
-const test4 = new AttackCard('test4', 'attack', 4, 4)
-const test5 = new AttackCard('test5', 'attack', 5, 5)
-const test6 = new AttackCard('test6', 'attack', 6, 6)
-const test7 = new AttackCard('test7', 'attack', 7, 7)
-const test8 = new AttackCard('test8', 'attack', 8, 8)
-const test9 = new AttackCard('test9', 'attack', 9, 9)
-const test10 = new AttackCard('test10', 'attack', 10, 10)
+class DefendCard extends Card {
+	constructor(name, type, strength, energy) {
+		super(name, type, strength, energy);
+		// SPECIFIC TO THIS CLASS
+		this.colors = {
+			primary: '#51A3A3',
+			secondary: '#387070',
+		};
+		this.description = `Heals the target with ${this.strength} power.`;
+	}
+	effect(initiator, target) {
+		this.speed = initiator.speed;
+		if (initiator !== target && initiator.energy >= this.energy) {
+			target.health += initiator.defense;
+			this.isUsed = true;
+			initiator.energy -= this.energy;
+			console.log(
+				`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`
+			);
+			// if (target.health <= 0) {
+			// 	target.isAlive = false;
+			// 	console.log(`${target.name} died from the attack`);
+			// }
+		}
+
+		if (initiator === target) {
+			console.log('CHOOSE NEW TARGET');
+		}
+		if (initiator.energy < this.energy) {
+			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
+		}
+		initiator.energy = initiator.showcase.energy;
+	}
+}
+
+const aTest = new AttackCard('test', 'attack', 1, 1)
+const aTest2 = new AttackCard('test2', 'attack', 2, 2)
+const aTest3 = new AttackCard('test3', 'attack', 3, 3)
+const aTest4 = new AttackCard('test4', 'attack', 4, 4)
+const aTest5 = new AttackCard('test5', 'attack', 5, 5)
+const aTest6 = new AttackCard('test6', 'attack', 6, 6)
+const aTest7 = new AttackCard('test7', 'attack', 7, 7)
+const dTest = new DefendCard('test', 'defend', 1, 1)
+const dTest2 = new DefendCard('test2', 'defend', 2, 2)
+const dTest3 = new DefendCard('test3', 'defend', 3, 3)
+const dTest4 = new DefendCard('test4', 'defend', 4, 4)
+const dTest5 = new DefendCard('test5', 'defend', 5, 5)
+const dTest6 = new DefendCard('test6', 'defend', 6, 6)
+const dTest7 = new DefendCard('test7', 'defend', 7, 7)
 
 
-export const allCards = [test, test2, test3, test4, test5, test6, test7, test8, test9, test10]
+
+export const allCards = [
+	aTest,
+	aTest2,
+	aTest3,
+	aTest4,
+	aTest5,
+	aTest6,
+	aTest7,
+	dTest,
+	dTest2,
+	dTest3,
+	dTest4,
+	dTest5,
+	dTest6,
+	dTest7,
+];

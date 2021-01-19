@@ -13,7 +13,7 @@ import { GameContext } from './components/GameContext'
 function App() {
 	// DEFAULTS ARE FOR TESTING PURPOSES
 	// ALL STATE HOOKS SHOULD BE EMPTY
-	const [difficulty, setDifficulty] = useState('normal');
+	const [difficulty, setDifficulty] = useState('veteran');
 	const [armySize, setArmySize] = useState(20);
 	const [enemyUnits, setEnemyUnits] = useState([]);
 	const [gameStarted, setGameStarted] = useState(false);

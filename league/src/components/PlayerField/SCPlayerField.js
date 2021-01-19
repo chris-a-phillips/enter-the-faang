@@ -15,10 +15,10 @@ export const TitanContainer = styled.div`
 	display: ${({ titan }) => (titan.isAlive ? 'inline-block' : 'none')};
 	background-color: ${({ titan }) =>
 		titan.isAlive ? titan.showcase.colors.secondary : 'black'};
-	border: solid black 2px;
+	border: solid black 4px;
 	border-radius: 5px;
 	margin: 0.25rem;
-	padding: 5px;
+	padding: 10px;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -47,8 +47,8 @@ export const CardContainer = styled.div`
 	border-radius: 5px;
 	margin: 1rem;
 	padding: 5px;
-	box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
-		rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 `;
 
 export const CardHeading = styled.div`
