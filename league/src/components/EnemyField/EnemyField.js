@@ -8,8 +8,8 @@ import {
 	FaangName,
 	FaangHealth,
 	FaangStats,
-	FaangTitle,
 	FaangHeader,
+	FaangContent,
 } from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
@@ -25,21 +25,13 @@ const EnemyField = ({ enemyUnits, functions }) => {
 							unit={unit}
 							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
 							onClick={() => functions.choose(unit)}>
+							<FaangContent unit={unit}>
 							<FaangHeader unit={unit}>
-							<FaangTitle unit={unit}>
-							<FaangName>{unit.name}</FaangName>
-							<p>rank: {unit.rank}</p>
-							<p>pedigree: {unit.pedigree}</p>
-							</FaangTitle>
-							<p>species: {unit.species}</p>
-							<FaangHealth>health: {unit.health}</FaangHealth>
-							<FaangStats>
-								{/* <p>attack: {unit.attack}</p>
-								<p>defense: {unit.defense}</p>
-								<p>regeneration: {unit.regeneration}</p>
-								<p>speed: {unit.speed}</p> */}
-							</FaangStats>
+							<FaangName>{unit.pedigree} {unit.name}</FaangName>
 							</FaangHeader>
+							<FaangHealth>health: {unit.health}</FaangHealth>
+							</FaangContent>
+							<p>{unit.rank} {unit.species}</p>
 						</FaangContainer>
 					);
 				})}

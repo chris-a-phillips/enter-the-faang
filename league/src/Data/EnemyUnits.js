@@ -220,13 +220,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		// SET COLOR FOR RANKING
 		switch (unit.rank) {
 			case 'Basic':
-				showcase.rankColor = '#A97EE1';
+				showcase.rankColor = '#9867FF';
 				break;
 			case 'Advanced':
-				showcase.rankColor = '#803ADB';
+				showcase.rankColor = '#5C25BA';
 				break;
 			case 'Elite':
-				showcase.rankColor = '#622CA8';
+				showcase.rankColor = '#391773';
 				break;
 			default:
 				break;

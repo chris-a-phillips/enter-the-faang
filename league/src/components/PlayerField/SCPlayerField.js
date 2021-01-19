@@ -58,5 +58,5 @@ export const CardHeading = styled.div`
 `;
 
 export const CardButton = styled.button`
-	font-size: 1.5rem;
+	font-size: 1rem;
 `
