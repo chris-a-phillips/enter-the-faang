@@ -53,7 +53,13 @@ const GameBoard = ({
 			// setInvolved({ ...involved, selectedTarget: c})
 			// perform this action using the selected target
 			if (involved.initiator && involved.card) {
-				if (involved.card.type === 'attack') {
+				if (involved.card.type === 'Attack') {
+					involved.card.effect(involved.initiator, c)
+                }
+				if (involved.card.type === 'Heal') {
+					involved.card.effect(involved.initiator, c)
+                }
+				if (involved.card.type === 'Support') {
 					involved.card.effect(involved.initiator, c)
                 }
 				this.check(playerTeam);

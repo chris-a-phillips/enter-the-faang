@@ -226,7 +226,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				showcase.rankColor = '#5C25BA';
 				break;
 			case 'Elite':
-				showcase.rankColor = '#391773';
+				showcase.rankColor = '#24183D';
 				break;
 			default:
 				break;

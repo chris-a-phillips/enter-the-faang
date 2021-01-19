@@ -7,13 +7,11 @@ import {
 	FaangContainer,
 	FaangName,
 	FaangHealth,
-	FaangStats,
 	FaangHeader,
 	FaangContent,
 } from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
-	console.log(enemyUnits.slice(0, 5));
 
 	return (
 		<EnemyFieldWrapper>
@@ -29,7 +27,7 @@ const EnemyField = ({ enemyUnits, functions }) => {
 							<FaangHeader unit={unit}>
 							<FaangName>{unit.pedigree} {unit.name}</FaangName>
 							</FaangHeader>
-							<FaangHealth>health: {unit.health}</FaangHealth>
+							<FaangHealth>health: {Math.floor(unit.health)}</FaangHealth>
 							</FaangContent>
 							<p>{unit.rank} {unit.species}</p>
 						</FaangContainer>
