@@ -9,6 +9,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				name,
 				element,
 				kingdom,
+				maxHealth,
 				health,
 				attack,
 				defense,
@@ -26,6 +27,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				this.element = element;
 				this.kingdom = kingdom;
 				this.health = health;
+				this.maxHealth = maxHealth;
 				this.attack = attack;
 				this.defense = defense;
 				this.regeneration = regeneration;
@@ -212,6 +214,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Fire',
 		'Fire Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.fire.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.fire.health * .1)),
         averageStats(eliteStats).attack * (titans.fire.attack * .1),
         averageStats(eliteStats).defense * (titans.fire.defense * .1),
         averageStats(eliteStats).regeneration * (titans.fire.regeneration * .1),
@@ -225,6 +228,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Mulad',
 		'Water',
 		'Water Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.water.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.water.health * .1)),
         averageStats(eliteStats).attack * (titans.water.attack * .1),
         averageStats(eliteStats).defense * (titans.water.defense * .1),
@@ -240,6 +244,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Rock',
 		'Stone Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.stone.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.stone.health * .1)),
         averageStats(eliteStats).attack * (titans.stone.attack * .1),
         averageStats(eliteStats).defense * (titans.stone.defense * .1),
         averageStats(eliteStats).regeneration * (titans.stone.regeneration * .1),
@@ -253,6 +258,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Nabhi',
 		'Air',
 		'Air Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.air.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.air.health * .1)),
         averageStats(eliteStats).attack * (titans.air.attack * .1),
         averageStats(eliteStats).defense * (titans.air.defense * .1),
@@ -268,6 +274,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Electricity',
 		'Lightning Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.lightning.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.lightning.health * .1)),
         averageStats(eliteStats).attack * (titans.lightning.attack * .1),
         averageStats(eliteStats).defense * (titans.lightning.defense * .1),
         averageStats(eliteStats).regeneration * (titans.lightning.regeneration * .1),
@@ -282,6 +289,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Plant',
 		'Terra Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.terra.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.terra.health * .1)),
         averageStats(eliteStats).attack * (titans.terra.attack * .1),
         averageStats(eliteStats).defense * (titans.terra.defense * .1),
         averageStats(eliteStats).regeneration * (titans.terra.regeneration * .1),
@@ -295,6 +303,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Anaht',
 		'Metal',
 		'Metal Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.metal.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.metal.health * .1)),
         averageStats(eliteStats).attack * (titans.metal.attack * .1),
         averageStats(eliteStats).defense * (titans.metal.defense * .1),

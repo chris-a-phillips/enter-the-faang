@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const EnemyFieldWrapper = styled.div`
 	text-align: center;
 	background-color: gray;
-	color: white;
+	color: #fff;
 `;
 
 export const EnemyFlexContainer = styled.div`
@@ -38,6 +38,10 @@ export const FaangContent = styled.div`
 	border-radius: 5px;
 	margin: 2px;
 `;
+
+export const EnemyRank = styled.p`
+	color: #000;
+`
 
 export const EnemyFieldLabel = styled.h2``;
 

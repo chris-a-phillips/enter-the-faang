@@ -9,6 +9,7 @@ import {
 	FaangHealth,
 	FaangHeader,
 	FaangContent,
+	EnemyRank,
 } from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
@@ -24,12 +25,18 @@ const EnemyField = ({ enemyUnits, functions }) => {
 							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
 							onClick={() => functions.choose(unit)}>
 							<FaangContent unit={unit}>
-							<FaangHeader unit={unit}>
-							<FaangName>{unit.pedigree} {unit.name}</FaangName>
-							</FaangHeader>
-							<FaangHealth>health: {Math.floor(unit.health)}</FaangHealth>
+								<FaangHeader unit={unit}>
+									<FaangName>
+										{unit.pedigree} {unit.name}
+									</FaangName>
+								</FaangHeader>
+								<FaangHealth>
+									health: {Math.floor(unit.health)}
+								</FaangHealth>
 							</FaangContent>
-							<p>{unit.rank} {unit.species}</p>
+							<EnemyRank>
+								{unit.rank} {unit.species}
+							</EnemyRank>
 						</FaangContainer>
 					);
 				})}

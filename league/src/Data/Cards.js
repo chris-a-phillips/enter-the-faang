@@ -61,19 +61,15 @@ class HealCard extends Card {
 	effect(initiator, target) {
         this.speed = initiator.speed;
         if (target.isFaang) {
-            console.log('NOOOOO')
+            console.log('CHOOSE NEW TARGET')
         }
-		if (initiator !== target && initiator.energy >= this.energy) {
-			target.health += initiator.defense;
+		if (initiator !== target && initiator.energy >= this.energy && !target.isFaang) {
 			this.isUsed = true;
-			initiator.energy -= this.energy;
-			console.log(
-				`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`
-			);
-			// if (target.health <= 0) {
-			// 	target.isAlive = false;
-			// 	console.log(`${target.name} died from the attack`);
-			// }
+            initiator.energy -= this.energy;
+            if (target.health + initiator.defense > target.maxHealth) {
+                target.health = target.maxHealth
+            } else {target.health += initiator.defense}
+			console.log(`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`);
 		}
 
 		if (initiator === target) {
