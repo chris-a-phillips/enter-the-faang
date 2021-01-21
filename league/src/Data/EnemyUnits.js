@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from './FaangStats';
-import { session } from './SessionLogic'
+import { session } from './SessionLogic';
 
 const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
-	const unitPool = []
+	const unitPool = [];
 	class BasicFaang {
 		constructor(
 			name,
@@ -14,13 +14,15 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speed,
 			rank,
 			pedigree,
-			species
+			species,
+			showcase
 		) {
 			// specs
 			this.isAlive = true;
 			this.rank = rank;
 			this.pedigree = pedigree;
 			this.species = species;
+			this.showcase = showcase;
 			// stats
 			this.name = name;
 			this.health = health;
@@ -28,7 +30,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			this.defense = defense;
 			this.regeneration = regeneration;
 			this.speed = speed;
-			this.isFaang = true
+			this.isFaang = true;
 		}
 		speak() {
 			console.log(this.name);
@@ -51,7 +53,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speed,
 			rank,
 			pedigree,
-			species
+			species,
+			showcase
 		) {
 			super(
 				name,
@@ -62,7 +65,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				speed,
 				rank,
 				pedigree,
-				species
+				species,
+				showcase
 			);
 			this.isAdmin = true;
 			this.class = 'Advanced';
@@ -79,7 +83,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			speed,
 			rank,
 			pedigree,
-			species
+			species,
+			showcase
 		) {
 			super(
 				name,
@@ -90,7 +95,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				speed,
 				rank,
 				pedigree,
-				species
+				species,
+				showcase
 			);
 			this.class = 'Elite';
 		}
@@ -109,7 +115,6 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		let percentChance = Math.floor(Math.random() * 100);
 		randomUnit.name =
 			randomNames[Math.floor(Math.random() * randomNames.length)];
-
 		if (rank.dra.rank === 'Basic') {
 			if (percentChance <= 95) {
 				randomUnit.pedigree =
@@ -136,7 +141,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					randomUnit.speed,
 					randomUnit.rank,
 					randomUnit.pedigree,
-					randomUnit.species
+					randomUnit.species,
+					createShowcase(randomUnit)
 				)
 			);
 		} else if (rank.dra.rank === 'Advanced') {
@@ -165,7 +171,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					randomUnit.speed,
 					randomUnit.rank,
 					randomUnit.pedigree,
-					randomUnit.species
+					randomUnit.species,
+					createShowcase(randomUnit)
 				)
 			);
 		} else {
@@ -194,10 +201,84 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					randomUnit.speed,
 					randomUnit.rank,
 					randomUnit.pedigree,
-					randomUnit.species
+					randomUnit.species,
+					createShowcase(randomUnit)
 				)
 			);
 		}
+	}
+
+	// SHOWCASE CREATOR
+	function createShowcase(unit) {
+		let showcase = {
+			description: null,
+			rankColor: null,
+			pedigreeColor: null,
+			speciesColor: null,
+		};
+
+		// SET COLOR FOR RANKING
+		switch (unit.rank) {
+			case 'Basic':
+				showcase.rankColor = '#9867FF';
+				break;
+			case 'Advanced':
+				showcase.rankColor = '#5C25BA';
+				break;
+			case 'Elite':
+				showcase.rankColor = '#24183D';
+				break;
+			default:
+				break;
+		}
+		// SET COLOR FOR SPECIES
+		switch (unit.species) {
+			case 'Dra':
+				showcase.speciesColor = '#5966FF';
+				break;
+			case 'Tyr':
+				showcase.speciesColor = '#FF7373';
+				break;
+			case 'Sal':
+				showcase.speciesColor = '#FFD640';
+				break;
+			case 'Met':
+				showcase.speciesColor = '#4DFF80';
+				break;
+			case 'Gar':
+				showcase.speciesColor = '#4BDDFF';
+				break;
+			case 'Hyd':
+				showcase.speciesColor = '#FF9230';
+				break;
+			case 'Goo':
+				showcase.speciesColor = '#DE63FF';
+				break;
+			case 'Kom':
+				showcase.speciesColor = '#B5FF3D';
+				break;
+			case 'Pul':
+				showcase.speciesColor = '#314511';
+				break;
+			default:
+				break;
+		}
+
+		// SET COLOR FOR PEDIGREE
+		if (pedigree.commonLevelOne.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#9C5221';
+		} else if (pedigree.specialLevelOne.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#9C5221';
+		} else if (pedigree.commonLevelTwo.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#AAA9AD';
+		} else if (pedigree.specialLevelTwo.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#AAA9AD';
+		} else if (pedigree.commonLevelThree.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#F5D327';
+		} else if (pedigree.specialLevelThree.includes(unit.pedigree)) {
+			showcase.pedigreeColor = '#F0CE26';
+		}
+		return showcase;
 	}
 
 	// PLAYER GAME SETTINGS
@@ -224,12 +305,12 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		} else {
 			generateRandomUnit(eliteUnits);
 		}
-    }
+	}
 
-    useEffect(() => {
-		setEnemyUnits(unitPool)
-    }, [])
-    
+	useEffect(() => {
+		setEnemyUnits(unitPool);
+	}, []);
+
 	return <div></div>;
 };
 

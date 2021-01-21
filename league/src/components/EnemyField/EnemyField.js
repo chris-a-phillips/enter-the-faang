@@ -1,31 +1,42 @@
 import React from 'react';
 
-import { EnemyFieldWrapper, EnemyFieldLabel, EnemyFlexContainer, FaangContainer, FaangName, FaangHealth, FaangStats } from './SCEnemyField'
+import {
+	EnemyFieldWrapper,
+	EnemyFieldLabel,
+	EnemyFlexContainer,
+	FaangContainer,
+	FaangName,
+	FaangHealth,
+	FaangHeader,
+	FaangContent,
+	EnemyRank,
+} from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
 
-    // console.log(enemyUnits)
-
-    return (
+	return (
 		<EnemyFieldWrapper>
 			<EnemyFieldLabel>Enemies</EnemyFieldLabel>
 			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {
 					return (
 						<FaangContainer
+							unit={unit}
 							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
 							onClick={() => functions.choose(unit)}>
-							<FaangName>{unit.name}</FaangName>
-							<p>rank: {unit.rank}</p>
-							<p>pedigree: {unit.pedigree}</p>
-							<p>species: {unit.species}</p>
-							<FaangHealth>health: {unit.health}</FaangHealth>
-							<FaangStats>
-								<p>attack: {unit.attack}</p>
-								<p>defense: {unit.defense}</p>
-								<p>regeneration: {unit.regeneration}</p>
-								<p>speed: {unit.speed}</p>
-							</FaangStats>
+							<FaangContent unit={unit}>
+								<FaangHeader unit={unit}>
+									<FaangName>
+										{unit.pedigree} {unit.name}
+									</FaangName>
+								</FaangHeader>
+								<FaangHealth>
+									health: {Math.floor(unit.health)}
+								</FaangHealth>
+							</FaangContent>
+							<EnemyRank>
+								{unit.rank} {unit.species}
+							</EnemyRank>
 						</FaangContainer>
 					);
 				})}
@@ -33,6 +44,5 @@ const EnemyField = ({ enemyUnits, functions }) => {
 		</EnemyFieldWrapper>
 	);
 };
-
 
 export default EnemyField;

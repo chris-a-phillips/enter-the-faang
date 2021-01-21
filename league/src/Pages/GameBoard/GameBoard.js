@@ -4,6 +4,7 @@ import KingdomField from '../../components/KingdomField/KingdomField';
 import PlayerField from '../../components/PlayerField/PlayerField';
 import { GameContext } from '../../components/GameContext';
 import { allCards } from '../../Data/Cards'
+import { BoardContainer, GameBoardWrapper, GameInfoContainer, GameRulesModal } from './SCGameBoard';
 
 const GameBoard = ({
 	enemyUnits,
@@ -14,6 +15,7 @@ const GameBoard = ({
     setAllUnitsOnField
 }) => {
 	const [count, setCount] = useState(0)
+	const [showRules, setShowRules] = useState(false)
 
 	const { involved, setInvolved } = useContext(GameContext);
 
@@ -51,7 +53,13 @@ const GameBoard = ({
 			// setInvolved({ ...involved, selectedTarget: c})
 			// perform this action using the selected target
 			if (involved.initiator && involved.card) {
-				if (involved.card.type === 'attack') {
+				if (involved.card.type === 'Attack') {
+					involved.card.effect(involved.initiator, c)
+                }
+				if (involved.card.type === 'Heal') {
+					involved.card.effect(involved.initiator, c)
+                }
+				if (involved.card.type === 'Support') {
 					involved.card.effect(involved.initiator, c)
                 }
 				this.check(playerTeam);
@@ -144,15 +152,18 @@ const GameBoard = ({
     useEffect(() => {
         if (playerTeam) {
 		setAllUnitsOnField(listUnits())
-		console.log('allUnitsOnField:', allUnitsOnField)
 		}
 	}, [enemyUnits, playerTeam, playerKingdoms, session, count])
 
 	return (
-		<div>
+		<GameBoardWrapper>
+			<GameInfoContainer>
 			<button onClick={() => setCount(count + 1)}>count{count}</button>
+			<button onClick={() => setShowRules(!showRules)}>Game Rules</button>
+			<GameRulesModal showRules={showRules}></GameRulesModal>
+			</GameInfoContainer>
 			{enemyUnits && playerTeam && playerKingdoms ? (
-				<>
+				<BoardContainer>
 					<EnemyField
 						enemyUnits={enemyUnits}
                         functions={functions}
@@ -166,9 +177,9 @@ const GameBoard = ({
 						playerKingdoms={playerKingdoms}
                         functions={functions}
 					/>
-				</>
+				</BoardContainer>
 			) : null}
-		</div>
+		</GameBoardWrapper>
 	);
 };
 

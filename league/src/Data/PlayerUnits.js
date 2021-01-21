@@ -9,6 +9,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				name,
 				element,
 				kingdom,
+				maxHealth,
 				health,
 				attack,
 				defense,
@@ -26,6 +27,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				this.element = element;
 				this.kingdom = kingdom;
 				this.health = health;
+				this.maxHealth = maxHealth;
 				this.attack = attack;
 				this.defense = defense;
 				this.regeneration = regeneration;
@@ -115,6 +117,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 4,
 			speed: 7,
 			zen: 5,
+			colors: {
+				primary: '#F7130A',
+				secondary: '#ED7609',
+				contrast: '#E02A02',
+			},
 		},
 		water: {
 			health: 9,
@@ -124,6 +131,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 8,
 			speed: 6,
 			zen: 4,
+			colors: {
+				primary: '#2F30E0',
+				secondary: '#268FED',
+				contrast: '#9326ED',
+			},
 		},
 		stone: {
 			health: 8,
@@ -133,6 +145,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 6,
 			speed: 5,
 			zen: 7,
+			colors: {
+				primary: '#706459',
+				secondary: '#877A64',
+				contrast: '#5F727D',
+			},
 		},
 		air: {
 			health: 4,
@@ -142,6 +159,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 7,
 			speed: 8,
 			zen: 5,
+			colors: {
+				primary: '#D0DAD8',
+				secondary: '#CFDEE6',
+				contrast: '#CFE6D4',
+			},
 		},
 		lightning: {
 			health: 5,
@@ -151,6 +173,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 5,
 			speed: 9,
 			zen: 6,
+			colors: {
+				primary: '#FAED3E',
+				secondary: '#E3D346',
+				contrast: '#23FAF5',
+			},
 		},
 		terra: {
 			health: 7,
@@ -160,6 +187,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 9,
 			speed: 5,
 			zen: 8,
+			colors: {
+				primary: '#3AC92A',
+				secondary: '#24E04A',
+				contrast: '#8B4513',
+			},
 		},
 		metal: {
 			health: 5,
@@ -169,6 +201,11 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			regeneration: 5,
 			speed: 4,
 			zen: 9,
+			colors: {
+				primary: '#DBDBDB',
+				secondary: '#C4C4C4',
+				contrast: '#B5B5B5',
+			},
 		},
 	};
     
@@ -176,6 +213,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Ajna',
 		'Fire',
 		'Fire Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.fire.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.fire.health * .1)),
         averageStats(eliteStats).attack * (titans.fire.attack * .1),
         averageStats(eliteStats).defense * (titans.fire.defense * .1),
@@ -191,6 +229,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Water',
 		'Water Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.water.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.water.health * .1)),
         averageStats(eliteStats).attack * (titans.water.attack * .1),
         averageStats(eliteStats).defense * (titans.water.defense * .1),
         averageStats(eliteStats).regeneration * (titans.water.regeneration * .1),
@@ -204,6 +243,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Vishu',
 		'Rock',
 		'Stone Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.stone.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.stone.health * .1)),
         averageStats(eliteStats).attack * (titans.stone.attack * .1),
         averageStats(eliteStats).defense * (titans.stone.defense * .1),
@@ -219,6 +259,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Air',
 		'Air Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.air.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.air.health * .1)),
         averageStats(eliteStats).attack * (titans.air.attack * .1),
         averageStats(eliteStats).defense * (titans.air.defense * .1),
         averageStats(eliteStats).regeneration * (titans.air.regeneration * .1),
@@ -232,6 +273,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Svadhi',
 		'Electricity',
 		'Lightning Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.lightning.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.lightning.health * .1)),
         averageStats(eliteStats).attack * (titans.lightning.attack * .1),
         averageStats(eliteStats).defense * (titans.lightning.defense * .1),
@@ -247,6 +289,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Plant',
 		'Terra Kingdom',
         Math.floor(averageStats(eliteStats).health * (titans.terra.health * .1)),
+        Math.floor(averageStats(eliteStats).health * (titans.terra.health * .1)),
         averageStats(eliteStats).attack * (titans.terra.attack * .1),
         averageStats(eliteStats).defense * (titans.terra.defense * .1),
         averageStats(eliteStats).regeneration * (titans.terra.regeneration * .1),
@@ -260,6 +303,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 		'Anaht',
 		'Metal',
 		'Metal Kingdom',
+        Math.floor(averageStats(eliteStats).health * (titans.metal.health * .1)),
         Math.floor(averageStats(eliteStats).health * (titans.metal.health * .1)),
         averageStats(eliteStats).attack * (titans.metal.attack * .1),
         averageStats(eliteStats).defense * (titans.metal.defense * .1),
