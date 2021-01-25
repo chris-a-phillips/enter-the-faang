@@ -1,5 +1,6 @@
 
 <!-- PROJECT LOGO -->
+<!-- 
 <br />
 <p align="center">
   <a href="https://github.com/chris-a-phillips/enter-the-faang">
@@ -11,14 +12,14 @@
   <p align="center">
     A game inspired by Slay the Spire
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/chris-a-phillips/enter-the-faang/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/chris-a-phillips/enter-the-faang">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/chris-a-phillips/enter-the-faang/issues">Report Bug</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
+    <a href="https://github.com/chris-a-phillips/enter-the-faang/issues">Request Feature</a>
   </p>
 </p>
 
@@ -112,7 +113,7 @@ Make sure that npm is the latest version
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/chris-a-phillips/enter-the-faang.git
    ```
 2. Install NPM packages
    ```sh
@@ -121,18 +122,18 @@ Make sure that npm is the latest version
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+<!-- ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-
+-->
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/chris-a-phillips/enter-the-faang/issues) for a list of proposed features (and known issues).
 
 
 <!-- CONTRIBUTING -->
