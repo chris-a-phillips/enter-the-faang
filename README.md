@@ -1,6 +1,6 @@
 
 <!-- PROJECT LOGO -->
-<!-- 
+
 <br />
 <p align="center">
   <a href="https://github.com/chris-a-phillips/enter-the-faang">
