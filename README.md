@@ -2,14 +2,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://github.com/chris-a-phillips/enter-the-faang">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">Enter the FAANG</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A game inspired by Slay the Spire
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
@@ -57,16 +57,34 @@
 
 ![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Enter the FAANG is a "roguelike" card game in which the player will face randomly generated units. The player's goal is to 
+Enter the FAANG is a "roguelike" card game in which the player will face randomly generated units. The FAANG are invading and it's up to the player to try their best to stop them. The player's goal is to defeat all of the FAANG enemies using their Titans, before everything is destroyed. It's a race against time as the player will have to find the best strategy to protect the Kingdoms from certain doom.
+
+The rules are:
+* Win by defeating all of the FAANGS
+* Lose by having all Titans or Kingdoms reach 0 health
+* Turns are as follows
+	-   Player receives a new random card from the deck
+	-   cards are selected by player (or titan is swapped out)
+	-   Each card has an energy level
+	-   Titan does action on card
+	-   All units take turns according to speed
+	-   If units are defeated they are replaced after damage step
+	-   Repeat until game ends
 
 Showcase features:
+* Enemy classes that make specific enemies more difficult to defeat than others
 * Enemy number option for player to choose how many units to defeat
 * Difficulty option to change player unit's stats
 * Trueskill option to change damage calculation
 * Random unit generation based on chosen options
-* Player unit 
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+While this is currently still being created, much of the logic and metadata has already been created. After completion my main goal will be to continue playtesting to make sure that each game is fair and matches the difficulty chosen.
+
+Features to come:
+* Currency to buy better cards throughout the game
+* Items the titans can use
+* "Synergies" between Titans on the field
+* Experience, levels, and prestige for each Titan
 
 
 ### Built With
@@ -117,7 +135,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
 
 
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -130,13 +147,9 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 
-
-
-
-
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [Chris Phillips LinkedIn](https://www.linkedin.com/in/chris-a-phillips/) - phillipsachris@gmail.com
 
 Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
