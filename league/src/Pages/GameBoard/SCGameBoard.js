@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const GameBoardWrapper = styled.div`
 	/* display: flex;
     justify-content: space-around; */
-	background-color: pink;
+	/* background-color: pink; */
 	display: grid;
 	grid-template-columns: minmax(150px, 25%) 1fr;
 `;
@@ -13,7 +13,7 @@ export const GameRulesModal = styled.div`
 	width: 90vh;
 	height: 90vh;
 	z-index: 2;
-	background-color: white;
+	/* background-color: white; */
 	position: fixed;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,

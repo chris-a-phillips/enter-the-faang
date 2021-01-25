@@ -54,24 +54,28 @@ const GameBoard = ({
 			// perform this action using the selected target
 			if (involved.initiator && involved.card) {
 				if (involved.card.type === 'Attack') {
-					involved.card.effect(involved.initiator, c)
-                }
-				if (involved.card.type === 'Heal') {
-					involved.card.effect(involved.initiator, c)
-                }
-				if (involved.card.type === 'Support') {
-					involved.card.effect(involved.initiator, c)
-                }
-				this.check(playerTeam);
-				this.check(playerKingdoms);
-				this.check(enemyUnits);
-                this.check(allCards)
-				// set action to falsey so only this click is registered
-				setInvolved(false);
-			}
-		},
-
-		// actions to take
+					involved.initiator.method =
+						function attack(c) {
+							involved.card.effect(involved.initiator, c)
+						}
+					}
+					if (involved.card.type === 'Heal') {
+						involved.card.effect(involved.initiator, c)
+					}
+					if (involved.card.type === 'Support') {
+						involved.card.effect(involved.initiator, c)
+					}
+					console.log(involved.initiator)
+					this.check(playerTeam);
+					this.check(playerKingdoms);
+					this.check(enemyUnits);
+					this.check(allCards)
+					// set action to falsey so only this click is registered
+					setInvolved(false);
+				}
+			},
+			
+			// actions to take
 		// attacker is where the first button was clicked (involved.initiator)
 		// target is the second click (involved.selectedTarget)
 		attack: function attack(attacker, target) {
@@ -107,15 +111,17 @@ const GameBoard = ({
 		},
     };
 
+	const events = []
+	console.log(events)
+
 	// QUEUE OF ATTACKS TO EMPTY
 	function emptyQueue() {			
 		allUnitsOnField
 			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			.forEach((u) => {
-
 				// EACH TITAN ATTACKS FROM THE QUEUE
 				if (u.isTitan) {
-					console.log('titan:', u.name)
+					u.attack()
 				}
 				// EACH ENEMY ATTACKS A RANDOM UNIT
 				if (u.isFaang) {
@@ -130,10 +136,12 @@ const GameBoard = ({
 						]
 					);
 				}
+				events.push(u)
 			});
 		session.takeTurn()
-		console.log(session)
 	}
+
+	// queue => array 
 
     function listUnits() {
         let res = [];
@@ -147,8 +155,8 @@ const GameBoard = ({
             res.push(enemyUnits[i]);
         }
         return res;
-    }
-
+	}
+	
     useEffect(() => {
         if (playerTeam) {
 		setAllUnitsOnField(listUnits())

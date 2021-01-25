@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export const PlayerFieldWrapper = styled.div`
 	text-align: center;
-	background-color: yellow;
+	/* background-color: yellow; */
 `;
 
 export const PlayerFlexContainer = styled.div`
 	display: flex;
 	justify-content: space-evenly;
-	background-color: teal;
+	/* background-color: teal; */
 `;
 
 export const TitanContainer = styled.div`
@@ -38,7 +38,7 @@ export const TitanHealth = styled.div``;
 export const TitanStats = styled.div``;
 
 export const CardFlexContainer = styled(PlayerFlexContainer)`
-	background-color: orchid;
+	/* background-color: orchid; */
 `;
 
 export const CardContainer = styled.div`

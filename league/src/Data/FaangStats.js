@@ -643,7 +643,6 @@ export const randomNames = [
 	'Krigzuth',
 	'Salpheth',
 	'Tehlur',
-	'Fake',
 	'Tielzi',
 	'Xaqe',
 	'Luuzaits',
