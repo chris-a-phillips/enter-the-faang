@@ -56,7 +56,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- ![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+
+<img src="./league/src/media/screenshots/test-screenshot.png" alt="Test Screenshot" width="800" height="600">
+    <br/>
 
 Enter the FAANG is a "roguelike" card game in which the player will face randomly generated units. The FAANG are invading and it's up to the player to try their best to stop them. The player's goal is to defeat all of the FAANG enemies using their Titans, before everything is destroyed. It's a race against time as the player will have to find the best strategy to protect the Kingdoms from certain doom.
 
