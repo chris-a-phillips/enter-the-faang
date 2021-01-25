@@ -8,6 +8,7 @@ import PlayerUnits from './Data/PlayerUnits';
 import PlayerKingdoms from './Data/PlayerKingdoms';
 import GameBoard from './Pages/GameBoard/GameBoard';
 import { GameContext } from './components/GameContext'
+import { AppWrapper } from './SCApp';
 
 
 function App() {
@@ -36,9 +37,9 @@ function App() {
 	};
 
 	return (
-		<div className='App'>
+		<AppWrapper>
 			<GameContext.Provider value={value}>
-				<button onClick={addNumber}>add turn</button>
+				{/* <button onClick={addNumber}>add turn</button> */}
 				{/* CHANGE THIS FOR THE WELCOME SCREEN TO WORK */}
 				{ gameStarted ? (
 					<WelcomeScreen
@@ -79,7 +80,7 @@ function App() {
 					/>
 				) : null}
 			</GameContext.Provider>
-		</div>
+		</AppWrapper>
 	);
 }
 

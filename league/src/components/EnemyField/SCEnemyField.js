@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const EnemyFieldWrapper = styled.div`
 	text-align: center;
-	background-color: gray;
+	/* background-color: gray; */
 	color: #fff;
 `;
 
@@ -43,7 +43,9 @@ export const EnemyRank = styled.p`
 	color: #000;
 `
 
-export const EnemyFieldLabel = styled.h2``;
+export const EnemyFieldLabel = styled.h2`
+	color: #000;
+`;
 
 export const FaangName = styled.h3``;
 

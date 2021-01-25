@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const KingdomFieldWrapper = styled.div`
     text-align: center;
-    background-color: peachpuff;
+    /* background-color: peachpuff; */
     `;
 
 export const KingdomsFlexContainer = styled.div`
