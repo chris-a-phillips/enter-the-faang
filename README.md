@@ -4,7 +4,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/chris-a-phillips/enter-the-faang">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
   </a>
 
   <h3 align="center">Enter the FAANG</h3>
