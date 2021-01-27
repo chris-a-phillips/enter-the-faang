@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import EnemyField from '../../components/EnemyField/EnemyField';
 import KingdomField from '../../components/KingdomField/KingdomField';
 import PlayerField from '../../components/PlayerField/PlayerField';
@@ -143,26 +143,44 @@ const GameBoard = ({
 					functions.check(enemyUnits);
 					functions.check(allCards);
 					console.log(session.eventLog);
+					setAllUnitsOnField(listUnits());
 				}, timer);
 				timer += 1500;
 			});
-		setAllUnitsOnField(listUnits());
 		session.takeTurn();
 	};
 	
-	const listUnits = () => {
-		let res = [];
-		for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
-			res.push(playerTeam[i]);
-		}
-		for (let i = 0; i < playerKingdoms.length; i++) {
-			res.push(playerKingdoms[i]);
-		}
-		for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
-			res.push(enemyUnits[i]);
-		}
-		return res;
-	}
+	// const listUnits = () => {
+	// 	let res = [];
+	// 	for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
+	// 		res.push(playerTeam[i]);
+	// 	}
+	// 	for (let i = 0; i < playerKingdoms.length; i++) {
+	// 		res.push(playerKingdoms[i]);
+	// 	}
+	// 	for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
+	// 		res.push(enemyUnits[i]);
+	// 	}
+	// 	return res;
+	// }
+	
+	const listUnits = useCallback(
+		() => {
+			let res = [];
+			for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
+				res.push(playerTeam[i]);
+			}
+			for (let i = 0; i < playerKingdoms.length; i++) {
+				res.push(playerKingdoms[i]);
+			}
+			for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
+				res.push(enemyUnits[i]);
+			}
+			return res;
+		},
+		[enemyUnits, playerTeam, playerKingdoms],
+	)
+	
 	
 
 	useEffect(() => {
@@ -174,7 +192,6 @@ const GameBoard = ({
 		playerTeam,
 		playerKingdoms,
 		session,
-		// allUnitsOnField,
 		session.eventLog,
 	]);
 
