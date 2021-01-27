@@ -35,11 +35,17 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		speak() {
 			console.log(this.name);
 		}
-		attackUnit(unit) {
+		attackUnit(target) {
 			console.log(
-				`${this.name} attacked ${unit.name} and now it has ${unit.health}`
+				`${this.name} attacked ${target.name} and now it has ${target.health}`
 			);
-			unit.health -= this.attack;
+			target.health -= this.attack;
+			if (target.health <= 0) {
+				target.isAlive = false;
+				console.log(
+					`${target.name} died from the attack`
+				);
+			}
 		}
 	}
 

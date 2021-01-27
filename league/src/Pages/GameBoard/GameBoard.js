@@ -16,6 +16,7 @@ const GameBoard = ({
 }) => {
 	const [count, setCount] = useState(0)
 	const [showRules, setShowRules] = useState(false)
+	const [go, setGo] = useState(true)
 
 	const { involved, setInvolved } = useContext(GameContext);
 
@@ -58,6 +59,7 @@ const GameBoard = ({
 						function attack(c) {
 							involved.card.effect(involved.initiator, c)
 						}
+						involved.initiator.method(involved.initiator, c)
 					}
 					if (involved.card.type === 'Heal') {
 						involved.card.effect(involved.initiator, c)
@@ -115,13 +117,14 @@ const GameBoard = ({
 	console.log(events)
 
 	// QUEUE OF ATTACKS TO EMPTY
-	function emptyQueue() {			
+	const emptyQueue = () => {			
 		allUnitsOnField
 			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			.forEach((u) => {
 				// EACH TITAN ATTACKS FROM THE QUEUE
 				if (u.isTitan) {
-					u.attack()
+					console.log(u)
+					// u.method()
 				}
 				// EACH ENEMY ATTACKS A RANDOM UNIT
 				if (u.isFaang) {
@@ -139,11 +142,12 @@ const GameBoard = ({
 				events.push(u)
 			});
 		session.takeTurn()
+
 	}
 
 	// queue => array 
 
-    function listUnits() {
+    const listUnits = () => {
         let res = [];
         for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
             res.push(playerTeam[i]);
@@ -156,6 +160,7 @@ const GameBoard = ({
         }
         return res;
 	}
+
 	
     useEffect(() => {
         if (playerTeam) {
@@ -168,6 +173,7 @@ const GameBoard = ({
 			<GameInfoContainer>
 			<button onClick={() => setCount(count + 1)}>count{count}</button>
 			<button onClick={() => setShowRules(!showRules)}>Game Rules</button>
+			<button onClick={emptyQueue}>empty queue</button>
 			<GameRulesModal showRules={showRules}></GameRulesModal>
 			</GameInfoContainer>
 			{enemyUnits && playerTeam && playerKingdoms ? (
