@@ -14,7 +14,7 @@ import {
 	TitanStats,
 } from './SCPlayerField';
 
-const PlayerField = ({ playerTeam, functions, allCards }) => {
+const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 	const { involved, setInvolved } = useContext(GameContext);
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
@@ -44,10 +44,12 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 		return array;
 	}
 
+	console.log('playerTeam:', playerTeam)
+
 	useEffect(() => {
 		// console.log(involved)
 		setCardHand(allCards.slice(0, 5));
-	}, [activeTitans, functions, playerTeam, allCards]);
+	}, [activeTitans, functions, playerTeam, allCards, session]);
 
 	return (
 		<PlayerFieldWrapper>

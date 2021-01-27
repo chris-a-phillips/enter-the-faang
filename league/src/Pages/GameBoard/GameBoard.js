@@ -53,15 +53,15 @@ const GameBoard = ({
 			// setInvolved({ ...involved, selectedTarget: c})
 			// perform this action using the selected target
 			if (involved.initiator && involved.card) {
+				this.check(playerTeam);
+				this.check(playerKingdoms);
+				this.check(enemyUnits);
+				this.check(allCards)
 				involved.initiator.method = 
 					function useCard() {
 						involved.card.effect(involved.initiator, c)
 					}
 					console.log(involved.initiator)
-					this.check(playerTeam);
-					this.check(playerKingdoms);
-					this.check(enemyUnits);
-					this.check(allCards)
 					// set action to falsey so only this click is registered
 					setInvolved(false);
 				}
@@ -98,13 +98,15 @@ const GameBoard = ({
 				if (array[i].isAlive === false || array[i].isUsed) {
 					array.splice(i, 1);
 					console.log(`${array[i].name} was spliced at:`, i);
+					console.log('yooooo')
 				}
 			}
+			return array
 		},
     };
 
-	const events = []
-	console.log(events)
+	// const events = []
+	// console.log(events)
 
 	// QUEUE OF ATTACKS TO EMPTY
 	const endTurn = () => {
@@ -113,15 +115,13 @@ const GameBoard = ({
 			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			.forEach((u) => {
 				// EACH TITAN ATTACKS FROM THE QUEUE
-				if (u.method) {
-					setTimeout(() => {
+				setTimeout(() => {
+					if (u.method) {
 						u.method()
 						u.method = null
-					}, timer);
-				}
-				// EACH ENEMY ATTACKS A RANDOM UNIT
-				if (u.isFaang) {
-					setTimeout(() => {
+					}
+					// EACH ENEMY ATTACKS A RANDOM UNIT
+					if (u.isFaang) {
 						let playerUnitsOnField = allUnitsOnField.filter(
 							(unit) => !unit.isFaang
 						);
@@ -132,10 +132,15 @@ const GameBoard = ({
 								)
 							]
 						);
+						}
 					}, timer);
-				}
 				timer += 1500
 			});
+			functions.check(playerTeam)
+			functions.check(playerKingdoms)
+			functions.check(enemyUnits)
+			functions.check(allCards)
+		setAllUnitsOnField(listUnits())
 		session.takeTurn()
 	}
 
@@ -160,7 +165,7 @@ const GameBoard = ({
         if (playerTeam) {
 		setAllUnitsOnField(listUnits())
 		}
-	}, [enemyUnits, playerTeam, playerKingdoms, session, count])
+	}, [enemyUnits, playerTeam, playerKingdoms, session, count, setAllUnitsOnField])
 
 	return (
 		<GameBoardWrapper>
@@ -179,7 +184,8 @@ const GameBoard = ({
 					<PlayerField
 						playerTeam={playerTeam}
                         functions={functions}
-                        allCards={allCards}
+						allCards={allCards}
+						session={session}
 					/>
 					<KingdomField
 						playerKingdoms={playerKingdoms}
