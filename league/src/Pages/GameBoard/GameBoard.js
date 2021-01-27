@@ -16,7 +16,6 @@ const GameBoard = ({
 }) => {
 	const [count, setCount] = useState(0)
 	const [showRules, setShowRules] = useState(false)
-	const [go, setGo] = useState(true)
 
 	const { involved, setInvolved } = useContext(GameContext);
 
@@ -108,33 +107,36 @@ const GameBoard = ({
 	console.log(events)
 
 	// QUEUE OF ATTACKS TO EMPTY
-	const endTurn = () => {			
+	const endTurn = () => {
+		let timer = 0
 		allUnitsOnField
 			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			.forEach((u) => {
 				// EACH TITAN ATTACKS FROM THE QUEUE
 				if (u.method) {
-					u.method()
-					u.method = null
+					setTimeout(() => {
+						u.method()
+						u.method = null
+					}, timer);
 				}
 				// EACH ENEMY ATTACKS A RANDOM UNIT
 				if (u.isFaang) {
-					let playerUnitsOnField = allUnitsOnField.filter(
-						(unit) => !unit.isFaang
-					);
-					u.attackUnit(
-						playerUnitsOnField[
-							Math.floor(
-								Math.random() * playerUnitsOnField.length
-							)
-						]
-					);
+					setTimeout(() => {
+						let playerUnitsOnField = allUnitsOnField.filter(
+							(unit) => !unit.isFaang
+						);
+						u.attackUnit(
+							playerUnitsOnField[
+								Math.floor(
+									Math.random() * playerUnitsOnField.length
+								)
+							]
+						);
+					}, timer);
 				}
-				events.push(u)
-				functions.check(allUnitsOnField)
+				timer += 1500
 			});
 		session.takeTurn()
-
 	}
 
 	// queue => array 
