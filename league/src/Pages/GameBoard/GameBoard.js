@@ -9,6 +9,7 @@ import {
 	GameBoardWrapper,
 	GameInfoContainer,
 	GameRulesModal,
+	SessionLogContainer,
 } from './SCGameBoard';
 
 const GameBoard = ({
@@ -108,11 +109,11 @@ const GameBoard = ({
 		},
 	};
 
-	let events = [];
-	console.log(events);
+	console.log(session.eventLog);
 
 	// QUEUE OF ATTACKS TO EMPTY
 	const endTurn = () => {
+		setAllUnitsOnField(listUnits());
 		let timer = 0;
 		allUnitsOnField
 			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
@@ -120,14 +121,14 @@ const GameBoard = ({
 				// EACH TITAN ATTACKS FROM THE QUEUE
 				setTimeout(() => {
 					if (u.method) {
-						events.push(u.method());
+						session.eventLog.unshift(u.method());
 					}
 					// EACH ENEMY ATTACKS A RANDOM UNIT
 					if (u.isFaang) {
 						let playerUnitsOnField = allUnitsOnField.filter(
 							(unit) => !unit.isFaang
 						);
-						events.push(
+						session.eventLog.unshift(
 							u.attackUnit(
 								playerUnitsOnField[
 									Math.floor(
@@ -142,16 +143,14 @@ const GameBoard = ({
 					functions.check(playerKingdoms);
 					functions.check(enemyUnits);
 					functions.check(allCards);
-					console.log(events);
+					console.log(session.eventLog);
 				}, timer);
 				timer += 1500;
 			});
 		setAllUnitsOnField(listUnits());
 		session.takeTurn();
 	};
-
-	// queue => array
-
+	
 	const listUnits = () => {
 		let res = [];
 		for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
@@ -164,7 +163,8 @@ const GameBoard = ({
 			res.push(enemyUnits[i]);
 		}
 		return res;
-	};
+	}
+	
 
 	useEffect(() => {
 		if (playerTeam) {
@@ -176,8 +176,10 @@ const GameBoard = ({
 		playerKingdoms,
 		session,
 		count,
-		setAllUnitsOnField,
+		allUnitsOnField,
+		session.eventLog,
 	]);
+
 
 	return (
 		<GameBoardWrapper>
@@ -190,6 +192,14 @@ const GameBoard = ({
 				</button>
 				<button onClick={endTurn}>End Turn</button>
 				<GameRulesModal showRules={showRules}></GameRulesModal>
+				<SessionLogContainer>
+					<h1>session stuff</h1>
+					{session.eventLog.map((event) => {
+						return (
+							<p>{event}</p>
+						)
+					})}
+				</SessionLogContainer>
 			</GameInfoContainer>
 			{enemyUnits && playerTeam && playerKingdoms ? (
 				<BoardContainer>
