@@ -20,7 +20,6 @@ const GameBoard = ({
 	allUnitsOnField,
 	setAllUnitsOnField,
 }) => {
-	const [count, setCount] = useState(0);
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
@@ -175,8 +174,7 @@ const GameBoard = ({
 		playerTeam,
 		playerKingdoms,
 		session,
-		count,
-		allUnitsOnField,
+		// allUnitsOnField,
 		session.eventLog,
 	]);
 
@@ -184,9 +182,6 @@ const GameBoard = ({
 	return (
 		<GameBoardWrapper>
 			<GameInfoContainer>
-				<button onClick={() => setCount(count + 1)}>
-					count{count}
-				</button>
 				<button onClick={() => setShowRules(!showRules)}>
 					Game Rules
 				</button>
