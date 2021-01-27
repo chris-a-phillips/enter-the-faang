@@ -24,7 +24,7 @@ class AttackCard extends Card {
 	}
 	effect(initiator, target) {
         this.speed = initiator.speed
-        if (initiator !== target && initiator.energy >= this.energy) {
+        if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
             target.health -= initiator.attack;
             this.isUsed = true
             initiator.energy -= this.energy
@@ -36,14 +36,14 @@ class AttackCard extends Card {
                     console.log(`${target.name} died from the attack`);
                 }
             }
-            
-        if(initiator === target) {
+            if (initiator === target) {
                 console.log('CHOOSE NEW TARGET');
             }
-        if (initiator.energy < this.energy) {
+            if (initiator.energy < this.energy) {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 			}
             initiator.energy = initiator.showcase.energy
+            return `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`;
 	}
 }
 
@@ -78,7 +78,8 @@ class HealCard extends Card {
 		if (initiator.energy < this.energy) {
 			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 		}
-		initiator.energy = initiator.showcase.energy;
+        initiator.energy = initiator.showcase.energy;
+        return `card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`;
 	}
 }
 
@@ -111,7 +112,8 @@ class SupportCard extends Card {
 		if (initiator.energy < this.energy) {
 			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 		}
-		initiator.energy = initiator.showcase.energy;
+        initiator.energy = initiator.showcase.energy;
+        return '======= FIGURE OUT WHAT THE SUPPORTS DO ======='
 	}
 }
 

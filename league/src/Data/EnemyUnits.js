@@ -36,16 +36,20 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			console.log(this.name);
 		}
 		attackUnit(target) {
-			console.log(
-				`${this.name} attacked ${target.name} and now it has ${target.health}`
-			);
-			target.health -= this.attack;
-			if (target.health <= 0) {
-				target.isAlive = false;
+			if (this.isAlive) {
+				target.health -= this.attack;
 				console.log(
-					`${target.name} died from the attack`
+					`${this.name} attacked ${target.name} and now it has ${target.health}`
 				);
+				if (target.health <= 0) {
+					target.isAlive = false;
+					console.log(`${target.name} died from the attack`);
+				}
 			}
+			return (
+				`${this.name} attacked ${target.name} and now it has ${target.health}`
+				
+			)
 		}
 	}
 

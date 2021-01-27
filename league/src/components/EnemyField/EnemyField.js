@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
 	EnemyFieldWrapper,
@@ -13,10 +13,19 @@ import {
 } from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
+	const [enemyInfo, setEnemyInfo] = useState('')
+
+	console.log(enemyUnits)
+
+	useEffect(() => {
+
+	}, [enemyUnits])
 
 	return (
 		<EnemyFieldWrapper>
-			<EnemyFieldLabel>Enemies</EnemyFieldLabel>
+			<EnemyFieldLabel>Enemies
+			{enemyUnits.length}
+			</EnemyFieldLabel>
 			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {
 					return (

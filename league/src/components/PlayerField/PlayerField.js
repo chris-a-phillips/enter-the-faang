@@ -76,27 +76,43 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 					);
 				})}
 			</PlayerFlexContainer>
+				Cards
 			<CardFlexContainer>
 				{cardHand.map((card) => {
 					return (
-						<CardContainer 
-						card={card}
-						key={card.name}>
+						<CardContainer card={card} key={card.name}>
 							<CardHeading card={card}>
-							<p>{card.name}</p>
-							<p>{card.type}</p>
-							<p>{card.strength}</p>
+								<p>{card.name}</p>
+								<p>{card.type}</p>
+								<p>{card.strength}</p>
 							</CardHeading>
 							<p>{card.description}</p>
-							<CardButton 
-							onClick={() => functions.useCard(card)}>
+							<CardButton onClick={() => functions.useCard(card)}>
 								{card.type}
 							</CardButton>
 						</CardContainer>
 					);
 				})}
 			</CardFlexContainer>
-			{playerTeam.slice(2).map((titan) => titan.name)}
+			Reserves
+			<PlayerFlexContainer>
+				{playerTeam.slice(2).map((titan) => {
+					return (
+						<TitanContainer
+							titan={titan}
+							key={titan.name}
+							onClick={() => {
+								functions.initiate(titan);
+								functions.choose(titan);
+							}}>
+							<TitanName titan={titan}>{titan.name}</TitanName>
+							<TitanStats>
+								<p>{titan.kingdom}</p>
+							</TitanStats>
+						</TitanContainer>
+					);
+				})}
+			</PlayerFlexContainer>
 		</PlayerFieldWrapper>
 	);
 };
