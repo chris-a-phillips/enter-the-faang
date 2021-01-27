@@ -31,11 +31,6 @@ function App() {
 	const [allUnitsOnField, setAllUnitsOnField] = useState([])
 	const value = useMemo(() => ({involved, setInvolved}), [involved, setInvolved])
 
-	const addNumber = () => {
-		session.takeTurn();
-		console.log(session);
-	};
-
 	return (
 		<AppWrapper>
 			<GameContext.Provider value={value}>

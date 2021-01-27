@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { GameContext } from '../GameContext';
+import React, { useState, useEffect } from 'react';
 import {
 	CardButton,
 	CardContainer,
@@ -15,7 +14,6 @@ import {
 } from './SCPlayerField';
 
 const PlayerField = ({ playerTeam, functions, allCards, session }) => {
-	const { involved, setInvolved } = useContext(GameContext);
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
 
