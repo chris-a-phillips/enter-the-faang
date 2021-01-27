@@ -46,10 +46,11 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					console.log(`${target.name} died from the attack`);
 				}
 			}
-			return (
-				`${this.name} attacked ${target.name} and now it has ${target.health}`
-				
-			)
+			console.log(this)
+			return {
+				event: `${this.name} attacked ${target.name} and now it has ${target.health}`,
+				color: this.showcase.speciesColor
+			};
 		}
 	}
 

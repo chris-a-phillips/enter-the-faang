@@ -27,4 +27,8 @@ export const BoardContainer = styled.div`
 
 export const GameInfoContainer = styled.div``;
 
-export const SessionLogContainer = styled.div``
+export const SessionLogContainer = styled.div`
+`
+export const ActionContainer = styled.div`
+	color: ${({ action }) => ( action ? action.color : '#000')};
+`

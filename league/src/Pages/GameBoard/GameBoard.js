@@ -5,6 +5,7 @@ import PlayerField from '../../components/PlayerField/PlayerField';
 import { GameContext } from '../../components/GameContext';
 import { allCards } from '../../Data/Cards';
 import {
+	ActionContainer,
 	BoardContainer,
 	GameBoardWrapper,
 	GameInfoContainer,
@@ -150,20 +151,6 @@ const GameBoard = ({
 		session.takeTurn();
 	};
 	
-	// const listUnits = () => {
-	// 	let res = [];
-	// 	for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
-	// 		res.push(playerTeam[i]);
-	// 	}
-	// 	for (let i = 0; i < playerKingdoms.length; i++) {
-	// 		res.push(playerKingdoms[i]);
-	// 	}
-	// 	for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
-	// 		res.push(enemyUnits[i]);
-	// 	}
-	// 	return res;
-	// }
-	
 	const listUnits = useCallback(
 		() => {
 			let res = [];
@@ -204,11 +191,13 @@ const GameBoard = ({
 				</button>
 				<button onClick={endTurn}>End Turn</button>
 				<GameRulesModal showRules={showRules}></GameRulesModal>
-				<SessionLogContainer>
+				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
 					<h1>session stuff</h1>
-					{session.eventLog.map((event) => {
+					{session.eventLog.map((action) => {
 						return (
-							<p>{event}</p>
+							<ActionContainer action={action}>
+								<p>{action.event}</p>
+							</ActionContainer>
 						)
 					})}
 				</SessionLogContainer>
