@@ -11,6 +11,10 @@ export const PlayerFlexContainer = styled.div`
 	/* background-color: teal; */
 `;
 
+export const TitanReserveContainer = styled.div`
+	
+`
+
 export const TitanContainer = styled.div`
 	display: ${({ titan }) => (titan.isAlive ? 'inline-block' : 'none')};
 	background-color: ${({ titan }) =>
@@ -23,7 +27,7 @@ export const TitanContainer = styled.div`
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 `;
 
-export const TitanReserveContainer = styled(TitanContainer)`
+export const TitanReserve = styled(TitanContainer)`
 	margin: 0.25rem;
 	padding: 3px;
 	border: solid black 3px;

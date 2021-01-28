@@ -10,6 +10,7 @@ import {
 	TitanContainer,
 	TitanHealth,
 	TitanName,
+	TitanReserve,
 	TitanReserveContainer,
 	TitanStats,
 } from './SCPlayerField';
@@ -43,7 +44,6 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 		return array;
 	}
 
-
 	useEffect(() => {
 		setCardHand(allCards.slice(0, 5));
 	}, [activeTitans, functions, playerTeam, allCards, session]);
@@ -72,8 +72,29 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 						</TitanContainer>
 					);
 				})}
+				<TitanReserveContainer>
+				Reserves
+					{playerTeam.slice(2).map((titan) => {
+						return (
+							<TitanReserve
+								titan={titan}
+								key={titan.name}
+								onClick={() => {
+									functions.initiate(titan);
+									functions.choose(titan);
+								}}>
+								<TitanName titan={titan}>
+									{titan.name}
+								</TitanName>
+								<TitanStats>
+									<p>{titan.kingdom}</p>
+								</TitanStats>
+							</TitanReserve>
+						);
+					})}
+				</TitanReserveContainer>
 			</PlayerFlexContainer>
-				Cards
+			Cards
 			<CardFlexContainer>
 				{cardHand.map((card) => {
 					return (
@@ -91,25 +112,6 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 					);
 				})}
 			</CardFlexContainer>
-			Reserves
-			<PlayerFlexContainer>
-				{playerTeam.slice(2).map((titan) => {
-					return (
-						<TitanReserveContainer
-							titan={titan}
-							key={titan.name}
-							onClick={() => {
-								functions.initiate(titan);
-								functions.choose(titan);
-							}}>
-							<TitanName titan={titan}>{titan.name}</TitanName>
-							<TitanStats>
-								<p>{titan.kingdom}</p>
-							</TitanStats>
-						</TitanReserveContainer>
-					);
-				})}
-			</PlayerFlexContainer>
 		</PlayerFieldWrapper>
 	);
 };

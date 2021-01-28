@@ -14,9 +14,10 @@ export const FaangContainer = styled.div`
 	background-color: ${({ unit }) =>
 		unit ? unit.showcase.speciesColor : 'black'};
 	width: 20%;
+	height: 150px;
 	border: solid black 2px;
 	border-radius: 5px;
-	margin: 1rem;
+	margin: 0.25rem;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
 		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;

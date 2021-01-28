@@ -29,25 +29,21 @@ export const GameRulesModal = styled.div`
 
 export const GameInfoContainer = styled.div`
 	grid-area: game-info;
-	background-color: pink;
 `;
 
 export const EnemyFieldContainer = styled.div`
 	grid-area: enemy-field;
-	background-color: blue;
-overflow: hidden;
+
 `;
 
 export const PlayerFieldContainer = styled.div`
 	grid-area: player-field;
-	background-color: yellow;
-	overflow: hidden;
+
 `;
 
 export const KingdomFieldContainer = styled.div`
 	grid-area: kingdom-field;
-	background-color: green;
-	overflow: hidden;
+
 `;
 
 export const SessionLogContainer = styled.div``;
