@@ -10,6 +10,7 @@ import {
 	TitanContainer,
 	TitanHealth,
 	TitanName,
+	TitanReserveContainer,
 	TitanStats,
 } from './SCPlayerField';
 
@@ -94,7 +95,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 			<PlayerFlexContainer>
 				{playerTeam.slice(2).map((titan) => {
 					return (
-						<TitanContainer
+						<TitanReserveContainer
 							titan={titan}
 							key={titan.name}
 							onClick={() => {
@@ -105,7 +106,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>
-						</TitanContainer>
+						</TitanReserveContainer>
 					);
 				})}
 			</PlayerFlexContainer>

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const EnemyFieldWrapper = styled.div`
 	text-align: center;
-	/* background-color: gray; */
 	color: #fff;
 `;
 
@@ -15,7 +14,6 @@ export const FaangContainer = styled.div`
 	background-color: ${({ unit }) =>
 		unit ? unit.showcase.speciesColor : 'black'};
 	width: 20%;
-	height: 80%;
 	border: solid black 2px;
 	border-radius: 5px;
 	margin: 1rem;

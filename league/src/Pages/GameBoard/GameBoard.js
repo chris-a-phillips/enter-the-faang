@@ -7,9 +7,12 @@ import { allCards } from '../../Data/Cards';
 import {
 	ActionContainer,
 	BoardContainer,
+	EnemyFieldContainer,
 	GameBoardWrapper,
 	GameInfoContainer,
 	GameRulesModal,
+	KingdomFieldContainer,
+	PlayerFieldContainer,
 	SessionLogContainer,
 } from './SCGameBoard';
 
@@ -196,19 +199,25 @@ const GameBoard = ({
 				</SessionLogContainer>
 			</GameInfoContainer>
 			{enemyUnits && playerTeam && playerKingdoms ? (
-				<BoardContainer>
+				<>
+					<EnemyFieldContainer>
 					<EnemyField enemyUnits={enemyUnits} functions={functions} />
+					</EnemyFieldContainer>
+					<PlayerFieldContainer>
 					<PlayerField
 						playerTeam={playerTeam}
 						functions={functions}
 						allCards={allCards}
 						session={session}
 					/>
+					</PlayerFieldContainer>
+					<KingdomFieldContainer>
 					<KingdomField
 						playerKingdoms={playerKingdoms}
 						functions={functions}
 					/>
-				</BoardContainer>
+					</KingdomFieldContainer>
+				</>
 			) : null}
 		</GameBoardWrapper>
 	);
