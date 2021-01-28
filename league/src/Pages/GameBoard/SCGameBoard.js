@@ -30,5 +30,11 @@ export const GameInfoContainer = styled.div``;
 export const SessionLogContainer = styled.div`
 `
 export const ActionContainer = styled.div`
-	color: ${({ action }) => ( action ? action.color : '#000')};
-`
+	display: ${({ action }) => (action.event ? 'block' : 'none')};
+	background-color: ${({ action }) => (action ? action.bgColor : 'red')};
+	color: ${({ action }) => (action ? action.color : 'red')};
+	margin: 5px;
+	padding: 5px;
+	border-radius: 10px;
+	border: ${({ action }) => (action ? 'solid black 4px' : '#000')};
+`;

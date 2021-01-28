@@ -15,8 +15,6 @@ import {
 const EnemyField = ({ enemyUnits, functions }) => {
 	const [enemyInfo, setEnemyInfo] = useState('')
 
-	console.log(enemyUnits)
-
 	useEffect(() => {
 
 	}, [enemyUnits])

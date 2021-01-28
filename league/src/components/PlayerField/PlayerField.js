@@ -42,10 +42,8 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 		return array;
 	}
 
-	console.log('playerTeam:', playerTeam)
 
 	useEffect(() => {
-		// console.log(involved)
 		setCardHand(allCards.slice(0, 5));
 	}, [activeTitans, functions, playerTeam, allCards, session]);
 

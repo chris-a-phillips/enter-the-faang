@@ -45,11 +45,15 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 					target.isAlive = false;
 					console.log(`${target.name} died from the attack`);
 				}
-			}
-			console.log(this)
-			return {
-				event: `${this.name} attacked ${target.name} and now it has ${target.health}`,
-				color: this.showcase.speciesColor
+				return {
+					event: `${this.name} attacked ${target.name} and now it has ${target.health}`,
+					bgColor: this.showcase.rankColor,
+					color: '#fff'
+				};
+			} else return {
+				event: `${this.name} couldn't attack becuase it was defeated by a faster unit`,
+				bgColor: this.showcase.rankColor,
+				color: '#fff',
 			};
 		}
 	}

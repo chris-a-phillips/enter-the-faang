@@ -118,6 +118,7 @@ const GameBoard = ({
 		allUnitsOnField
 			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 			.forEach((u) => {
+				if (!u.isKingdom) {
 				// EACH TITAN ATTACKS FROM THE QUEUE
 				setTimeout(() => {
 					if (u.method) {
@@ -143,45 +144,37 @@ const GameBoard = ({
 					functions.check(playerKingdoms);
 					functions.check(enemyUnits);
 					functions.check(allCards);
-					console.log(session.eventLog);
 					setAllUnitsOnField(listUnits());
 				}, timer);
 				timer += 1500;
+			}
 			});
-		session.takeTurn();
+			session.eventLog.unshift({
+				event: 'PLAYER TURN',
+			});
+			console.log(session.eventLog);
+			session.takeTurn();
 	};
-	
-	const listUnits = useCallback(
-		() => {
-			let res = [];
-			for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
-				res.push(playerTeam[i]);
-			}
-			for (let i = 0; i < playerKingdoms.length; i++) {
-				res.push(playerKingdoms[i]);
-			}
-			for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
-				res.push(enemyUnits[i]);
-			}
-			return res;
-		},
-		[enemyUnits, playerTeam, playerKingdoms],
-	)
-	
-	
+
+	const listUnits = useCallback(() => {
+		let res = [];
+		for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
+			res.push(playerTeam[i]);
+		}
+		for (let i = 0; i < playerKingdoms.length; i++) {
+			res.push(playerKingdoms[i]);
+		}
+		for (let i = 0; i < enemyUnits.slice(0, 5).length; i++) {
+			res.push(enemyUnits[i]);
+		}
+		return res;
+	}, [enemyUnits, playerTeam, playerKingdoms]);
 
 	useEffect(() => {
 		if (playerTeam) {
 			setAllUnitsOnField(listUnits());
 		}
-	}, [
-		enemyUnits,
-		playerTeam,
-		playerKingdoms,
-		session,
-		session.eventLog,
-	]);
-
+	}, [enemyUnits, playerTeam, playerKingdoms, session, session.eventLog]);
 
 	return (
 		<GameBoardWrapper>
@@ -198,7 +191,7 @@ const GameBoard = ({
 							<ActionContainer action={action}>
 								<p>{action.event}</p>
 							</ActionContainer>
-						)
+						);
 					})}
 				</SessionLogContainer>
 			</GameInfoContainer>

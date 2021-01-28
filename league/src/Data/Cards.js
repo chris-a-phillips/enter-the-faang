@@ -43,7 +43,11 @@ class AttackCard extends Card {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 			}
             initiator.energy = initiator.showcase.energy
-            return `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`;
+            return {
+				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`,
+				bgColor: initiator.showcase.colors.secondary,
+				color: '#000',
+			};
 	}
 }
 
@@ -69,9 +73,9 @@ class HealCard extends Card {
             if (target.health + initiator.defense > target.maxHealth) {
                 target.health = target.maxHealth
             } else {target.health += initiator.defense}
-			console.log(`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`);
+            console.log(`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`);
+            console.log(initiator)
 		}
-
 		if (initiator === target) {
 			console.log('CHOOSE NEW TARGET');
 		}
@@ -79,7 +83,12 @@ class HealCard extends Card {
 			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 		}
         initiator.energy = initiator.showcase.energy;
-        return `card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`;
+        console.log('INITIATOR:', initiator.showcase)
+            return {
+				event: `card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`,
+				bgColor: initiator.showcase.colors.secondary,
+				color: '#000',
+			};
 	}
 }
 
@@ -113,7 +122,10 @@ class SupportCard extends Card {
 			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 		}
         initiator.energy = initiator.showcase.energy;
-        return '======= FIGURE OUT WHAT THE SUPPORTS DO ======='
+            return {
+                event: '======= FIGURE OUT WHAT THE SUPPORTS DO =======',
+                color: this.colors.secondary,
+            };
 	}
 }
 
