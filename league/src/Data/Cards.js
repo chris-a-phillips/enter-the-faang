@@ -28,12 +28,8 @@ class AttackCard extends Card {
             target.health -= initiator.attack;
             this.isUsed = true
             initiator.energy -= this.energy
-            console.log(
-                `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`
-                );
                 if (target.health <= 0) {
                     target.isAlive = false;
-                    console.log(`${target.name} died from the attack`);
                 }
             }
             if (initiator === target) {
@@ -43,7 +39,13 @@ class AttackCard extends Card {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 			}
             initiator.energy = initiator.showcase.energy
-            return {
+            if (target.health <= 0) {
+                return {
+					event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and it was defeated`,
+					bgColor: initiator.showcase.colors.secondary,
+					color: '#000',
+				};
+            } else return {
 				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`,
 				bgColor: initiator.showcase.colors.secondary,
 				color: '#000',
@@ -64,17 +66,20 @@ class HealCard extends Card {
 	}
 	effect(initiator, target) {
         this.speed = initiator.speed;
+        let res = null
         if (target.isFaang) {
             console.log('CHOOSE NEW TARGET')
         }
 		if (initiator !== target && initiator.energy >= this.energy && !target.isFaang) {
 			this.isUsed = true;
             initiator.energy -= this.energy;
-            if (target.health + initiator.defense > target.maxHealth) {
-                target.health = target.maxHealth
-            } else {target.health += initiator.defense}
-            console.log(`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`);
-            console.log(initiator)
+            if (initiator.isAlive && target.isAlive) {
+                if (target.health + initiator.defense > target.maxHealth) {
+                    target.health = target.maxHealth
+                } else {target.health += initiator.defense}
+                res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${target.health} health remaining`
+                console.log(initiator)
+            } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;
 		}
 		if (initiator === target) {
 			console.log('CHOOSE NEW TARGET');
@@ -85,7 +90,7 @@ class HealCard extends Card {
         initiator.energy = initiator.showcase.energy;
         console.log('INITIATOR:', initiator.showcase)
             return {
-				event: `card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`,
+				event: res,
 				bgColor: initiator.showcase.colors.secondary,
 				color: '#000',
 			};
