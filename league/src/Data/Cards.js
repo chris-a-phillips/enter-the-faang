@@ -111,12 +111,6 @@ class SupportCard extends Card {
 	effect(initiator, target) {
 		this.speed = initiator.speed;
 		if (initiator !== target && initiator.energy >= this.energy) {
-			// target.health += initiator.defense;
-			// this.isUsed = true;
-			// initiator.energy -= this.energy;
-			// console.log(
-			// 	`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`
-            // );
             console.log('it works')
 		}
 

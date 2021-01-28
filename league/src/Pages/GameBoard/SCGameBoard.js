@@ -13,7 +13,6 @@ export const GameRulesModal = styled.div`
 	width: 90vh;
 	height: 90vh;
 	z-index: 2;
-	/* background-color: white; */
 	position: fixed;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -23,6 +22,9 @@ export const GameRulesModal = styled.div`
 
 export const BoardContainer = styled.div`
 	padding: 1rem;
+	background-color: red;
+	width: 90vh;
+	height: 90vh;
 `;
 
 export const GameInfoContainer = styled.div``;
