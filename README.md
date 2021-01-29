@@ -152,6 +152,6 @@ Contributions are what make the open source community such an amazing place to b
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [Chris Phillips LinkedIn](https://www.linkedin.com/in/chris-a-phillips/) - phillipsachris@gmail.com
+Chris Phillips - [Chris Phillips LinkedIn](https://www.linkedin.com/in/chris-a-phillips/) - phillipsachris@gmail.com
 
 Project Link: [https://github.com/chris-a-phillips/enter-the-faang/](https://github.com/chris-a-phillips/enter-the-faang/)
