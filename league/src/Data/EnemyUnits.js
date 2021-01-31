@@ -40,15 +40,21 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		attackUnit(target) {
 			if (this.isAlive) {
 				target.currentHealth -= this.attack;
+				let percent = (Math.ceil((target.currentHealth / target.maxHealth) * 100));
+				console.log('PERCENT:', percent);
 				console.log(
 					`${this.name} attacked ${target.name} and now it has ${target.currentHealth}`
 				);
+
 				if (target.currentHealth <= 0) {
 					target.isAlive = false;
-					console.log(`${target.name} died from the attack`);
-				}
-				return {
-					event: `${this.name} attacked ${target.name} and now it has ${target.currentHealth}`,
+					return {
+						event: `${this.name} attacked ${target.name} and it was defeated`,
+						bgColor: this.showcase.rankColor,
+						color: '#fff',
+					};
+				} else return {
+					event: `${this.name} attacked ${target.name} and now it has ${percent}% health remaining`,
 					bgColor: this.showcase.rankColor,
 					color: '#fff'
 				};

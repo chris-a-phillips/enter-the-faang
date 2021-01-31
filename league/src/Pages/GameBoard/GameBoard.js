@@ -213,12 +213,12 @@ const GameBoard = ({
 						session={session}
 					/>
 					</PlayerFieldContainer>
-					<KingdomFieldContainer>
+					{/* <KingdomFieldContainer>
 					<KingdomField
 						playerKingdoms={playerKingdoms}
 						functions={functions}
 					/>
-					</KingdomFieldContainer>
+					</KingdomFieldContainer> */}
 				</>
 			) : null}
 		</GameBoardWrapper>
