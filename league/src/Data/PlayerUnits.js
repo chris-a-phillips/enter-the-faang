@@ -9,8 +9,8 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				name,
 				element,
 				kingdom,
+				currentHealth,
 				maxHealth,
-				health,
 				attack,
 				defense,
 				regeneration,
@@ -26,7 +26,7 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				this.name = name;
 				this.element = element;
 				this.kingdom = kingdom;
-				this.health = health;
+				this.currentHealth = currentHealth;
 				this.maxHealth = maxHealth;
 				this.attack = attack;
 				this.defense = defense;
@@ -41,10 +41,10 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			}
 			attackUnit(unit) {
 				console.log(
-					`${this.name} attacked ${unit.name} and now it has ${unit.health} health remaining`
+					`${this.name} attacked ${unit.name} and now it has ${unit.currentHealth} health remaining`
 				);
-				unit.health -= this.attack;
-				if (unit.health <= 0) {
+				unit.currentHealth -= this.attack;
+				if (unit.currentHealth <= 0) {
 					unit.isAlive = false;
 					console.log(`${unit.name} died from the attack`);
 				}

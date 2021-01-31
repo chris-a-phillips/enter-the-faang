@@ -7,7 +7,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	class BasicFaang {
 		constructor(
 			name,
-			health,
+			currentHealth,
+			maxHealth,
 			attack,
 			defense,
 			regeneration,
@@ -25,7 +26,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			this.showcase = showcase;
 			// stats
 			this.name = name;
-			this.health = health;
+			this.currentHealth = currentHealth;
+			this.maxHealth = maxHealth;
 			this.attack = attack;
 			this.defense = defense;
 			this.regeneration = regeneration;
@@ -37,16 +39,16 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		}
 		attackUnit(target) {
 			if (this.isAlive) {
-				target.health -= this.attack;
+				target.currentHealth -= this.attack;
 				console.log(
-					`${this.name} attacked ${target.name} and now it has ${target.health}`
+					`${this.name} attacked ${target.name} and now it has ${target.currentHealth}`
 				);
-				if (target.health <= 0) {
+				if (target.currentHealth <= 0) {
 					target.isAlive = false;
 					console.log(`${target.name} died from the attack`);
 				}
 				return {
-					event: `${this.name} attacked ${target.name} and now it has ${target.health}`,
+					event: `${this.name} attacked ${target.name} and now it has ${target.currentHealth}`,
 					bgColor: this.showcase.rankColor,
 					color: '#fff'
 				};
@@ -61,7 +63,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	class AdvancedFaang extends BasicFaang {
 		constructor(
 			name,
-			health,
+			currentHealth,
+			maxHealth,
 			attack,
 			defense,
 			regeneration,
@@ -73,7 +76,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		) {
 			super(
 				name,
-				health,
+				currentHealth,
+				maxHealth,
 				attack,
 				defense,
 				regeneration,
@@ -91,7 +95,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	class EliteFaang extends AdvancedFaang {
 		constructor(
 			name,
-			health,
+			currentHealth,
+			maxHealth,
 			attack,
 			defense,
 			regeneration,
@@ -103,7 +108,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		) {
 			super(
 				name,
-				health,
+				currentHealth,
+				maxHealth,
 				attack,
 				defense,
 				regeneration,
@@ -150,6 +156,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				new BasicFaang(
 					randomUnit.name,
 					randomUnit.health,
+					randomUnit.health,
 					randomUnit.attack,
 					randomUnit.defense,
 					randomUnit.regeneration,
@@ -180,6 +187,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				new AdvancedFaang(
 					randomUnit.name,
 					randomUnit.health,
+					randomUnit.health,
 					randomUnit.attack,
 					randomUnit.defense,
 					randomUnit.regeneration,
@@ -209,6 +217,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			unitPool.push(
 				new EliteFaang(
 					randomUnit.name,
+					randomUnit.health,
 					randomUnit.health,
 					randomUnit.attack,
 					randomUnit.defense,

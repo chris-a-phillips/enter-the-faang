@@ -25,10 +25,10 @@ class AttackCard extends Card {
 	effect(initiator, target) {
         this.speed = initiator.speed
         if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
-            target.health -= initiator.attack;
+            target.currentHealth -= initiator.attack;
             this.isUsed = true
             initiator.energy -= this.energy
-                if (target.health <= 0) {
+                if (target.currentHealth <= 0) {
                     target.isAlive = false;
                 }
             }
@@ -39,14 +39,14 @@ class AttackCard extends Card {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 			}
             initiator.energy = initiator.showcase.energy
-            if (target.health <= 0) {
+            if (target.currentHealth <= 0) {
                 return {
 					event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and it was defeated`,
 					bgColor: initiator.showcase.colors.secondary,
 					color: '#000',
 				};
             } else return {
-				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`,
+				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.currentHealth} health remaining`,
 				bgColor: initiator.showcase.colors.secondary,
 				color: '#000',
 			};
@@ -74,10 +74,10 @@ class HealCard extends Card {
 			this.isUsed = true;
             initiator.energy -= this.energy;
             if (initiator.isAlive && target.isAlive) {
-                if (target.health + initiator.defense > target.maxHealth) {
-                    target.health = target.maxHealth
-                } else {target.health += initiator.defense}
-                res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${target.health} health remaining`
+                if (target.currentHealth + initiator.defense > target.maxHealth) {
+                    target.currentHealth = target.maxHealth
+                } else {target.currentHealth += initiator.defense}
+                res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${target.currentHealth} health remaining`
                 console.log(initiator)
             } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;
 		}

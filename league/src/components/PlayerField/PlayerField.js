@@ -62,7 +62,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							functions.choose(titan);
 						}}>
 							<TitanName titan={titan}>{titan.name}</TitanName>
-							<TitanHealth>{titan.health}</TitanHealth>
+							<TitanHealth>{titan.currentHealth}</TitanHealth>
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>

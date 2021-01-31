@@ -36,7 +36,7 @@ export const KingdomStats = styled.div`
 	display: ${({ hidden }) => (hidden ? 'none' : 'inline-block')};
 `;
 
-export const KingdomHealthContainer = styled.div`
+export const HealthBarContainer = styled.div`
 	background-color: ${({ kingdom }) => (kingdom ? 'gray' : '#2b2d2f')};
 	border-radius: 25px;
 	margin: 5px;

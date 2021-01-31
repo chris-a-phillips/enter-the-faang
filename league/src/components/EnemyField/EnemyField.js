@@ -38,7 +38,7 @@ const EnemyField = ({ enemyUnits, functions }) => {
 									</FaangName>
 								</FaangHeader>
 								<FaangHealth>
-									<p>health: {Math.floor(unit.health)}</p>
+									<p>health: {Math.floor(unit.currentHealth)}</p>
 								</FaangHealth>
 							</FaangContent>
 							<EnemyRank>
