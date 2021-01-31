@@ -10,7 +10,7 @@
   <h3 align="center">Enter the FAANG</h3>
 
   <p align="center">
-    A game inspired by Slay the Spire
+    Card Game with inspirations from a lot of games together
     <br />
     <a href="https://github.com/chris-a-phillips/enter-the-faang/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
