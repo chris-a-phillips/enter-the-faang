@@ -12,3 +12,9 @@ class Game {
 }
 
 export const session = new Game()
+
+const calculations = {
+    damage: function name(params) {
+        
+    }
+}

@@ -5,7 +5,6 @@ class Card {
         this.energy = energy;
         this.isUsed = false;
     }
-
 }
 // HEX COLORS
 // ATTACK = #FFA936, #806441
@@ -23,15 +22,19 @@ class AttackCard extends Card {
         this.description = `Deals damage to the enemy with ${this.strength} power.`;
 	}
 	effect(initiator, target) {
+        let percent
         this.speed = initiator.speed
         if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
             target.currentHealth -= initiator.attack;
             this.isUsed = true
             initiator.energy -= this.energy
-                if (target.currentHealth <= 0) {
-                    target.isAlive = false;
-                }
+            if (target.currentHealth <= 0) {
+                target.isAlive = false;
             }
+            percent = Math.ceil(
+				(target.currentHealth / target.maxHealth) * 100
+			);
+        }
             if (initiator === target) {
                 console.log('CHOOSE NEW TARGET');
             }
@@ -40,13 +43,14 @@ class AttackCard extends Card {
 			}
             initiator.energy = initiator.showcase.energy
             if (target.currentHealth <= 0) {
+                target.isAlive = false
                 return {
 					event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and it was defeated`,
 					bgColor: initiator.showcase.colors.secondary,
 					color: '#000',
 				};
             } else return {
-				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.currentHealth} health remaining`,
+				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${percent}% health remaining`,
 				bgColor: initiator.showcase.colors.secondary,
 				color: '#000',
 			};
@@ -65,6 +69,7 @@ class HealCard extends Card {
         this.description = `Heals the target with ${this.strength} power.`;
 	}
 	effect(initiator, target) {
+        let percent
         this.speed = initiator.speed;
         let res = null
         if (target.isFaang) {
@@ -76,8 +81,12 @@ class HealCard extends Card {
             if (initiator.isAlive && target.isAlive) {
                 if (target.currentHealth + initiator.defense > target.maxHealth) {
                     target.currentHealth = target.maxHealth
+                    percent = Math.ceil(
+                        (target.currentHealth / target.maxHealth) *
+                            100
+                    );
                 } else {target.currentHealth += initiator.defense}
-                res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${target.currentHealth} health remaining`
+                res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${percent}% health remaining`
                 console.log(initiator)
             } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;
 		}
