@@ -1,7 +1,7 @@
 class Game {
     constructor() {
         this.turnNumber = 0;
-        this.events = [];
+        this.eventLog = [];
         this.player = null;
         this.currentTurn = 'player'
     }

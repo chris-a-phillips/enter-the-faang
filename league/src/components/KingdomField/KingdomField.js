@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomsFlexContainer, KingdomHealth } from './SCKingdomField';
+import { KingdomFieldWrapper, KingdomFieldLabel, KingdomName, KingdomStats, KingdomContainer, KingdomsFlexContainer, HealthBarContainer, HealthBar } from './SCKingdomField';
 
 const KingdomField = ({ playerKingdoms, functions }) => {
 	const [hidden, setHidden] = useState(true)
@@ -16,8 +16,21 @@ const KingdomField = ({ playerKingdoms, functions }) => {
 						onMouseLeave={() => setHidden(true)}
 						key={kingdom.name}
 						onClick={() => functions.choose(kingdom)}>
-						<KingdomName kingdom={kingdom}>{kingdom.name}</KingdomName>
-						<KingdomHealth>{kingdom.health}</KingdomHealth>
+						<KingdomName kingdom={kingdom}>
+							{kingdom.name}
+						</KingdomName>
+						<HealthBarContainer kingdom={kingdom}>
+							<HealthBar
+								kingdom={kingdom}
+								percent={Math.ceil(
+									(kingdom.currentHealth / kingdom.maxHealth) * 100
+								)}>
+								{Math.ceil(
+									(kingdom.currentHealth / kingdom.maxHealth) * 100
+								)}
+								%
+							</HealthBar>
+						</HealthBarContainer>
 						<KingdomStats hidden={hidden}>
 							<p>Health: {kingdom.showcase.health}/10</p>
 							<p>Attack: {kingdom.showcase.attack}/10</p>

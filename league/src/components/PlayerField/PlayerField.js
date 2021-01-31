@@ -1,21 +1,22 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { GameContext } from '../GameContext';
+import React, { useState, useEffect } from 'react';
 import {
 	CardButton,
 	CardContainer,
 	CardFlexContainer,
 	CardHeading,
+	HealthBar,
+	HealthBarContainer,
 	PlayerFieldLabel,
 	PlayerFieldWrapper,
 	PlayerFlexContainer,
 	TitanContainer,
-	TitanHealth,
 	TitanName,
+	TitanReserve,
+	TitanReserveContainer,
 	TitanStats,
 } from './SCPlayerField';
 
-const PlayerField = ({ playerTeam, functions, allCards }) => {
-	const { involved, setInvolved } = useContext(GameContext);
+const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
 
@@ -45,13 +46,12 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 	}
 
 	useEffect(() => {
-		// console.log(involved)
 		setCardHand(allCards.slice(0, 5));
-	}, [activeTitans, functions, playerTeam, allCards]);
+	}, [activeTitans, functions, playerTeam, allCards, session]);
 
 	return (
 		<PlayerFieldWrapper>
-			<PlayerFieldLabel>Titans</PlayerFieldLabel>
+				<PlayerFieldLabel>Active Titans</PlayerFieldLabel>
 			<PlayerFlexContainer>
 				{playerTeam.slice(0, 2).map((titan) => {
 					return (
@@ -63,7 +63,22 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 								functions.choose(titan);
 							}}>
 							<TitanName titan={titan}>{titan.name}</TitanName>
-							<TitanHealth>{titan.health}</TitanHealth>
+							<HealthBarContainer titan={titan}>
+								<HealthBar
+									titan={titan}
+									percent={Math.ceil(
+										(titan.currentHealth /
+											titan.maxHealth) *
+											100
+									)}>
+									{Math.ceil(
+										(titan.currentHealth /
+											titan.maxHealth) *
+											100
+									)}
+									%
+								</HealthBar>
+							</HealthBarContainer>{' '}
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>
@@ -73,28 +88,46 @@ const PlayerField = ({ playerTeam, functions, allCards }) => {
 						</TitanContainer>
 					);
 				})}
+				<TitanReserveContainer>
+					<PlayerFieldLabel>Reserves</PlayerFieldLabel>
+					{playerTeam.slice(2).map((titan) => {
+						return (
+							<TitanReserve
+								titan={titan}
+								key={titan.name}
+								onClick={() => {
+									functions.initiate(titan);
+									functions.choose(titan);
+								}}>
+								<TitanName titan={titan}>
+									{titan.name}
+								</TitanName>
+								<TitanStats>
+									<p>{titan.kingdom}</p>
+								</TitanStats>
+							</TitanReserve>
+						);
+					})}
+				</TitanReserveContainer>
 			</PlayerFlexContainer>
+			<PlayerFieldLabel>Cards</PlayerFieldLabel>
 			<CardFlexContainer>
 				{cardHand.map((card) => {
 					return (
-						<CardContainer 
-						card={card}
-						key={card.name}>
+						<CardContainer card={card} key={card.name}>
 							<CardHeading card={card}>
-							<p>{card.name}</p>
-							<p>{card.type}</p>
-							<p>{card.strength}</p>
+								<p>{card.name}</p>
+								<p>{card.type}</p>
+								<p>{card.strength}</p>
 							</CardHeading>
 							<p>{card.description}</p>
-							<CardButton 
-							onClick={() => functions.useCard(card)}>
+							<CardButton onClick={() => functions.useCard(card)}>
 								{card.type}
 							</CardButton>
 						</CardContainer>
 					);
 				})}
 			</CardFlexContainer>
-			{playerTeam.slice(2).map((titan) => titan.name)}
 		</PlayerFieldWrapper>
 	);
 };

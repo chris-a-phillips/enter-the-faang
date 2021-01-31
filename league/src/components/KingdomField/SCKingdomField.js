@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const KingdomFieldWrapper = styled.div`
-    text-align: center;
-    /* background-color: peachpuff; */
-    `;
+	text-align: center;
+	/* background-color: peachpuff; */
+`;
 
 export const KingdomsFlexContainer = styled.div`
 	display: flex;
@@ -23,20 +23,40 @@ export const KingdomContainer = styled.div`
 		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 `;
 
-export const KingdomFieldLabel = styled.h2`
-
-`;
+export const KingdomFieldLabel = styled.h2``;
 
 export const KingdomName = styled.h3`
 	background-color: ${({ kingdom }) =>
 		kingdom.isAlive ? kingdom.showcase.colors.primary : 'black'};
-        border-radius: 3px;
-        padding: 5px;
+	border-radius: 3px;
+	padding: 5px;
 `;
 
-
-export const KingdomHealth = styled.div``;
-
 export const KingdomStats = styled.div`
-    display: ${({ hidden }) => (hidden ? 'none' : 'inline-block')}
+	display: ${({ hidden }) => (hidden ? 'none' : 'inline-block')};
+`;
+
+export const HealthBarContainer = styled.div`
+	background-color: ${({ kingdom }) => (kingdom ? 'gray' : '#2b2d2f')};
+	border-radius: 25px;
+	margin: 5px;
+	padding: 3px;
+`;
+
+export const HealthBar = styled.div`
+	background-color: ${
+		({ percent }) =>
+			percent === 100
+				? '#32E058'
+				: percent > 75
+				? '#2ABD49' // if
+				: percent > 50
+				? '#CBD448' // else if
+				: percent > 25
+				? '#D48F3D' // else if
+				: '#C94A3A' // else
+	};
+	width: ${({ kingdom, percent }) =>
+		kingdom ? `${percent}%` : 'inline-block'};
+	border-radius: 25px;
 `;

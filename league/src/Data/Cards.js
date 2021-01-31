@@ -24,26 +24,32 @@ class AttackCard extends Card {
 	}
 	effect(initiator, target) {
         this.speed = initiator.speed
-        if (initiator !== target && initiator.energy >= this.energy) {
-            target.health -= initiator.attack;
+        if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
+            target.currentHealth -= initiator.attack;
             this.isUsed = true
             initiator.energy -= this.energy
-            console.log(
-                `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.health} health remaining`
-                );
-                if (target.health <= 0) {
+                if (target.currentHealth <= 0) {
                     target.isAlive = false;
-                    console.log(`${target.name} died from the attack`);
                 }
             }
-            
-        if(initiator === target) {
+            if (initiator === target) {
                 console.log('CHOOSE NEW TARGET');
             }
-        if (initiator.energy < this.energy) {
+            if (initiator.energy < this.energy) {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 			}
             initiator.energy = initiator.showcase.energy
+            if (target.currentHealth <= 0) {
+                return {
+					event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and it was defeated`,
+					bgColor: initiator.showcase.colors.secondary,
+					color: '#000',
+				};
+            } else return {
+				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${target.currentHealth} health remaining`,
+				bgColor: initiator.showcase.colors.secondary,
+				color: '#000',
+			};
 	}
 }
 
@@ -60,25 +66,34 @@ class HealCard extends Card {
 	}
 	effect(initiator, target) {
         this.speed = initiator.speed;
+        let res = null
         if (target.isFaang) {
             console.log('CHOOSE NEW TARGET')
         }
 		if (initiator !== target && initiator.energy >= this.energy && !target.isFaang) {
 			this.isUsed = true;
             initiator.energy -= this.energy;
-            if (target.health + initiator.defense > target.maxHealth) {
-                target.health = target.maxHealth
-            } else {target.health += initiator.defense}
-			console.log(`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`);
+            if (initiator.isAlive && target.isAlive) {
+                if (target.currentHealth + initiator.defense > target.maxHealth) {
+                    target.currentHealth = target.maxHealth
+                } else {target.currentHealth += initiator.defense}
+                res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${target.currentHealth} health remaining`
+                console.log(initiator)
+            } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;
 		}
-
 		if (initiator === target) {
 			console.log('CHOOSE NEW TARGET');
 		}
 		if (initiator.energy < this.energy) {
 			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 		}
-		initiator.energy = initiator.showcase.energy;
+        initiator.energy = initiator.showcase.energy;
+        console.log('INITIATOR:', initiator.showcase)
+            return {
+				event: res,
+				bgColor: initiator.showcase.colors.secondary,
+				color: '#000',
+			};
 	}
 }
 
@@ -96,12 +111,6 @@ class SupportCard extends Card {
 	effect(initiator, target) {
 		this.speed = initiator.speed;
 		if (initiator !== target && initiator.energy >= this.energy) {
-			// target.health += initiator.defense;
-			// this.isUsed = true;
-			// initiator.energy -= this.energy;
-			// console.log(
-			// 	`card ${this.name} was used by ${initiator.name} to heal ${target.name} and now it has ${target.health} health remaining`
-            // );
             console.log('it works')
 		}
 
@@ -111,7 +120,11 @@ class SupportCard extends Card {
 		if (initiator.energy < this.energy) {
 			console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
 		}
-		initiator.energy = initiator.showcase.energy;
+        initiator.energy = initiator.showcase.energy;
+            return {
+                event: '======= FIGURE OUT WHAT THE SUPPORTS DO =======',
+                color: this.colors.secondary,
+            };
 	}
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
 	EnemyFieldWrapper,
@@ -6,36 +6,58 @@ import {
 	EnemyFlexContainer,
 	FaangContainer,
 	FaangName,
-	FaangHealth,
+	HealthBar,
+	HealthBarContainer,
 	FaangHeader,
 	FaangContent,
 	EnemyRank,
 } from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
+	const [enemyInfo, setEnemyInfo] = useState('');
+
+	useEffect(() => {}, [enemyUnits]);
 
 	return (
 		<EnemyFieldWrapper>
-			<EnemyFieldLabel>Enemies</EnemyFieldLabel>
+			<EnemyFieldLabel>
+				Enemies
+				{enemyUnits.length}
+			</EnemyFieldLabel>
 			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {
 					return (
 						<FaangContainer
 							unit={unit}
-							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
+							key={enemyUnits.indexOf(unit)}
 							onClick={() => functions.choose(unit)}>
 							<FaangContent unit={unit}>
 								<FaangHeader unit={unit}>
 									<FaangName>
-										{unit.pedigree} {unit.name}
+										<h4>{unit.pedigree}</h4>
+										<h4>{unit.name}</h4>
 									</FaangName>
 								</FaangHeader>
-								<FaangHealth>
-									health: {Math.floor(unit.health)}
-								</FaangHealth>
+								<HealthBarContainer unit={unit}>
+									<HealthBar
+										unit={unit}
+										percent={Math.ceil(
+											(unit.currentHealth /
+												unit.maxHealth) *
+												100
+										)}>
+										{Math.ceil(
+											(unit.currentHealth /
+												unit.maxHealth) *
+												100
+										)}
+										%
+									</HealthBar>
+								</HealthBarContainer>
 							</FaangContent>
 							<EnemyRank>
-								{unit.rank} {unit.species}
+								<h5>{unit.rank}</h5>
+								<h5>{unit.species}</h5>
 							</EnemyRank>
 						</FaangContainer>
 					);
