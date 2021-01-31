@@ -46,13 +46,15 @@ export const HealthBarContainer = styled.div`
 export const HealthBar = styled.div`
 	background-color: ${
 		({ percent }) =>
-			percent > 75
-				? 'green' // if
+			percent === 100
+				? '#32E058'
+				: percent > 75
+				? '#2ABD49' // if
 				: percent > 50
-				? 'yellow' // else if
+				? '#CBD448' // else if
 				: percent > 25
-				? 'orange' // else if
-				: 'red' // else
+				? '#D48F3D' // else if
+				: '#C94A3A' // else
 	};
 	width: ${({ kingdom, percent }) =>
 		kingdom ? `${percent}%` : 'inline-block'};
