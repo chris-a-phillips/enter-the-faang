@@ -41,12 +41,12 @@ const EnemyField = ({ enemyUnits, functions }) => {
 								<HealthBarContainer unit={unit}>
 									<HealthBar
 										unit={unit}
-										percent={Math.round(
+										percent={Math.ceil(
 											(unit.currentHealth /
 												unit.maxHealth) *
 												100
 										)}>
-										{Math.round(
+										{Math.ceil(
 											(unit.currentHealth /
 												unit.maxHealth) *
 												100

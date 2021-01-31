@@ -22,10 +22,10 @@ const KingdomField = ({ playerKingdoms, functions }) => {
 						<HealthBarContainer kingdom={kingdom}>
 							<HealthBar
 								kingdom={kingdom}
-								percent={Math.round(
+								percent={Math.ceil(
 									(kingdom.currentHealth / kingdom.maxHealth) * 100
 								)}>
-								{Math.round(
+								{Math.ceil(
 									(kingdom.currentHealth / kingdom.maxHealth) * 100
 								)}
 								%

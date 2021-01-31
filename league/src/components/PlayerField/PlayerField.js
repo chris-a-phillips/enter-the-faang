@@ -66,12 +66,12 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							<HealthBarContainer titan={titan}>
 								<HealthBar
 									titan={titan}
-									percent={Math.round(
+									percent={Math.ceil(
 										(titan.currentHealth /
 											titan.maxHealth) *
 											100
 									)}>
-									{Math.round(
+									{Math.ceil(
 										(titan.currentHealth /
 											titan.maxHealth) *
 											100
