@@ -6,7 +6,8 @@ import {
 	EnemyFlexContainer,
 	FaangContainer,
 	FaangName,
-	FaangHealth,
+	HealthBar,
+	HealthBarContainer,
 	FaangHeader,
 	FaangContent,
 	EnemyRank,
@@ -37,9 +38,22 @@ const EnemyField = ({ enemyUnits, functions }) => {
 										<h4>{unit.name}</h4>
 									</FaangName>
 								</FaangHeader>
-								<FaangHealth>
-									<p>health: {Math.floor(unit.currentHealth)}</p>
-								</FaangHealth>
+								<HealthBarContainer unit={unit}>
+									<HealthBar
+										unit={unit}
+										percent={Math.round(
+											(unit.currentHealth /
+												unit.maxHealth) *
+												100
+										)}>
+										{Math.round(
+											(unit.currentHealth /
+												unit.maxHealth) *
+												100
+										)}
+										%
+									</HealthBar>
+								</HealthBarContainer>
 							</FaangContent>
 							<EnemyRank>
 								<h5>{unit.rank}</h5>

@@ -48,6 +48,28 @@ export const EnemyFieldLabel = styled.h2`
 
 export const FaangName = styled.h3``;
 
-export const FaangHealth = styled.div``;
-
 export const FaangStats = styled.div``;
+
+export const HealthBarContainer = styled.div`
+	background-color: ${({ unit }) => (unit ? 'gray' : '#2b2d2f')};
+	border-radius: 25px;
+	margin: 5px;
+	padding: 3px;
+`;
+
+export const HealthBar = styled.div`
+	background-color: ${
+		({ percent }) =>
+			percent === 100
+				? '#32E058'
+				: percent > 75
+				? '#2ABD49' // if
+				: percent > 50
+				? '#CBD448' // else if
+				: percent > 25
+				? '#D48F3D' // else if
+				: '#C94A3A' // else
+	};
+	width: ${({ unit, percent }) => (unit ? `${percent}%` : 'inline-block')};
+	border-radius: 25px;
+`;

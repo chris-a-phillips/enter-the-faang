@@ -4,11 +4,12 @@ import {
 	CardContainer,
 	CardFlexContainer,
 	CardHeading,
+	HealthBar,
+	HealthBarContainer,
 	PlayerFieldLabel,
 	PlayerFieldWrapper,
 	PlayerFlexContainer,
 	TitanContainer,
-	TitanHealth,
 	TitanName,
 	TitanReserve,
 	TitanReserveContainer,
@@ -55,14 +56,29 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 				{playerTeam.slice(0, 2).map((titan) => {
 					return (
 						<TitanContainer
-						titan={titan}
-						key={titan.name}
-						onClick={() => {
-							functions.initiate(titan);
-							functions.choose(titan);
-						}}>
+							titan={titan}
+							key={titan.name}
+							onClick={() => {
+								functions.initiate(titan);
+								functions.choose(titan);
+							}}>
 							<TitanName titan={titan}>{titan.name}</TitanName>
-							<TitanHealth>{titan.currentHealth}</TitanHealth>
+							<HealthBarContainer titan={titan}>
+								<HealthBar
+									titan={titan}
+									percent={Math.round(
+										(titan.currentHealth /
+											titan.maxHealth) *
+											100
+									)}>
+									{Math.round(
+										(titan.currentHealth /
+											titan.maxHealth) *
+											100
+									)}
+									%
+								</HealthBar>
+							</HealthBarContainer>{' '}
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>

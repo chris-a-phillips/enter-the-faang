@@ -2,8 +2,6 @@ import React, { useEffect } from 'react';
 
 const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 
-	console.log(playerTeam)
-
 	class Kingdom {
 		constructor(name, maxHealth, currentHealth, defense, regeneration, showcase) {
 			// specs

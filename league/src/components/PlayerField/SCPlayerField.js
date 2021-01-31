@@ -60,8 +60,6 @@ export const TitanName = styled.h3`
 	padding: 5px;
 `;
 
-export const TitanHealth = styled.div``;
-
 export const TitanStats = styled.div``;
 
 export const CardFlexContainer = styled(PlayerFlexContainer)`
@@ -92,4 +90,29 @@ export const CardHeading = styled.div`
 
 export const CardButton = styled.button`
 	font-size: 1rem;
+`;
+
+export const HealthBarContainer = styled.div`
+	background-color: ${({ titan }) => (titan ? 'gray' : '#2b2d2f')};
+	border-radius: 25px;
+	margin: 5px;
+	padding: 3px;
+`;
+
+export const HealthBar = styled.div`
+	background-color: ${
+		({ percent }) =>
+			percent === 100
+				? '#32E058'
+				: percent > 75
+				? '#2ABD49' // if
+				: percent > 50
+				? '#CBD448' // else if
+				: percent > 25
+				? '#D48F3D' // else if
+				: '#C94A3A' // else
+	};
+	width: ${({ titan, percent }) =>
+		titan ? `${percent}%` : 'inline-block'};
+	border-radius: 25px;
 `;
