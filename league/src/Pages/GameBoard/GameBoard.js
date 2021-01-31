@@ -191,7 +191,9 @@ const GameBoard = ({
 					<h1>session stuff</h1>
 					{session.eventLog.map((action) => {
 						return (
-							<ActionContainer action={action}>
+							<ActionContainer action={action}
+							key={session.eventLog.indexOf(action)}
+							>
 								<p>{action.event}</p>
 							</ActionContainer>
 						);
@@ -211,12 +213,12 @@ const GameBoard = ({
 						session={session}
 					/>
 					</PlayerFieldContainer>
-					<KingdomFieldContainer>
+					{/* <KingdomFieldContainer>
 					<KingdomField
 						playerKingdoms={playerKingdoms}
 						functions={functions}
 					/>
-					</KingdomFieldContainer>
+					</KingdomFieldContainer> */}
 				</>
 			) : null}
 		</GameBoardWrapper>

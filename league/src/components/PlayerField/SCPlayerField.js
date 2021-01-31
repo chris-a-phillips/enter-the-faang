@@ -80,6 +80,13 @@ export const CardContainer = styled.div`
 	:hover {
 		transform: scale(2.5);
 	}
+	/* DRAGGABLE */
+	cursor: move;
+	:active {
+		transform: 0;
+		opacity: 0.75;
+	}
+
 `;
 
 export const CardHeading = styled.div`

@@ -29,7 +29,7 @@ const EnemyField = ({ enemyUnits, functions }) => {
 					return (
 						<FaangContainer
 							unit={unit}
-							key={`${unit.rank} ${unit.species} : ${unit.pedigree} ${unit.name}`}
+							key={enemyUnits.indexOf(unit)}
 							onClick={() => functions.choose(unit)}>
 							<FaangContent unit={unit}>
 								<FaangHeader unit={unit}>
