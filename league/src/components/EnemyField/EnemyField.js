@@ -13,16 +13,15 @@ import {
 } from './SCEnemyField';
 
 const EnemyField = ({ enemyUnits, functions }) => {
-	const [enemyInfo, setEnemyInfo] = useState('')
+	const [enemyInfo, setEnemyInfo] = useState('');
 
-	useEffect(() => {
-
-	}, [enemyUnits])
+	useEffect(() => {}, [enemyUnits]);
 
 	return (
 		<EnemyFieldWrapper>
-			<EnemyFieldLabel>Enemies
-			{enemyUnits.length}
+			<EnemyFieldLabel>
+				Enemies
+				{enemyUnits.length}
 			</EnemyFieldLabel>
 			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {
@@ -34,15 +33,17 @@ const EnemyField = ({ enemyUnits, functions }) => {
 							<FaangContent unit={unit}>
 								<FaangHeader unit={unit}>
 									<FaangName>
-										{unit.pedigree} {unit.name}
+										<h4>{unit.pedigree}</h4>
+										<h4>{unit.name}</h4>
 									</FaangName>
 								</FaangHeader>
 								<FaangHealth>
-									health: {Math.floor(unit.health)}
+									<p>health: {Math.floor(unit.health)}</p>
 								</FaangHealth>
 							</FaangContent>
 							<EnemyRank>
-								{unit.rank} {unit.species}
+								<h5>{unit.rank}</h5>
+								<h5>{unit.species}</h5>
 							</EnemyRank>
 						</FaangContainer>
 					);

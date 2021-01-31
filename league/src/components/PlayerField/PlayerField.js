@@ -50,17 +50,17 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 
 	return (
 		<PlayerFieldWrapper>
-			<PlayerFieldLabel>Titans</PlayerFieldLabel>
+				<PlayerFieldLabel>Active Titans</PlayerFieldLabel>
 			<PlayerFlexContainer>
 				{playerTeam.slice(0, 2).map((titan) => {
 					return (
 						<TitanContainer
-							titan={titan}
-							key={titan.name}
-							onClick={() => {
-								functions.initiate(titan);
-								functions.choose(titan);
-							}}>
+						titan={titan}
+						key={titan.name}
+						onClick={() => {
+							functions.initiate(titan);
+							functions.choose(titan);
+						}}>
 							<TitanName titan={titan}>{titan.name}</TitanName>
 							<TitanHealth>{titan.health}</TitanHealth>
 							<TitanStats>
@@ -73,7 +73,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 					);
 				})}
 				<TitanReserveContainer>
-				Reserves
+					<PlayerFieldLabel>Reserves</PlayerFieldLabel>
 					{playerTeam.slice(2).map((titan) => {
 						return (
 							<TitanReserve
@@ -94,7 +94,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 					})}
 				</TitanReserveContainer>
 			</PlayerFlexContainer>
-			Cards
+			<PlayerFieldLabel>Cards</PlayerFieldLabel>
 			<CardFlexContainer>
 				{cardHand.map((card) => {
 					return (
