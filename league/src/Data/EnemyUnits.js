@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from './FaangStats';
 import { session } from './SessionLogic';
+import { calculations } from '../Data/SessionLogic'
 
 const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 	const unitPool = [];
@@ -37,14 +38,11 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		speak() {
 			console.log(this.name);
 		}
-		attackUnit(target) {
+		attackUnit(target, session) {
 			if (this.isAlive) {
-				target.currentHealth -= this.attack;
+				target.currentHealth -= 
+					calculations.enemyDamageCalc(this, target, session);
 				let percent = (Math.ceil((target.currentHealth / target.maxHealth) * 100));
-				console.log('PERCENT:', percent);
-				console.log(
-					`${this.name} attacked ${target.name} and now it has ${target.currentHealth}`
-				);
 
 				if (target.currentHealth <= 0) {
 					target.isAlive = false;

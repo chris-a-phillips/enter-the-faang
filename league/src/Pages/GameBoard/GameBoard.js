@@ -27,6 +27,9 @@ const GameBoard = ({
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
+	console.log('PLAYER KINGDOMS', playerKingdoms)
+	console.log('PLAYER TEAM', playerTeam);
+	console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
 		// 1 setInvolved initiator to specific object (choose)
@@ -139,7 +142,8 @@ const GameBoard = ({
 										Math.random() *
 											playerUnitsOnField.length
 									)
-								]
+								],
+								session
 							)
 						);
 					}
@@ -188,7 +192,7 @@ const GameBoard = ({
 				<button onClick={endTurn}>End Turn</button>
 				<GameRulesModal showRules={showRules}></GameRulesModal>
 				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
-					<h1>session stuff</h1>
+					<h1>Event Log</h1>
 					{session.eventLog.map((action) => {
 						return (
 							<ActionContainer action={action}
