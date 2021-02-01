@@ -81,14 +81,33 @@ class HealCard extends Card {
 		if (initiator !== target && initiator.energy >= this.energy && !target.isFaang) {
 			this.isUsed = true;
             initiator.energy -= this.energy;
+            console.log(calculations.healCalc(initiator, target, this.strength, session))
             if (initiator.isAlive && target.isAlive) {
-                if (target.currentHealth + initiator.defense > target.maxHealth) {
-                    target.currentHealth = target.maxHealth
-                    percent = Math.ceil(
-                        (target.currentHealth / target.maxHealth) *
-                            100
-                    );
-                } else {target.currentHealth += initiator.defense}
+                if (
+					(target.currentHealth +
+						calculations.healCalc(
+							initiator,
+							target,
+							this.strength,
+							session
+						)) >
+					target.maxHealth
+				) {
+					target.currentHealth = target.maxHealth;
+					percent = Math.ceil(
+						(target.currentHealth / target.maxHealth) * 100
+					);
+				} else {
+					target.currentHealth += (calculations.healCalc(
+						initiator,
+						target,
+						this.strength,
+						session
+					))
+                }
+                percent = Math.ceil(
+					(target.currentHealth / target.maxHealth) * 100
+				);
                 res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${percent}% health remaining`
                 console.log(initiator)
             } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;

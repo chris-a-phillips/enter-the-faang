@@ -4,7 +4,7 @@ class Game {
         this.eventLog = [];
         this.player = null;
         this.currentTurn = 'player'
-        this.trueSkill = 8;
+        this.trueSkill = 5;
         this.modifiers = 1;
 
     }
@@ -14,25 +14,29 @@ class Game {
     }
 }
 
+// CALCULATIONS BASED ON 
+//  (((((2 * level / 5) * power * (attack / defense)) / 50 + 2) * modifiers) * trueSkill)
+
 export const session = new Game()
 export const calculations = {
     enemyDamageCalc: function enemyDamageCalc(initiator, target, session) {
         let level
-            switch (initiator.Rank) {
-				case 'Basic':
-					level = 1
-					break;
-				case 'Advanced':
-					level = 2
-					break;
-				case 'Elite':
-					level = 3
-					break;
-				default:
-				level = 1
-			}
+        switch (initiator.Rank) {
+            case 'Basic':
+                level = 1
+                break;
+            case 'Advanced':
+                level = 2
+                break;
+            case 'Elite':
+                level = 3
+                break;
+            default:
+            level = 1
+        }
         
-         return ((((2 * (level / 5) + 2) * initiator.attack * (initiator.attack / target.defense)) / 50 + 2) * session.modifiers) * session.trueSkill
+        let res = ((((2 * (level / 5) + 2) * initiator.attack * (initiator.attack / target.defense)) / 50 + 2) * session.modifiers) * session.trueSkill
+        return res
     },
     playerDamageCalc: function playerDamageCalc(initiator, target, power, session) {
         let level
@@ -42,14 +46,42 @@ export const calculations = {
         } else if (initiator.isKingdom) {
             level = 5
         }
-        console.log('============')
+        let res = ((((2 * (level / 5) + 2) * power * (initiator.attack / target.defense)) / 50 + 2) * session.modifiers) * session.trueSkill
+        return res
+    },
+    healCalc: function healCalc(initiator, target, power, session) {
+        let level
+        if (initiator.isFaang) {
+            switch (initiator.Rank) {
+                case 'Basic':
+                    level = 1;
+                    break;
+                case 'Advanced':
+                    level = 2;
+                    break;
+                case 'Elite':
+                    level = 3;
+                    break;
+                default:
+                    level = 1;
+            }
+        } else if (initiator.isTitan) {
+            level = 4
+        } else if (initiator.isKingdom) {
+            level = 5
+        }
+
+        console.log('=======')
         console.log('level:', level)
         console.log('power:', power)
-        console.log('initiator.attack:', initiator.attack)
-        console.log('target.defense:', target.defense)
-        console.log('session.modifiers:', session.modifiers)
+        console.log('initiator.defense:', initiator.defense)
+        console.log('target.regeneration:', target.regeneration)
+        console.log('session.modifiers:', power)
         console.log('session.trueSkill:', session.trueSkill)
-        console.log('============')
-         return ((((2 * (level / 5) + 2) * power * (initiator.attack / target.defense)) / 50 + 2) * session.modifiers) * session.trueSkill
+        
+        let res = ((((2 * (level / 5) + 2) * power * (initiator.defense / target.regeneration)) / 50 + 2) * session.modifiers) * session.trueSkill
+        console.log('res:', res)
+        console.log('=======')
+        return res
     }
 }
