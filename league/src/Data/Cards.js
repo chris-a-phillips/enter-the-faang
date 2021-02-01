@@ -1,3 +1,5 @@
+import { calculations, session } from '../Data/SessionLogic'
+
 class Card {
     constructor(name, strength, energy) {
         this.name = name;
@@ -25,7 +27,8 @@ class AttackCard extends Card {
         let percent
         this.speed = initiator.speed
         if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
-            target.currentHealth -= initiator.attack;
+            target.currentHealth -= 
+                calculations.playerDamageCalc(initiator, target, this.strength, session);
             this.isUsed = true
             initiator.energy -= this.energy
             if (target.currentHealth <= 0) {

@@ -34,7 +34,7 @@ export const calculations = {
         
          return ((((2 * (level / 5) + 2) * initiator.attack * (initiator.attack / target.defense)) / 50 + 2) * session.modifiers) * session.trueSkill
     },
-    playerDamageCalc: function playerDamageCalc(initiator, power, target, session) {
+    playerDamageCalc: function playerDamageCalc(initiator, target, power, session) {
         let level
 
         if (initiator.isTitan) {
@@ -42,7 +42,14 @@ export const calculations = {
         } else if (initiator.isKingdom) {
             level = 5
         }
-        
+        console.log('============')
+        console.log('level:', level)
+        console.log('power:', power)
+        console.log('initiator.attack:', initiator.attack)
+        console.log('target.defense:', target.defense)
+        console.log('session.modifiers:', session.modifiers)
+        console.log('session.trueSkill:', session.trueSkill)
+        console.log('============')
          return ((((2 * (level / 5) + 2) * power * (initiator.attack / target.defense)) / 50 + 2) * session.modifiers) * session.trueSkill
     }
 }

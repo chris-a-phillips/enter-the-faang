@@ -38,7 +38,7 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		speak() {
 			console.log(this.name);
 		}
-		attackUnit(target, session) {
+		attackUnit(target) {
 			if (this.isAlive) {
 				target.currentHealth -= 
 					calculations.enemyDamageCalc(this, target, session);

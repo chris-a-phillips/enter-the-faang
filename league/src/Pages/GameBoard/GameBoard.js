@@ -142,8 +142,7 @@ const GameBoard = ({
 										Math.random() *
 											playerUnitsOnField.length
 									)
-								],
-								session
+								]
 							)
 						);
 					}
