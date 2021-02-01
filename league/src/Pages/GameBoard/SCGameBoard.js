@@ -54,5 +54,5 @@ export const ActionContainer = styled.div`
 	margin: 5px;
 	padding: 5px;
 	border-radius: 10px;
-	border: ${({ action }) => (action ? 'solid black 4px' : '#000')};
+	border: ${({ action }) => (action.border ? `solid ${action.border} 4px` : 'solid #000 4px')};
 `;

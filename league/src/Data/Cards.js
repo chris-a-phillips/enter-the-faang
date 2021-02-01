@@ -55,7 +55,8 @@ class AttackCard extends Card {
             } else return {
 				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${percent}% health remaining`,
 				bgColor: initiator.showcase.colors.secondary,
-				color: '#000',
+                color: '#000',
+                border: 'red'
 			};
 	}
 }
@@ -123,7 +124,8 @@ class HealCard extends Card {
             return {
 				event: res,
 				bgColor: initiator.showcase.colors.secondary,
-				color: '#000',
+                color: '#000',
+                border: 'green'
 			};
 	}
 }
@@ -181,9 +183,7 @@ const sTest5 = new SupportCard('s test5', 5, 5)
 const sTest6 = new SupportCard('s test6', 6, 6)
 const sTest7 = new SupportCard('s test7', 7, 7)
 
-
-
-export const allCards = [
+export const fullDeck = [
     // 1
 	aTest,
     hTest,
@@ -213,3 +213,5 @@ export const allCards = [
     hTest7,
     sTest7
 ];
+
+export const allCards = session.shuffle(fullDeck)
