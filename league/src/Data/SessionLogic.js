@@ -6,12 +6,55 @@ class Game {
         this.currentTurn = 'player'
         this.trueSkill = 5;
         this.modifiers = 1;
+        this.zenscape = {
+            steam: 0,
+            // FIRE && WATER -> player field increases regeneration
+            lava: 0,
+            // STONE && FIRE -> enemy units take damage over time
+            smoke: 0,
+            // AIR && FIRE -> enemy attacks have chance of missing
+            plasma: 0,
+            // LIGHTNING && FIRE -> player attacks permanently lower enemy defense
+            enhance: 0,
+            // METAL && ANYTHING -> player stats get boosted
+            blaze: 0,
+            // TERRA && FIRE -> player attack gets boosted over time
+            mud: 0,
+            // WATER && STONE -> slow down enemy units
+            ice: 0,
+            // AIR && WATER -> enemy attack power is reduced
+            storm: 0,
+            // LIGHTNING && WATER -> player attacks have splash damage
+            swamp: 0,
+            // TERRA && WATER -> slow down enemy units
+            sandstorm: 0,
+            // STONE && AIR -> enemy units regenerate less health
+            spark: 0,
+            // STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
+            thorn: 0,
+            // TERRA && STONE -> enemy takes damage after attacking
+            flinch: 0,
+            // AIR && LIGHTNING -> if player attack hits enemy before they go, they have a smaller chance of attacking
+            spore: 0,
+            // AIR && TERRA -> enemy special effects are lessened
+            crystal: 0,
+            // LIGHTNING && TERRA -> player attack has small chance to do double damage
+        }
 
     }
 
-    takeTurn() {
-        this.turnNumber ++
-    }
+    // endTurn(titanOne, titanTwo) {
+    //     const titans = [titanOne, titanTwo]
+    //     switch (titanOne, titanTwo) {
+    //         case value:
+                
+    //             break;
+        
+    //         default:
+    //             break;
+    //     }
+    //     this.turnNumber ++
+    // }
 
     shuffle(array) {
 		var currentIndex = array.length,
