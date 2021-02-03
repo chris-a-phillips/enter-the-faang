@@ -162,6 +162,7 @@ const GameBoard = ({
 			session.takeTurn();
 	};
 
+
 	const listUnits = useCallback(() => {
 		let res = [];
 		for (let i = 0; i < playerTeam.slice(0, 2).length; i++) {
@@ -179,6 +180,7 @@ const GameBoard = ({
 	useEffect(() => {
 		if (playerTeam) {
 			setAllUnitsOnField(listUnits());
+				console.log(session.endTurn(playerTeam[0], playerTeam[1]));
 		}
 	}, [enemyUnits, playerTeam, playerKingdoms, session, session.eventLog]);
 
