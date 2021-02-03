@@ -19,8 +19,15 @@ import {
 const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
+	const [swapPlaces, setSwapPlaces] = useState({
+		state: false,
+		index: null
+	})
 
 	function swap(list, activeOne, activeTwo) {
+		if (swapPlaces === true) {
+			
+		}
 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
 		setActiveTitans(playerTeam.slice(0, 2));
 	}
@@ -41,7 +48,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							onClick={() => {
 								functions.initiate(titan);
 								functions.choose(titan);
-							}}>
+								}}>
 							<TitanName titan={titan}>{titan.name}</TitanName>
 							<HealthBarContainer titan={titan}>
 								<HealthBar
@@ -62,7 +69,10 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>
-							<button onClick={() => swap(playerTeam, 0, 4)}>
+							<button onClick={() => setSwapPlaces({
+								state: true,
+								index: playerTeam.indexOf(titan)
+							})}>
 								swap
 							</button>
 						</TitanContainer>
@@ -78,6 +88,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 								onClick={() => {
 									functions.initiate(titan);
 									functions.choose(titan);
+									swap(playerTeam, swapPlaces.index,playerTeam.indexOf(titan));
 								}}>
 								<TitanName titan={titan}>
 									{titan.name}

@@ -27,9 +27,9 @@ const GameBoard = ({
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
-	console.log('PLAYER KINGDOMS', playerKingdoms)
-	console.log('PLAYER TEAM', playerTeam);
-	console.log('ENEMY UNITS', enemyUnits);
+	// console.log('PLAYER KINGDOMS', playerKingdoms)
+	// console.log('PLAYER TEAM', playerTeam);
+	// console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
 		// 1 setInvolved initiator to specific object (choose)
@@ -159,7 +159,7 @@ const GameBoard = ({
 				event: 'PLAYER TURN',
 			});
 			console.log(session.eventLog);
-			session.takeTurn();
+			session.endTurn(playerTeam[0], playerTeam[1]);
 	};
 
 
@@ -180,7 +180,6 @@ const GameBoard = ({
 	useEffect(() => {
 		if (playerTeam) {
 			setAllUnitsOnField(listUnits());
-				console.log(session.endTurn(playerTeam[0], playerTeam[1]));
 		}
 	}, [enemyUnits, playerTeam, playerKingdoms, session, session.eventLog]);
 
