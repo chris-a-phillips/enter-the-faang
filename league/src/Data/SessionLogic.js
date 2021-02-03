@@ -8,6 +8,7 @@ class Game {
         this.modifiers = 1;
         this.phase = 'Selection';
         this.currentZenscape = null
+        this.notificationTimer = 0
         this.zenscape = {
             // FIRE && WATER -> player field increases regeneration
             steam: {
@@ -97,8 +98,8 @@ class Game {
         const titans = [titanOne.kingdom, titanTwo.kingdom]
         let zenscapeType
         this.zenscape.colors = {
-            colorOne: titanOne.showcase.colors.primary,
-            colorTwo: titanTwo.showcase.colors.primary,
+            colorGroupOne: titanOne.showcase.colors,
+            colorGroupTwo: titanTwo.showcase.colors,
         }
         
         // FIRE && WATER -> player field increases regeneration

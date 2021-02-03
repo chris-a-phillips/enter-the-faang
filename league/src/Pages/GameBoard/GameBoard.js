@@ -114,62 +114,68 @@ const GameBoard = ({
 			}
 			return array;
 		},
+		battle: function battle() {
+			setAllUnitsOnField(listUnits());
+			allUnitsOnField
+				.sort((a, b) => (a.speed < b.speed ? 1 : -1))
+				.forEach((u) => {
+					if (!u.isKingdom) {
+						// EACH TITAN ATTACKS FROM THE QUEUE
+						setTimeout(() => {
+							if (u.method) {
+								session.eventLog.unshift(u.method());
+							}
+							// EACH ENEMY ATTACKS A RANDOM UNIT
+							if (u.isFaang) {
+								let playerUnitsOnField = allUnitsOnField.filter(
+									(unit) => !unit.isFaang
+								);
+								session.eventLog.unshift(
+									u.attackUnit(
+										playerUnitsOnField[
+											Math.floor(
+												Math.random() *
+													playerUnitsOnField.length
+											)
+										]
+									)
+								);
+							}
+							functions.check(playerTeam);
+							functions.check(playerKingdoms);
+							functions.check(enemyUnits);
+							functions.check(allCards);
+							setAllUnitsOnField(listUnits());
+						}, session.notificationTimer);
+						session.notificationTimer += 1500;
+					}
+				});
+		},
+		afterMath : function afterMath() {
+			setTimeout(() => {
+				session.eventLog.unshift({
+					event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`,
+					gradientOne: playerTeam[0].showcase.colors.primary,
+					gradientTwo: playerTeam[1].showcase.colors.primary,
+				});
+				session.eventLog.unshift({
+					event: 'PLAYER TURN',
+				});
+				session.phase = 'Selection';
+				setAllUnitsOnField(listUnits());
+				session.notificationTimer = 0;
+			}, session.notificationTimer);
+			console.log(session.eventLog);
+			session.endTurn(playerTeam[0], playerTeam[1]);
+		}
 	};
 
 	console.log(session.eventLog);
 
 	// QUEUE OF ATTACKS TO EMPTY
-	const endTurn = () => {
-		setAllUnitsOnField(listUnits());
-		let timer = 0;
-		allUnitsOnField
-			.sort((a, b) => (a.speed < b.speed ? 1 : -1))
-			.forEach((u) => {
-				if (!u.isKingdom) {
-				// EACH TITAN ATTACKS FROM THE QUEUE
-				setTimeout(() => {
-					if (u.method) {
-						session.eventLog.unshift(u.method());
-					}
-					// EACH ENEMY ATTACKS A RANDOM UNIT
-					if (u.isFaang) {
-						let playerUnitsOnField = allUnitsOnField.filter(
-							(unit) => !unit.isFaang
-						);
-						session.eventLog.unshift(
-							u.attackUnit(
-								playerUnitsOnField[
-									Math.floor(
-										Math.random() *
-											playerUnitsOnField.length
-									)
-								]
-							)
-						);
-					}
-					functions.check(playerTeam);
-					functions.check(playerKingdoms);
-					functions.check(enemyUnits);
-					functions.check(allCards);
-					setAllUnitsOnField(listUnits());
-				}, timer);
-				timer += 1500;
-			}
-		});
-		setTimeout(() => {
-			session.eventLog.unshift({
-				event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`,
-				gradientOne: playerTeam[0].showcase.colors.primary,
-				gradientTwo: playerTeam[1].showcase.colors.primary,
-			});
-			session.eventLog.unshift({
-				event: 'PLAYER TURN',
-			});
-			session.phase = ('Selection')
-			setAllUnitsOnField(listUnits());
-		}, timer);
-		console.log(session.eventLog);
-		session.endTurn(playerTeam[0], playerTeam[1]);
+	function endTurn() {
+		functions.battle()
+		functions.afterMath()
 	};
 
 
