@@ -7,6 +7,7 @@ class Game {
         this.trueSkill = 5;
         this.modifiers = 1;
         this.phase = 'Selection';
+        this.currentZenscape = null
         this.zenscape = {
             // FIRE && WATER -> player field increases regeneration
             steam: {
@@ -163,7 +164,7 @@ class Game {
         }
 
         this.turnNumber ++
-        console.log(zenscapeType)
+        this.currentZenscape = zenscapeType
     }
 
     shuffle(array) {

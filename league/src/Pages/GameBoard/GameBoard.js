@@ -158,6 +158,10 @@ const GameBoard = ({
 		});
 		setTimeout(() => {
 			session.eventLog.unshift({
+				event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`
+			})
+			console.log(session.currentZenscape)
+			session.eventLog.unshift({
 				event: 'PLAYER TURN',
 			});
 			session.phase = ('Selection')
@@ -198,7 +202,7 @@ const GameBoard = ({
 				<GameRulesModal showRules={showRules}></GameRulesModal>
 				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
 					<h1>Event Log</h1>
-					{session.eventLog.slice(0, 8).map((action) => {
+					{session.eventLog.slice(0, 9).map((action) => {
 						return (
 							<ActionContainer action={action}
 							key={session.eventLog.indexOf(action)}
