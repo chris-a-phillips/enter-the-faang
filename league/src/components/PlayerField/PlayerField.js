@@ -25,11 +25,14 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 	})
 
 	function swap(list, activeOne, activeTwo) {
-		if (swapPlaces === true) {
-			
+		if (swapPlaces.state === true) {
+			list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
+			setActiveTitans(playerTeam.slice(0, 2));
 		}
-		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
-		setActiveTitans(playerTeam.slice(0, 2));
+		setSwapPlaces({
+			state: false,
+			index: null
+		})
 	}
 
 	useEffect(() => {
