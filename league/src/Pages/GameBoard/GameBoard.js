@@ -158,9 +158,10 @@ const GameBoard = ({
 		});
 		setTimeout(() => {
 			session.eventLog.unshift({
-				event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`
-			})
-			console.log(session.currentZenscape)
+				event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`,
+				gradientOne: playerTeam[0].showcase.colors.primary,
+				gradientTwo: playerTeam[1].showcase.colors.primary,
+			});
 			session.eventLog.unshift({
 				event: 'PLAYER TURN',
 			});

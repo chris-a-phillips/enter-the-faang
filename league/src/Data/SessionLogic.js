@@ -96,6 +96,10 @@ class Game {
     endTurn(titanOne, titanTwo) {
         const titans = [titanOne.kingdom, titanTwo.kingdom]
         let zenscapeType
+        this.zenscape.colors = {
+            colorOne: titanOne.showcase.colors.primary,
+            colorTwo: titanTwo.showcase.colors.primary,
+        }
         
         // FIRE && WATER -> player field increases regeneration
         if (titans.includes('Water Kingdom') && titans.includes('Fire Kingdom')) {

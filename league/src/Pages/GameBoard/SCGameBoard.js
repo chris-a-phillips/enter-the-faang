@@ -49,6 +49,7 @@ export const KingdomFieldContainer = styled.div`
 export const SessionLogContainer = styled.div``;
 export const ActionContainer = styled.div`
 	display: ${({ action }) => (action.event ? 'block' : 'none')};
+	background: ${({ action }) => (action.gradientOne ? `linear-gradient(${action.gradientOne}, ${action.gradientTwo})` : '#fff')};
 	background-color: ${({ action }) => (action ? action.bgColor : 'red')};
 	color: ${({ action }) => (action ? action.color : 'red')};
 	margin: 5px;
@@ -56,3 +57,4 @@ export const ActionContainer = styled.div`
 	border-radius: 10px;
 	border: ${({ action }) => (action.border ? `solid ${action.border} 4px` : 'solid #000 4px')};
 `;
+// background: linear-gradient(#e66465, #9198e5);
