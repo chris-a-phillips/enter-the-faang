@@ -59,7 +59,7 @@ class Game {
             },
             // STONE && AIR -> enemy units regenerate less health
             sandstorm: {
-                name: 'Soandstorm',
+                name: 'Sandstorm',
                 intensity: 0
             },
             // STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
@@ -94,75 +94,79 @@ class Game {
     endTurn(titanOne, titanTwo) {
         const titans = [titanOne.kingdom, titanTwo.kingdom]
         let zenscapeType
-        
-        // FIRE && WATER -> player field increases regeneration
-        if (titans.includes('Water Kingdom' && 'Fire Kingdom')) {
-            zenscapeType = this.zenscape.steam;
-            zenscapeType.intensity ++
-            // STONE && FIRE -> enemy units take damage over time
-        } else if (titans.includes('Water Kingdom' && 'Fire Kingdom')) {
-            zenscapeType = this.zenscape.lava
-            zenscapeType.intensity ++
-            // AIR && FIRE -> enemy attacks have chance of missing
-        } else if (titans.includes('Air Kingdom' && 'Fire Kingdom')) {
-            zenscapeType = this.zenscape.smoke
-            zenscapeType.intensity ++
-            // LIGHTNING && FIRE -> player attacks permanently lower enemy defense
-        } else if (titans.includes('Lightning Kingdom' && 'Fire Kingdom')) {
-            zenscapeType = this.zenscape.plasma
-            zenscapeType.intensity ++
-            // METAL && ANYTHING -> player stats get boosted
-        } else if (titans.includes('Metal Kingdom')) {
-            zenscapeType = this.zenscape.enhance
-            zenscapeType.intensity ++
-            // TERRA && FIRE -> player attack gets boosted over time
-        } else if (titans.includes('Terra Kingdom' && 'Fire Kingdom')) {
-            zenscapeType = this.zenscape.blaze
-            zenscapeType.intensity ++
-            // WATER && STONE -> slow down enemy units
-        } else if (titans.includes('Water Kingdom' && 'Stone Kingdom')) {
-            zenscapeType = this.zenscape.mud
-            zenscapeType.intensity ++
-            // AIR && WATER -> enemy attack power is reduced
-        } else if (titans.includes('Air Kingdom' && 'Water Kingdom')) {
-            zenscapeType = this.zenscape.ice
-            zenscapeType.intensity ++
-            // LIGHTNING && WATER -> player attacks have splash damage
-        } else if (titans.includes('Lightning Kingdom' && 'Water Kingdom')) {
-            zenscapeType = this.zenscape.storm
-            zenscapeType.intensity ++
-            // TERRA && WATER -> slow down enemy units
-        } else if (titans.includes('Terra Kingdom' && 'Water Kingdom')) {
-            zenscapeType = this.zenscape.swamp
-            zenscapeType.intensity ++
-            // STONE && AIR -> enemy units regenerate less health
-        } else if (titans.includes('Stone Kingdom' && 'Air Kingdom')) {
-            zenscapeType = this.zenscape.sandstorm
-            zenscapeType.intensity ++
-            // STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
-        } else if (titans.includes('Stone Kingdom' && 'Lightning Kingdom')) {
-            zenscapeType = this.zenscape.spark
-            zenscapeType.intensity ++
-            // TERRA && STONE -> enemy takes damage after attacking
-        } else if (titans.includes('Terra Kingdom' && 'Stone Kingdom')) {
-            zenscapeType = this.zenscape.thorn
-            zenscapeType.intensity ++
-            // AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
-        } else if (titans.includes('Air Kingdom' && 'Lightning Kingdom')) {
-            zenscapeType = this.zenscape.flinch
-            zenscapeType.intensity ++
-            // AIR && TERRA -> enemy special effects are lessened
-        } else if (titans.includes('Air Kingdom' && 'Terra Kingdom')) {
-            zenscapeType = this.zenscape.spore
-            zenscapeType.intensity ++
-            // LIGHTNING && TERRA -> player attack has small chance to do double damage
-        } else if (titans.includes('Lightning Kingdom' && 'Terra Kingdom')) {
-            zenscapeType = this.zenscape.crystal
-            zenscapeType.intensity ++
+
+        if (titans.includes('Fire Kingdom' && 'Water Kingdom')) {
+            console.log('EWWW BUGS')
         }
+        
+        // // FIRE && WATER -> player field increases regeneration
+        // if (titans.includes('Water Kingdom' && 'Fire Kingdom')) {
+        //     zenscapeType = this.zenscape.steam;
+        //     zenscapeType.intensity ++
+        //     // STONE && FIRE -> enemy units take damage over time
+        // } else if (titans.includes('Stone Kingdom' && 'Fire Kingdom')) {
+        //     zenscapeType = this.zenscape.lava
+        //     zenscapeType.intensity ++
+        //     // AIR && FIRE -> enemy attacks have chance of missing
+        // } else if (titans.includes('Air Kingdom' && 'Fire Kingdom')) {
+        //     zenscapeType = this.zenscape.smoke
+        //     zenscapeType.intensity ++
+        //     // LIGHTNING && FIRE -> player attacks permanently lower enemy defense
+        // } else if (titans.includes('Lightning Kingdom' && 'Fire Kingdom')) {
+        //     zenscapeType = this.zenscape.plasma
+        //     zenscapeType.intensity ++
+        //     // METAL && ANYTHING -> player stats get boosted
+        // } else if (titans.includes('Metal Kingdom')) {
+        //     zenscapeType = this.zenscape.enhance
+        //     zenscapeType.intensity ++
+        //     // TERRA && FIRE -> player attack gets boosted over time
+        // } else if (titans.includes('Terra Kingdom' && 'Fire Kingdom')) {
+        //     zenscapeType = this.zenscape.blaze
+        //     zenscapeType.intensity ++
+        //     // WATER && STONE -> slow down enemy units
+        // } else if (titans.includes('Water Kingdom' && 'Stone Kingdom')) {
+        //     zenscapeType = this.zenscape.mud
+        //     zenscapeType.intensity ++
+        //     // AIR && WATER -> enemy attack power is reduced
+        // } else if (titans.includes('Air Kingdom' && 'Water Kingdom')) {
+        //     zenscapeType = this.zenscape.ice
+        //     zenscapeType.intensity ++
+        //     // LIGHTNING && WATER -> player attacks have splash damage
+        // } else if (titans.includes('Lightning Kingdom' && 'Water Kingdom')) {
+        //     zenscapeType = this.zenscape.storm
+        //     zenscapeType.intensity ++
+        //     // TERRA && WATER -> slow down enemy units
+        // } else if (titans.includes('Terra Kingdom' && 'Water Kingdom')) {
+        //     zenscapeType = this.zenscape.swamp
+        //     zenscapeType.intensity ++
+        //     // STONE && AIR -> enemy units regenerate less health
+        // } else if (titans.includes('Stone Kingdom' && 'Air Kingdom')) {
+        //     zenscapeType = this.zenscape.sandstorm
+        //     zenscapeType.intensity ++
+        //     // STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
+        // } else if (titans.includes('Stone Kingdom' && 'Lightning Kingdom')) {
+        //     zenscapeType = this.zenscape.spark
+        //     zenscapeType.intensity ++
+        //     // TERRA && STONE -> enemy takes damage after attacking
+        // } else if (titans.includes('Terra Kingdom' && 'Stone Kingdom')) {
+        //     zenscapeType = this.zenscape.thorn
+        //     zenscapeType.intensity ++
+        //     // AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
+        // } else if (titans.includes('Air Kingdom' && 'Lightning Kingdom')) {
+        //     zenscapeType = this.zenscape.flinch
+        //     zenscapeType.intensity ++
+        //     // AIR && TERRA -> enemy special effects are lessened
+        // } else if (titans.includes('Air Kingdom' && 'Terra Kingdom')) {
+        //     zenscapeType = this.zenscape.spore
+        //     zenscapeType.intensity ++
+        //     // LIGHTNING && TERRA -> player attack has small chance to do double damage
+        // } else if (titans.includes('Lightning Kingdom' && 'Terra Kingdom')) {
+        //     zenscapeType = this.zenscape.crystal
+        //     zenscapeType.intensity ++
+        // }
 
         this.turnNumber ++
-        console.log(zenscapeType)
+        // console.log(zenscapeType)
     }
 
     shuffle(array) {
