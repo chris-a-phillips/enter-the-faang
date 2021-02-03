@@ -198,7 +198,7 @@ const GameBoard = ({
 				<GameRulesModal showRules={showRules}></GameRulesModal>
 				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
 					<h1>Event Log</h1>
-					{session.eventLog.map((action) => {
+					{session.eventLog.slice(0, 8).map((action) => {
 						return (
 							<ActionContainer action={action}
 							key={session.eventLog.indexOf(action)}
