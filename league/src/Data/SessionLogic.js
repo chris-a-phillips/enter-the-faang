@@ -6,6 +6,7 @@ class Game {
         this.currentTurn = 'player'
         this.trueSkill = 5;
         this.modifiers = 1;
+        this.phase = 'Selection';
         this.zenscape = {
             // FIRE && WATER -> player field increases regeneration
             steam: {
@@ -94,10 +95,6 @@ class Game {
     endTurn(titanOne, titanTwo) {
         const titans = [titanOne.kingdom, titanTwo.kingdom]
         let zenscapeType
-
-        // if (titans.includes('Fire Kingdom' && 'Water Kingdom')) {
-        //     console.log('EWWW BUGS')
-        // }
         
         // FIRE && WATER -> player field increases regeneration
         if (titans.includes('Water Kingdom') && titans.includes('Fire Kingdom')) {

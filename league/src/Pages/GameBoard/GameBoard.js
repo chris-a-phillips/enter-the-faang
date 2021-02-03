@@ -41,6 +41,7 @@ const GameBoard = ({
 
 		// select this action with the click
 		useCard: function useCard(a) {
+			session.phase = 'Card Selection'
 			// 1 SELECT
 			console.log(a, 'was card used 1');
 			// set initiator to where the button was clicked
@@ -154,12 +155,16 @@ const GameBoard = ({
 				}, timer);
 				timer += 1500;
 			}
-			});
+		});
+		setTimeout(() => {
 			session.eventLog.unshift({
 				event: 'PLAYER TURN',
 			});
-			console.log(session.eventLog);
-			session.endTurn(playerTeam[0], playerTeam[1]);
+			session.phase = ('Selection')
+			setAllUnitsOnField(listUnits());
+		}, timer);
+		console.log(session.eventLog);
+		session.endTurn(playerTeam[0], playerTeam[1]);
 	};
 
 

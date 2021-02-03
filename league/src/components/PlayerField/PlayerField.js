@@ -72,12 +72,14 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>
-							<button onClick={() => setSwapPlaces({
-								state: true,
-								index: playerTeam.indexOf(titan)
-							})}>
-								swap
-							</button>
+							{session.phase === 'Selection' ? (
+								<button onClick={() => setSwapPlaces({
+									state: true,
+									index: playerTeam.indexOf(titan)
+								})}>
+									swap
+								</button>
+							) : null}
 						</TitanContainer>
 					);
 				})}
