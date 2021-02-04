@@ -39,11 +39,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			console.log(this.name);
 		}
 		attackUnit(target) {
+			// IF THIS IS ALIVE
 			if (this.isAlive) {
+				// THIS ATTACK
 				target.currentHealth -= 
 					calculations.enemyDamageCalc(this, target, session);
 				let percent = (Math.ceil((target.currentHealth / target.maxHealth) * 100));
-
+				// IF ATTACK WAS FATAL
 				if (target.currentHealth <= 0) {
 					target.isAlive = false;
 					return {
@@ -51,11 +53,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 						bgColor: this.showcase.rankColor,
 						color: '#fff',
 					};
+					// IF ATTACK WENT THROUGH BUT WAS NOT FATAL
 				} else return {
 					event: `${this.name} attacked ${target.name} and now it has ${percent}% health remaining`,
 					bgColor: this.showcase.rankColor,
 					color: '#fff'
 				};
+			// IF THIS IS NOT ALIVE
 			} else return {
 				event: `${this.name} couldn't attack becuase it was defeated by a faster unit`,
 				bgColor: this.showcase.rankColor,

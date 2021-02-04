@@ -174,6 +174,28 @@ const GameBoard = ({
 							session.currentZenscape.intensity;
 					}
 					break;
+				case 'Ice':
+					if (enemyUnits[0]) {
+						enemyUnits[0].attack -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[1]) {
+						enemyUnits[1].attack -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[2]) {
+						enemyUnits[2].attack -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[3]) {
+						enemyUnits[3].attack -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[4]) {
+						enemyUnits[4].attack -=
+							session.currentZenscape.intensity;
+					}
+					break;
 				default:
 					console.log('no standby effect');
 			}
@@ -192,15 +214,20 @@ const GameBoard = ({
 							}
 							// EACH ENEMY ATTACKS A RANDOM UNIT
 							if (u.isFaang) {
-								let playerUnitsOnField = allUnitsOnField.filter(
+								let possibleTargets = allUnitsOnField.filter(
 									(unit) => !unit.isFaang
 								);
+								if (session.currentZenscape.name === 'Glare') {
+									if (Math.random() * 100 < session.currentZenscape.intensity) {
+										possibleTargets = allUnitsOnField
+									}
+								}
 								session.eventLog.unshift(
 									u.attackUnit(
-										playerUnitsOnField[
+										possibleTargets[
 											Math.floor(
 												Math.random() *
-													playerUnitsOnField.length
+													possibleTargets.length
 											)
 										]
 									)

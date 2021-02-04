@@ -73,8 +73,8 @@ class Game {
                 intensity: 0
             },
             // STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
-            spark: {
-                name: 'Spark',
+            glare: {
+                name: 'Glare',
                 intensity: 0
             },
             // TERRA && STONE -> enemy takes damage after attacking
@@ -83,8 +83,8 @@ class Game {
                 intensity: 0
             },
             // AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
-            flinch: {
-                name: 'Flinch',
+            flash: {
+                name: 'Flash',
                 intensity: 0
             },
             // AIR && TERRA -> enemy special effects are lessened
@@ -155,7 +155,7 @@ class Game {
             zenscapeType.intensity ++
             // STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
         } else if (titans.includes('Stone Kingdom') && titans.includes('Lightning Kingdom')) {
-            zenscapeType = this.zenscape.spark
+            zenscapeType = this.zenscape.glare
             zenscapeType.intensity ++
             // TERRA && STONE -> enemy takes damage after attacking
         } else if (titans.includes('Terra Kingdom') && titans.includes('Stone Kingdom')) {
@@ -163,7 +163,7 @@ class Game {
             zenscapeType.intensity ++
             // AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
         } else if (titans.includes('Air Kingdom') && titans.includes('Lightning Kingdom')) {
-            zenscapeType = this.zenscape.flinch
+            zenscapeType = this.zenscape.flash
             zenscapeType.intensity ++
             // AIR && TERRA -> enemy special effects are lessened
         } else if (titans.includes('Air Kingdom') && titans.includes('Terra Kingdom')) {
