@@ -45,22 +45,23 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		}
 		attackUnit(target) {
 			// IF THIS IS ALIVE
-			// IF ZENSCAPE IS SMOKE THE ATTACK MAY MISS
-			if (session.currentZenscape.name === 'Smoke' && Math.random() * 100 < session.currentZenscape.intensity) {
-					return {
-						event: `${this.name} missed its attack`,
-						bgColor: this.showcase.rankColor,
-						color: '#fff',
-					};
-			}
-			if (session.currentZenscape.name === 'Smoke' && Math.random() * 100 < session.currentZenscape.intensity && this.status.flash) {
-					return {
-						event: `${this.name} didn't attack because it was flashed`,
-						bgColor: this.showcase.rankColor,
-						color: '#fff',
-					};
-			}
 			if (this.isAlive) {
+				// IF ZENSCAPE IS SMOKE THE ATTACK MAY MISS
+				if (session.currentZenscape.name === 'Smoke' && Math.random() * 100 < session.currentZenscape.intensity) {
+						return {
+							event: `${this.name} missed its attack`,
+							bgColor: this.showcase.rankColor,
+							color: '#fff',
+						};
+				}
+				// IF ZENSCAPE IS FLASH IT MAY NOT ATTACK
+				if (session.currentZenscape.name === 'Flash' && Math.random() * 100 < session.currentZenscape.intensity && this.status.flash) {
+						return {
+							event: `${this.name} didn't attack because it was flashed`,
+							bgColor: this.showcase.rankColor,
+							color: '#fff',
+						};
+				}
 				// THIS ATTACK
 				target.currentHealth -= calculations.enemyDamageCalc(
 					this,

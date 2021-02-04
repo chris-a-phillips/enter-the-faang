@@ -85,7 +85,7 @@ class Game {
 			// AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
 			flash: {
 				name: 'Flash',
-				intensity: 100,
+				intensity: 0,
 			},
 			// AIR && TERRA -> enemy special effects are lessened
 			spore: {

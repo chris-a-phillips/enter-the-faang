@@ -60,3 +60,23 @@ export const HealthBar = styled.div`
 		kingdom ? `${percent}%` : 'inline-block'};
 	border-radius: 25px;
 `;
+
+export const StatBar = styled.div`
+	background-color: ${
+		({ stat }) =>
+			stat === 9
+				? '#32E058'
+				: stat === 8
+				? '#2ABD49' // if
+				: stat === 7
+				? '#CBD448' // else if
+				: stat === 6
+				? '#D48F3D' // else if
+				: stat === 5
+				? '#C94A3A' // else if
+				: '#7F3128' // else
+	};
+	width: ${({ kingdom, stat }) =>
+		kingdom ? `${stat}0%` : 'inline-block'};
+	border-radius: 25px;
+`;
