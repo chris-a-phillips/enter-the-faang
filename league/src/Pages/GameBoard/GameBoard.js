@@ -29,7 +29,7 @@ const GameBoard = ({
 	const { involved, setInvolved } = useContext(GameContext);
 	console.log('PLAYER KINGDOMS', playerKingdoms);
 	console.log('PLAYER TEAM', playerTeam);
-	// console.log('ENEMY UNITS', enemyUnits);
+	console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
 		// 1 setInvolved initiator to specific object (choose)
@@ -253,6 +253,7 @@ const GameBoard = ({
 				session.eventLog.unshift({
 					event: 'PLAYER TURN',
 				});
+				functions.afterEffects()
 				session.phase = 'Selection';
 				setAllUnitsOnField(listUnits());
 				session.notificationTimer = 0;
@@ -338,6 +339,9 @@ const GameBoard = ({
 				default:
 					console.log('no after effect');
 			}
+			allUnitsOnField.forEach((u) => {
+				u.regenerateHealth()
+			})
 		}
 	};
 
@@ -347,7 +351,6 @@ const GameBoard = ({
 		functions.standBy();
 		functions.battle();
 		functions.postBattle();
-		functions.afterEffects();
 	}
 
 	const listUnits = useCallback(() => {

@@ -3,18 +3,32 @@ import React, { useEffect } from 'react';
 const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 
 	class Kingdom {
-		constructor(name, maxHealth, currentHealth, defense, regeneration, showcase) {
+		constructor(
+			name,
+			maxHealth,
+			currentHealth,
+			defense,
+			regeneration,
+			showcase
+		) {
 			// specs
 			this.isAlive = true;
-			this.isKingdom = true
+			this.isKingdom = true;
 			// stats
 			this.name = name;
 			this.maxHealth = maxHealth;
 			this.currentHealth = currentHealth;
 			this.defense = defense;
-			this.regeneration = regeneration;
+			this.regenerationRate = (100 - regeneration) / 25;
 			this.showcase = showcase;
 			this.speed = 0;
+		}
+		regenerateHealth() {
+			if (this.currentHealth < this.maxHealth) {
+				let regenerated =
+					this.currentHealth * (0.01 * this.regenerationRate);
+				this.currentHealth += regenerated;
+			}
 		}
 	}
 

@@ -30,14 +30,18 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				this.maxHealth = maxHealth;
 				this.attack = attack;
 				this.defense = defense;
-				this.regeneration = regeneration;
+				this.regenerationRate = (100 - regeneration) / 25;
 				this.speed = speed;
 				this.energy = energy;
 				this.zen = zen;
 				this.showcase = showcase;
 			}
-			speak() {
-				console.log(this.name);
+			regenerateHealth() {
+				if (this.currentHealth < this.maxHealth) {
+					let regenerated =
+						this.currentHealth * (0.01 * this.regenerationRate);
+					this.currentHealth += regenerated;
+				}
 			}
 			attackUnit(unit) {
 				console.log(
