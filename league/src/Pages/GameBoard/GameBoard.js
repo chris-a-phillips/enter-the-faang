@@ -27,8 +27,8 @@ const GameBoard = ({
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
-	// console.log('PLAYER KINGDOMS', playerKingdoms)
-	// console.log('PLAYER TEAM', playerTeam);
+	console.log('PLAYER KINGDOMS', playerKingdoms)
+	console.log('PLAYER TEAM', playerTeam);
 	// console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
@@ -60,7 +60,9 @@ const GameBoard = ({
 			}
 			console.log(b, 'was object that initiated 2');
 		},
-
+		standBy: function standBy() {
+			
+		},
 		choose: function choose(c) {
 			// 3 ACTION for cards
 			// setInvolved({ ...involved, selectedTarget: c})
@@ -114,6 +116,54 @@ const GameBoard = ({
 			}
 			return array;
 		},
+		standBy: function standBy() {
+			switch (session.currentZenscape.name) {
+				case 'Enhance':
+					if (playerTeam[0]) {
+						playerTeam[0].attack += session.currentZenscape.intensity
+						playerTeam[0].defense += session.currentZenscape.intensity
+						playerTeam[0].currentHealth += session.currentZenscape.intensity
+						playerTeam[0].maxHealth += session.currentZenscape.intensity
+						playerTeam[0].speed += session.currentZenscape.intensity
+						playerTeam[0].zen += session.currentZenscape.intensity
+						playerTeam[0].regeneration += session.currentZenscape.intensity
+					}
+					if (playerTeam[1]) {
+						playerTeam[1].attack += session.currentZenscape.intensity
+						playerTeam[1].defense += session.currentZenscape.intensity
+						playerTeam[1].currentHealth += session.currentZenscape.intensity
+						playerTeam[1].maxHealth += session.currentZenscape.intensity
+						playerTeam[1].speed += session.currentZenscape.intensity
+						playerTeam[1].zen += session.currentZenscape.intensity
+						playerTeam[1].regeneration += session.currentZenscape.intensity
+					}
+					break;
+				// case 'Spore':
+				// 	// code block
+				// 	break;
+				case 'Swamp':
+					if (enemyUnits[0]) {
+						enemyUnits[0].speed -= session.currentZenscape.intensity
+					}
+					if (enemyUnits[1]) {
+						enemyUnits[1].speed -= session.currentZenscape.intensity
+					}
+					if (enemyUnits[2]) {
+						enemyUnits[2].speed -= session.currentZenscape.intensity
+					}
+					if (enemyUnits[3]) {
+						enemyUnits[3].speed -= session.currentZenscape.intensity
+					}
+					if (enemyUnits[4]) {
+						enemyUnits[4].speed -= session.currentZenscape.intensity
+					}
+					
+					break;
+				default:
+					console.log('no zenscape')
+			}
+		},
+
 		battle: function battle() {
 			setAllUnitsOnField(listUnits());
 			allUnitsOnField
@@ -141,17 +191,17 @@ const GameBoard = ({
 									)
 								);
 							}
-							functions.check(playerTeam);
-							functions.check(playerKingdoms);
-							functions.check(enemyUnits);
-							functions.check(allCards);
+							this.check(playerTeam);
+							this.check(playerKingdoms);
+							this.check(enemyUnits);
+							this.check(allCards);
 							setAllUnitsOnField(listUnits());
 						}, session.notificationTimer);
 						session.notificationTimer += 1500;
 					}
 				});
 		},
-		afterMath : function afterMath() {
+		postBattle : function postBattle() {
 			setTimeout(() => {
 				session.eventLog.unshift({
 					event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`,
@@ -165,17 +215,19 @@ const GameBoard = ({
 				setAllUnitsOnField(listUnits());
 				session.notificationTimer = 0;
 			}, session.notificationTimer);
-			console.log(session.eventLog);
 			session.endTurn(playerTeam[0], playerTeam[1]);
+			console.log(session.eventLog);
+		},
+		afterEffects: function afterEffects() {
+
 		}
 	};
 
 	console.log(session.eventLog);
 
-	// QUEUE OF ATTACKS TO EMPTY
 	function endTurn() {
 		functions.battle()
-		functions.afterMath()
+		functions.postBattle()
 	};
 
 

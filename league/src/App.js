@@ -43,6 +43,7 @@ function App() {
 						setTrueSkill={setTrueSkill}
 						setGameStarted={setGameStarted}
 						enemyUnits={enemyUnits}
+						session={session}
 					/>
 				) : (
 					<GameBoard

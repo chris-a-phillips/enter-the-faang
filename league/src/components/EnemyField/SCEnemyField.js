@@ -38,15 +38,15 @@ export const FaangContent = styled.div`
 	margin: 2px;
 `;
 
-export const EnemyRank = styled.p`
+export const EnemyRank = styled.span`
 	color: #000;
 `
 
-export const EnemyFieldLabel = styled.h2`
+export const EnemyFieldLabel = styled.span`
 	color: #000;
 `;
 
-export const FaangName = styled.h3``;
+export const FaangName = styled.span``;
 
 export const FaangStats = styled.div``;
 

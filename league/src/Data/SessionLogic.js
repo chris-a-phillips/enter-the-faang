@@ -1,7 +1,14 @@
 class Game {
     constructor() {
         this.turnNumber = 0;
+        this.settings = {
+            difficulty: 'normal',
+            armySize: 20,
+            trueSkill: 'normal',
+            gameStarted: false
+        }
         this.eventLog = [];
+        this.turnPhase = false
         this.player = null;
         this.currentTurn = 'player'
         this.trueSkill = 5;
@@ -40,9 +47,9 @@ class Game {
                 name: 'Blaze',
                 intensity: 0
             },
-            // WATER && STONE -> slow down enemy units
-            mud: {
-                name: 'Mud',
+            // WATER && STONE -> player units gain more energy over time
+            spring: {
+                name: 'Spring',
                 intensity: 0
             },
             // AIR && WATER -> enemy attack power is reduced
@@ -126,9 +133,9 @@ class Game {
         } else if (titans.includes('Terra Kingdom') && titans.includes('Fire Kingdom')) {
             zenscapeType = this.zenscape.blaze
             zenscapeType.intensity ++
-            // WATER && STONE -> slow down enemy units
+            // WATER && STONE -> player units gain more energy over time
         } else if (titans.includes('Water Kingdom') && titans.includes('Stone Kingdom')) {
-            zenscapeType = this.zenscape.mud
+            zenscapeType = this.zenscape.spring
             zenscapeType.intensity ++
             // AIR && WATER -> enemy attack power is reduced
         } else if (titans.includes('Air Kingdom') && titans.includes('Water Kingdom')) {
