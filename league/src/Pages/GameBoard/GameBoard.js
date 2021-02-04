@@ -27,7 +27,7 @@ const GameBoard = ({
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
-	console.log('PLAYER KINGDOMS', playerKingdoms)
+	console.log('PLAYER KINGDOMS', playerKingdoms);
 	console.log('PLAYER TEAM', playerTeam);
 	// console.log('ENEMY UNITS', enemyUnits);
 
@@ -41,7 +41,7 @@ const GameBoard = ({
 
 		// select this action with the click
 		useCard: function useCard(a) {
-			session.phase = 'Card Selection'
+			session.phase = 'Card Selection';
 			// 1 SELECT
 			console.log(a, 'was card used 1');
 			// set initiator to where the button was clicked
@@ -60,9 +60,7 @@ const GameBoard = ({
 			}
 			console.log(b, 'was object that initiated 2');
 		},
-		standBy: function standBy() {
-			
-		},
+		standBy: function standBy() {},
 		choose: function choose(c) {
 			// 3 ACTION for cards
 			// setInvolved({ ...involved, selectedTarget: c})
@@ -120,22 +118,34 @@ const GameBoard = ({
 			switch (session.currentZenscape.name) {
 				case 'Enhance':
 					if (playerTeam[0]) {
-						playerTeam[0].attack += session.currentZenscape.intensity
-						playerTeam[0].defense += session.currentZenscape.intensity
-						playerTeam[0].currentHealth += session.currentZenscape.intensity
-						playerTeam[0].maxHealth += session.currentZenscape.intensity
-						playerTeam[0].speed += session.currentZenscape.intensity
-						playerTeam[0].zen += session.currentZenscape.intensity
-						playerTeam[0].regeneration += session.currentZenscape.intensity
+						playerTeam[0].attack +=
+							session.currentZenscape.intensity;
+						playerTeam[0].defense +=
+							session.currentZenscape.intensity;
+						playerTeam[0].currentHealth +=
+							session.currentZenscape.intensity;
+						playerTeam[0].maxHealth +=
+							session.currentZenscape.intensity;
+						playerTeam[0].speed +=
+							session.currentZenscape.intensity;
+						playerTeam[0].zen += session.currentZenscape.intensity;
+						playerTeam[0].regeneration +=
+							session.currentZenscape.intensity;
 					}
 					if (playerTeam[1]) {
-						playerTeam[1].attack += session.currentZenscape.intensity
-						playerTeam[1].defense += session.currentZenscape.intensity
-						playerTeam[1].currentHealth += session.currentZenscape.intensity
-						playerTeam[1].maxHealth += session.currentZenscape.intensity
-						playerTeam[1].speed += session.currentZenscape.intensity
-						playerTeam[1].zen += session.currentZenscape.intensity
-						playerTeam[1].regeneration += session.currentZenscape.intensity
+						playerTeam[1].attack +=
+							session.currentZenscape.intensity;
+						playerTeam[1].defense +=
+							session.currentZenscape.intensity;
+						playerTeam[1].currentHealth +=
+							session.currentZenscape.intensity;
+						playerTeam[1].maxHealth +=
+							session.currentZenscape.intensity;
+						playerTeam[1].speed +=
+							session.currentZenscape.intensity;
+						playerTeam[1].zen += session.currentZenscape.intensity;
+						playerTeam[1].regeneration +=
+							session.currentZenscape.intensity;
 					}
 					break;
 				// case 'Spore':
@@ -143,24 +153,28 @@ const GameBoard = ({
 				// 	break;
 				case 'Swamp':
 					if (enemyUnits[0]) {
-						enemyUnits[0].speed -= session.currentZenscape.intensity
+						enemyUnits[0].speed -=
+							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[1]) {
-						enemyUnits[1].speed -= session.currentZenscape.intensity
+						enemyUnits[1].speed -=
+							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[2]) {
-						enemyUnits[2].speed -= session.currentZenscape.intensity
+						enemyUnits[2].speed -=
+							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[3]) {
-						enemyUnits[3].speed -= session.currentZenscape.intensity
+						enemyUnits[3].speed -=
+							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[4]) {
-						enemyUnits[4].speed -= session.currentZenscape.intensity
+						enemyUnits[4].speed -=
+							session.currentZenscape.intensity;
 					}
-					
 					break;
 				default:
-					console.log('no zenscape')
+					console.log('no standby effect');
 			}
 		},
 
@@ -201,7 +215,7 @@ const GameBoard = ({
 					}
 				});
 		},
-		postBattle : function postBattle() {
+		postBattle: function postBattle() {
 			setTimeout(() => {
 				session.eventLog.unshift({
 					event: `${session.currentZenscape.name} is now ${session.currentZenscape.intensity}`,
@@ -219,17 +233,95 @@ const GameBoard = ({
 			console.log(session.eventLog);
 		},
 		afterEffects: function afterEffects() {
-
-		}
+			switch (session.currentZenscape.name) {
+				case 'Blaze':
+					if (playerTeam[0]) {
+						playerTeam[0].attack +=
+							session.currentZenscape.intensity;
+					}
+					if (playerTeam[1]) {
+						playerTeam[1].attack +=
+							session.currentZenscape.intensity;
+					}
+					break;
+				case 'Lava':
+					if (enemyUnits[0]) {
+						enemyUnits[0].currentHealth -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[1]) {
+						enemyUnits[1].currentHealth -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[2]) {
+						enemyUnits[2].currentHealth -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[3]) {
+						enemyUnits[3].currentHealth -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[4]) {
+						enemyUnits[4].currentHealth -=
+							session.currentZenscape.intensity;
+					}
+					break;
+				case 'Sandstorm':
+					if (enemyUnits[0]) {
+						enemyUnits[0].regeneration -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[1]) {
+						enemyUnits[1].regeneration -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[2]) {
+						enemyUnits[2].regeneration -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[3]) {
+						enemyUnits[3].regeneration -=
+							session.currentZenscape.intensity;
+					}
+					if (enemyUnits[4]) {
+						enemyUnits[4].regeneration -=
+							session.currentZenscape.intensity;
+					}
+					break;
+				case 'Spring':
+					if (playerTeam[0]) {
+						playerTeam[0].energy +=
+							session.currentZenscape.intensity;
+					}
+					if (playerTeam[1]) {
+						playerTeam[1].energy +=
+							session.currentZenscape.intensity;
+					}
+					break;
+				case 'Steam':
+					if (playerTeam[0]) {
+						playerTeam[0].regeneration +=
+							session.currentZenscape.intensity;
+					}
+					if (playerTeam[1]) {
+						playerTeam[1].regeneration +=
+							session.currentZenscape.intensity;
+					}
+					break;
+				default:
+					console.log('no after effect');
+			}
+		},
 	};
 
 	console.log(session.eventLog);
 
 	function endTurn() {
-		functions.battle()
-		functions.postBattle()
-	};
-
+		functions.standBy();
+		functions.battle();
+		functions.postBattle();
+		functions.afterEffects();
+	}
 
 	const listUnits = useCallback(() => {
 		let res = [];
@@ -263,9 +355,9 @@ const GameBoard = ({
 					<h1>Event Log</h1>
 					{session.eventLog.slice(0, 9).map((action) => {
 						return (
-							<ActionContainer action={action}
-							key={session.eventLog.indexOf(action)}
-							>
+							<ActionContainer
+								action={action}
+								key={session.eventLog.indexOf(action)}>
 								<p>{action.event}</p>
 							</ActionContainer>
 						);
@@ -275,21 +367,24 @@ const GameBoard = ({
 			{enemyUnits && playerTeam && playerKingdoms ? (
 				<>
 					<EnemyFieldContainer>
-					<EnemyField enemyUnits={enemyUnits} functions={functions} />
+						<EnemyField
+							enemyUnits={enemyUnits}
+							functions={functions}
+						/>
 					</EnemyFieldContainer>
 					<PlayerFieldContainer>
-					<PlayerField
-						playerTeam={playerTeam}
-						functions={functions}
-						allCards={allCards}
-						session={session}
-					/>
+						<PlayerField
+							playerTeam={playerTeam}
+							functions={functions}
+							allCards={allCards}
+							session={session}
+						/>
 					</PlayerFieldContainer>
 					<KingdomFieldContainer>
-					<KingdomField
-						playerKingdoms={playerKingdoms}
-						functions={functions}
-					/>
+						<KingdomField
+							playerKingdoms={playerKingdoms}
+							functions={functions}
+						/>
 					</KingdomFieldContainer>
 				</>
 			) : null}
