@@ -115,6 +115,7 @@ const GameBoard = ({
 			return array;
 		},
 		standBy: function standBy() {
+			session.enhanceZen(playerTeam[0], playerTeam[1]);
 			switch (session.currentZenscape.name) {
 				case 'Enhance':
 					if (playerTeam[0]) {
@@ -229,7 +230,6 @@ const GameBoard = ({
 				setAllUnitsOnField(listUnits());
 				session.notificationTimer = 0;
 			}, session.notificationTimer);
-			session.endTurn(playerTeam[0], playerTeam[1]);
 			console.log(session.eventLog);
 		},
 		afterEffects: function afterEffects() {
@@ -311,7 +311,7 @@ const GameBoard = ({
 				default:
 					console.log('no after effect');
 			}
-		},
+		}
 	};
 
 	console.log(session.eventLog);

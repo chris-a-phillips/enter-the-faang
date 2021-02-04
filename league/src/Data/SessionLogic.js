@@ -101,7 +101,7 @@ class Game {
 
     }
 
-    endTurn(titanOne, titanTwo) {
+    enhanceZen(titanOne, titanTwo) {
         const titans = [titanOne.kingdom, titanTwo.kingdom]
         let zenscapeType
         this.zenscape.colors = {
