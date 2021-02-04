@@ -28,21 +28,32 @@ class AttackCard extends Card {
         this.speed = initiator.speed
         // IF INITIATOR HAS ENOUGH ENERGY AND HAS A VALID TARGET
         if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
-            // DO DAMAGE
-            target.currentHealth -= 
-            calculations.playerDamageCalc(initiator, target, this.strength, session);
-            // USE THIS CARD SO IT IS SPLICED
-            this.isUsed = true
-            // SUBTRACT ENERGY COST
-            initiator.energy -= this.energy
-            if (target.currentHealth <= 0) {
-                target.isAlive = false;
-            }
-            // CALCULATE PERCENTAGE FOR DISPLAY
-            percent = Math.ceil(
+			// DO DAMAGE
+			target.currentHealth -= calculations.playerDamageCalc(
+				initiator,
+				target,
+				this.strength,
+				session
+			);
+			// USE THIS CARD SO IT IS SPLICED
+			this.isUsed = true;
+			// SUBTRACT ENERGY COST
+			initiator.energy -= this.energy;
+			if (target.currentHealth <= 0) {
+				target.isAlive = false;
+			}
+			// CALCULATE PERCENTAGE FOR DISPLAY
+			percent = Math.ceil(
 				(target.currentHealth / target.maxHealth) * 100
 			);
-        }
+			// IF ZENSCAPE IS FLASH ADD FLASH STATUS TO THEM
+			if (
+				session.currentZenscape.name === 'Flash' &&
+				Math.random() * 100 < session.currentZenscape.intensity
+			) {
+				target.status.flash = true
+			}
+		}
         // IF INITIATOR IS TARGET CHOOSE NEW TARGET
             if (initiator === target) {
                 console.log('CHOOSE NEW TARGET');

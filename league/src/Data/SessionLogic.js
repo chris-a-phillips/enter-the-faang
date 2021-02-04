@@ -85,7 +85,7 @@ class Game {
 			// AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
 			flash: {
 				name: 'Flash',
-				intensity: 0,
+				intensity: 100,
 			},
 			// AIR && TERRA -> enemy special effects are lessened
 			spore: {
@@ -301,6 +301,13 @@ export const calculations = {
 			Math.random() * 100 < session.currentZenscape.intensity
 		) {
 			res *= 2;
+		}
+		// IF ZENSCAPE IS PLASMA LOWER TARGET DEFENSE
+		if (
+			session.currentZenscape.name === 'Plasma' &&
+			Math.random() * 100 < session.currentZenscape.intensity
+		) {
+			target.defense -= session.currentZenscape.intensity
 		}
 		return res;
 	},

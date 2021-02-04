@@ -34,6 +34,9 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			this.regenerationRate = (100 - regeneration) / 25;
 			this.speed = speed;
 			this.isFaang = true;
+			this.status = {
+				flash: false
+			}
 		}
 		regenerateHealth() {
 			if (this.currentHealth < this.maxHealth && this.regenerationRate > 0) {
@@ -50,6 +53,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 						color: '#fff',
 					};
 			}
+			if (session.currentZenscape.name === 'Smoke' && Math.random() * 100 < session.currentZenscape.intensity && this.status.flash) {
+					return {
+						event: `${this.name} didn't attack because it was flashed`,
+						bgColor: this.showcase.rankColor,
+						color: '#fff',
+					};
+			}
 			if (this.isAlive) {
 				// THIS ATTACK
 				target.currentHealth -= calculations.enemyDamageCalc(
@@ -60,6 +70,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				let percent = Math.ceil(
 					(target.currentHealth / target.maxHealth) * 100
 				);
+				// IF ZENSCAPE IS THORN THIS UNIT ALSO TAKES DAMAGE
+				if (
+					session.currentZenscape.name === 'Thorn' &&
+					Math.random() * 100 < session.currentZenscape.intensity
+				) {
+					this.currentHealth -= session.currentZenscape.intensity;
+				}
 				// IF ATTACK WAS FATAL
 				if (target.currentHealth <= 0) {
 					target.isAlive = false;

@@ -30,7 +30,7 @@ const GameBoard = ({
 	const { involved, setInvolved } = useContext(GameContext);
 	// console.log('PLAYER KINGDOMS', playerKingdoms);
 	// console.log('PLAYER TEAM', playerTeam);
-	// console.log('ENEMY UNITS', enemyUnits);
+	console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
 		// 1 setInvolved initiator to specific object (choose)
@@ -206,17 +206,34 @@ const GameBoard = ({
 			allUnitsOnField
 				.sort((a, b) => (a.speed < b.speed ? 1 : -1))
 				.forEach((u) => {
+					// MAKE SURE TIME IS NOT WASTED ON KINGDOMS AS THEY DON'T USE CARDS
 					if (!u.isKingdom) {
 						// EACH TITAN ATTACKS FROM THE QUEUE
 						setTimeout(() => {
 							if (u.method) {
 								session.eventLog.unshift(u.method());
+								// CLEAR METHOD SO THERE ARE NO DUPLICATES
+								u.method = null;
+								// IF ZENSCAPE IS STORM, TITAN ATTACKS HAVE SPLASH DAMAGE
+								if (
+									session.currentZenscape.name ===
+										'Storm' &&
+									Math.random() * 100 <
+										session.currentZenscape.intensity
+								) {
+									allUnitsOnField.forEach((u) => {
+										if (u.isFaang) {
+											u.currentHealth -= session.currentZenscape.intensity
+										}
+									})
+								}
 							}
 							// EACH ENEMY ATTACKS A RANDOM UNIT
 							if (u.isFaang) {
 								let possibleTargets = allUnitsOnField.filter(
 									(unit) => !unit.isFaang
 								);
+								// IF ZENSCAPE IS GLARE, ENEMIES MAY ATTACK EACH OTHER
 								if (
 									session.currentZenscape.name === 'Glare' &&
 									Math.random() * 100 <
@@ -234,6 +251,7 @@ const GameBoard = ({
 										]
 									)
 								);
+								u.status.flash = false
 							}
 							this.check(playerTeam);
 							this.check(playerKingdoms);
