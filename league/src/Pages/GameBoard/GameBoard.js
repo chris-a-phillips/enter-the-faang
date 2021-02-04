@@ -30,7 +30,7 @@ const GameBoard = ({
 	const { involved, setInvolved } = useContext(GameContext);
 	// console.log('PLAYER KINGDOMS', playerKingdoms);
 	// console.log('PLAYER TEAM', playerTeam);
-	console.log('ENEMY UNITS', enemyUnits);
+	// console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
 		// 1 setInvolved initiator to specific object (choose)
@@ -217,10 +217,12 @@ const GameBoard = ({
 								let possibleTargets = allUnitsOnField.filter(
 									(unit) => !unit.isFaang
 								);
-								if (session.currentZenscape.name === 'Glare') {
-									if (Math.random() * 100 < session.currentZenscape.intensity) {
-										possibleTargets = allUnitsOnField
-									}
+								if (
+									session.currentZenscape.name === 'Glare' &&
+									Math.random() * 100 <
+										session.currentZenscape.intensity
+								) {
+									possibleTargets = allUnitsOnField;
 								}
 								session.eventLog.unshift(
 									u.attackUnit(
@@ -253,7 +255,7 @@ const GameBoard = ({
 				session.eventLog.unshift({
 					event: 'PLAYER TURN',
 				});
-				functions.afterEffects()
+				functions.afterEffects();
 				session.phase = 'Selection';
 				setAllUnitsOnField(listUnits());
 				session.notificationTimer = 0;
@@ -340,9 +342,9 @@ const GameBoard = ({
 					console.log('no after effect');
 			}
 			allUnitsOnField.forEach((u) => {
-				u.regenerateHealth()
-			})
-		}
+				u.regenerateHealth();
+			});
+		},
 	};
 
 	console.log(session.eventLog);

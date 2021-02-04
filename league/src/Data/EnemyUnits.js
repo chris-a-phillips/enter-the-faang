@@ -43,14 +43,12 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 		attackUnit(target) {
 			// IF THIS IS ALIVE
 			// IF ZENSCAPE IS SMOKE THE ATTACK MAY MISS
-			if (session.currentZenscape.name === 'Smoke') {
-				if (Math.random * 100 < session.currentZenscape.intensity) {
+			if (session.currentZenscape.name === 'Smoke' && Math.random() * 100 < session.currentZenscape.intensity) {
 					return {
 						event: `${this.name} missed its attack`,
 						bgColor: this.showcase.rankColor,
 						color: '#fff',
 					};
-				}
 			}
 			if (this.isAlive) {
 				// THIS ATTACK

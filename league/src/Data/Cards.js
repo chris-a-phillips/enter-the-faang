@@ -31,15 +31,7 @@ class AttackCard extends Card {
             // DO DAMAGE
             target.currentHealth -= 
             calculations.playerDamageCalc(initiator, target, this.strength, session);
-            // IF ZENSCAPE IS CRYSTAL TRY TO DO DAMAGE AGAIN
-            if (session.currentZenscape.name === 'Crystal') {
-                if (Math.random * 100 < session.currentZenscape.intensity) {
-                    target.currentHealth -= 
-                    calculations.playerDamageCalc(initiator, target, this.strength, session);
-                    console.log('piuahegbiupnBPVANRIPUNibvpar;nipbuf')
-                }
-            }
-            // USE THIS CARD TO SPLICE IT
+            // USE THIS CARD SO IT IS SPLICED
             this.isUsed = true
             // SUBTRACT ENERGY COST
             initiator.energy -= this.energy
