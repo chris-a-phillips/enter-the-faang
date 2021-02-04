@@ -26,32 +26,50 @@ class AttackCard extends Card {
 	effect(initiator, target) {
         let percent
         this.speed = initiator.speed
+        // IF INITIATOR HAS ENOUGH ENERGY AND HAS A VALID TARGET
         if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
+            // DO DAMAGE
             target.currentHealth -= 
-                calculations.playerDamageCalc(initiator, target, this.strength, session);
+            calculations.playerDamageCalc(initiator, target, this.strength, session);
+            // IF ZENSCAPE IS CRYSTAL TRY TO DO DAMAGE AGAIN
+            if (session.currentZenscape.name === 'Crystal') {
+                if (Math.random * 100 < session.currentZenscape.intensity) {
+                    target.currentHealth -= 
+                    calculations.playerDamageCalc(initiator, target, this.strength, session);
+                    console.log('piuahegbiupnBPVANRIPUNibvpar;nipbuf')
+                }
+            }
+            // USE THIS CARD TO SPLICE IT
             this.isUsed = true
+            // SUBTRACT ENERGY COST
             initiator.energy -= this.energy
             if (target.currentHealth <= 0) {
                 target.isAlive = false;
             }
+            // CALCULATE PERCENTAGE FOR DISPLAY
             percent = Math.ceil(
 				(target.currentHealth / target.maxHealth) * 100
 			);
         }
+        // IF INITIATOR IS TARGET CHOOSE NEW TARGET
             if (initiator === target) {
                 console.log('CHOOSE NEW TARGET');
             }
+            // IF INITIATOR DOES NOT HAVE ENOUGH ENERGY THIS CAN'T BE USED
             if (initiator.energy < this.energy) {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
-			}
+            }
+            // RESET ENERGY (WILL PROBABLY CHANCE)
             initiator.energy = initiator.showcase.energy
+            // IF TARGET DIED FROM ATTACK
             if (target.currentHealth <= 0) {
                 target.isAlive = false
                 return {
 					event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and it was defeated`,
 					bgColor: initiator.showcase.colors.secondary,
 					color: '#000',
-				};
+                };
+                // IF TARGET DID NOT DIE FROM THE ATTACK
             } else return {
 				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${percent}% health remaining`,
 				bgColor: initiator.showcase.colors.secondary,
@@ -82,7 +100,7 @@ class HealCard extends Card {
 		if (initiator !== target && initiator.energy >= this.energy && !target.isFaang) {
 			this.isUsed = true;
             initiator.energy -= this.energy;
-            console.log(calculations.healCalc(initiator, target, this.strength, session))
+            // calculations.healCalc(initiator, target, this.strength, session)
             if (initiator.isAlive && target.isAlive) {
                 if (
 					(target.currentHealth +
@@ -95,20 +113,17 @@ class HealCard extends Card {
 					target.maxHealth
 				) {
 					target.currentHealth = target.maxHealth;
-					percent = Math.ceil(
-						(target.currentHealth / target.maxHealth) * 100
-					);
 				} else {
-					target.currentHealth += (calculations.healCalc(
-						initiator,
+                    target.currentHealth += (calculations.healCalc(
+                        initiator,
 						target,
 						this.strength,
 						session
-					))
-                }
+                        ))
+                    }
                 percent = Math.ceil(
-					(target.currentHealth / target.maxHealth) * 100
-				);
+                    (target.currentHealth / target.maxHealth) * 100
+                );
                 res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${percent}% health remaining`
                 console.log(initiator)
             } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;

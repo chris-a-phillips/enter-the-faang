@@ -19,6 +19,7 @@ import {
 const GameBoard = ({
 	enemyUnits,
 	playerTeam,
+	setPlayerTeam,
 	playerKingdoms,
 	session,
 	allUnitsOnField,
@@ -27,8 +28,8 @@ const GameBoard = ({
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
-	console.log('PLAYER KINGDOMS', playerKingdoms);
-	console.log('PLAYER TEAM', playerTeam);
+	// console.log('PLAYER KINGDOMS', playerKingdoms);
+	// console.log('PLAYER TEAM', playerTeam);
 	console.log('ENEMY UNITS', enemyUnits);
 
 	const functions = {
@@ -60,7 +61,6 @@ const GameBoard = ({
 			}
 			console.log(b, 'was object that initiated 2');
 		},
-		standBy: function standBy() {},
 		choose: function choose(c) {
 			// 3 ACTION for cards
 			// setInvolved({ ...involved, selectedTarget: c})
@@ -130,7 +130,7 @@ const GameBoard = ({
 						playerTeam[0].speed +=
 							session.currentZenscape.intensity;
 						playerTeam[0].zen += session.currentZenscape.intensity;
-						playerTeam[0].regeneration +=
+						playerTeam[0].regenerationRate +=
 							session.currentZenscape.intensity;
 					}
 					if (playerTeam[1]) {
@@ -145,7 +145,7 @@ const GameBoard = ({
 						playerTeam[1].speed +=
 							session.currentZenscape.intensity;
 						playerTeam[1].zen += session.currentZenscape.intensity;
-						playerTeam[1].regeneration +=
+						playerTeam[1].regenerationRate +=
 							session.currentZenscape.intensity;
 					}
 					break;
@@ -296,23 +296,23 @@ const GameBoard = ({
 					break;
 				case 'Sandstorm':
 					if (enemyUnits[0]) {
-						enemyUnits[0].regeneration -=
+						enemyUnits[0].regenerationRate -=
 							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[1]) {
-						enemyUnits[1].regeneration -=
+						enemyUnits[1].regenerationRate -=
 							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[2]) {
-						enemyUnits[2].regeneration -=
+						enemyUnits[2].regenerationRate -=
 							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[3]) {
-						enemyUnits[3].regeneration -=
+						enemyUnits[3].regenerationRate -=
 							session.currentZenscape.intensity;
 					}
 					if (enemyUnits[4]) {
-						enemyUnits[4].regeneration -=
+						enemyUnits[4].regenerationRate -=
 							session.currentZenscape.intensity;
 					}
 					break;
@@ -328,11 +328,11 @@ const GameBoard = ({
 					break;
 				case 'Steam':
 					if (playerTeam[0]) {
-						playerTeam[0].regeneration +=
+						playerTeam[0].regenerationRate +=
 							session.currentZenscape.intensity;
 					}
 					if (playerTeam[1]) {
-						playerTeam[1].regeneration +=
+						playerTeam[1].regenerationRate +=
 							session.currentZenscape.intensity;
 					}
 					break;
@@ -405,9 +405,12 @@ const GameBoard = ({
 					<PlayerFieldContainer>
 						<PlayerField
 							playerTeam={playerTeam}
+							setPlayerTeam={setPlayerTeam}
 							functions={functions}
 							allCards={allCards}
 							session={session}
+							setAllUnitsOnField={setAllUnitsOnField}
+							listUnits={listUnits}
 						/>
 					</PlayerFieldContainer>
 					<KingdomFieldContainer>

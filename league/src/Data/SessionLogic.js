@@ -30,7 +30,7 @@ class Game {
             // AIR && FIRE -> enemy attacks have chance of missing
             smoke: {
                 name: 'Smoke',
-                intensity: 0
+                intensity: 50
             },
             // LIGHTNING && FIRE -> player attacks permanently lower enemy defense
             plasma: {
@@ -257,17 +257,7 @@ export const calculations = {
             level = 5
         }
 
-        console.log('=======')
-        console.log('level:', level)
-        console.log('power:', power)
-        console.log('initiator.defense:', initiator.defense)
-        console.log('target.regeneration:', target.regeneration)
-        console.log('session.modifiers:', power)
-        console.log('session.trueSkill:', session.trueSkill)
-        
-        let res = ((((2 * (level / 5) + 2) * power * (initiator.defense / target.regeneration)) / 50 + 2) * session.modifiers) * session.trueSkill
-        console.log('res:', res)
-        console.log('=======')
+        let res = ((((2 * (level / 5) + 2) * power * (initiator.defense / target.regenerationRate)) / 50 + 2) * session.modifiers) * session.trueSkill
         return res
     }
 }

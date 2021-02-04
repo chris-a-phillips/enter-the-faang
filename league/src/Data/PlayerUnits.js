@@ -37,10 +37,12 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				this.showcase = showcase;
 			}
 			regenerateHealth() {
-				if (this.currentHealth < this.maxHealth) {
-					let regenerated =
+				if (
+					this.currentHealth < this.maxHealth &&
+					this.regenerationRate > 0
+				) {
+					this.currentHealth +=
 						this.currentHealth * (0.01 * this.regenerationRate);
-					this.currentHealth += regenerated;
 				}
 			}
 			attackUnit(unit) {

@@ -36,18 +36,32 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			this.isFaang = true;
 		}
 		regenerateHealth() {
-			if (this.currentHealth < this.maxHealth) {
-				let regenerated = (this.currentHealth * ( .01 * this.regenerationRate))
-				this.currentHealth += regenerated
+			if (this.currentHealth < this.maxHealth && this.regenerationRate > 0) {
+				this.currentHealth += (this.currentHealth * ( .01 * this.regenerationRate))
 			}
 		}
 		attackUnit(target) {
 			// IF THIS IS ALIVE
+			// IF ZENSCAPE IS SMOKE THE ATTACK MAY MISS
+			if (session.currentZenscape.name === 'Smoke') {
+				if (Math.random * 100 < session.currentZenscape.intensity) {
+					return {
+						event: `${this.name} missed its attack`,
+						bgColor: this.showcase.rankColor,
+						color: '#fff',
+					};
+				}
+			}
 			if (this.isAlive) {
 				// THIS ATTACK
-				target.currentHealth -= 
-					calculations.enemyDamageCalc(this, target, session);
-				let percent = (Math.ceil((target.currentHealth / target.maxHealth) * 100));
+				target.currentHealth -= calculations.enemyDamageCalc(
+					this,
+					target,
+					session
+				);
+				let percent = Math.ceil(
+					(target.currentHealth / target.maxHealth) * 100
+				);
 				// IF ATTACK WAS FATAL
 				if (target.currentHealth <= 0) {
 					target.isAlive = false;
@@ -57,12 +71,13 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 						color: '#fff',
 					};
 					// IF ATTACK WENT THROUGH BUT WAS NOT FATAL
-				} else return {
-					event: `${this.name} attacked ${target.name} and now it has ${percent}% health remaining`,
-					bgColor: this.showcase.rankColor,
-					color: '#fff'
-				};
-			// IF THIS IS NOT ALIVE
+				} else
+					return {
+						event: `${this.name} attacked ${target.name} and now it has ${percent}% health remaining`,
+						bgColor: this.showcase.rankColor,
+						color: '#fff',
+					};
+				// IF THIS IS NOT ALIVE
 			} else return {
 				event: `${this.name} couldn't attack becuase it was defeated by a faster unit`,
 				bgColor: this.showcase.rankColor,
@@ -83,7 +98,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			rank,
 			pedigree,
 			species,
-			showcase
+			showcase,
+			regenerationRate
 		) {
 			super(
 				name,
@@ -96,7 +112,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				rank,
 				pedigree,
 				species,
-				showcase
+				showcase,
+				regenerationRate
 			);
 			this.isAdmin = true;
 			this.class = 'Advanced';
@@ -115,7 +132,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			rank,
 			pedigree,
 			species,
-			showcase
+			showcase,
+			regenerationRate
 		) {
 			super(
 				name,
@@ -128,7 +146,8 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 				rank,
 				pedigree,
 				species,
-				showcase
+				showcase,
+				regenerationRate
 			);
 			this.class = 'Elite';
 		}

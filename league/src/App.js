@@ -49,6 +49,7 @@ function App() {
 					<GameBoard
 						enemyUnits={enemyUnits}
 						playerTeam={playerTeam}
+						setPlayerTeam={setPlayerTeam}
 						playerKingdoms={playerKingdoms}
 						session={session}
 						allUnitsOnField={allUnitsOnField}
