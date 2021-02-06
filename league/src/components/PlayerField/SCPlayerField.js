@@ -79,14 +79,11 @@ export const CardContainer = styled.div`
 	transition: all 0.2s ease-in-out;
 	:hover {
 		transform: scale(2.5);
-	}
-	/* DRAGGABLE */
-	cursor: move;
+	};
 	:active {
 		transform: 0;
 		opacity: 0.75;
-	}
-
+	};
 `;
 
 export const CardHeading = styled.div`

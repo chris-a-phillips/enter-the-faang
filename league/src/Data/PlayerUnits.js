@@ -30,14 +30,20 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 				this.maxHealth = maxHealth;
 				this.attack = attack;
 				this.defense = defense;
-				this.regeneration = regeneration;
+				this.regenerationRate = (100 - regeneration) / 25;
 				this.speed = speed;
 				this.energy = energy;
 				this.zen = zen;
 				this.showcase = showcase;
 			}
-			speak() {
-				console.log(this.name);
+			regenerateHealth() {
+				if (
+					this.currentHealth < this.maxHealth &&
+					this.regenerationRate > 0
+				) {
+					this.currentHealth +=
+						this.currentHealth * (0.01 * this.regenerationRate);
+				}
 			}
 			attackUnit(unit) {
 				console.log(
@@ -105,7 +111,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			statsObject.total.reduce((a, b) => a + b, 0) /
             statsObject.total.length;
         return statsObject
-		// setTitanConversion(statsObject);
 	}
 
     const titans = {
@@ -317,10 +322,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     useEffect(() => {
 		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
     },[])
-
-
-        
-
 
 	return <div></div>;
 };

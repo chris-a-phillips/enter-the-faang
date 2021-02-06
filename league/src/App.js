@@ -43,11 +43,13 @@ function App() {
 						setTrueSkill={setTrueSkill}
 						setGameStarted={setGameStarted}
 						enemyUnits={enemyUnits}
+						session={session}
 					/>
 				) : (
 					<GameBoard
 						enemyUnits={enemyUnits}
 						playerTeam={playerTeam}
+						setPlayerTeam={setPlayerTeam}
 						playerKingdoms={playerKingdoms}
 						session={session}
 						allUnitsOnField={allUnitsOnField}

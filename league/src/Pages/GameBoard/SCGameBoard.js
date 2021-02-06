@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const GameBoardWrapper = styled.div`
-height: 100vh;
+	height: 100vh;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -13,6 +13,13 @@ height: 100vh;
 		'game-info game-info player-field player-field player-field player-field player-field player-field player-field player-field'
 		'game-info game-info player-field player-field player-field player-field player-field player-field player-field player-field'
 		'game-info game-info kingdom-field kingdom-field kingdom-field kingdom-field kingdom-field kingdom-field kingdom-field kingdom-field';
+	/* background: linear-gradient(
+			217deg,
+			rgba(255, 0, 0, 0.8),
+			rgba(255, 0, 0, 0) 70.71%
+		),
+		linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%); */
 `;
 
 export const GameRulesModal = styled.div`
@@ -49,10 +56,12 @@ export const KingdomFieldContainer = styled.div`
 export const SessionLogContainer = styled.div``;
 export const ActionContainer = styled.div`
 	display: ${({ action }) => (action.event ? 'block' : 'none')};
+	background: ${({ action }) => (action.gradientOne ? `linear-gradient(${action.gradientOne}, ${action.gradientTwo})` : '#fff')};
 	background-color: ${({ action }) => (action ? action.bgColor : 'red')};
 	color: ${({ action }) => (action ? action.color : 'red')};
 	margin: 5px;
 	padding: 5px;
 	border-radius: 10px;
-	border: ${({ action }) => (action ? 'solid black 4px' : '#000')};
+	border: ${({ action }) => (action.border ? `solid ${action.border} 4px` : 'solid #000 4px')};
 `;
+// background: linear-gradient(#e66465, #9198e5);

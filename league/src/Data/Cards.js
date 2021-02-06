@@ -1,3 +1,5 @@
+import { calculations, session } from '../Data/SessionLogic'
+
 class Card {
     constructor(name, strength, energy) {
         this.name = name;
@@ -24,35 +26,58 @@ class AttackCard extends Card {
 	effect(initiator, target) {
         let percent
         this.speed = initiator.speed
+        // IF INITIATOR HAS ENOUGH ENERGY AND HAS A VALID TARGET
         if (initiator !== target && initiator.energy >= this.energy && initiator.isAlive) {
-            target.currentHealth -= initiator.attack;
-            this.isUsed = true
-            initiator.energy -= this.energy
-            if (target.currentHealth <= 0) {
-                target.isAlive = false;
-            }
-            percent = Math.ceil(
+			// DO DAMAGE
+			target.currentHealth -= calculations.playerDamageCalc(
+				initiator,
+				target,
+				this.strength,
+				session
+			);
+			// USE THIS CARD SO IT IS SPLICED
+			this.isUsed = true;
+			// SUBTRACT ENERGY COST
+			initiator.energy -= this.energy;
+			if (target.currentHealth <= 0) {
+				target.isAlive = false;
+			}
+			// CALCULATE PERCENTAGE FOR DISPLAY
+			percent = Math.ceil(
 				(target.currentHealth / target.maxHealth) * 100
 			);
-        }
+			// IF ZENSCAPE IS FLASH ADD FLASH STATUS TO THEM
+			if (
+				session.currentZenscape.name === 'Flash' &&
+				Math.random() * 100 < session.currentZenscape.intensity
+			) {
+				target.status.flash = true
+			}
+		}
+        // IF INITIATOR IS TARGET CHOOSE NEW TARGET
             if (initiator === target) {
                 console.log('CHOOSE NEW TARGET');
             }
+            // IF INITIATOR DOES NOT HAVE ENOUGH ENERGY THIS CAN'T BE USED
             if (initiator.energy < this.energy) {
                 console.log('THIS TITAN DOES NOT HAVE ENOUGH ENERGY');
-			}
+            }
+            // RESET ENERGY (WILL PROBABLY CHANCE)
             initiator.energy = initiator.showcase.energy
+            // IF TARGET DIED FROM ATTACK
             if (target.currentHealth <= 0) {
                 target.isAlive = false
                 return {
 					event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and it was defeated`,
 					bgColor: initiator.showcase.colors.secondary,
 					color: '#000',
-				};
+                };
+                // IF TARGET DID NOT DIE FROM THE ATTACK
             } else return {
 				event: `card ${this.name} was used by ${initiator.name} to attack ${target.name} and now it has ${percent}% health remaining`,
 				bgColor: initiator.showcase.colors.secondary,
-				color: '#000',
+                color: '#000',
+                border: 'red'
 			};
 	}
 }
@@ -78,14 +103,30 @@ class HealCard extends Card {
 		if (initiator !== target && initiator.energy >= this.energy && !target.isFaang) {
 			this.isUsed = true;
             initiator.energy -= this.energy;
+            // calculations.healCalc(initiator, target, this.strength, session)
             if (initiator.isAlive && target.isAlive) {
-                if (target.currentHealth + initiator.defense > target.maxHealth) {
-                    target.currentHealth = target.maxHealth
-                    percent = Math.ceil(
-                        (target.currentHealth / target.maxHealth) *
-                            100
-                    );
-                } else {target.currentHealth += initiator.defense}
+                if (
+					(target.currentHealth +
+						calculations.healCalc(
+							initiator,
+							target,
+							this.strength,
+							session
+						)) >
+					target.maxHealth
+				) {
+					target.currentHealth = target.maxHealth;
+				} else {
+                    target.currentHealth += (calculations.healCalc(
+                        initiator,
+						target,
+						this.strength,
+						session
+                        ))
+                    }
+                percent = Math.ceil(
+                    (target.currentHealth / target.maxHealth) * 100
+                );
                 res = `${initiator.name} used Card ${this.name} to heal ${target.name}, and now it has ${percent}% health remaining`
                 console.log(initiator)
             } else res = `${initiator.name} used Card ${this.name} in an attempt to heal ${target.name}, but it was defeated before it could be healed`;
@@ -101,7 +142,8 @@ class HealCard extends Card {
             return {
 				event: res,
 				bgColor: initiator.showcase.colors.secondary,
-				color: '#000',
+                color: '#000',
+                border: 'green'
 			};
 	}
 }
@@ -120,6 +162,7 @@ class SupportCard extends Card {
 	effect(initiator, target) {
 		this.speed = initiator.speed;
 		if (initiator !== target && initiator.energy >= this.energy) {
+			this.isUsed = true
             console.log('it works')
 		}
 
@@ -159,35 +202,35 @@ const sTest5 = new SupportCard('s test5', 5, 5)
 const sTest6 = new SupportCard('s test6', 6, 6)
 const sTest7 = new SupportCard('s test7', 7, 7)
 
-
-
-export const allCards = [
+export const fullDeck = [
     // 1
 	aTest,
     hTest,
-    sTest,
+    // sTest,
     // 2
 	aTest2,
     hTest2,
-    sTest2,
+    // sTest2,
     // 3
 	aTest3,
     hTest3,
-    sTest3,
+    // sTest3,
     // 4
 	aTest4,
     hTest4,
-    sTest4,
+    // sTest4,
     // 5
 	aTest5,
     hTest5,
-    sTest5,
+    // sTest5,
     // 6
 	aTest6,
     hTest6,
-    sTest6,
+    // sTest6,
     //7
 	aTest7,
     hTest7,
-    sTest7
+    // sTest7
 ];
+
+export const allCards = session.shuffle(fullDeck)

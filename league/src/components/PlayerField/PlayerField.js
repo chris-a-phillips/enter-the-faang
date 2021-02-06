@@ -16,33 +16,24 @@ import {
 	TitanStats,
 } from './SCPlayerField';
 
-const PlayerField = ({ playerTeam, functions, allCards, session }) => {
+const PlayerField = ({ playerTeam, setPlayerTeam, functions, allCards, session, setAllUnitsOnField, listUnits }) => {
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
+	const [swapPlaces, setSwapPlaces] = useState({
+		state: false,
+		index: null
+	})
 
 	function swap(list, activeOne, activeTwo) {
-		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
-		setActiveTitans(playerTeam.slice(0, 2));
-	}
-
-	function shuffle(array) {
-		var currentIndex = array.length,
-			temporaryValue,
-			randomIndex;
-
-		// While there remain elements to shuffle...
-		while (0 !== currentIndex) {
-			// Pick a remaining element...
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex -= 1;
-
-			// And swap it with the current element.
-			temporaryValue = array[currentIndex];
-			array[currentIndex] = array[randomIndex];
-			array[randomIndex] = temporaryValue;
+		if (swapPlaces.state === true) {
+			list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
+			setActiveTitans(playerTeam.slice(0, 2));
 		}
-
-		return array;
+		setSwapPlaces({
+			state: false,
+			index: null
+		})
+		setAllUnitsOnField(listUnits());
 	}
 
 	useEffect(() => {
@@ -61,7 +52,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							onClick={() => {
 								functions.initiate(titan);
 								functions.choose(titan);
-							}}>
+								}}>
 							<TitanName titan={titan}>{titan.name}</TitanName>
 							<HealthBarContainer titan={titan}>
 								<HealthBar
@@ -82,9 +73,14 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 							<TitanStats>
 								<p>{titan.kingdom}</p>
 							</TitanStats>
-							<button onClick={() => swap(playerTeam, 0, 4)}>
-								swap
-							</button>
+							{session.phase === 'Selection' ? (
+								<button onClick={() => setSwapPlaces({
+									state: true,
+									index: playerTeam.indexOf(titan)
+								})}>
+									swap
+								</button>
+							) : null}
 						</TitanContainer>
 					);
 				})}
@@ -98,6 +94,7 @@ const PlayerField = ({ playerTeam, functions, allCards, session }) => {
 								onClick={() => {
 									functions.initiate(titan);
 									functions.choose(titan);
+									swap(playerTeam, swapPlaces.index,playerTeam.indexOf(titan));
 								}}>
 								<TitanName titan={titan}>
 									{titan.name}

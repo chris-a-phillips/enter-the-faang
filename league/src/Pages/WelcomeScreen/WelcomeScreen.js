@@ -1,6 +1,7 @@
 import React from 'react';
 
-const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill }) => {
+const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill, session }) => {
+	
     return (
 		<div>
 			<div>
@@ -25,7 +26,7 @@ const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits,
 				Choose True Skill (sliders for stats and how tough the combat is)
 				<button onClick={() => setTrueSkill('normal')}>normal</button>
 				<button onClick={() => setTrueSkill('heroic')}>heroic</button>
-				<button onClick={() => setTrueSkill('unfar')}>unfair</button>
+				<button onClick={() => setTrueSkill('unfair')}>unfair</button>
 			</div>
 			<br />
 

@@ -3,18 +3,34 @@ import React, { useEffect } from 'react';
 const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 
 	class Kingdom {
-		constructor(name, maxHealth, currentHealth, defense, regeneration, showcase) {
+		constructor(
+			name,
+			maxHealth,
+			currentHealth,
+			defense,
+			regenerationRate,
+			showcase
+		) {
 			// specs
 			this.isAlive = true;
-			this.isKingdom = true
+			this.isKingdom = true;
 			// stats
 			this.name = name;
 			this.maxHealth = maxHealth;
 			this.currentHealth = currentHealth;
 			this.defense = defense;
-			this.regeneration = regeneration;
+			this.regenerationRate = regenerationRate;
 			this.showcase = showcase;
 			this.speed = 0;
+		}
+		regenerateHealth() {
+			if (
+				this.currentHealth < this.maxHealth &&
+				this.regenerationRate > 0
+			) {
+				this.currentHealth +=
+					this.currentHealth * (0.01 * this.regenerationRate);
+			}
 		}
 	}
 
@@ -23,7 +39,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[0] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[0] }.currentHealth) * 3,
 		{ ...playerTeam[0] }.defense,
-		{ ...playerTeam[0] }.regeneration,
+		{ ...playerTeam[0] }.regenerationRate,
 		{ ...playerTeam[0] }.showcase,
 	);
 
@@ -32,7 +48,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[1] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[1] }.currentHealth) * 3,
 		{ ...playerTeam[1] }.defense,
-		{ ...playerTeam[1] }.regeneration,
+		{ ...playerTeam[1] }.regenerationRate,
 		{ ...playerTeam[1] }.showcase,
 	);
 
@@ -41,7 +57,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[2] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[2] }.currentHealth) * 3,
 		{ ...playerTeam[2] }.defense,
-		{ ...playerTeam[2] }.regeneration,
+		{ ...playerTeam[2] }.regenerationRate,
 		{ ...playerTeam[2] }.showcase,
 	);
 
@@ -50,7 +66,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[3] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[3] }.currentHealth) * 3,
 		{ ...playerTeam[3] }.defense,
-		{ ...playerTeam[3] }.regeneration,
+		{ ...playerTeam[3] }.regenerationRate,
 		{ ...playerTeam[3] }.showcase,
 	);
 
@@ -59,7 +75,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[4] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[4] }.currentHealth) * 3,
 		{ ...playerTeam[4] }.defense,
-		{ ...playerTeam[4] }.regeneration,
+		{ ...playerTeam[4] }.regenerationRate,
 		{ ...playerTeam[4] }.showcase,
 	);
 
@@ -68,7 +84,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[5] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[5] }.currentHealth) * 3,
 		{ ...playerTeam[5] }.defense,
-		{ ...playerTeam[5] }.regeneration,
+		{ ...playerTeam[5] }.regenerationRate,
 		{ ...playerTeam[5] }.showcase,
 	);
 
@@ -77,7 +93,7 @@ const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
 		Math.floor({ ...playerTeam[6] }.currentHealth) * 3,
 		Math.floor({ ...playerTeam[6] }.currentHealth) * 3,
 		{ ...playerTeam[6] }.defense,
-		{ ...playerTeam[6] }.regeneration,
+		{ ...playerTeam[6] }.regenerationRate,
 		{ ...playerTeam[6] }.showcase,
 	);
 
