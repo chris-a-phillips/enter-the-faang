@@ -162,6 +162,7 @@ class SupportCard extends Card {
 	effect(initiator, target) {
 		this.speed = initiator.speed;
 		if (initiator !== target && initiator.energy >= this.energy) {
+			this.isUsed = true
             console.log('it works')
 		}
 
@@ -205,31 +206,31 @@ export const fullDeck = [
     // 1
 	aTest,
     hTest,
-    sTest,
+    // sTest,
     // 2
 	aTest2,
     hTest2,
-    sTest2,
+    // sTest2,
     // 3
 	aTest3,
     hTest3,
-    sTest3,
+    // sTest3,
     // 4
 	aTest4,
     hTest4,
-    sTest4,
+    // sTest4,
     // 5
 	aTest5,
     hTest5,
-    sTest5,
+    // sTest5,
     // 6
 	aTest6,
     hTest6,
-    sTest6,
+    // sTest6,
     //7
 	aTest7,
     hTest7,
-    sTest7
+    // sTest7
 ];
 
 export const allCards = session.shuffle(fullDeck)

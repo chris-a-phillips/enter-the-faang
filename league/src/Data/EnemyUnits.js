@@ -39,8 +39,17 @@ const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
 			}
 		}
 		regenerateHealth() {
+			// IF CURRENT HEALTH IS LESS THAN MAX HEALTH AND REGENERATION RATE IS POSITIVE
 			if (this.currentHealth < this.maxHealth && this.regenerationRate > 0) {
-				this.currentHealth += (this.currentHealth * ( .01 * this.regenerationRate))
+				// IF REGENERATION WILL BOOST HEALTH PAST MAX HEALTH
+				if ((this.currentHealth += (this.currentHealth * ( .01 * this.regenerationRate))) > this.maxHealth) {
+					// MAKE CURRENT HEALTH MAX HEALTH
+					this.currentHealth = this.maxHealth
+					// ELSE REGENERATE
+				} else {
+					this.currentHealth +=
+						this.currentHealth * (0.01 * this.regenerationRate);
+				}
 			}
 		}
 		attackUnit(target) {

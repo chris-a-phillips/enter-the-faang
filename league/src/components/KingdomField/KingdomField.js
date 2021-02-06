@@ -11,6 +11,7 @@ import {
 	StatBar,
 } from './SCKingdomField';
 
+
 const KingdomField = ({ playerKingdoms, functions }) => {
 	const [hidden, setHidden] = useState(false);
 
@@ -46,48 +47,48 @@ const KingdomField = ({ playerKingdoms, functions }) => {
 								</HealthBar>
 							</HealthBarContainer>
 							<KingdomStats hidden={hidden}>
-								<p>Health</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.health}>
 									<p>{kingdom.showcase.health}/10</p>
 								</StatBar>
-								<p>Attack</p>
+								<p>Health</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.attack}>
 									<p>{kingdom.showcase.attack}/10</p>
 								</StatBar>
-								<p>Defense</p>
+								<p>Attack</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.defense}>
 									<p>{kingdom.showcase.defense}/10</p>
 								</StatBar>
-								<p>Energy</p>
+								<p>Defense</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.energy}>
 									<p>{kingdom.showcase.energy}/10</p>
 								</StatBar>
-								<p>Regeneration</p>
+								<p>Energy</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.regeneration}>
 									<p>{kingdom.showcase.regeneration}/10</p>
 								</StatBar>
-								<p>Speed</p>
+								<p>Regeneration</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.speed}>
 									<p>{kingdom.showcase.speed}/10</p>
 								</StatBar>
-								<p>Zen</p>
+								<p>Speed</p>
 								<StatBar
 									kingdom={kingdom}
 									stat={kingdom.showcase.zen}>
 									<p>{kingdom.showcase.zen}/10</p>
 								</StatBar>
+								<p>Zen</p>
 							</KingdomStats>
 						</KingdomContainer>
 					);

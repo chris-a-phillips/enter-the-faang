@@ -21,8 +21,7 @@ const EnemyField = ({ enemyUnits, functions }) => {
 	return (
 		<EnemyFieldWrapper>
 			<EnemyFieldLabel>
-				Enemies
-				{enemyUnits.length}
+				<h3>Enemies Remaining: {enemyUnits.length}</h3>
 			</EnemyFieldLabel>
 			<EnemyFlexContainer>
 				{enemyUnits.slice(0, 5).map((unit) => {

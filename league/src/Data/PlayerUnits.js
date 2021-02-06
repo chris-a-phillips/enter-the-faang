@@ -111,7 +111,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
 			statsObject.total.reduce((a, b) => a + b, 0) /
             statsObject.total.length;
         return statsObject
-		// setTitanConversion(statsObject);
 	}
 
     const titans = {
@@ -323,10 +322,6 @@ const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
     useEffect(() => {
 		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
     },[])
-
-
-        
-
 
 	return <div></div>;
 };
