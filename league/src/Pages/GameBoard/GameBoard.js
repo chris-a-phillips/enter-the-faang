@@ -15,6 +15,7 @@ import {
 	PlayerFieldContainer,
 	SessionLogContainer,
 } from './SCGameBoard';
+import GameRules from '../../components/GameRules/GameRules';
 
 const GameBoard = ({
 	enemyUnits,
@@ -25,7 +26,7 @@ const GameBoard = ({
 	allUnitsOnField,
 	setAllUnitsOnField,
 }) => {
-	const [showRules, setShowRules] = useState(false);
+	const [showRules, setShowRules] = useState(true);
 
 	const { involved, setInvolved } = useContext(GameContext);
 	console.log('PLAYER KINGDOMS', playerKingdoms);
@@ -400,7 +401,9 @@ const GameBoard = ({
 					Game Rules
 				</button>
 				<button onClick={endTurn}>End Turn</button>
-				<GameRulesModal showRules={showRules}></GameRulesModal>
+				{showRules ? (
+					<GameRules />
+				) : null}
 				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
 					<h1>Event Log</h1>
 					{session.eventLog.slice(0, 9).map((action) => {

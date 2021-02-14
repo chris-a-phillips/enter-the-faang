@@ -22,18 +22,6 @@ export const GameBoardWrapper = styled.div`
 		linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%); */
 `;
 
-export const GameRulesModal = styled.div`
-	display: ${({ showRules }) => (showRules ? 'block' : 'none')};
-	width: 90vh;
-	height: 90vh;
-	z-index: 2;
-	position: fixed;
-	border-radius: 10px;
-	box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-`;
-
 export const GameInfoContainer = styled.div`
 	grid-area: game-info;
 `;
