@@ -20,81 +20,97 @@ class Game {
 			// FIRE && WATER -> player field increases regeneration
 			steam: {
 				name: 'Steam',
+				description: 'Player units regeneration increases over time',
 				intensity: 0,
 			},
 			// STONE && FIRE -> enemy units take damage over time
 			lava: {
 				name: 'Lava',
+				description: 'Enemy units take damage over time',
 				intensity: 0,
 			},
 			// AIR && FIRE -> enemy attacks have chance of missing
 			smoke: {
 				name: 'Smoke',
+				description: 'Enemy attacks have chance of missing',
 				intensity: 50,
 			},
 			// LIGHTNING && FIRE -> player attacks permanently lower enemy defense
 			plasma: {
 				name: 'Plasma',
+				description: 'Player attacks permanently lower enemy defense',
 				intensity: 0,
 			},
 			// METAL && ANYTHING -> player stats get boosted
 			enhance: {
 				name: 'Enhance',
+				description: 'Player stats get boosted',
 				intensity: 0,
 			},
 			// TERRA && FIRE -> player attack gets boosted over time
 			blaze: {
 				name: 'Blaze',
+				description: 'Player attack gets boosted over time',
 				intensity: 0,
 			},
 			// WATER && STONE -> player units gain more energy over time
 			spring: {
 				name: 'Spring',
+				description: 'Player units gain more energy over time',
 				intensity: 0,
 			},
 			// AIR && WATER -> enemy attack power is reduced
 			ice: {
 				name: 'Ice',
+				description: 'Enemy attack power is reduced',
 				intensity: 0,
 			},
 			// LIGHTNING && WATER -> player attacks have splash damage
 			storm: {
 				name: 'Storm',
+				description: 'Player attacks have splash damage',
 				intensity: 0,
 			},
 			// TERRA && WATER -> slow down enemy units
 			swamp: {
 				name: 'Swamp',
+				description: 'Enemy units are slowed down',
 				intensity: 0,
 			},
 			// STONE && AIR -> enemy units regenerate less health
 			sandstorm: {
 				name: 'Sandstorm',
+				description: 'Enemy units regenerate less health',
 				intensity: 0,
 			},
 			// STONE && LIGHTNING -> enemy has a small chance of attacking another enemy
 			glare: {
 				name: 'Glare',
+				description: 'Enemy has a small chance of attacking another enemy',
 				intensity: 0,
 			},
 			// TERRA && STONE -> enemy takes damage after attacking
 			thorn: {
 				name: 'Thorn',
+				description: 'Enemy takes damage after attacking',
 				intensity: 0,
 			},
 			// AIR && LIGHTNING -> if player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking
 			flash: {
 				name: 'Flash',
+				description: 'If player attack hits enemy before enemy attacks, the enemy has a smaller chance of attacking',
 				intensity: 0,
 			},
 			// AIR && TERRA -> enemy special effects are lessened
 			spore: {
 				name: 'Spore',
+				description: 'Enemy special effects are lessened',
 				intensity: 0,
 			},
 			// LIGHTNING && TERRA -> player attack has small chance to do double damage
 			crystal: {
 				name: 'Crystal',
+				description: 'Player attack has small chance to do double damage',
 				intensity: 0,
 			},
 		};
