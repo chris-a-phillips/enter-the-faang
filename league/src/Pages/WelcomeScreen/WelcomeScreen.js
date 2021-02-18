@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WelcomeScreen = ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill, session }) => {
+function WelcomeScreen ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill, session }) {
 	
     return (
 		<div>

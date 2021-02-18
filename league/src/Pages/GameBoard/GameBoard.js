@@ -17,7 +17,7 @@ import {
 } from './SCGameBoard';
 import GameRules from '../../components/GameRules/GameRules';
 
-const GameBoard = ({
+function GameBoard ({
 	enemyUnits,
 	playerTeam,
 	setPlayerTeam,
@@ -25,8 +25,8 @@ const GameBoard = ({
 	session,
 	allUnitsOnField,
 	setAllUnitsOnField,
-}) => {
-	const [showRules, setShowRules] = useState(true);
+}) {
+	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);
 	console.log('PLAYER KINGDOMS', playerKingdoms);

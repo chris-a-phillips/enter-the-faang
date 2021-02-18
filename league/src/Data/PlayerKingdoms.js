@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const PlayerKingdoms = ({ setPlayerKingdoms, playerTeam }) => {
+function PlayerKingdoms ({ setPlayerKingdoms, playerTeam }) {
 
 	class Kingdom {
 		constructor(

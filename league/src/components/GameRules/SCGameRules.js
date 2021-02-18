@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const GameRulesWrapper = styled.div`
-	position: absolute;
+	position: relative;
 	top: 25%;
 	left: 25%;
 	background-color: white;
@@ -13,6 +13,15 @@ export const GameRulesWrapper = styled.div`
 		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 `;
+
+export const CloseButton = styled.h1`
+	position: absolute;
+	top: 8px;
+	right: 24px;
+	:hover {
+		cursor: pointer;
+	}
+`
 
 export const RulesFlexContainer = styled.div`
 	display: flex;

@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import {
+	CloseButton,
 	GameRulesWrapper,
 	LoseDiv,
 	RulesDiv,
@@ -11,8 +12,7 @@ import {
 	RulesP,
 	WinDiv
 } from './SCGameRules';
-
-const GameRules = ({ showRules, setShowRules }) => {
+function GameRules ({ showRules, setShowRules }) {
 	const panel = useRef();
 
 	const handleClick = (e) => {
@@ -31,6 +31,7 @@ const GameRules = ({ showRules, setShowRules }) => {
 
 	return (
 		<GameRulesWrapper ref={panel}>
+			<CloseButton onClick={() => setShowRules(false)}>&times;</CloseButton>
 			<RulesHeading>Rules</RulesHeading>
 			<RulesFlexContainer>
 				<WinDiv>

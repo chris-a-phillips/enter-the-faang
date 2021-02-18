@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 
-const PlayerUnits = ({ trueSkill, setPlayerTeam }) => {
+function PlayerUnits ({ trueSkill, setPlayerTeam }) {
 	const eliteStats = faang.elite;
 
 		class Titan {

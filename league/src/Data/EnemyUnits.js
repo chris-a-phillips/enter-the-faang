@@ -3,7 +3,7 @@ import { pedigree, faang, randomNames } from './FaangStats';
 import { session } from './SessionLogic';
 import { calculations } from '../Data/SessionLogic'
 
-const EnemyFaangs = ({ difficulty, armySize, setEnemyUnits }) => {
+function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 	const unitPool = [];
 	class BasicFaang {
 		constructor(

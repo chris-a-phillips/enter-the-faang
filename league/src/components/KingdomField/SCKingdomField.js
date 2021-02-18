@@ -76,7 +76,6 @@ export const StatBar = styled.div`
 				? '#C94A3A' // else if
 				: '#7F3128' // else
 	};
-	width: ${({ kingdom, stat }) =>
-		kingdom ? `${stat}0%` : 'inline-block'};
+	width: ${({ kingdom, stat }) => (kingdom ? `${stat}0%` : 'inline-block')};
 	border-radius: 25px;
 `;

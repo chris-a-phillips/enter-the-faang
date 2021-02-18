@@ -13,7 +13,7 @@ import {
 	EnemyRank,
 } from './SCEnemyField';
 
-const EnemyField = ({ enemyUnits, functions }) => {
+function EnemyField({ enemyUnits, functions }) {
 	const [enemyInfo, setEnemyInfo] = useState('');
 
 	useEffect(() => {}, [enemyUnits]);
@@ -64,6 +64,6 @@ const EnemyField = ({ enemyUnits, functions }) => {
 			</EnemyFlexContainer>
 		</EnemyFieldWrapper>
 	);
-};
+}
 
 export default EnemyField;
