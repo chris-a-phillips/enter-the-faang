@@ -14,3 +14,13 @@ export const GameRulesWrapper = styled.div`
 		rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
 		rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 `;
+
+export const RulesHeading = styled.h1``
+
+export const RulesH3 = styled.h3``
+
+export const RulesP = styled.p``
+
+export const RulesOL = styled.ol``
+
+export const RulesLI = styled.li``
