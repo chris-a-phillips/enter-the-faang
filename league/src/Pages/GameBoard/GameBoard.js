@@ -402,7 +402,10 @@ const GameBoard = ({
 				</button>
 				<button onClick={endTurn}>End Turn</button>
 				{showRules ? (
-					<GameRules />
+					<GameRules
+						showRules={showRules}
+						setShowRules={setShowRules}
+					/>
 				) : null}
 				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
 					<h1>Event Log</h1>
