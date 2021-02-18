@@ -16,8 +16,9 @@ import {
 	SessionLogContainer,
 } from './SCGameBoard';
 import GameRules from '../../components/GameRules/GameRules';
+import SessionInfo from '../../components/SessionInfo/SessionInfo';
 
-function GameBoard ({
+function GameBoard({
 	enemyUnits,
 	playerTeam,
 	setPlayerTeam,
@@ -217,16 +218,16 @@ function GameBoard ({
 								u.method = null;
 								// IF ZENSCAPE IS STORM, TITAN ATTACKS HAVE SPLASH DAMAGE
 								if (
-									session.currentZenscape.name ===
-										'Storm' &&
+									session.currentZenscape.name === 'Storm' &&
 									Math.random() * 100 <
 										session.currentZenscape.intensity
 								) {
 									allUnitsOnField.forEach((u) => {
 										if (u.isFaang) {
-											u.currentHealth -= session.currentZenscape.intensity
+											u.currentHealth -=
+												session.currentZenscape.intensity;
 										}
-									})
+									});
 								}
 							}
 							// EACH ENEMY ATTACKS A RANDOM UNIT
@@ -252,7 +253,7 @@ function GameBoard ({
 										]
 									)
 								);
-								u.status.flash = false
+								u.status.flash = false;
 							}
 							this.check(playerTeam);
 							this.check(playerKingdoms);
@@ -397,6 +398,7 @@ function GameBoard ({
 	return (
 		<GameBoardWrapper>
 			<GameInfoContainer>
+				<SessionInfo session={session}/>
 				<button onClick={() => setShowRules(!showRules)}>
 					Game Rules
 				</button>
@@ -449,6 +451,6 @@ function GameBoard ({
 			) : null}
 		</GameBoardWrapper>
 	);
-};
+}
 
 export default GameBoard;
