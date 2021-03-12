@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function WelcomeScreen({
 	setDifficulty,
@@ -6,35 +6,43 @@ function WelcomeScreen({
 	setGameStarted,
 	enemyUnits,
 	setTrueSkill,
+	session,
 	playerTeam,
 	setPlayerTeam,
 }) {
 	const [starters, setStarters] = useState([]);
-	const staticTitans = [...playerTeam]
+	const [staticTitans, setStaticTitans] = useState([...playerTeam])
 
 	function makeStarter(titan) {
 		if (starters.length === 0) {
-			setStarters([titan])
+			setStarters([titan]);
 		} else if (starters.length === 1 && starters[0] !== titan) {
-			setStarters([...starters, titan])
+			setStarters([...starters, titan]);
 		} else {
-			if(!starters.includes(titan)) {
-				setStarters([starters[1], titan])
+			if (!starters.includes(titan)) {
+				setStarters([starters[1], titan]);
 			}
 		}
-	}
-	
-	function chooseOrder() {
+
 		if (starters.length === 2) {
-			const arr = playerTeam.filter(titan => !starters.includes(titan))
-			
-			setPlayerTeam([starters[0], starters[1], ...arr])
+			const arr = playerTeam.filter((titan) => !starters.includes(titan));
+			setPlayerTeam([starters[0], starters[1], ...arr]);
 		}
-		
 	}
 
-	console.log('starters:', starters)
-	console.log('playerTeam:', playerTeam)
+	function startGame() {
+		setGameStarted(true)
+		session.settings.gameStarted = true
+		setPlayerTeam(playerTeam)
+	}
+
+	useEffect(() => {
+		setStaticTitans(staticTitans)
+	}, [])
+
+	console.log('starters:', starters);
+	console.log('playerTeam:', playerTeam);
+	console.log('session:', session);
 
 	return (
 		<div>
@@ -68,12 +76,11 @@ function WelcomeScreen({
 			<h1>Choose Your Starting Units</h1>
 			{staticTitans.map((titan) => {
 				return (
-					<div onClick={chooseOrder}>
+					<div>
 						{titan.name}
 						<button
 							onClick={() => {
-								makeStarter(titan)
-								chooseOrder();
+								makeStarter(titan);
 							}}>
 							+
 						</button>
@@ -82,7 +89,7 @@ function WelcomeScreen({
 			})}
 
 			{enemyUnits ? (
-				<button onClick={() => setGameStarted(true)}>Start Game</button>
+				<button onClick={startGame}>Start Game</button>
 			) : null}
 		</div>
 	);
