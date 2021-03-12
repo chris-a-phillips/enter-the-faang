@@ -1,6 +1,6 @@
 import React from 'react';
 
-function WelcomeScreen ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill, session }) {
+function WelcomeScreen ({ setDifficulty, setArmySize, setGameStarted, enemyUnits, setTrueSkill, playerTeam, setPlayerTeam }) {
 	
     return (
 		<div>
@@ -29,6 +29,15 @@ function WelcomeScreen ({ setDifficulty, setArmySize, setGameStarted, enemyUnits
 				<button onClick={() => setTrueSkill('unfair')}>unfair</button>
 			</div>
 			<br />
+
+			<h1>Choose Your Starting Units</h1>
+			{playerTeam.map((titan) => {
+				return (
+					<div>
+						{titan.name}
+					</div>
+				)
+			})}
 
 			{enemyUnits ? (
 				<button onClick={() => setGameStarted(true)}>Start Game</button>

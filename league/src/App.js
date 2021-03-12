@@ -36,7 +36,7 @@ function App() {
 			<GameContext.Provider value={value}>
 				{/* <button onClick={addNumber}>add turn</button> */}
 				{/* CHANGE THIS FOR THE WELCOME SCREEN TO WORK */}
-				{ gameStarted ? (
+				{ !gameStarted && playerTeam ? (
 					<WelcomeScreen
 						setDifficulty={setDifficulty}
 						setArmySize={setArmySize}
@@ -44,6 +44,8 @@ function App() {
 						setGameStarted={setGameStarted}
 						enemyUnits={enemyUnits}
 						session={session}
+						playerTeam={playerTeam}
+						setPlayerTeam={setPlayerTeam}
 					/>
 				) : (
 					<GameBoard
