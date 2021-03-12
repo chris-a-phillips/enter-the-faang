@@ -398,16 +398,20 @@ function GameBoard({
 	return (
 		<GameBoardWrapper>
 			<GameInfoContainer>
-				<SessionInfo session={session}/>
-				<button onClick={() => setShowRules(!showRules)}>
-					Game Rules
-				</button>
-				<button onClick={endTurn}>End Turn</button>
-				{showRules ? (
-					<GameRules
-						showRules={showRules}
-						setShowRules={setShowRules}
-					/>
+				{session.currentZenscape !== null ? (
+					<>
+						<SessionInfo session={session} />
+						<button onClick={() => setShowRules(!showRules)}>
+							Game Rules
+						</button>
+						<button onClick={endTurn}>End Turn</button>
+						{showRules ? (
+							<GameRules
+								showRules={showRules}
+								setShowRules={setShowRules}
+							/>
+						) : null}
+					</>
 				) : null}
 				<SessionLogContainer allUnitsOnField={allUnitsOnField}>
 					<h1>Event Log</h1>
