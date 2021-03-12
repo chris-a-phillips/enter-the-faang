@@ -10,31 +10,31 @@ function WelcomeScreen({
 	setPlayerTeam,
 }) {
 	const [starters, setStarters] = useState([]);
-	const [swapPlaces, setSwapPlaces] = useState({
-		state: false,
-		index: null,
-	});
+	const staticTitans = [...playerTeam]
 
-	function chooseOrder(list, activeOne, activeTwo) {
+	function makeStarter(titan) {
 		if (starters.length === 0) {
-			setStarters();
-		}
-
-		if (swapPlaces.state && starters.length === 2) {
+			setStarters([titan])
+		} else if (starters.length === 1 && starters[0] !== titan) {
+			setStarters([...starters, titan])
+		} else {
+			if(!starters.includes(titan)) {
+				setStarters([starters[1], titan])
+			}
 		}
 	}
+	
+	function chooseOrder() {
+		if (starters.length === 2) {
+			const arr = playerTeam.filter(titan => !starters.includes(titan))
+			
+			setPlayerTeam([starters[0], starters[1], ...arr])
+		}
+		
+	}
 
-	// function swap(list, activeOne, activeTwo) {
-	// 	if (swapPlaces.state === true) {
-	// 		list[activeOne] = list.splice(activeTwo, 1, list[activeOne])[0];
-	// 		setActiveTitans(playerTeam.slice(0, 2));
-	// 	}
-	// 	setSwapPlaces({
-	// 		state: false,
-	// 		index: null,
-	// 	});
-	// 	setAllUnitsOnField(listUnits());
-	// }
+	console.log('starters:', starters)
+	console.log('playerTeam:', playerTeam)
 
 	return (
 		<div>
@@ -66,21 +66,14 @@ function WelcomeScreen({
 			<br />
 
 			<h1>Choose Your Starting Units</h1>
-			{playerTeam.map((titan) => {
+			{staticTitans.map((titan) => {
 				return (
 					<div onClick={chooseOrder}>
 						{titan.name}
 						<button
 							onClick={() => {
-								setSwapPlaces({
-									state: true,
-									index: playerTeam.indexOf(titan),
-								});
-								chooseOrder(
-									playerTeam,
-									swapPlaces.index,
-									playerTeam.indexOf(titan)
-								);
+								makeStarter(titan)
+								chooseOrder();
 							}}>
 							+
 						</button>
