@@ -6,7 +6,9 @@ import {
 	DifficultyHeader,
 	OptionButton,
 	StartButtonDiv,
+	TitanCard,
 	TitanSelectionDiv,
+	TitanSelectionHeader,
 	TrueSkillButtons,
 	TrueSkillHeader,
 	WelcomeScreenWrapper,
@@ -24,8 +26,10 @@ function WelcomeScreen({
 }) {
 	const [starters, setStarters] = useState([]);
 	const [staticTitans, setStaticTitans] = useState([...playerTeam]);
+	const [chosen, setChosen] = useState(false)
 
 	function makeStarter(titan) {
+		const arr = playerTeam.filter((titan) => !starters.includes(titan));
 		if (starters.length === 0) {
 			setStarters([titan]);
 		} else if (starters.length === 1 && starters[0] !== titan) {
@@ -36,9 +40,20 @@ function WelcomeScreen({
 			}
 		}
 
+
+
+		
 		if (starters.length === 2) {
-			const arr = playerTeam.filter((titan) => !starters.includes(titan));
 			setPlayerTeam([starters[0], starters[1], ...arr]);
+		}
+
+		for(const choice of arr) {
+			if (arr.includes(titan)) {
+				titan.starter = true;
+			} else {
+				
+			}
+
 		}
 	}
 
@@ -51,11 +66,6 @@ function WelcomeScreen({
 	useEffect(() => {
 		setStaticTitans(staticTitans);
 	}, []);
-
-	// console.log('starters:', starters[0]);
-	// console.log('starters:', starters[1]);
-	console.log('playerTeam:', playerTeam[0]);
-	console.log('playerTeam:', playerTeam[1]);
 
 	return (
 		<WelcomeScreenWrapper>
@@ -104,20 +114,26 @@ function WelcomeScreen({
 					unfair
 				</OptionButton>
 			</TrueSkillButtons>
-
-			<TitanSelectionDiv>
+			<TitanSelectionHeader>
 				<h2>Choose Your Starting Units</h2>
+			</TitanSelectionHeader>
+			<TitanSelectionDiv>
 				{staticTitans.map((titan) => {
 					return (
-						<div key={staticTitans.indexOf(titan)}>
+						<TitanCard
+						key={staticTitans.indexOf(titan)}
+						chosen={chosen}
+						titan={titan}
+						>
 							{titan.name}
 							<button
 								onClick={() => {
 									makeStarter(titan);
+
 								}}>
 								+
 							</button>
-						</div>
+						</TitanCard>
 					);
 				})}
 			</TitanSelectionDiv>
