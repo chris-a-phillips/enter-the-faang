@@ -33,16 +33,17 @@ function WelcomeScreen({
 	function startGame() {
 		setGameStarted(true)
 		session.settings.gameStarted = true
-		setPlayerTeam(playerTeam)
+		makeStarter()
 	}
 
 	useEffect(() => {
 		setStaticTitans(staticTitans)
 	}, [])
 
-	console.log('starters:', starters);
-	console.log('playerTeam:', playerTeam);
-	console.log('session:', session);
+	// console.log('starters:', starters[0]);
+	// console.log('starters:', starters[1]);
+	console.log('playerTeam:', playerTeam[0]);
+	console.log('playerTeam:', playerTeam[1]);
 
 	return (
 		<div>
@@ -76,7 +77,7 @@ function WelcomeScreen({
 			<h1>Choose Your Starting Units</h1>
 			{staticTitans.map((titan) => {
 				return (
-					<div>
+					<div key={staticTitans.indexOf(titan)}>
 						{titan.name}
 						<button
 							onClick={() => {
@@ -88,9 +89,7 @@ function WelcomeScreen({
 				);
 			})}
 
-			{enemyUnits ? (
-				<button onClick={startGame}>Start Game</button>
-			) : null}
+			<button onClick={startGame}>Start Game</button>
 		</div>
 	);
 }

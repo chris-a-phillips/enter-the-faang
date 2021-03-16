@@ -13,7 +13,7 @@ import {
 
 
 function KingdomField ({ playerKingdoms, functions }) {
-	const [hidden, setHidden] = useState(false);
+	const [hidden, setHidden] = useState(true);
 
 	return (
 		<KingdomFieldWrapper>
