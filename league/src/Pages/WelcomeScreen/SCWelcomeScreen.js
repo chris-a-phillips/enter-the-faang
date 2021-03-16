@@ -17,7 +17,7 @@ export const WelcomeScreenWrapper = styled.div`
 
 export const PageDiv = styled.div`
 	text-align: center;
-    margin: 0;
+    /* margin: 0; */
 `;
 
 export const TitanSelection = styled(PageDiv)`
@@ -37,12 +37,12 @@ export const TrueSkill = styled.div`
 `;
 
 export const ButtonSection = styled.div`
-	position: relative;
-	display: inline-block;
-	vertical-align: middle;
+	display: grid;
+    row-gap: 1rem;
+	text-align: center;
+
 `;
 
 export const OptionButton = styled.button`
-    display: block;
-    margin: 3px;
+    margin: auto;
 `
