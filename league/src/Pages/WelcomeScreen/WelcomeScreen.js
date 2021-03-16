@@ -30,37 +30,29 @@ function WelcomeScreen({
 
 	function makeStarter(titan) {
 		const arr = playerTeam.filter((titan) => !starters.includes(titan));
+		titan.starter = true
 		if (starters.length === 0) {
 			setStarters([titan]);
 		} else if (starters.length === 1 && starters[0] !== titan) {
 			setStarters([...starters, titan]);
 		} else {
 			if (!starters.includes(titan)) {
+				starters[0].starter = false
 				setStarters([starters[1], titan]);
 			}
 		}
-
-
 
 		
 		if (starters.length === 2) {
 			setPlayerTeam([starters[0], starters[1], ...arr]);
 		}
 
-		for(const choice of arr) {
-			if (arr.includes(titan)) {
-				titan.starter = true;
-			} else {
-				
-			}
-
-		}
 	}
 
 	function startGame() {
 		setGameStarted(true);
 		session.settings.gameStarted = true;
-		makeStarter();
+		makeStarter(starters[1]);
 	}
 
 	useEffect(() => {
