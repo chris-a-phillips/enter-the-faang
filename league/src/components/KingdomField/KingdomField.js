@@ -8,7 +8,7 @@ import {
 	KingdomsFlexContainer,
 	HealthBarContainer,
 	HealthBar,
-	StatBar,
+	StatBar
 } from './SCKingdomField';
 
 

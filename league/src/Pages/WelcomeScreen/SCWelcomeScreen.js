@@ -69,5 +69,45 @@ export const OptionButton = styled.button`
 `;
 
 export const TitanCard = styled.div`
-	background-color: ${({ titan }) => (titan.starter ? 'red' : 'none')};
+	filter: ${({ titan }) => (titan.starter ? 'brightness(150%)' : 0)};
+	display: ${({ titan }) => (titan.isAlive ? 'inline-block' : 'none')};
+	background-color: ${({ titan }) =>
+		titan.starter
+			? titan.showcase.colors.primary
+			: titan.showcase.colors.secondary};
+	border: solid black 2px;
+	border-radius: 5px;
+	margin: 0.25rem;
+	padding: 5px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+		rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+		rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+`;
+
+export const TitanName = styled.h3`
+	background-color: ${({ titan }) =>
+		titan.starter
+			? titan.showcase.colors.secondary
+			: titan.showcase.colors.primary};
+	border-radius: 3px;
+	padding: 5px;
+`;
+
+export const StatBar = styled.div`
+	background-color: ${
+		({ stat }) =>
+			stat === 9
+				? '#32E058'
+				: stat === 8
+				? '#2ABD49' // if
+				: stat === 7
+				? '#CBD448' // else if
+				: stat === 6
+				? '#D48F3D' // else if
+				: stat === 5
+				? '#C94A3A' // else if
+				: '#7F3128' // else
+	};
+	width: ${({ titan, stat }) => (titan ? `${stat}0%` : 'inline-block')};
+	border-radius: 25px;
 `;

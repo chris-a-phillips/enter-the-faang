@@ -6,7 +6,9 @@ import {
 	DifficultyHeader,
 	OptionButton,
 	StartButtonDiv,
+	StatBar,
 	TitanCard,
+	TitanName,
 	TitanSelectionDiv,
 	TitanSelectionHeader,
 	TrueSkillButtons,
@@ -26,27 +28,26 @@ function WelcomeScreen({
 }) {
 	const [starters, setStarters] = useState([]);
 	const [staticTitans, setStaticTitans] = useState([...playerTeam]);
-	const [chosen, setChosen] = useState(false)
 
 	function makeStarter(titan) {
 		const arr = playerTeam.filter((titan) => !starters.includes(titan));
-		titan.starter = true
+
+		titan.starter = true;
+
 		if (starters.length === 0) {
 			setStarters([titan]);
 		} else if (starters.length === 1 && starters[0] !== titan) {
 			setStarters([...starters, titan]);
 		} else {
 			if (!starters.includes(titan)) {
-				starters[0].starter = false
+				starters[0].starter = false;
 				setStarters([starters[1], titan]);
 			}
 		}
 
-		
 		if (starters.length === 2) {
 			setPlayerTeam([starters[0], starters[1], ...arr]);
 		}
-
 	}
 
 	function startGame() {
@@ -58,6 +59,8 @@ function WelcomeScreen({
 	useEffect(() => {
 		setStaticTitans(staticTitans);
 	}, []);
+
+	console.log(playerTeam[0]);
 
 	return (
 		<WelcomeScreenWrapper>
@@ -112,26 +115,61 @@ function WelcomeScreen({
 			<TitanSelectionDiv>
 				{staticTitans.map((titan) => {
 					return (
-						<TitanCard
-						key={staticTitans.indexOf(titan)}
-						chosen={chosen}
-						titan={titan}
-						>
-							{titan.name}
-							<button
-								onClick={() => {
-									makeStarter(titan);
+						<TitanCard key={titan.name} titan={titan}>
+							<TitanName titan={titan}>{titan.name}</TitanName>
 
-								}}>
-								+
-							</button>
+							<StatBar titan={titan} stat={titan.showcase.health}>
+								<p>{titan.showcase.health}/10</p>
+							</StatBar>
+							<p>Health</p>
+							<StatBar titan={titan} stat={titan.showcase.attack}>
+								<p>{titan.showcase.attack}/10</p>
+							</StatBar>
+							<p>Attack</p>
+							<StatBar
+								titan={titan}
+								stat={titan.showcase.defense}>
+								<p>{titan.showcase.defense}/10</p>
+							</StatBar>
+							<p>Defense</p>
+							<StatBar titan={titan} stat={titan.showcase.energy}>
+								<p>{titan.showcase.energy}/10</p>
+							</StatBar>
+							<p>Energy</p>
+							<StatBar
+								titan={titan}
+								stat={titan.showcase.regeneration}>
+								<p>{titan.showcase.regeneration}/10</p>
+							</StatBar>
+							<p>Regeneration</p>
+							<StatBar titan={titan} stat={titan.showcase.speed}>
+								<p>{titan.showcase.speed}/10</p>
+							</StatBar>
+							<p>Speed</p>
+							<StatBar titan={titan} stat={titan.showcase.zen}>
+								<p>{titan.showcase.zen}/10</p>
+							</StatBar>
+							<p>Zen</p>
+
+							{titan.starter ? (
+								<h4>Starter {starters.indexOf(titan) + 1}</h4>
+							) : (
+								<button
+									onClick={() => {
+										makeStarter(titan);
+									}}>
+									Add To Team
+								</button>
+							)}
 						</TitanCard>
 					);
 				})}
 			</TitanSelectionDiv>
 
 			<StartButtonDiv>
-				<button onClick={startGame}>Start Game</button>
+				{starters.length === 2 ? (
+					<button onClick={startGame}>Start Game</button>
+				) : null}
 			</StartButtonDiv>
 		</WelcomeScreenWrapper>
 	);
