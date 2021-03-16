@@ -4,7 +4,7 @@ export const WelcomeScreenWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-	gap: 0px 0px;
+	gap: 7px 7px;
 	grid-template-areas:
 		'. Difficulty ArmySize ArmySize TrueSkill .'
 		'. Difficulty ArmySize ArmySize TrueSkill .'
@@ -15,18 +15,34 @@ export const WelcomeScreenWrapper = styled.div`
 		'. . StartButton StartButton . .';
 `;
 
-export const TitanSelection = styled.div`
+export const PageDiv = styled.div`
+	text-align: center;
+    margin: 0;
+`;
+
+export const TitanSelection = styled(PageDiv)`
 	grid-area: TitanSelection;
 `;
-export const StartButton = styled.div`
+export const StartButton = styled(PageDiv)`
 	grid-area: StartButton;
 `;
-export const Difficulty = styled.div`
+export const Difficulty = styled(PageDiv)`
 	grid-area: Difficulty;
 `;
-export const ArmySize = styled.div`
+export const ArmySize = styled(PageDiv)`
 	grid-area: ArmySize;
 `;
 export const TrueSkill = styled.div`
 	grid-area: TrueSkill;
 `;
+
+export const ButtonSection = styled.div`
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+`;
+
+export const OptionButton = styled.button`
+    display: block;
+    margin: 3px;
+`

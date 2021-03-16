@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import {
 	ArmySize,
+	ButtonSection,
 	Difficulty,
+	OptionButton,
 	StartButton,
 	TitanSelection,
 	TrueSkill,
@@ -56,33 +58,60 @@ function WelcomeScreen({
 	return (
 		<WelcomeScreenWrapper>
 			<Difficulty>
-				Choose Difficulty(ratio of difficult and easy enemies)
-				<button onClick={() => setDifficulty('easy')}>Easy</button>
-				<button onClick={() => setDifficulty('normal')}>Normal</button>
-				<button onClick={() => setDifficulty('veteran')}>
-					Veteran
-				</button>
-				<button onClick={() => setDifficulty('insane')}>Insane</button>
+				<h2>Choose Difficulty(ratio of difficult and easy enemies)</h2>
+				<ButtonSection>
+					<OptionButton onClick={() => setDifficulty('easy')}>
+						Easy
+					</OptionButton>
+					<OptionButton onClick={() => setDifficulty('normal')}>
+						Normal
+					</OptionButton>
+					<OptionButton onClick={() => setDifficulty('veteran')}>
+						Veteran
+					</OptionButton>
+					<OptionButton onClick={() => setDifficulty('insane')}>
+						Insane
+					</OptionButton>
+				</ButtonSection>
 			</Difficulty>
 			<ArmySize>
-				Choose Army Size
-				<button onClick={() => setArmySize(10)}>10</button>
-				<button onClick={() => setArmySize(20)}>20</button>
-				<button onClick={() => setArmySize(50)}>50</button>
-				<button onClick={() => setArmySize(100)}>100</button>
+				<h2>Choose Army Size</h2>
+				<ButtonSection>
+					<OptionButton onClick={() => setArmySize(10)}>
+						10
+					</OptionButton>
+					<OptionButton onClick={() => setArmySize(20)}>
+						20
+					</OptionButton>
+					<OptionButton onClick={() => setArmySize(50)}>
+						50
+					</OptionButton>
+					<OptionButton onClick={() => setArmySize(100)}>
+						100
+					</OptionButton>
+				</ButtonSection>
 			</ArmySize>
-			<br />
 
 			<TrueSkill>
-				Choose True Skill (sliders for stats and how tough the combat
-				is)
-				<button onClick={() => setTrueSkill('normal')}>normal</button>
-				<button onClick={() => setTrueSkill('heroic')}>heroic</button>
-				<button onClick={() => setTrueSkill('unfair')}>unfair</button>
+				<h2>
+					Choose True Skill (sliders for stats and how tough the
+					combat is)
+				</h2>
+				<ButtonSection>
+					<OptionButton onClick={() => setTrueSkill('normal')}>
+						normal
+					</OptionButton>
+					<OptionButton onClick={() => setTrueSkill('heroic')}>
+						heroic
+					</OptionButton>
+					<OptionButton onClick={() => setTrueSkill('unfair')}>
+						unfair
+					</OptionButton>
+				</ButtonSection>
 			</TrueSkill>
-			<br />
+
 			<TitanSelection>
-				<h1>Choose Your Starting Units</h1>
+				<h2>Choose Your Starting Units</h2>
 				{staticTitans.map((titan) => {
 					return (
 						<div key={staticTitans.indexOf(titan)}>
