@@ -93,6 +93,10 @@ export const TitanName = styled.h3`
 	padding: 5px;
 `;
 
+export const TitanButton = styled.button`
+
+`;
+
 export const StatBar = styled.div`
 	background-color: ${
 		({ stat }) =>

@@ -7,6 +7,7 @@ import {
 	OptionButton,
 	StartButtonDiv,
 	StatBar,
+	TitanButton,
 	TitanCard,
 	TitanName,
 	TitanSelectionDiv,
@@ -82,7 +83,7 @@ function WelcomeScreen({
 				</OptionButton>
 			</DifficultyButtons>
 			<ArmySizeHeader>
-				<h2>Choose Army Size</h2>
+				<h2>Choose Enemy Army Size</h2>
 			</ArmySizeHeader>
 			<ArmySizeButtons>
 				<OptionButton onClick={() => setArmySize(10)}>10</OptionButton>
@@ -154,12 +155,13 @@ function WelcomeScreen({
 							{titan.starter ? (
 								<h4>Starter {starters.indexOf(titan) + 1}</h4>
 							) : (
-								<button
+								<TitanButton
 									onClick={() => {
 										makeStarter(titan);
-									}}>
-									Add To Team
-								</button>
+									}}
+									titan={titan}>
+									Make Starter
+								</TitanButton>
 							)}
 						</TitanCard>
 					);
@@ -168,7 +170,7 @@ function WelcomeScreen({
 
 			<StartButtonDiv>
 				{starters.length === 2 ? (
-					<button onClick={startGame}>Start Game</button>
+					<OptionButton onClick={startGame}>Start Game</OptionButton>
 				) : null}
 			</StartButtonDiv>
 		</WelcomeScreenWrapper>
