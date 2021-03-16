@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-	ArmySize,
-	ButtonSection,
-	Difficulty,
+	ArmySizeButtons,
+	ArmySizeHeader,
+	DifficultyButtons,
+	DifficultyHeader,
 	OptionButton,
-	StartButton,
-	TitanSelection,
-	TrueSkill,
+	StartButtonDiv,
+	TitanSelectionDiv,
+	TrueSkillButtons,
+	TrueSkillHeader,
 	WelcomeScreenWrapper,
 } from './SCWelcomeScreen';
 
@@ -57,60 +59,53 @@ function WelcomeScreen({
 
 	return (
 		<WelcomeScreenWrapper>
-			<Difficulty>
+			<DifficultyHeader>
 				<h2>Choose Difficulty(ratio of difficult and easy enemies)</h2>
-				<ButtonSection>
-					<OptionButton onClick={() => setDifficulty('easy')}>
-						Easy
-					</OptionButton>
-					<OptionButton onClick={() => setDifficulty('normal')}>
-						Normal
-					</OptionButton>
-					<OptionButton onClick={() => setDifficulty('veteran')}>
-						Veteran
-					</OptionButton>
-					<OptionButton onClick={() => setDifficulty('insane')}>
-						Insane
-					</OptionButton>
-				</ButtonSection>
-			</Difficulty>
-			<ArmySize>
+			</DifficultyHeader>
+			<DifficultyButtons>
+				<OptionButton onClick={() => setDifficulty('easy')}>
+					Easy
+				</OptionButton>
+				<OptionButton onClick={() => setDifficulty('normal')}>
+					Normal
+				</OptionButton>
+				<OptionButton onClick={() => setDifficulty('veteran')}>
+					Veteran
+				</OptionButton>
+				<OptionButton onClick={() => setDifficulty('insane')}>
+					Insane
+				</OptionButton>
+			</DifficultyButtons>
+			<ArmySizeHeader>
 				<h2>Choose Army Size</h2>
-				<ButtonSection>
-					<OptionButton onClick={() => setArmySize(10)}>
-						10
-					</OptionButton>
-					<OptionButton onClick={() => setArmySize(20)}>
-						20
-					</OptionButton>
-					<OptionButton onClick={() => setArmySize(50)}>
-						50
-					</OptionButton>
-					<OptionButton onClick={() => setArmySize(100)}>
-						100
-					</OptionButton>
-				</ButtonSection>
-			</ArmySize>
-
-			<TrueSkill>
+			</ArmySizeHeader>
+			<ArmySizeButtons>
+				<OptionButton onClick={() => setArmySize(10)}>10</OptionButton>
+				<OptionButton onClick={() => setArmySize(20)}>20</OptionButton>
+				<OptionButton onClick={() => setArmySize(50)}>50</OptionButton>
+				<OptionButton onClick={() => setArmySize(100)}>
+					100
+				</OptionButton>
+			</ArmySizeButtons>
+			<TrueSkillHeader>
 				<h2>
 					Choose True Skill (sliders for stats and how tough the
 					combat is)
 				</h2>
-				<ButtonSection>
-					<OptionButton onClick={() => setTrueSkill('normal')}>
-						normal
-					</OptionButton>
-					<OptionButton onClick={() => setTrueSkill('heroic')}>
-						heroic
-					</OptionButton>
-					<OptionButton onClick={() => setTrueSkill('unfair')}>
-						unfair
-					</OptionButton>
-				</ButtonSection>
-			</TrueSkill>
+			</TrueSkillHeader>
+			<TrueSkillButtons>
+				<OptionButton onClick={() => setTrueSkill('normal')}>
+					normal
+				</OptionButton>
+				<OptionButton onClick={() => setTrueSkill('heroic')}>
+					heroic
+				</OptionButton>
+				<OptionButton onClick={() => setTrueSkill('unfair')}>
+					unfair
+				</OptionButton>
+			</TrueSkillButtons>
 
-			<TitanSelection>
+			<TitanSelectionDiv>
 				<h2>Choose Your Starting Units</h2>
 				{staticTitans.map((titan) => {
 					return (
@@ -125,11 +120,11 @@ function WelcomeScreen({
 						</div>
 					);
 				})}
-			</TitanSelection>
+			</TitanSelectionDiv>
 
-			<StartButton>
+			<StartButtonDiv>
 				<button onClick={startGame}>Start Game</button>
-			</StartButton>
+			</StartButtonDiv>
 		</WelcomeScreenWrapper>
 	);
 }
