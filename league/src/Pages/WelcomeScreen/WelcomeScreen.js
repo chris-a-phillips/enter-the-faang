@@ -1,4 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import {
+	ArmySize,
+	Difficulty,
+	StartButton,
+	TitanSelection,
+	TrueSkill,
+	WelcomeScreenWrapper,
+} from './SCWelcomeScreen';
 
 function WelcomeScreen({
 	setDifficulty,
@@ -11,7 +19,7 @@ function WelcomeScreen({
 	setPlayerTeam,
 }) {
 	const [starters, setStarters] = useState([]);
-	const [staticTitans, setStaticTitans] = useState([...playerTeam])
+	const [staticTitans, setStaticTitans] = useState([...playerTeam]);
 
 	function makeStarter(titan) {
 		if (starters.length === 0) {
@@ -31,14 +39,14 @@ function WelcomeScreen({
 	}
 
 	function startGame() {
-		setGameStarted(true)
-		session.settings.gameStarted = true
-		makeStarter()
+		setGameStarted(true);
+		session.settings.gameStarted = true;
+		makeStarter();
 	}
 
 	useEffect(() => {
-		setStaticTitans(staticTitans)
-	}, [])
+		setStaticTitans(staticTitans);
+	}, []);
 
 	// console.log('starters:', starters[0]);
 	// console.log('starters:', starters[1]);
@@ -46,8 +54,8 @@ function WelcomeScreen({
 	console.log('playerTeam:', playerTeam[1]);
 
 	return (
-		<div>
-			<div>
+		<WelcomeScreenWrapper>
+			<Difficulty>
 				Choose Difficulty(ratio of difficult and easy enemies)
 				<button onClick={() => setDifficulty('easy')}>Easy</button>
 				<button onClick={() => setDifficulty('normal')}>Normal</button>
@@ -55,42 +63,45 @@ function WelcomeScreen({
 					Veteran
 				</button>
 				<button onClick={() => setDifficulty('insane')}>Insane</button>
-			</div>
-			<div>
+			</Difficulty>
+			<ArmySize>
 				Choose Army Size
 				<button onClick={() => setArmySize(10)}>10</button>
 				<button onClick={() => setArmySize(20)}>20</button>
 				<button onClick={() => setArmySize(50)}>50</button>
 				<button onClick={() => setArmySize(100)}>100</button>
-			</div>
+			</ArmySize>
 			<br />
 
-			<div>
+			<TrueSkill>
 				Choose True Skill (sliders for stats and how tough the combat
 				is)
 				<button onClick={() => setTrueSkill('normal')}>normal</button>
 				<button onClick={() => setTrueSkill('heroic')}>heroic</button>
 				<button onClick={() => setTrueSkill('unfair')}>unfair</button>
-			</div>
+			</TrueSkill>
 			<br />
+			<TitanSelection>
+				<h1>Choose Your Starting Units</h1>
+				{staticTitans.map((titan) => {
+					return (
+						<div key={staticTitans.indexOf(titan)}>
+							{titan.name}
+							<button
+								onClick={() => {
+									makeStarter(titan);
+								}}>
+								+
+							</button>
+						</div>
+					);
+				})}
+			</TitanSelection>
 
-			<h1>Choose Your Starting Units</h1>
-			{staticTitans.map((titan) => {
-				return (
-					<div key={staticTitans.indexOf(titan)}>
-						{titan.name}
-						<button
-							onClick={() => {
-								makeStarter(titan);
-							}}>
-							+
-						</button>
-					</div>
-				);
-			})}
-
-			<button onClick={startGame}>Start Game</button>
-		</div>
+			<StartButton>
+				<button onClick={startGame}>Start Game</button>
+			</StartButton>
+		</WelcomeScreenWrapper>
 	);
 }
 
