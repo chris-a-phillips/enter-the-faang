@@ -362,16 +362,16 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 
 	// PLAYER GAME SETTINGS
 
-	for (let i = 0; i < armySize; i++) {
+	for (let i = 0; i < session.settings.armySize; i++) {
 		// SELECT PERCENTAGE OF UNITS WILL HAVE WHICH CLASSES
 		let difficultyArray = [];
-		if (difficulty === 'easy') {
+		if (session.settings.difficulty === 'easy') {
 			difficultyArray = [70, 95];
-		} else if (difficulty === 'normal') {
+		} else if (session.settings.difficulty === 'normal') {
 			difficultyArray = [60, 90];
-		} else if (difficulty === 'veteran') {
+		} else if (session.settings.difficulty === 'veteran') {
 			difficultyArray = [40, 70];
-		} else if (difficulty === 'insane') {
+		} else if (session.settings.difficulty === 'insane') {
 			difficultyArray = [20, 50];
 		}
 

@@ -61,7 +61,7 @@ function WelcomeScreen({
 		setStaticTitans(staticTitans);
 	}, []);
 
-	console.log(playerTeam[0]);
+	console.log(session)
 
 	return (
 		<WelcomeScreenWrapper>
