@@ -2,7 +2,6 @@ import React, { useState, useMemo } from 'react';
 import './App.css';
 import { session } from './Data/SessionLogic';
 import EnemyFaangs from './Data/EnemyUnits';
-// import { Link, Route, Switch } from 'react-router-dom';
 import WelcomeScreen from './Pages/WelcomeScreen/WelcomeScreen';
 import PlayerUnits from './Data/PlayerUnits';
 import PlayerKingdoms from './Data/PlayerKingdoms';

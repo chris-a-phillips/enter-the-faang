@@ -51,6 +51,18 @@ function WelcomeScreen({
 		}
 	}
 
+	const changeDifficulty = (option) => {
+		session.settings.difficulty = option
+	}
+
+	const changeArmySize = (option) => {
+		session.settings.armySize = option
+	}
+
+	const changeTrueSkill = (option) => {
+		session.settings.trueSkill = option
+	}
+
 	function startGame() {
 		setGameStarted(true);
 		session.settings.gameStarted = true;
@@ -69,7 +81,7 @@ function WelcomeScreen({
 				<h2>Choose Difficulty(ratio of difficult and easy enemies)</h2>
 			</DifficultyHeader>
 			<DifficultyButtons>
-				<OptionButton onClick={() => setDifficulty('easy')}>
+				<OptionButton onClick={() => changeDifficulty('easy')}>
 					Easy
 				</OptionButton>
 				<OptionButton onClick={() => setDifficulty('normal')}>
@@ -88,8 +100,8 @@ function WelcomeScreen({
 			<ArmySizeButtons>
 				<OptionButton onClick={() => setArmySize(10)}>10</OptionButton>
 				<OptionButton onClick={() => setArmySize(20)}>20</OptionButton>
-				<OptionButton onClick={() => setArmySize(50)}>50</OptionButton>
-				<OptionButton onClick={() => setArmySize(100)}>
+				<OptionButton onClick={() => changeArmySize(50)}>50</OptionButton>
+				<OptionButton onClick={() => changeArmySize(100)}>
 					100
 				</OptionButton>
 			</ArmySizeButtons>

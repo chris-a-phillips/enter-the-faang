@@ -184,7 +184,7 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 	let eliteUnits = faang.elite;
 
 	// RANDOM UNIT GENERATOR THAT PUSHES THE UNITS INTO THE UNIT POOL
-	function generateRandomUnit(rank) {
+	const generateRandomUnit = (rank) => {
 		let length = Object.keys(rank).length;
 		let randomNumber = Math.floor(Math.random() * length);
 		let randomUnit = rank[Object.keys(rank)[randomNumber]];
@@ -288,7 +288,7 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 	}
 
 	// SHOWCASE CREATOR
-	function createShowcase(unit) {
+	const createShowcase = (unit) => {
 		let showcase = {
 			description: null,
 			rankColor: null,
@@ -362,32 +362,35 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 
 	// PLAYER GAME SETTINGS
 
-	for (let i = 0; i < session.settings.armySize; i++) {
-		// SELECT PERCENTAGE OF UNITS WILL HAVE WHICH CLASSES
-		let difficultyArray = [];
-		if (session.settings.difficulty === 'easy') {
-			difficultyArray = [70, 95];
-		} else if (session.settings.difficulty === 'normal') {
-			difficultyArray = [60, 90];
-		} else if (session.settings.difficulty === 'veteran') {
-			difficultyArray = [40, 70];
-		} else if (session.settings.difficulty === 'insane') {
-			difficultyArray = [20, 50];
-		}
-
-		// SELECT HOW MANY UNITS WILL BE CREATED
-		let percentChance = Math.floor(Math.random() * 100);
-		if (percentChance < difficultyArray[0]) {
-			generateRandomUnit(basicUnits);
-		} else if (percentChance < difficultyArray[1]) {
-			generateRandomUnit(advancedUnits);
-		} else {
-			generateRandomUnit(eliteUnits);
+	const setSettings = () => {
+		for (let i = 0; i < session.settings.armySize; i++) {
+			// SELECT PERCENTAGE OF UNITS WILL HAVE WHICH CLASSES
+			let difficultyArray = [];
+			if (session.settings.difficulty === 'easy') {
+				difficultyArray = [70, 95];
+			} else if (session.settings.difficulty === 'normal') {
+				difficultyArray = [60, 90];
+			} else if (session.settings.difficulty === 'veteran') {
+				difficultyArray = [40, 70];
+			} else if (session.settings.difficulty === 'insane') {
+				difficultyArray = [20, 50];
+			}
+	
+			// SELECT HOW MANY UNITS WILL BE CREATED
+			let percentChance = Math.floor(Math.random() * 100);
+			if (percentChance < difficultyArray[0]) {
+				generateRandomUnit(basicUnits);
+			} else if (percentChance < difficultyArray[1]) {
+				generateRandomUnit(advancedUnits);
+			} else {
+				generateRandomUnit(eliteUnits);
+			}
 		}
 	}
 
 	useEffect(() => {
 		setEnemyUnits(unitPool);
+		setSettings()
 	}, []);
 
 	return <div></div>;
