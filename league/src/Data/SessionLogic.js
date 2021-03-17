@@ -4,8 +4,7 @@ class Game {
 		this.settings = {
 			difficulty: 'normal',
 			armySize: 20,
-			trueSkill: 'normal',
-			gameStarted: false,
+			trueSkill: 'normal'
 		};
 		this.eventLog = [];
 		this.turnPhase = false;

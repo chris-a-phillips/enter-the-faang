@@ -3,7 +3,7 @@ import { pedigree, faang, randomNames } from './FaangStats';
 import { session } from './SessionLogic';
 import { calculations } from '../Data/SessionLogic'
 
-function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
+function EnemyFaangs ({ setEnemyUnits }) {
 	const unitPool = [];
 	class BasicFaang {
 		constructor(
@@ -77,7 +77,7 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 					target,
 					session
 				);
-				let percent = Math.ceil(
+				const percent = Math.ceil(
 					(target.currentHealth / target.maxHealth) * 100
 				);
 				// IF ZENSCAPE IS THORN THIS UNIT ALSO TAKES DAMAGE
@@ -179,16 +179,16 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 	}
 
 	// FAANG GENERATOR
-	let basicUnits = faang.basic;
-	let advancedUnits = faang.advanced;
-	let eliteUnits = faang.elite;
+	const basicUnits = faang.basic;
+	const advancedUnits = faang.advanced;
+	const eliteUnits = faang.elite;
 
 	// RANDOM UNIT GENERATOR THAT PUSHES THE UNITS INTO THE UNIT POOL
 	const generateRandomUnit = (rank) => {
-		let length = Object.keys(rank).length;
-		let randomNumber = Math.floor(Math.random() * length);
-		let randomUnit = rank[Object.keys(rank)[randomNumber]];
-		let percentChance = Math.floor(Math.random() * 100);
+		const length = Object.keys(rank).length;
+		const randomNumber = Math.floor(Math.random() * length);
+		const randomUnit = rank[Object.keys(rank)[randomNumber]];
+		const percentChance = Math.floor(Math.random() * 100);
 		randomUnit.name =
 			randomNames[Math.floor(Math.random() * randomNames.length)];
 		if (rank.dra.rank === 'Basic') {
@@ -289,7 +289,7 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 
 	// SHOWCASE CREATOR
 	const createShowcase = (unit) => {
-		let showcase = {
+		const showcase = {
 			description: null,
 			rankColor: null,
 			pedigreeColor: null,
@@ -377,7 +377,7 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 			}
 	
 			// SELECT HOW MANY UNITS WILL BE CREATED
-			let percentChance = Math.floor(Math.random() * 100);
+			const percentChance = Math.floor(Math.random() * 100);
 			if (percentChance < difficultyArray[0]) {
 				generateRandomUnit(basicUnits);
 			} else if (percentChance < difficultyArray[1]) {
@@ -389,6 +389,7 @@ function EnemyFaangs ({ difficulty, armySize, setEnemyUnits }) {
 	}
 
 	useEffect(() => {
+		// generateRandomUnit(rank)
 		setEnemyUnits(unitPool);
 		setSettings()
 	}, []);

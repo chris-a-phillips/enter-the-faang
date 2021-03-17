@@ -13,11 +13,9 @@ import { AppWrapper } from './SCApp';
 function App() {
 	// DEFAULTS ARE FOR TESTING PURPOSES
 	// ALL STATE HOOKS SHOULD BE EMPTY
-	const [difficulty, setDifficulty] = useState('veteran');
-	const [armySize, setArmySize] = useState(20);
+
 	const [enemyUnits, setEnemyUnits] = useState([]);
 	const [gameStarted, setGameStarted] = useState(false);
-	const [trueSkill, setTrueSkill] = useState()
 	const [playerTeam, setPlayerTeam] = useState()
 	const [playerKingdoms, setPlayerKingdoms] = useState([])
 	const [involved, setInvolved] = useState({
@@ -37,9 +35,6 @@ function App() {
 				{/* CHANGE THIS FOR THE WELCOME SCREEN TO WORK */}
 				{ !gameStarted && playerTeam ? (
 					<WelcomeScreen
-						setDifficulty={setDifficulty}
-						setArmySize={setArmySize}
-						setTrueSkill={setTrueSkill}
 						setGameStarted={setGameStarted}
 						enemyUnits={enemyUnits}
 						session={session}
@@ -57,18 +52,14 @@ function App() {
 						setAllUnitsOnField={setAllUnitsOnField}
 					/>
 				)}
-				{ difficulty && armySize && playerTeam ? (
-					// && trueSkill
+				{ gameStarted ? (
 					<>
 						<EnemyFaangs
-							difficulty={difficulty}
-							armySize={armySize}
 							setEnemyUnits={setEnemyUnits}
 						/>
 					</>
 				) : null}
 				<PlayerUnits
-					trueSkill={trueSkill}
 					setPlayerTeam={setPlayerTeam}
 				/>
 				{playerTeam ? (

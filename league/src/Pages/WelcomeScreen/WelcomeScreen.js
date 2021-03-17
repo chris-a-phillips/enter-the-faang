@@ -18,11 +18,8 @@ import {
 } from './SCWelcomeScreen';
 
 function WelcomeScreen({
-	setDifficulty,
-	setArmySize,
 	setGameStarted,
 	enemyUnits,
-	setTrueSkill,
 	session,
 	playerTeam,
 	setPlayerTeam,
@@ -65,7 +62,6 @@ function WelcomeScreen({
 
 	function startGame() {
 		setGameStarted(true);
-		session.settings.gameStarted = true;
 		makeStarter(starters[1]);
 	}
 
@@ -84,13 +80,13 @@ function WelcomeScreen({
 				<OptionButton onClick={() => changeDifficulty('easy')}>
 					Easy
 				</OptionButton>
-				<OptionButton onClick={() => setDifficulty('normal')}>
+				<OptionButton onClick={() => changeDifficulty('normal')}>
 					Normal
 				</OptionButton>
-				<OptionButton onClick={() => setDifficulty('veteran')}>
+				<OptionButton onClick={() => changeDifficulty('veteran')}>
 					Veteran
 				</OptionButton>
-				<OptionButton onClick={() => setDifficulty('insane')}>
+				<OptionButton onClick={() => changeDifficulty('insane')}>
 					Insane
 				</OptionButton>
 			</DifficultyButtons>
@@ -98,8 +94,8 @@ function WelcomeScreen({
 				<h2>Choose Enemy Army Size</h2>
 			</ArmySizeHeader>
 			<ArmySizeButtons>
-				<OptionButton onClick={() => setArmySize(10)}>10</OptionButton>
-				<OptionButton onClick={() => setArmySize(20)}>20</OptionButton>
+				<OptionButton onClick={() => changeArmySize(10)}>10</OptionButton>
+				<OptionButton onClick={() => changeArmySize(20)}>20</OptionButton>
 				<OptionButton onClick={() => changeArmySize(50)}>50</OptionButton>
 				<OptionButton onClick={() => changeArmySize(100)}>
 					100
@@ -112,13 +108,13 @@ function WelcomeScreen({
 				</h2>
 			</TrueSkillHeader>
 			<TrueSkillButtons>
-				<OptionButton onClick={() => setTrueSkill('normal')}>
+				<OptionButton onClick={() => changeTrueSkill('normal')}>
 					normal
 				</OptionButton>
-				<OptionButton onClick={() => setTrueSkill('heroic')}>
+				<OptionButton onClick={() => changeTrueSkill('heroic')}>
 					heroic
 				</OptionButton>
-				<OptionButton onClick={() => setTrueSkill('unfair')}>
+				<OptionButton onClick={() => changeTrueSkill('unfair')}>
 					unfair
 				</OptionButton>
 			</TrueSkillButtons>

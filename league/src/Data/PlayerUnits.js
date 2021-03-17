@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
+import { session } from './SessionLogic';
 
-function PlayerUnits ({ trueSkill, setPlayerTeam }) {
+function PlayerUnits ({ setPlayerTeam }) {
 	const eliteStats = faang.elite;
 
 		class Titan {
