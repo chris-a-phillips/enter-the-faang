@@ -389,9 +389,9 @@ function EnemyFaangs ({ setEnemyUnits }) {
 	}
 
 	useEffect(() => {
-		// generateRandomUnit(rank)
 		setEnemyUnits(unitPool);
-		setSettings()
+		setSettings();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return <div></div>;

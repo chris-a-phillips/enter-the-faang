@@ -321,8 +321,17 @@ function PlayerUnits ({ setPlayerTeam }) {
     );
 
     useEffect(() => {
-		setPlayerTeam([fireTitan, waterTitan, stoneTitan, airTitan, lightningTitan, terraTitan, metalTitan]);
-    },[])
+		setPlayerTeam([
+			fireTitan,
+			waterTitan,
+			stoneTitan,
+			airTitan,
+			lightningTitan,
+			terraTitan,
+			metalTitan,
+		]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[])
 
 	return <div></div>;
 };

@@ -6,11 +6,9 @@ import { GameContext } from '../../components/GameContext';
 import { allCards } from '../../Data/Cards';
 import {
 	ActionContainer,
-	BoardContainer,
 	EnemyFieldContainer,
 	GameBoardWrapper,
 	GameInfoContainer,
-	GameRulesModal,
 	KingdomFieldContainer,
 	PlayerFieldContainer,
 	SessionLogContainer,
@@ -400,10 +398,10 @@ function GameBoard({
 			<GameInfoContainer>
 				{session.currentZenscape !== null ? (
 					<>
-						<SessionInfo session={session} />
 						<button onClick={() => setShowRules(!showRules)}>
 							Game Rules
 						</button>
+						<SessionInfo session={session} />
 						<button onClick={endTurn}>End Turn</button>
 						{showRules ? (
 							<GameRules

@@ -27,6 +27,7 @@ function GameRules ({ showRules, setShowRules }) {
 		return () => {
 			document.removeEventListener('mousedown', handleClick);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (

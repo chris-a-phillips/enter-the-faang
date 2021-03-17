@@ -107,6 +107,7 @@ function PlayerKingdoms ({ setPlayerKingdoms, playerTeam }) {
 			terraKingdom,
 			metalKingdom,
 		]);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return <div></div>;

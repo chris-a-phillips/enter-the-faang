@@ -63,10 +63,12 @@ function WelcomeScreen({
 	function startGame() {
 		setGameStarted(true);
 		makeStarter(starters[1]);
+		session.enhanceZen(starters[0], starters[1])
 	}
 
 	useEffect(() => {
 		setStaticTitans(staticTitans);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	console.log(session)
