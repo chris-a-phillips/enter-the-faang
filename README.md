@@ -1,158 +1,70 @@
+# Getting Started with Create React App
 
-<!-- PROJECT LOGO -->
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<br />
-<p align="center">
-  <a href="https://github.com/chris-a-phillips/enter-the-faang">
-    <!-- <img src="images/logo.png" alt="Logo" width="80" height="80"> -->
-  </a>
+## Available Scripts
 
-  <h3 align="center">Enter the FAANG</h3>
+In the project directory, you can run:
 
-  <p align="center">
-    Card Game with inspirations from a lot of games together
-    <br />
-    <a href="https://github.com/chris-a-phillips/enter-the-faang/blob/main/README.md"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/chris-a-phillips/enter-the-faang">View Demo</a>
-    ·
-    <a href="https://github.com/chris-a-phillips/enter-the-faang/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/chris-a-phillips/enter-the-faang/issues">Request Feature</a>
-  </p>
-</p>
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-<!-- TABLE OF CONTENTS -->
-<details open="open">
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <!-- <li><a href="#usage">Usage</a></li> -->
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
+### `npm test`
 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm run build`
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-<!-- ![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-<img src="./league/src/media/screenshots/test-screenshot.png" alt="Test Screenshot" width="800" height="600">
-    <br/>
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Enter the FAANG is a "roguelike" card game in which the player will face randomly generated units. The FAANG are invading and it's up to the player to try their best to stop them. The player's goal is to defeat all of the FAANG enemies using their Titans, before everything is destroyed. It's a race against time as the player will have to find the best strategy to protect the Kingdoms from certain doom.
+### `npm run eject`
 
-The rules are:
-* Win by defeating all of the FAANGS
-* Lose by having all Titans or Kingdoms reach 0 health
-* Turns are as follows
-	-   Player receives a new random card from the deck
-	-   cards are selected by player (or titan is swapped out)
-	-   Each card has an energy level
-	-   Titan does action on card
-	-   All units take turns according to speed
-	-   If units are defeated they are replaced after damage step
-	-   Repeat until game ends
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-Showcase features:
-* Enemy classes that make specific enemies more difficult to defeat than others
-* Enemy number option for player to choose how many units to defeat
-* Difficulty option to change player unit's stats
-* Trueskill option to change damage calculation
-* Random unit generation based on chosen options
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-While this is currently still being created, much of the logic and metadata has already been created. After completion my main goal will be to continue playtesting to make sure that each game is fair and matches the difficulty chosen.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-Features to come:
-* Currency to buy better cards throughout the game
-* Items the titans can use
-* "Synergies" between Titans on the field
-* Experience, levels, and prestige for each Titan
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
-### Built With
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-This was built using only React and Styled Components.
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-* [React](https://reactjs.org/)
-* [Styled Components](https://styled-components.com/)
+### Code Splitting
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-<!-- GETTING STARTED -->
+### Analyzing the Bundle Size
 
-## Getting Started
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-To get a local copy up and running follow these simple example steps.
+### Making a Progressive Web App
 
-### Prerequisites
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-Make sure that you have the latest npm version.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+### Advanced Configuration
 
-### Installation
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-1. Clone the repo
-   ```sh
-   git clone https://github.com/chris-a-phillips/enter-the-faang.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
+### Deployment
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-<!-- USAGE EXAMPLES -->
-<!-- ## Usage
+### `npm run build` fails to minify
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
--->
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/chris-a-phillips/enter-the-faang/issues) for a list of proposed features (and known issues).
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-<!-- CONTACT -->
-## Contact
-
-Chris Phillips - [Chris Phillips LinkedIn](https://www.linkedin.com/in/chris-a-phillips/) - phillipsachris@gmail.com
-
-Project Link: [https://github.com/chris-a-phillips/enter-the-faang/](https://github.com/chris-a-phillips/enter-the-faang/)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
