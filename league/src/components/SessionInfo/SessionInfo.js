@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SessionInfo({ session }) {
+export function SessionInfo({ session }) {
 	console.log(session);
 
 	return (

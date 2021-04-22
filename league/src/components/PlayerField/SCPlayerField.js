@@ -70,9 +70,9 @@ export const CardContainer = styled.div`
 	background-color: ${({ card }) => (card ? card.colors.secondary : 'black')};
 	border: solid black 2px;
 	border-radius: 5px;
-	margin: 1rem;
+	margin: 0.5rem;
 	padding: 5px;
-	width: 15%;
+	width: 20%;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
 		rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 	font-size: 0.25rem;
