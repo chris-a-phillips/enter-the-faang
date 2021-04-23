@@ -5,20 +5,21 @@ export function SessionInfo({ session }) {
 
 	return (
 		<div>
-			<p>{session.player}</p>
+			{/* <h4>Player Name</h4>
+			<p>{session.player}</p> */}
 			<div>
-				<p>{session.currentZenscape.name}</p>
-				<p>{session.currentZenscape.description}</p>
-				<p>{session.currentZenscape.intensity}</p>
+				<h4>Zenscape</h4>
+				<p>Type: {session.currentZenscape.name}</p>
+				<p>Description: {session.currentZenscape.description}</p>
+				<p>Intensity: {session.currentZenscape.intensity}</p>
 			</div>
-			<p>{session.turnNumber}</p>
-			<p>{session.phase}</p>
+			<p>Turn Number: {session.turnNumber}</p>
+			<p>Turn Phase: {session.phase}</p>
 			<div>
-				<p>settings</p>
-				<p>{session.settings.armySize}</p>
-				<p>{session.settings.difficulty}</p>
-				<p>{session.settings.trueSkill}</p>
-				<p></p>
+				<h4>Settings</h4>
+				<p>Enemy Army Size: {session.settings.armySize}</p>
+				<p>Difficulty: {session.settings.difficulty}</p>
+				<p>Trueskill: {session.settings.trueSkill}</p>
 			</div>
 		</div>
 	);
