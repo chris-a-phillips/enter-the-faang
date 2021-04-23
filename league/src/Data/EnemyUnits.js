@@ -394,7 +394,7 @@ function EnemyFaangs ({ setEnemyUnits }) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return <div></div>;
+	return null
 };
 
 export default EnemyFaangs;

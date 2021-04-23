@@ -333,7 +333,7 @@ function PlayerUnits ({ setPlayerTeam }) {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 
-	return <div></div>;
+	return null
 };
 
 export default PlayerUnits;
