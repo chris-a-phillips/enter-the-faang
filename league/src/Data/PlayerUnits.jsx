@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { faang } from './FaangStats';
 import { session } from './SessionLogic';
 
-function PlayerUnits ({ setPlayerTeam }) {
+const PlayerUnits = ({ setPlayerTeam }) => {
 	const eliteStats = faang.elite;
 
 		class Titan {

@@ -12,7 +12,8 @@ import {
 	RulesP,
 	WinDiv
 } from './SCGameRules';
-function GameRules ({ showRules, setShowRules }) {
+
+const GameRules = ({ showRules, setShowRules }) => {
 	const panel = useRef();
 
 	const handleClick = (e) => {

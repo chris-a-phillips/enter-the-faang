@@ -16,7 +16,7 @@ import {
 	TitanStats,
 } from './SCPlayerField';
 
-function PlayerField ({ playerTeam, functions, allCards, session, setAllUnitsOnField, listUnits }) {
+const PlayerField = ({ playerTeam, functions, allCards, session, setAllUnitsOnField, listUnits }) => {
 	const [activeTitans, setActiveTitans] = useState(playerTeam.slice(0, 2));
 	const [cardHand, setCardHand] = useState(allCards.slice(0, 5));
 	const [swapPlaces, setSwapPlaces] = useState({

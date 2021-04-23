@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { pedigree, faang, randomNames } from './FaangStats';
 import { session } from './SessionLogic';
-import { calculations } from '../Data/SessionLogic'
+import { calculations } from './SessionLogic'
 
-function EnemyFaangs ({ setEnemyUnits }) {
+const EnemyFaangs = ({ setEnemyUnits }) => {
 	const unitPool = [];
 	class BasicFaang {
 		constructor(

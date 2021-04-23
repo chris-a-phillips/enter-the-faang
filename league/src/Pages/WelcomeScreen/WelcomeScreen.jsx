@@ -17,13 +17,13 @@ import {
 	WelcomeScreenWrapper,
 } from './SCWelcomeScreen';
 
-function WelcomeScreen({
+const WelcomeScreen = ({
 	setGameStarted,
 	enemyUnits,
 	session,
 	playerTeam,
 	setPlayerTeam,
-}) {
+}) => {
 	const [starters, setStarters] = useState([]);
 	const [staticTitans, setStaticTitans] = useState([...playerTeam]);
 

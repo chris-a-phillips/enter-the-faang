@@ -16,7 +16,7 @@ import {
 import GameRules from '../../components/GameRules/GameRules';
 import SessionInfo from '../../components/SessionInfo/SessionInfo';
 
-function GameBoard({
+const GameBoard = ({
 	enemyUnits,
 	playerTeam,
 	setPlayerTeam,
@@ -24,7 +24,7 @@ function GameBoard({
 	session,
 	allUnitsOnField,
 	setAllUnitsOnField,
-}) {
+}) => {
 	const [showRules, setShowRules] = useState(false);
 
 	const { involved, setInvolved } = useContext(GameContext);

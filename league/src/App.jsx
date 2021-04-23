@@ -10,7 +10,7 @@ import { GameContext } from './components/GameContext'
 import { AppWrapper } from './SCApp';
 
 
-function App() {
+const App = () => {
 	// DEFAULTS ARE FOR TESTING PURPOSES
 	// ALL STATE HOOKS SHOULD BE EMPTY
 

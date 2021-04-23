@@ -12,7 +12,7 @@ import {
 } from './SCKingdomField';
 
 
-function KingdomField ({ playerKingdoms, functions }) {
+const KingdomField = ({ playerKingdoms, functions }) => {
 	const [hidden, setHidden] = useState(true);
 
 	return (
